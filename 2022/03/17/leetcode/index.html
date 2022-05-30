@@ -30,7 +30,7 @@
 
     <script src="/project/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.1"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.2"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -494,7 +494,50 @@ public:
     &#125;
 &#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+<h2 id="盛最多水的容器"><a href="#盛最多水的容器" class="headerlink" title="盛最多水的容器"></a>盛最多水的容器</h2><p>给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。<br>找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。<br>返回容器可以储存的最大水量。<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/container-with-most-water%E3%80%81">https://leetcode-cn.com/problems/container-with-most-water、</a></p>
+<h3 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
+public:
+    int getMin(int a,int b)&#123;
+        return a&lt;b?a:b;
+    &#125;
+
+    int getMax(int a,int b)&#123;
+        return a&gt;b?a:b;
+    &#125;
+    int maxArea(vector&lt;int&gt;&amp; height) &#123;
+        int area &#x3D; 0;
+        for(int i&#x3D;0;i&lt;height.size()-1;i++)&#123;
+            for(int j&#x3D;i+1;j&lt;height.size();j++)&#123;
+                area &#x3D; getMax(area, getMin(height[i],height[j])*(j-i));
+            &#125;
+        &#125;
+        return area;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">
+class Solution &#123;
+public:
+    int getMin(int a,int b)&#123;
+        return a&lt;b?a:b;
+    &#125;
+
+    int getMax(int a,int b)&#123;
+        return a&gt;b?a:b;
+    &#125;
+    int maxArea(vector&lt;int&gt;&amp; height) &#123;
+        int area &#x3D; 0;
+        int i &#x3D; 0;
+        int j &#x3D; height.size()-1;
+        while(i!&#x3D;j)&#123;
+           area &#x3D; getMax(area,getMin(height[i],height[j])*(j-i));
+            if(height[i]&gt;height[j]) j--;
+            else i++;
+        &#125;
+        return area;
+    &#125;
+&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
