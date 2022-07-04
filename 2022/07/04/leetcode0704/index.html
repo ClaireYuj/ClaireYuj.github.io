@@ -4,8 +4,8 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Leetcode01, Claire">
-    <meta name="description" content="53. 最大子数组和给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。子数组 是数组中的一个连续部分。https://leetcode-cn.com/problems/maximum-">
+    <meta name="keywords" content="leetcode0704, Claire">
+    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Leetcode01 | Claire</title>
+    <title>leetcode0704 | Claire</title>
     <link rel="icon" type="image/png" href="/project/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/project/libs/awesome/css/all.min.css">
@@ -30,7 +30,7 @@
 
     <script src="/project/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.2"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+<meta name="generator" content="Hexo 5.4.1"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -287,12 +287,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/project/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/project/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Leetcode01</h1>
+                    <h1 class="description center-align post-title">leetcode0704</h1>
                 </div>
             </div>
         </div>
@@ -408,14 +408,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/project/tags/Leetcode-%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">Leetcode,算法</span>
+                            <a href="/project/tags/Leetcode/">
+                                <span class="chip bg-color">Leetcode</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/project/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                算法学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -424,7 +433,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-06-07
+                    2022-07-04
                 </div>
                 
 
@@ -448,100 +457,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="53-最大子数组和"><a href="#53-最大子数组和" class="headerlink" title="53. 最大子数组和"></a>53. 最大子数组和</h2><p>给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。<br>子数组 是数组中的一个连续部分。<br><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-subarray/[%E9%A2%98%E7%9B%AE]">https://leetcode-cn.com/problems/maximum-subarray/[题目]</a></p>
-<h3 id="法一：暴力"><a href="#法一：暴力" class="headerlink" title="法一：暴力"></a>法一：暴力</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    int maxSubArray(vector&lt;int&gt; nums) &#123;
-            int max&#x3D;nums[0];
-            int sum &#x3D; 0;
-            for(int i&#x3D;0;i&lt;nums.size();i++)&#123;
-                sum &#x3D; nums[i];
-                max&#x3D;sum&gt;max?sum:max;
-                for(int j&#x3D;i+1;j&lt;nums.size();j++)&#123;
-                    sum+&#x3D;nums[j];
-                    max&#x3D;sum&gt;max?sum:max;
-                &#125;
-            &#125;
-            return max;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-<h3 id="法二：动态规划"><a href="#法二：动态规划" class="headerlink" title="法二：动态规划"></a>法二：动态规划</h3><p>注意动态规划的意思是，将第k个元素和以第k-1个元素结尾的最大子数组串与第k个元素之和比较，若以第k-1个元素结尾的最大子数组串之和小于0，则前者必然大于后者。<br>动态规划的重点在于衡量的指标是字符串/数组的最后一位<br>然后注意dp设置为固定的数组回避动态数组哎哟好，不然可能会有空指针溢出</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    int maxSubArray(vector&lt;int&gt; nums) &#123;
-            int dp[nums.size()];
-            dp[0]&#x3D; nums[0];
-            int maxnum&#x3D; nums[0];
-            for(int i&#x3D;1;i&lt;nums.size();i++)&#123;
-                dp[i]&#x3D;max(dp[i-1]+nums[i],nums[i]);
-                maxnum&#x3D;max(maxnum,dp[i]);
-            &#125;
-            return maxnum;
-    &#125;
-&#125;;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>其实该题还有分治法和贪心法，此处先不做研究</p>
-<h2 id="斐波那契数列之动态规划法"><a href="#斐波那契数列之动态规划法" class="headerlink" title="斐波那契数列之动态规划法"></a>斐波那契数列之动态规划法</h2><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>0是特殊情况，颗不在最开始return 0，之后的dp[1]==1就会溢出。</p>
-<pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    int fib(int n) &#123;
-        if(n&#x3D;&#x3D;0) return 0;
-        int dp[n+1];
-        dp[0]&#x3D;0;
-        dp[1]&#x3D;1;
-        for(int i&#x3D;2;i&lt;n+1;i++)&#123;
-            dp[i]&#x3D;(dp[i-1]+dp[i-2])%1000000007;
-        &#125;
-        return dp[n];
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="盛最多水的容器"><a href="#盛最多水的容器" class="headerlink" title="盛最多水的容器"></a>盛最多水的容器</h2><p>给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。<br>找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。<br>返回容器可以储存的最大水量。<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/container-with-most-water%E3%80%81">https://leetcode-cn.com/problems/container-with-most-water、</a></p>
-<h3 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Solution &#123;
-public:
-    int getMin(int a,int b)&#123;
-        return a&lt;b?a:b;
-    &#125;
-
-    int getMax(int a,int b)&#123;
-        return a&gt;b?a:b;
-    &#125;
-    int maxArea(vector&lt;int&gt;&amp; height) &#123;
-        int area &#x3D; 0;
-        for(int i&#x3D;0;i&lt;height.size()-1;i++)&#123;
-            for(int j&#x3D;i+1;j&lt;height.size();j++)&#123;
-                area &#x3D; getMax(area, getMin(height[i],height[j])*(j-i));
-            &#125;
-        &#125;
-        return area;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h3><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">
-class Solution &#123;
-public:
-    int getMin(int a,int b)&#123;
-        return a&lt;b?a:b;
-    &#125;
-
-    int getMax(int a,int b)&#123;
-        return a&gt;b?a:b;
-    &#125;
-    int maxArea(vector&lt;int&gt;&amp; height) &#123;
-        int area &#x3D; 0;
-        int i &#x3D; 0;
-        int j &#x3D; height.size()-1;
-        while(i!&#x3D;j)&#123;
-           area &#x3D; getMax(area,getMin(height[i],height[j])*(j-i));
-            if(height[i]&gt;height[j]) j--;
-            else i++;
-        &#125;
-        return area;
-    &#125;
-&#125;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+                
                 
             </div>
             <hr/>
@@ -567,7 +483,7 @@ public:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ClaireYu.github.io/project/project/2022/06/07/Leetcode01/">http://ClaireYu.github.io/project/project/2022/06/07/Leetcode01/</a>
+                    <a href="http://ClaireYu.github.io/project/project/2022/07/04/leetcode0704/">http://ClaireYu.github.io/project/project/2022/07/04/leetcode0704/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -605,8 +521,8 @@ public:
                     
                         <div class="article-tag">
                             
-                                <a href="/project/tags/Leetcode-%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">Leetcode,算法</span>
+                                <a href="/project/tags/Leetcode/">
+                                    <span class="chip bg-color">Leetcode</span>
                                 </a>
                             
                         </div>
@@ -785,13 +701,13 @@ public:
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/project/2022/06/07/Leetcode01/">
+                <a href="/project/2022/07/04/leetcode0704/">
                     <div class="card-image">
                         
                         
-                        <img src="/project/medias/featureimages/2.jpg" class="responsive-img" alt="Leetcode01">
+                        <img src="/project/medias/featureimages/16.jpg" class="responsive-img" alt="leetcode0704">
                         
-                        <span class="card-title">Leetcode01</span>
+                        <span class="card-title">leetcode0704</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -802,12 +718,16 @@ public:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-04
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Claire
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/project/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    算法学习
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -816,8 +736,8 @@ public:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/project/tags/Leetcode-%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">Leetcode,算法</span>
+                    <a href="/project/tags/Leetcode/">
+                        <span class="chip bg-color">Leetcode</span>
                     </a>
                     
                 </div>
@@ -831,7 +751,7 @@ public:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/project/2022/03/17/leetcode/">
+                <a href="/project/2022/05/04/leetcode/">
                     <div class="card-image">
                         
                         
@@ -848,12 +768,16 @@ public:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-04
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Claire
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/project/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    算法学习
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -861,8 +785,8 @@ public:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/project/tags/Leetcode-%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">Leetcode,算法</span>
+                    <a href="/project/tags/Leetcode/">
+                        <span class="chip bg-color">Leetcode</span>
                     </a>
                     
                 </div>
