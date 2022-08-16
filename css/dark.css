@@ -58,7 +58,7 @@ body.DarkMode h6,
 body.DarkMode header .side-nav .menu-list a,
 body.DarkMode header .side-nav .mobile-head .logo-desc,
 body.DarkMode header .side-nav .mobile-head .logo-name,
-body.DarkMode header .side-nav .mobile-menu-list a i, 
+body.DarkMode .mobile-menu-list a i, 
 body.DarkMode li,
 body.DarkMode td,
 body.DarkMode p,
@@ -89,8 +89,8 @@ body.DarkMode th td li {
 body.DarkMode .prev-next .article-badge {
     background-color: rgba(255, 255, 255, 0.6);
 }
-body.DarkMode header .side-nav .menu-list a {
-    color: rgba(255, 255, 255, 0.6) !important;
+body.DarkMode .menu-list a {
+    color: rgba(255, 255, 255, 0.4) !important;
 }
 /*
 body.DarkMode .mobile-menu-list a i {
