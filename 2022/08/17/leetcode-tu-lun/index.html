@@ -354,7 +354,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    916
+                    224
                 </div>
                 
 
@@ -379,34 +379,34 @@
                 <h2 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h2><p>定义：<strong>无向图是由一组顶点（vertex）和一组能够将两个顶点相连的边（edge）组成的</strong><br>在无向图中，允许出现1.自环，即一条连接一个顶点和其自身的边，2. 连接同一对顶点的两条边称为平行边</p>
 <h3 id="261-以图判树"><a href="#261-以图判树" class="headerlink" title="261. 以图判树"></a>261. 以图判树</h3><p>给定从 0 到 n-1 标号的 n 个结点，和一个无向边列表（每条边以结点对来表示），请编写一个函数用来判断这些边是否能够形成一个合法有效的树结构。</p>
 <p><img src="/img/posts/Leetcode/leetcode261.png" alt="Leetcode261图示"></p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//判断无向图是否有换，以及是否为单连通分量</span>
-    <span class="token comment" spellcheck="true">//当只有n-1条边，且连通数为1时，符合条件</span>
-    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">validTree</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> edges<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>edges<span class="token punctuation">.</span>length<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">!=</span> n<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">//只应该有n-1条边</span>
-            <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> par <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> par1 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>par2 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-            par<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>i<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//并查集，每个点的父节点是自己</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>edges<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            par1 <span class="token operator">=</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            par2 <span class="token operator">=</span> edges<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//不断向上寻找得到par1和par2的祖先节点</span>
-            <span class="token keyword">while</span><span class="token punctuation">(</span>par1 <span class="token operator">!=</span> par<span class="token punctuation">[</span>par1<span class="token punctuation">]</span><span class="token punctuation">)</span>
-                par1 <span class="token operator">=</span> par<span class="token punctuation">[</span>par1<span class="token punctuation">]</span><span class="token punctuation">;</span> 
-            <span class="token keyword">while</span><span class="token punctuation">(</span>par2 <span class="token operator">!=</span> par<span class="token punctuation">[</span>par2<span class="token punctuation">]</span><span class="token punctuation">)</span>
-                par2 <span class="token operator">=</span> par<span class="token punctuation">[</span>par2<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//par2和par1不属于一个并查集，将par2并入par1，此时并查集个数n--</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>par1 <span class="token operator">!=</span> par2<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                par<span class="token punctuation">[</span>par2<span class="token punctuation">]</span> <span class="token operator">=</span> par1<span class="token punctuation">;</span>
-                n<span class="token operator">--</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class=" language-Java"><code class="language-Java">class Solution &#123;
+    //判断无向图是否有换，以及是否为单连通分量
+    //当只有n-1条边，且连通数为1时，符合条件
+    public boolean validTree(int n, int[][] edges) &#123;
+        if(edges.length+1 != n) //只应该有n-1条边
+            return false;
+        int[] par = new int[n];
+        int par1 = 0,par2 = 0;
+        for(int i=0;i<n;i++)
+            par[i]=i; //并查集，每个点的父节点是自己
+        for(int i=0;i<edges.length;i++)&#123;
+            par1 = edges[i][0];
+            par2 = edges[i][1];
+            //不断向上寻找得到par1和par2的祖先节点
+            while(par1 != par[par1])
+                par1 = par[par1]; 
+            while(par2 != par[par2])
+                par2 = par[par2];
+            //par2和par1不属于一个并查集，将par2并入par1，此时并查集个数n--
+            if(par1 != par2)&#123;
+                par[par2] = par1;
+                n--;
+            &#125;
+        &#125;
+        return n == 1;
         
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    &#125;
+&#125;
 </code></pre>
 <h3 id="323-无向图中连通分量的数目"><a href="#323-无向图中连通分量的数目" class="headerlink" title="323. 无向图中连通分量的数目"></a>323. 无向图中连通分量的数目</h3><p>你有一个包含 n 个节点的图。给定一个整数 n 和一个数组 edges ，其中 edges[i] &#x3D; [ai, bi] 表示图中 ai 和 bi 之间有一条边。</p>
 <p><img src="/img/posts/Leetcode/leetcode323.png" alt="Leetcode323图示"></p>
@@ -442,33 +442,33 @@ private:
     &#125;
 &#125;;
 </code></pre>
-<h4 id="java-二维数组进行dfs"><a href="#java-二维数组进行dfs" class="headerlink" title="java 二维数组进行dfs"></a>java 二维数组进行dfs</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">countComponents</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> edges<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> edge <span class="token operator">:</span> edges<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            map<span class="token punctuation">[</span>edge<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span>edge<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            map<span class="token punctuation">[</span>edge<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">[</span>edge<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> mark <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>mark<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                <span class="token function">dfs</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span> mark<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                res <span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<h4 id="java-二维数组进行dfs"><a href="#java-二维数组进行dfs" class="headerlink" title="java 二维数组进行dfs"></a>java 二维数组进行dfs</h4><pre class=" language-Java"><code class="language-Java">class Solution &#123;
+    public int countComponents(int n, int[][] edges)&#123;
+        int[][] map = new int[n][n];
+        for(int[] edge : edges) &#123;
+            map[edge[0]][edge[1]] = 1;
+            map[edge[1]][edge[0]] = 1;
+        &#125;
+        int res = 0;
+        int[] mark = new int[n];
+        for(int i = 0; i < n; i ++) &#123;
+            if(mark[i] == 0) &#123;
+                dfs(map, mark, i);
+                res ++;
+            &#125;
+        &#125;
+        return res;
+    &#125;
     
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> map<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> mark<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        mark<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> map<span class="token punctuation">.</span>length<span class="token punctuation">;</span> j <span class="token operator">++</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>map<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> mark<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                <span class="token function">dfs</span><span class="token punctuation">(</span>map<span class="token punctuation">,</span>mark<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    public void dfs(int[][] map, int[] mark, int i) &#123;
+        mark[i] = 1;
+        for(int j = 0; j < map.length; j ++) &#123;
+            if(map[i][j] == 1 && mark[j] == 0) &#123;
+                dfs(map,mark,j);
+            &#125;
+        &#125;
+    &#125;
+&#125;
 </code></pre>
 <h3 id="547-省份数量"><a href="#547-省份数量" class="headerlink" title="547.省份数量"></a>547.省份数量</h3><p>有 n 个城市，其中一些彼此相连，另一些没有相连。如果城市 a 与城市 b 直接相连，且城市 b 与城市 c 直接相连，那么城市 a 与城市 c 间接相连。</p>
 <p>省份 是一组直接或间接相连的城市，组内不含其他没有相连的城市。</p>
@@ -476,28 +476,28 @@ private:
 <p>返回矩阵中 省份 的数量。</p>
 <p><img src="/img/posts/Leetcode/leetcode547.png" alt="Leetcode547图示"></p>
 <h4 id="解法：DFS-深度优先"><a href="#解法：DFS-深度优先" class="headerlink" title="解法：DFS 深度优先"></a>解法：DFS 深度优先</h4><p>关键在于：无向图最小连通数：并查集</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">findCircleNum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> M<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> N <span class="token operator">=</span> M<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
-        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> mark <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>mark<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                ans<span class="token operator">++</span><span class="token punctuation">;</span>
-                <span class="token function">DFS</span><span class="token punctuation">(</span>M<span class="token punctuation">,</span>mark<span class="token punctuation">,</span>i<span class="token punctuation">,</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<pre class=" language-Java"><code class="language-Java">class Solution &#123;
+    public int findCircleNum(int[][] M) &#123;
+        int ans = 0, N = M.length;
+        int[] mark = new int[N];
+        for(int i = 0; i < N; i++)&#123;
+            if(mark[i] == 0)&#123;
+                ans++;
+                DFS(M,mark,i,N);
+            &#125;
+        &#125;
+        return ans;
+    &#125;
     
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> M<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> mark<span class="token punctuation">,</span> <span class="token keyword">int</span> si<span class="token punctuation">,</span> <span class="token keyword">int</span> N<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-        mark<span class="token punctuation">[</span>si<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>M<span class="token punctuation">[</span>si<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> mark<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-                <span class="token function">DFS</span><span class="token punctuation">(</span>M<span class="token punctuation">,</span>mark<span class="token punctuation">,</span>j<span class="token punctuation">,</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    public void DFS(int[][] M, int[] mark, int si, int N)&#123;
+        mark[si] = 1;
+        for(int j = 0; j < N; j++)&#123;
+            if(M[si][j] == 1 && mark[j] == 0)&#123;
+                DFS(M,mark,j,N);
+            &#125;
+        &#125;
+    &#125;
+&#125;
 </code></pre>
 
                 
@@ -929,7 +929,7 @@ private:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">14.4k</span>
+                        class="white-color">13.1k</span>
             
             
             
