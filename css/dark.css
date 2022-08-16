@@ -92,11 +92,16 @@ body.DarkMode .prev-next .article-badge {
 body.DarkMode header .side-nav .menu-list a {
     color: rgba(255, 255, 255, 0.6) !important;
 }
-
+/*
 body.DarkMode .mobile-menu-list a i {
     color: rgba(255, 255, 255, 0) !important;
     
+}*/
+body.DarkMode header .side-nav .mobile-menu-list a i {
+    color: rgba(255, 255, 255, 0.9) !important;
+    
 }
+
 body.DarkMode .bg-color {
     background-image:linear-gradient(to right, #282c34 0, rgba(52,50,50,0.7) 100%);
     opacity:.8
@@ -283,8 +288,8 @@ body.DarkMode .toc-title {
 }
 /*toc目录滤镜*/
 body.DarkMode .skillbar .skill-bar-percent {
-    /*  color: #000; */
-     color: rgb(248, 248, 248)
+      color: #000; 
+    /* color: rgb(248, 248, 248) */
     
 }
 
