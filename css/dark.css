@@ -78,7 +78,8 @@ body.DarkMode blockquote {
     color: rgba(255, 255, 255, 0.6);
 }
 body.DarkMode .nav-menu li .sub-nav li a {
-    color: rgba(255, 255, 255, 0.6) !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255 ,255 , 255, 0.6)
 }
 body.DarkMode th td li {
     color: rgba(255, 255, 255, 0.6) !important;
@@ -280,8 +281,9 @@ body.DarkMode .toc-title {
 }
 /*toc目录滤镜*/
 body.DarkMode .skillbar .skill-bar-percent {
-    /* color: #000;*/
-    color: #666
+     color: #000;
+    /* color: #666*/
+    
 }
 
 /*一些细节背景*/
