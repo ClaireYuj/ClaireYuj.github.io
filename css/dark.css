@@ -94,8 +94,8 @@ body.DarkMode header .side-nav .menu-list a {
 }
 
 body.DarkMode .mobile-menu-list a i {
-    color: rgba(255, 255, 255, 0.9) !important;
-    background-color: rgba(255 ,255 , 255, 0.6)
+    color: rgba(255, 255, 255, 0) !important;
+    
 }
 body.DarkMode .bg-color {
     background-image:linear-gradient(to right, #282c34 0, rgba(52,50,50,0.7) 100%);
