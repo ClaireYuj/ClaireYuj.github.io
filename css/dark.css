@@ -280,7 +280,8 @@ body.DarkMode .toc-title {
 }
 /*toc目录滤镜*/
 body.DarkMode .skillbar .skill-bar-percent {
-    color: #000;
+    /* color: #000;*/
+    color: #666
 }
 
 /*一些细节背景*/
