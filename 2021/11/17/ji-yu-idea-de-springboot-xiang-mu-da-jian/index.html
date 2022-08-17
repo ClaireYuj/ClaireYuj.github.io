@@ -383,7 +383,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    228
+                    264
                 </div>
                 
 
@@ -409,16 +409,18 @@
 <p>安装好之后File &gt; new &gt; Spring Initializr &gt; 此时注意到选择初始化服务器的defalut那有一个start.spring.io<br>File &gt; Appearance $ Beahavior &gt; System Settings &gt;HTTP Proxy &gt; 选择 Auto-detect后点击左下角的check connection按钮，输入<a target="_blank" rel="noopener" href="http://start.spring.io/">http://start.spring.io</a></p>
 <h2 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h2><p>版本选择 2.2.6.RELEASE<br>包的名字记得改</p>
 <h2 id="配置Maven"><a href="#配置Maven" class="headerlink" title="配置Maven"></a>配置Maven</h2><p>File &gt; Buil, Execution, Deployment &lt; Build Tools &gt; Maven 配置maven的setting.xml于repository， 在maven的安装路径下conf文件夹中找到settings.xml，再在maven根目录新建repository文件夹，并在 setting.xml 文件中添加（找到repository注释下一行，进行添加）</p>
-<pre class=" language-CSS"><code class="language-CSS"><localRepository>D:\Environment\Maven\apache-maven-3.2.5\store</localRepository>
+<pre><code>&lt;localRepository&gt;
+    D:\Environment\Maven\apache-maven-3.2.5\store
+    &lt;/localRepository&gt;
 </code></pre>
 <p>此处地址为自己创建的repository的地址</p>
 <p>再找到mirror<br>将原代码更换为</p>
-<pre class=" language-CSS"><code class="language-CSS">    <mirror>  
-      <id>alimaven</id>  
-      <name>aliyun maven</name>  
-      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>  
-      <mirrorOf>central</mirrorOf>          
-     </mirror> 
+<pre><code>&lt;mirror&gt;  
+  &lt;id&gt;alimaven&lt;/id&gt;  
+  &lt;name&gt;aliyun maven&lt;/name&gt;  
+  &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;  
+  &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;          
+ &lt;/mirror&gt; 
 </code></pre>
 <p>再重新生成maven项目，拉开idea右侧maven栏，点击左上角刷新按钮</p>
 
@@ -858,7 +860,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">13.7k</span>
+                        class="white-color">13.8k</span>
             
             
             
