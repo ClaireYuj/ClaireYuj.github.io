@@ -377,7 +377,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>Iterable被Collection所继承。它只有一个方法： Iterator<T> iterator() </p>
+                <h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>Iterable被Collection所继承。它只有一个方法： Iterator<T> iterator() </T></p>
 <p>迭代器是一种设计模式，它是一个对象，它可以遍历并选择序列中的对象，而开发人员不需要了解该序列的底层结构。迭代器通常被称为<strong>“轻量级”</strong>对象，因为创建它的代价小。</p>
 <p>Java中的Iterator功能比较简单，并且只能单向移动：<br>　　(1) 使用方法iterator()要求容器返回一个Iterator。第一次调用Iterator的next()方法时，它返回序列的第一个元素。注意：iterator()方法是java.lang.Iterable接口,被Collection继承。<br>　　(2) 使用next()获得序列中的下一个元素。<br>　　(3) 使用hasNext()检查序列中是否还有元素。<br>　　(4) 使用remove()将迭代器新返回的元素删除。</p>
 <p>Iterator是Java迭代器最简单的实现，为List设计的ListIterator具有更多的功能，它可以从两个方向遍历List，也可以从List中插入和删除元素。</p>
@@ -385,7 +385,7 @@
 <h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p><em><strong>有序的，可重复的</strong></em><br>List是有序的 collection子接口。此接口的用户可以对列表中每个元素的插入位置进行精确地控制。用户可以根据元素的整数索引（在列表中的位置）访问元素，并搜索列表中的元素。</p>
 <p>用户插入的顺序或者指定的位置就是元素插入的位置。它与Set不同，List允许插入重复的值。</p>
 <p>List 接口提供了特殊的迭代器，称为 ListIterator，除了允许 Iterator 接口提供的正常操作外，该迭代器还允许元素插入和替换，以及双向访问。还提供了一个方法(如下)来获取从列表中指定位置开始的列表迭代器。</p>
-<p>ListIterator <E> listIterator(int index)<br>返回列表中元素的列表迭代器（按适当顺序），从列表的指定位置开始</p>
+<p>ListIterator <E> listIterator(int index)<br>返回列表中元素的列表迭代器（按适当顺序），从列表的指定位置开始</E></p>
 <p>List 接口提供了两种搜索指定对象的方法。从性能的观点来看，应该小心使用这些方法。在很多实现中，它们将执行高开销的线性搜索。</p>
 <p>List 接口提供了两种在列表的任意位置高效插入和移除多个元素的方法。</p>
 <h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p><em><strong>无序的，不可重复的</strong></em></p>
