@@ -4,9 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JAVA常见容器, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="IteratorIterable被Collection所继承。它只有一个方法： Iterator iterator() 
-迭代器是一种设计模式，它是一个对象，它可以遍历并选择序列中的对象，而开发人员不需要了解该序列的底层结构。迭代器通常被称">
+    <meta name="keywords" content="JAVA输入输出, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="JAVA I&amp;#x2F;O在Java程序中要读取外部IO设备中的内容，要求先将数据传输到内存中，这一步需要借助操作系统实现。JDK中提供的IO操作框架，根据流的传输方向和读取单位分为字节流InputStream和outputSteam以及字">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JAVA常见容器 | DULULU</title>
+    <title>JAVA输入输出 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -316,12 +315,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JAVA常见容器</h1>
+                    <h1 class="description center-align post-title">JAVA输入输出</h1>
                 </div>
             </div>
         </div>
@@ -357,8 +356,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                数据结构
+                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                基础知识
                             </a>
                         
                     </div>
@@ -370,7 +369,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-14
+                    2022-08-17
                 </div>
                 
 
@@ -379,7 +378,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    956
+                    356
                 </div>
                 
 
@@ -401,25 +400,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Iterator"><a href="#Iterator" class="headerlink" title="Iterator"></a>Iterator</h2><p>Iterable被Collection所继承。它只有一个方法： Iterator<T> iterator() </p>
-<p>迭代器是一种设计模式，它是一个对象，它可以遍历并选择序列中的对象，而开发人员不需要了解该序列的底层结构。迭代器通常被称为<strong>“轻量级”</strong>对象，因为创建它的代价小。</p>
-<p>Java中的Iterator功能比较简单，并且只能单向移动：<br>　　(1) 使用方法iterator()要求容器返回一个Iterator。第一次调用Iterator的next()方法时，它返回序列的第一个元素。注意：iterator()方法是java.lang.Iterable接口,被Collection继承。<br>　　(2) 使用next()获得序列中的下一个元素。<br>　　(3) 使用hasNext()检查序列中是否还有元素。<br>　　(4) 使用remove()将迭代器新返回的元素删除。</p>
-<p>Iterator是Java迭代器最简单的实现，为List设计的ListIterator具有更多的功能，它可以从两个方向遍历List，也可以从List中插入和删除元素。</p>
-<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>一般不会直接实现collection接口，而是实现它的子类</p>
-<h3 id="List"><a href="#List" class="headerlink" title="List"></a>List</h3><p><em><strong>有序的，可重复的</strong></em><br>List是有序的 collection子接口。此接口的用户可以对列表中每个元素的插入位置进行精确地控制。用户可以根据元素的整数索引（在列表中的位置）访问元素，并搜索列表中的元素。</p>
-<p>用户插入的顺序或者指定的位置就是元素插入的位置。它与Set不同，List允许插入重复的值。</p>
-<p>List 接口提供了特殊的迭代器，称为 ListIterator，除了允许 Iterator 接口提供的正常操作外，该迭代器还允许元素插入和替换，以及双向访问。还提供了一个方法(如下)来获取从列表中指定位置开始的列表迭代器。</p>
-<p>ListIterator <E> listIterator(int index)<br>返回列表中元素的列表迭代器（按适当顺序），从列表的指定位置开始</p>
-<p>List 接口提供了两种搜索指定对象的方法。从性能的观点来看，应该小心使用这些方法。在很多实现中，它们将执行高开销的线性搜索。</p>
-<p>List 接口提供了两种在列表的任意位置高效插入和移除多个元素的方法。</p>
-<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p><em><strong>无序的，不可重复的</strong></em></p>
-<p>java的集合和数学的集合一样，集合的无序性，确定性，单一性。所以可以很好的理解，Set是无序、不可重复的。同时，如果有多个null，则不满足单一性了，Set只能有一个null。<br>Set判断两个对象相同不是使用”&#x3D;&#x3D;”运算符，<strong>而是根据equals方法</strong>。——因为Set的这个制约，在使用Set集合的时候，应该注意两点：<br>为Set集合里的元素的实现类实现一个有效的equals(Object)方法；<br>对Set的构造函数，传入的Collection参数不能包含重复的元素。</p>
-<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p><em><strong>有序的，可重复的</strong></em><br>用于模拟“队列”数据结构（FIFO）。新插入的元素放在队尾，队头存放着保存时间最长的元素。</p>
-<p>Queue的子类、子接口<br>1.1） PriorityQueue—— 优先队列（类）<br>其实它并没有按照插入的顺序来存放元素，而是按照队列中某个属性的大小来排列的。故而叫优先队列。</p>
-<p>1.2） Deque——双端队列（接口）<br>1.2.1）ArrayDeque（类）<br>基于数组的双端队列，类似于ArrayList有一个Object[] 数组。<br>1.2.2）LinkedList （类）</p>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>Map不是collection的子接口或者实现类，Map是一个接口。</p>
-<p>Map用于保存具有“映射关系”的数据。每个Entry都持有<strong>键-值</strong>两个对象。其中，Value可能重复，但是Key不允许重复（和Set类似）。</p>
-<p>Map可以有多个Value为null，但是只能有一个Key为null</p>
+                <h1 id="JAVA-I-x2F-O"><a href="#JAVA-I-x2F-O" class="headerlink" title="JAVA I&#x2F;O"></a>JAVA I&#x2F;O</h1><p>在Java程序中要读取外部IO设备中的内容，要求先将数据传输到内存中，这一步需要借助操作系统实现。<br>JDK中提供的IO操作框架，根据流的传输方向和读取单位分为字节流InputStream和outputSteam以及字符流Reader和Writer</p>
+<p>字节流一次<strong>读取一个字节</strong>（1 byte）<br>字符流一次<strong>读取一个字符</strong>（1 char &#x3D;  2 byte）</p>
+<h1 id="文件流"><a href="#文件流" class="headerlink" title="文件流"></a>文件流</h1><h2 id="文件字节流"><a href="#文件字节流" class="headerlink" title="文件字节流"></a>文件字节流</h2><p>头文件</p>
+<pre class=" language-Java"><code class="language-Java">import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+</code></pre>
+<h3 id="创建输入流"><a href="#创建输入流" class="headerlink" title="创建输入流"></a>创建输入流</h3><pre class=" language-Java"><code class="language-Java">try&#123;
+    FileInputStream inputStream = new FileInputStream("test.txt"); 
+&#125;catch(FileNotFoundException e)&#123;
+    e.printStackTrace();
+&#125;
+</code></pre>
+<p>在使用完成后，要关闭流进行资源释放，在catch后加入finally</p>
+<pre class=" language-Java"><code class="language-Java">        FileInputStream inputStream = null;
+        try&#123;
+            inputStream = new FileInputStream("test.txt");
+        &#125;catch (FileNotFoundException e)&#123;
+            e.printStackTrace();
+        &#125;finally &#123;
+            try&#123;
+                if(inputStream !=null) inputStream.close();
+            &#125;catch (IOException e)&#123;
+                e.printStackTrace();
+            &#125;
+        &#125;
+</code></pre>
+<p><strong>但这样过于繁琐，尝试以下面方式进行简化</strong></p>
+<pre class=" language-Java"><code class="language-Java">    try(FileInputStream inputStream  = new FileInputStream("test.txt"))&#123;
+            
+    &#125;catch (FileNotFoundException e)&#123;
+            e.printStackTrace();
+    &#125;
+</code></pre>
+<p>将inputStream的初始化放到的括号中且不报错，原因是InputStream这个抽象类使用了Closeable的接口<br>而Closeable接口继承了AutoCloseable，如果一个对象是在try-with-resource(在JDK7中引入，JDK9中改进)代码块中生命的，则AutoCloseable的对象的close()方法会自动执行<br>字节流，字符流等都可以直接使用</p>
+<h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><p>inputStream.read() 一次读取一个英文字母（读的是ASCII码，需要char转换）</p>
 
                 
             </div>
@@ -446,7 +461,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/08/14/java-chang-jian-rong-qi/">https://claireyuj.github.io/2022/08/14/java-chang-jian-rong-qi/</a>
+                    <a href="https://claireyuj.github.io/2022/08/17/java-shu-ru-shu-chu/">https://claireyuj.github.io/2022/08/17/java-shu-ru-shu-chu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -566,54 +581,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/08/15/hello-world/">
+                <a href="/2022/08/17/java-shu-ru-shu-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVA输入输出">
                         
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-15
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            DULULU oO
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/08/14/java-chang-jian-rong-qi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="JAVA常见容器">
-                        
-                        <span class="card-title">JAVA常见容器</span>
+                        <span class="card-title">JAVA输入输出</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -624,7 +603,57 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    基础知识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/08/17/leetcode-tu-lun/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Leetcode-图论">
+                        
+                        <span class="card-title">Leetcode-图论</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
                             </span>
                         <span class="publish-author">
                             
@@ -638,12 +667,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JAVA/">
-                        <span class="chip bg-color">JAVA</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
