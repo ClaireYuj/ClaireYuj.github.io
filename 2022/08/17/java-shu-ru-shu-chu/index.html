@@ -378,7 +378,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    356
+                    393
                 </div>
                 
 
@@ -435,6 +435,16 @@ import java.io.FileNotFoundException;
 </code></pre>
 <p>将inputStream的初始化放到的括号中且不报错，原因是InputStream这个抽象类使用了Closeable的接口<br>而Closeable接口继承了AutoCloseable，如果一个对象是在try-with-resource(在JDK7中引入，JDK9中改进)代码块中生命的，则AutoCloseable的对象的close()方法会自动执行<br>字节流，字符流等都可以直接使用</p>
 <h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><p>inputStream.read() 一次读取一个英文字母（读的是ASCII码，需要char转换）</p>
+<p>一次性全部读完</p>
+<pre class=" language-Java"><code class="language-Java">try( FileInputStream inputStream = new FileInputStream("test.txt"))&#123;
+            int tmp;
+            while((tmp = inputStream.read()) != -1)&#123;
+                System.out.println((char)tmp);
+            &#125;
+        &#125;catch (IOException e)&#123;
+            e.printStackTrace();
+        &#125;
+</code></pre>
 
                 
             </div>
