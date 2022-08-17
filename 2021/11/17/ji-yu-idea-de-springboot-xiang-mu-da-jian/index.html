@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="基于Idea的SpringBoot项目搭建, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="">
+    <meta name="description" content="安装Spring Boot Helper插件File &amp;gt; Settings &amp;gt; Plugins &amp;gt;
+安装好之后File &amp;gt; new &amp;gt; Spring Initializr &amp;gt; 此时注意到选择初始化服务器的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -369,7 +370,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-17
+                    2021-11-17
                 </div>
                 
 
@@ -378,7 +379,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    264
                 </div>
                 
 
@@ -400,7 +401,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+                <h2 id="安装Spring-Boot-Helper插件"><a href="#安装Spring-Boot-Helper插件" class="headerlink" title="安装Spring Boot Helper插件"></a>安装Spring Boot Helper插件</h2><p>File &gt; Settings &gt; Plugins &gt;</p>
+<p>安装好之后File &gt; new &gt; Spring Initializr &gt; 此时注意到选择初始化服务器的defalut那有一个start.spring.io<br>File &gt; Appearance $ Beahavior &gt; System Settings &gt;HTTP Proxy &gt; 选择 Auto-detect后点击左下角的check connection按钮，输入<a target="_blank" rel="noopener" href="http://start.spring.io/">http://start.spring.io</a></p>
+<h2 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h2><p>版本选择 2.2.6.RELEASE<br>包的名字记得改</p>
+<h2 id="配置Maven"><a href="#配置Maven" class="headerlink" title="配置Maven"></a>配置Maven</h2><p>File &gt; Buil, Execution, Deployment &lt; Build Tools &gt; Maven 配置maven的setting.xml于repository， 在maven的安装路径下conf文件夹中找到settings.xml，再在maven根目录新建repository文件夹，并在 setting.xml 文件中添加（找到repository注释下一行，进行添加）</p>
+<pre><code>&lt;localRepository&gt;D:\Environment\Maven\apache-maven-3.2.5\store&lt;/localRepository&gt;
+</code></pre>
+<p>此处地址为自己创建的repository的地址</p>
+<p>再找到mirror<br>将原代码更换为</p>
+<pre><code>    &lt;mirror&gt;  
+      &lt;id&gt;alimaven&lt;/id&gt;  
+      &lt;name&gt;aliyun maven&lt;/name&gt;  
+      &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;  
+      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;          
+     &lt;/mirror&gt; 
+</code></pre>
+<p>再重新生成maven项目，拉开idea右侧maven栏，点击左上角刷新按钮</p>
+
                 
             </div>
             <hr/>
@@ -426,7 +443,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/08/17/ji-yu-idea-de-springboot-xiang-mu-da-jian/">https://claireyuj.github.io/2022/08/17/ji-yu-idea-de-springboot-xiang-mu-da-jian/</a>
+                    <a href="https://claireyuj.github.io/2021/11/17/ji-yu-idea-de-springboot-xiang-mu-da-jian/">https://claireyuj.github.io/2021/11/17/ji-yu-idea-de-springboot-xiang-mu-da-jian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -546,12 +563,60 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2022/08/14/java-chang-jian-rong-qi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="JAVA常见容器">
+                        
+                        <span class="card-title">JAVA常见容器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Current&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/17/ji-yu-idea-de-springboot-xiang-mu-da-jian/">
+                <a href="/2021/11/17/ji-yu-idea-de-springboot-xiang-mu-da-jian/">
                     <div class="card-image">
                         
                         
@@ -568,7 +633,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-17
                             </span>
                         <span class="publish-author">
                             
@@ -588,55 +653,6 @@
                     
                     <a href="/tags/Maven-JAVA/">
                         <span class="chip bg-color">Maven, JAVA</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/08/17/java-shu-ru-shu-chu/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVA输入输出">
-                        
-                        <span class="card-title">JAVA输入输出</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    基础知识
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/JAVA/">
-                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
                 </div>
