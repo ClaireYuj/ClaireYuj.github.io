@@ -229,6 +229,33 @@
     </entry>
     
     
+    
+    <entry>
+      <title>维护博客所遇到的问题汇总</title>
+      <link href="/2021/08/18/wei-hu-bo-ke-suo-yu-dao-de-wen-ti-hui-zong/"/>
+      <url>/2021/08/18/wei-hu-bo-ke-suo-yu-dao-de-wen-ti-hui-zong/</url>
+      
+        <content type="html"><![CDATA[<h2 id="链接到本地图片"><a href="#链接到本地图片" class="headerlink" title="链接到本地图片"></a>链接到本地图片</h2><p>在source下创建img文件夹，每次引用都是&#x2F;img…</p><h2 id="上传图片加载不出来，但在本地预览可以显示"><a href="#上传图片加载不出来，但在本地预览可以显示" class="headerlink" title="上传图片加载不出来，但在本地预览可以显示"></a>上传图片加载不出来，但在本地预览可以显示</h2><p>图片格式最好选用jpg而不是png</p><h2 id="无法解析XML和HTML语言"><a href="#无法解析XML和HTML语言" class="headerlink" title="无法解析XML和HTML语言"></a>无法解析XML和HTML语言</h2><p>尚未完全解决，实在不行就不标明那一段是个代码段，直接放代码</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
