@@ -383,7 +383,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    234
+                    305
                 </div>
                 
 
@@ -415,14 +415,15 @@
 </code></pre>
 <p>此处地址为自己创建的repository的地址</p>
 <p>再找到mirror<br>将原代码更换为</p>
-<pre class=" language-C"><code class="language-C">    <mirror>  
-      <id>alimaven</id>  
-      <name>aliyun maven</name>  
-      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>  
-      <mirrorOf>central</mirrorOf>          
-     </mirror> 
+<pre><code>    &lt;mirror&gt;  
+      &lt;id&gt;alimaven&lt;/id&gt;  
+      &lt;name&gt;aliyun maven&lt;/name&gt;  
+      &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;  
+      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;          
+     &lt;/mirror&gt; 
 </code></pre>
 <p>再重新生成maven项目，拉开idea右侧maven栏，点击左上角刷新按钮</p>
+<h3 id="报错java-程序包org-springframework-boot不存在"><a href="#报错java-程序包org-springframework-boot不存在" class="headerlink" title="报错java: 程序包org.springframework.boot不存在"></a>报错java: 程序包org.springframework.boot不存在</h3><p>是依赖库仓库出现问题，cd到该项目目录下，mvn idea:idea 重新安装依赖即可</p>
 
                 
             </div>
@@ -860,7 +861,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">13.7k</span>
+                        class="white-color">13.8k</span>
             
             
             
