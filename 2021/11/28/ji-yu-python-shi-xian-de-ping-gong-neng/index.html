@@ -4,8 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="test, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="嘟噜嘟噜嘟噜噜">
+    <meta name="keywords" content="基于Python实现的PING功能, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="什么是PINGping通常用于测试网络连通，再命令行输入ping 目标主机地址， 得到回复如下：
+
+其中的数据内容如下：
+bytes值：字节数，也就是数据包大小。
+time值：响应时间，这个时间越小，说明连接速度越快。
+TTL值：Time ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>test | DULULU</title>
+    <title>基于Python实现的PING功能 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -293,12 +298,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">test</h1>
+                    <h1 class="description center-align post-title">基于Python实现的PING功能</h1>
                 </div>
             </div>
         </div>
@@ -320,12 +325,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Python/">
+                                <span class="chip bg-color">-Python</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                计算机网络
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -334,7 +352,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-15
+                    2021-11-28
                 </div>
                 
 
@@ -343,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    928
                 </div>
                 
 
@@ -365,7 +383,198 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="什么是PING"><a href="#什么是PING" class="headerlink" title="什么是PING"></a>什么是PING</h2><p>ping通常用于测试网络连通，再命令行输入ping 目标主机地址， 得到回复如下：</p>
+<p><img src="/img/post/Ping/ping_cmd.png" alt="ping"></p>
+<p>其中的数据内容如下：</p>
+<p>bytes值：字节数，也就是数据包大小。</p>
+<p>time值：响应时间，这个时间越小，说明连接速度越快。</p>
+<p>TTL值：Time To Live,表示DNS记录在DNS服务器上存在的时间，它是IP协议包的一个值，告诉路由器该数据包何时需要被丢弃。可以通过Ping返回的TTL值大小，粗略地判断目标系统类型是Windows系列还是UNIX&#x2F;Linux系列。</p>
+<p>默认情况下，Linux系统的TTL值为64或255，WindowsNT&#x2F;2000&#x2F;XP系统的TTL值为128，Windows98系统的TTL值为32，UNIX主机的TTL值为255。</p>
+<p>因此一般TTL值：</p>
+<p>100~130ms之间，Windows系统 ；</p>
+<p>240~255ms之间，UNIX&#x2F;Linux系统。</p>
+<h2 id="ping的步骤"><a href="#ping的步骤" class="headerlink" title="ping的步骤"></a>ping的步骤</h2><p>完整代码见：<a target="_blank" rel="noopener" href="https://github.com/ClaireYuj/PING-Traceroute/blob/main/ICMPPing.py">PING</a></p>
+<p>解析主机并，进行多次ping操作，输出结果，判断最终结果并输出四个步骤<br>ping的代码如下</p>
+<pre class=" language-Python"><code class="language-Python">def ping(host, timeout=1):
+    """
+    do the ping use doOnePing method in a while loop, and show the details
+    :param host:
+    :param timeout:
+    :return:
+    """
+    # 1. Look up hostname, resolving it to an IP address
+    # 2. Call doOnePing function, approximately every second
+    # 3. Print out the returned delay
+    # 4. Continue this process until stopped
+    try:
+        destinationAddress = socket.gethostbyname(host)
+    except Exception as e:
+        print(e)
+        print(" Error on extract the hostname")
+        return
+    print(" Ping &#123;0&#125; [&#123;1&#125;] with 32 bytes of data:".format(host, destinationAddress))
+    lost = 0
+    accept = 0
+    timesum = 0.0
+    count = 4
+    times = []
+    ttl = 0
+
+    for i in range(count):
+
+        sequence = i
+        delay, ttl = doOnePing(destinationAddress, timeout)
+        if delay < 0:
+            if delay == -1:
+                print(" %s The request is overtime ...... can not receive the icmpPacket " % delay)
+                lost += 1
+                times.append(delay * 1000)
+            elif delay == -3:
+                print("3 The destination is unreachable")
+            elif delay == -11:
+                print("11 Overtime")
+            else:
+                print("%s failed......." %delay)
+
+        else:
+            delay = delay * 1000
+            print("reply from &#123;0&#125; : byte=32 seq = &#123;1&#125; time=&#123;2:.2f&#125;ms ttl = &#123;3&#125; ".format(destinationAddress, sequence, delay, ttl))
+            accept += 1
+            timesum += delay
+            times.append(delay) # all the time
+        time.sleep(1)
+    print('packet: send = &#123;0&#125;，received = &#123;1&#125;，loss= &#123;2&#125; (&#123;3&#125;% loss) \n\
+    Estimated round trip time: min = &#123;4:.2f&#125;ms，max = &#123;5:.2f&#125;ms，average = &#123;6:.2f&#125;ms'.format(
+        count, accept, lost, lost / (lost + accept) * 100, min(times),
+        max(times), sum(times) // (lost + accept)
+    ))
+</code></pre>
+<h3 id="进行一次ping"><a href="#进行一次ping" class="headerlink" title="进行一次ping"></a>进行一次ping</h3><p>ping命令共输出四次ping的结果，其中一次ping的结果如下</p>
+<pre class=" language-Python"><code class="language-Python">
+def doOnePing(destinationAddress, timeout):
+    """
+    create the ICMP socket, then call the sendOnePing and receiveOnePing method in sequence
+    :param destinationAddress:
+    :param timeout:
+    :return totalDelay, ttl:
+    """
+    # 1. Create ICMP socket
+    icmpSocket = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.getprotobyname("icmp"))
+    dataID = os.getpid() & 0xFFFF
+
+    # 2. Call sendOnePing function
+    icmpPacket, sendtime = sendOnePing(icmpSocket, destinationAddress, dataID)
+
+    # 3. Call receiveOnePing function
+    totalDelay, ttl = receiveOnePing(icmpSocket, destinationAddress, dataID, timeout, sendtime)
+    # 4. Close ICMP socket
+    icmpSocket.close()
+
+    # 5. Return total network delay
+    return totalDelay, 
+</code></pre>
+<h3 id="发出ping请求"><a href="#发出ping请求" class="headerlink" title="发出ping请求"></a>发出ping请求</h3><p>每次ping需要发出请求以及接收请求两个步骤</p>
+<pre class=" language-Python"><code class="language-Python">  """
+    build the icmp header, and pack the checksum in header
+    record the time to send packet
+    :param icmpSocket:
+    :param destinationAddress:
+    :param ID:
+    :return icmpPacket, sendTime:
+    """
+def sendOnePing(icmpSocket, destinationAddress, ID):
+  
+    # 1. Build ICMP header
+    ip = socket.gethostbyname(destinationAddress)
+    icmpChecksum = 0
+    icmpHeader = struct.pack(">BBHHH", ICMP_ECHO_REQUEST, 0, socket.htons(icmpChecksum), ID, 1) #htons - trans the byte sequence of host nto network byte order
+
+    # 2. Checksum ICMP packet using given function
+    data = struct.pack(">d", time.time())
+    icmpChecksum = checksum(icmpHeader + data)
+
+    # 3. Insert checksum into packet
+    # icmpHeader = struct.pack("bbHHh", ICMP_ECHO_REQUEST, 0, socket.htons(icmpChecksum), ID, 1)
+    icmpHeader = struct.pack(">BBHHH", ICMP_ECHO_REQUEST, 0, socket.htons(icmpChecksum), ID, 1) # B-unsigned char h -short
+    icmpPacket = icmpHeader + data
+
+
+    # 4. Send packet using socket
+    icmpSocket.sendto(icmpPacket, (ip, 80))
+
+    #  5. Record time of sending
+    sendTime = time.time()
+    return icmpPacket, sendTime
+</code></pre>
+<p>checksum是checksum意思是较验和，就是将一段已有长度的数据按照某种整数类型(通常是16位无符号整数)进行累加(进位部分再继续加到低位)，累加后的结果再取反以用于校验。具有校验合的数据包再次进行校验后结果则为0。</p>
+<pre class=" language-Python"><code class="language-Python">def checksum(string):
+    csum = 0
+    countTo = (len(string) // 2) * 2
+    count = 0
+
+    while count < countTo:
+        thisVal = string[count + 1] * 256 + string[count]
+        csum = csum + thisVal
+        csum = csum & 0xffffffff
+        count = count + 2
+
+    if countTo < len(string):
+        csum = csum + string[len(string) - 1]
+        csum = csum & 0xffffffff
+
+    csum = (csum >> 16) + (csum & 0xffff)
+    csum = csum + (csum >> 16)
+    answer = ~csum
+    answer = answer & 0xffff
+    answer = answer >> 8 | (answer << 8 & 0xff00)
+
+    answer = socket.htons(answer)
+
+    return answer
+</code></pre>
+<h3 id="接收ping请求"><a href="#接收ping请求" class="headerlink" title="接收ping请求"></a>接收ping请求</h3><pre class=" language-Python"><code class="language-Python">"""
+    wait the socket to receive the reply by select.select, calculate the time to receive the packet
+    :param icmpSocket:
+    :param destinationAddress:
+    :param ID:
+    :param timeout:
+    :param startTime:
+    :return delay, ttl:
+    """
+def receiveOnePing(icmpSocket, destinationAddress, ID, timeout, startTime):
+    
+    # 1. Wait for the socket to receive a reply
+    while True:
+        what_ready = select.select([icmpSocket], [], [], timeout)
+        receivedTime = time.time()
+        # 2. Once received, record time of receipt, otherwise, handle a timeout
+        if what_ready[0] == []:
+            return -1, 0
+        # 3. Compare the time of receipt to time of sending, producing the total network delay
+        else:
+            delay = receivedTime - startTime
+
+        # 4. Unpack the packet header for useful information, including the ID
+        recPacket, addr = icmpSocket.recvfrom(1024)
+        icmpHeader = recPacket[20: 28]
+        # ip_type, code, checksum, packet_ID, sequence = struct.unpack("<bbHHh", icmpHeader)
+        icmpType, icmpCode, icmpChecksum, icmpPacketID, icmpSequence = struct.unpack(">BBHHH", icmpHeader)
+
+        ipversion, iptype, iplength, ipid, ipflags, ipttl, ipprotocol, ipchecksum, ipsrc_ip, ipdest_ip = struct.unpack(
+            "!BBHHHBBHII", recPacket[:20])
+        # 5. Check that the ID matches between the request and reply
+        if icmpType == ICMP_ECHO_REPLY and icmpPacketID == ID:
+
+            # 6. Return total network delay
+            return delay, ipttl
+        elif icmpType == ICMP_UNREACHED:
+            return -3, 0
+        elif icmpType == ICMP_OVERTIME:
+            return -11, 0
+        else:
+            return -2, 0
+</code></pre>
+
                 
             </div>
             <hr/>
@@ -391,7 +600,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/test/index.html">https://claireyuj.github.io/test/index.html</a>
+                    <a href="https://claireyuj.github.io/2021/11/28/ji-yu-python-shi-xian-de-ping-gong-neng/">https://claireyuj.github.io/2021/11/28/ji-yu-python-shi-xian-de-ping-gong-neng/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -428,7 +637,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/Python/">
+                                    <span class="chip bg-color">-Python</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -507,18 +720,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/test/index.html">
+                <a href="/2022/08/14/java-chang-jian-rong-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="JAVA常见容器">
                         
-                        <span class="card-title">test</span>
+                        <span class="card-title">JAVA常见容器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -528,18 +740,29 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-15
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-14
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            DULULU oO
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -547,16 +770,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/test/index.html">
+                <a href="/2021/11/17/ji-yu-idea-de-springboot-xiang-mu-da-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="基于Idea的SpringBoot项目搭建">
                         
-                        <span class="card-title">test</span>
+                        <span class="card-title">基于Idea的SpringBoot项目搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -567,17 +790,32 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-17
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            DULULU oO
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-category">
+                                    环境配置
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                    <a href="/tags/Maven/">
+                        <span class="chip bg-color">Maven</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
