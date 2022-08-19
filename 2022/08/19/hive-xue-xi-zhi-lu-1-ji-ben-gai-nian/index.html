@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux基本知识, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="linux 环境Linux内核的源码开源网站(http://www.kernel.org)Linux常用的发行版本： Ubuntu， CentOs， RedHat
-Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
+    <meta name="keywords" content="Hive学习之路1--基本概念, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="Hive的优点1.接口操作采用类SQL语法，提供快速开发的能力，简单且容易上手2.擅长存储分析海量数据，与Hadoop相似3.避免直接写MapReduce，减少开发人员学习成本
+Hive利用HDFS存储数据，利用MapResuce查询分析数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Linux基本知识 | DULULU</title>
+    <title>Hive学习之路1--基本概念 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -294,12 +294,12 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux基本知识</h1>
+                    <h1 class="description center-align post-title">Hive学习之路1--基本概念</h1>
                 </div>
             </div>
         </div>
@@ -323,8 +323,8 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/Hive/">
+                                <span class="chip bg-color">Hive</span>
                             </a>
                         
                     </div>
@@ -335,8 +335,8 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                操作系统
+                            <a href="/categories/%E6%95%B0%E4%BB%93%E5%BC%80%E5%8F%91/" class="post-category">
+                                数仓开发
                             </a>
                         
                     </div>
@@ -348,7 +348,7 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-16
+                    2022-08-19
                 </div>
                 
 
@@ -357,7 +357,7 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    508
+                    361
                 </div>
                 
 
@@ -379,43 +379,25 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="linux-环境"><a href="#linux-环境" class="headerlink" title="linux 环境"></a>linux 环境</h2><p>Linux内核的源码开源网站(<a target="_blank" rel="noopener" href="http://www.kernel.org/">http://www.kernel.org</a>)<br>Linux常用的发行版本： Ubuntu， CentOs， RedHat</p>
-<h2 id="Linux-目录"><a href="#Linux-目录" class="headerlink" title="Linux 目录"></a>Linux 目录</h2><p>~ home目录<br>&#x2F; root目录<br>&#x2F;lib 系统使用的函数库的沐浴露<br>&#x2F;etc 系统配置文件村对方的目录<br>&#x2F;bin 二进制文件存放目录</p>
-<h2 id="Linux-指令"><a href="#Linux-指令" class="headerlink" title="Linux 指令"></a>Linux 指令</h2><h3 id="目录指令"><a href="#目录指令" class="headerlink" title="目录指令"></a>目录指令</h3><p>ls 列出目录下的文件 ls -a 显示包括隐藏目录 ls -l 显示文件的详细信息</p>
-<p>mkdir 创建新的目录 &#x2F;文件 mkdir -p</p>
-<pre class=" language-Linux"><code class="language-Linux">mkdir test/test01.txt -p
-</code></pre>
-<p>若不存在test文件夹，会创建test文件夹后创建你test01文件</p>
-<p>touch创建空白文件</p>
-<pre class=" language-Linux"><code class="language-Linux">touch 01.txt
-</code></pre>
-<p>rm 删除 rm -f强制删除 rm -r删除目录及其下面的子文件</p>
-<p>pwd 查询当前位置</p>
-<p>cd 切换目录</p>
-<p>mv 移动文件</p>
-<p>cp 复制文件，若要同时移动该文件下的子文件要用cp -r</p>
-<h3 id="查看文件中内容"><a href="#查看文件中内容" class="headerlink" title="查看文件中内容"></a>查看文件中内容</h3><p>cat 查看文件内容</p>
-<pre class=" language-Linux"><code class="language-Linux">Cat 1.txt
-</code></pre>
-<p>查看1文件中的内容</p>
-<p>more 查看大文件内容</p>
-<pre class=" language-Linux"><code class="language-Linux">More 1.txt
-</code></pre>
-<p>当1为大文件时，可以用more查看，more支持分页查看（space切换下一页，b返回上一页）</p>
-<p>tail 查看追加内容， 其中tail -f可以查看实时更新的结果（ctrl+c结束）<br>可以同时开两个窗口，在第一个窗口输入</p>
-<pre class=" language-Linux"><code class="language-Linux">tail 1.txt
-</code></pre>
-<p>在第二各窗口输入</p>
-<pre class=" language-Linux"><code class="language-Linux">date >> 1.txt
-</code></pre>
-<p>查看1文件中新追加的内容(当下时间)</p>
-<p>echo 追加新的内容<br>echo a &gt; 1.txt  直接覆盖于<br>Echo a &gt;&gt; 1.txt 将a插入1.txt 文件的末端<br>echo a会直接将结果打印到控制台上</p>
-<p>Date &gt;&gt; 1.txt 将当前时间插入文件中 date本身用于时间chakan</p>
-<p>Cal 查看日历 cal &gt;&gt; 1.txt 将日历添加到1.txt中</p>
-<h3 id="管道命令"><a href="#管道命令" class="headerlink" title="管道命令"></a>管道命令</h3><p>将一个命令的执行的结果作为内容提交给下一个命令处理， 类似嵌套</p>
-<pre class=" language-Linux"><code class="language-Linux">    ps -ef | grep 1001
-</code></pre>
-<h3 id="文件与进程交互命令"><a href="#文件与进程交互命令" class="headerlink" title="文件与进程交互命令"></a>文件与进程交互命令</h3><p>grep 搜索<br>tar 解压</p>
+                <h2 id="Hive的优点"><a href="#Hive的优点" class="headerlink" title="Hive的优点"></a>Hive的优点</h2><p>1.接口操作采用类SQL语法，提供快速开发的能力，简单且容易上手<br>2.擅长存储分析海量数据，与Hadoop相似<br>3.避免直接写MapReduce，减少开发人员学习成本</p>
+<p>Hive利用HDFS存储数据，利用MapResuce查询分析数据</p>
+<h2 id="Hive功能的实现"><a href="#Hive功能的实现" class="headerlink" title="Hive功能的实现"></a>Hive功能的实现</h2><ol>
+<li><p>Hive能将结构化文件映射成一张表，Hive并不承担存储数据功能，存储数据是由HDFS实现(将元数据信息描述清楚，转化成一个表)</p>
+</li>
+<li><p>用户写完sql后，Hive对sql进行校验，并且更具元数据信息解读sql背后的含义，最后将执行计划转换成MApReduce程序来具体执行</p>
+</li>
+</ol>
+<p>有点类JDBC？<br>Hive是基于Hadoop的数仓工具 <img src="/%5Cimg%5Cposts%5CDataRepos%5CHive1.jpg" alt="Hive工作原理"></p>
+<h2 id="Hive架构"><a href="#Hive架构" class="headerlink" title="Hive架构"></a>Hive架构</h2><p><img src="/%5Cimg%5Cposts%5CDataRepos%5CHive2.jpg" alt="Hive架构"></p>
+<p>用户接口：包括CLI。JDBC&#x2F;ODBC，WebGUI</p>
+<p>元数据(metadata)存储 mysql&#x2F;derby Hive中的元数据(描述数据的数据)包括表明，列的分区及属性，表的属性（是否为外部表等），表的数据所在的目录等</p>
+<p>Driver驱动程序：包括语法解析器，计划编译器，优化器，执行器</p>
+<p>执行引擎：MapReduce&#x2F;Tez&#x2F;Spark，Hive并不直接处理数据，而是通过执行引擎处理数据</p>
+<p>Hadoop Yarn</p>
+<p>HDFS&#x2F;HBase</p>
+<h2 id="Hive与元数据"><a href="#Hive与元数据" class="headerlink" title="Hive与元数据"></a>Hive与元数据</h2><p>Hive的安装模式与元数据服务(metastore)有关</p>
+<p>metasore服务器配置有三种模式内嵌模式、本地模式、<strong>远程模式</strong></p>
+<p><img src="/%5Cimg%5Cposts%5CDataRepos%5CHive3.jpg" alt="metastore"></p>
 
                 
             </div>
@@ -442,7 +424,7 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/08/16/linux-ji-ben-zhi-shi/">https://claireyuj.github.io/2022/08/16/linux-ji-ben-zhi-shi/</a>
+                    <a href="https://claireyuj.github.io/2022/08/19/hive-xue-xi-zhi-lu-1-ji-ben-gai-nian/">https://claireyuj.github.io/2022/08/19/hive-xue-xi-zhi-lu-1-ji-ben-gai-nian/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -480,8 +462,8 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/Hive/">
+                                    <span class="chip bg-color">Hive</span>
                                 </a>
                             
                         </div>
@@ -566,13 +548,13 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/08/17/leetcode-shu-xiang-guan/">
+                <a href="/2022/08/19/hive-xue-xi-zhi-lu-2-an-zhuang-bu-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Leetcode--树相关">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Hive学习之路2--安装部署">
                         
-                        <span class="card-title">Leetcode--树相关</span>
+                        <span class="card-title">Hive学习之路2--安装部署</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -583,27 +565,15 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-19
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            DULULU oO
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -615,13 +585,13 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/15/zui-da-zi-ji-he/">
+                <a href="/2022/08/19/shu-cang-ji-ben-gai-nian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="求最大子集和">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="数仓基本概念">
                         
-                        <span class="card-title">求最大子集和</span>
+                        <span class="card-title">数仓基本概念</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -632,14 +602,14 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
+                            <a href="/categories/%E6%95%B0%E4%BB%93%E5%BC%80%E5%8F%91/" class="post-category">
+                                    数仓开发
                                 </a>
                             
                             
@@ -649,8 +619,8 @@ Linux 目录~ home目录&amp;#x2F; root目录&amp;#x2F;lib">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">基础知识</span>
                     </a>
                     
                 </div>
