@@ -361,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    428
+                    652
                 </div>
                 
 
@@ -391,7 +391,12 @@
 <h3 id="ResourceManager-RM"><a href="#ResourceManager-RM" class="headerlink" title="ResourceManager(RM)"></a>ResourceManager(RM)</h3><p>Yarn集群中的著角色，决定系统中所有应用程序之间的资源分配器的<strong>最终</strong>权限，接收用户的作业提交，并通过NM分配，管理机器上的计算资源</p>
 <h3 id="NodeManager-NM"><a href="#NodeManager-NM" class="headerlink" title="NodeManager(NM)"></a>NodeManager(NM)</h3><p>Yarn中的从角色，一个机器上一个，负责管理本机器上的计算资源使用情况<br>根据RM命令，启动Container容器，监视容器的资源使用情况，并且向RM著角色汇报资源使用情况</p>
 <h3 id="ApplicationMaster-AM"><a href="#ApplicationMaster-AM" class="headerlink" title="ApplicationMaster(AM)"></a>ApplicationMaster(AM)</h3><p>用户提交的每个应用程序均包含一个AM<br>应用程序中的“老大”，负责程序内部个资源的申请，监督程序的执行情况<br>AM程序是应用程序内部启动的第一个程序</p>
-<h2 id="Yarn程序提交流程"><a href="#Yarn程序提交流程" class="headerlink" title="Yarn程序提交流程"></a>Yarn程序提交流程</h2>
+<h2 id="Yarn程序提交流程"><a href="#Yarn程序提交流程" class="headerlink" title="Yarn程序提交流程"></a>Yarn程序提交流程</h2><p>核心交互流程主要有四步：<br>MR作业提交  Client -&gt; RM<br>资源的申请  MRAppMaster -&gt; RM<br>MR作业状态汇报 Container(Map | Reduce Task) -&gt; Container (MRAppMaster)<br>节点的状态汇报(Yarn集群内布)  NM -&gt;RM </p>
+<h3 id="整体概述"><a href="#整体概述" class="headerlink" title="整体概述"></a>整体概述</h3><p>当用户向YARN中提交一个应用程序后，YARN将分为了两个阶段运行该应用程序<br>第一个阶段：客户端申请资源启动运行被刺程序的AppMaster<br>第二个阶段有AppMaster更具本次程序内部具体具体情况为她申请资源，并健康它的整个运行过程，知道运行完成</p>
+<p><img src="/img/posts/Yarn/Yarn%E7%A8%8B%E5%BA%8F%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B.jpg" alt="Yarn程序提交流程"></p>
+<h3 id="MR作业提交"><a href="#MR作业提交" class="headerlink" title="MR作业提交"></a>MR作业提交</h3><p>第一步:用户通过客户端向Yarn中的ResoourceManager提交应用程序（如Hadoop，jar提交MR程序）</p>
+<p>第二步：RM为该应用程序分配第一个container，并于对应的NM同学，要求它再这个container中启动该应用的AM</p>
+
                 
             </div>
             <hr/>
@@ -829,7 +834,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">15.2k</span>
+                        class="white-color">15.4k</span>
             
             
             
