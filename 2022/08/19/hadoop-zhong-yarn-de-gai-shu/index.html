@@ -407,7 +407,7 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
 <h3 id="FIFO-Schduler"><a href="#FIFO-Schduler" class="headerlink" title="FIFO Schduler"></a>FIFO Schduler</h3><p>先入先出，拥有一个控制全局的队列Queue<br>不适合共享集群</p>
 <h3 id="Capacity-Scheduler"><a href="#Capacity-Scheduler" class="headerlink" title="Capacity Scheduler"></a>Capacity Scheduler</h3><p>Apache版本一般默认Capacity Scheduler<br><strong>允许多个组织共享集群资源</strong>，每个组织都可以获得一部分集群计算能力。通过为每个组织分配专门的队列，然后再为每个队列分配一定的集群资源，整个集群可以通过设置多个队列给多个组织提供服务。</p>
 <p>Capacity 可以理解为一个个的资源队列，这个资源队列是用户自行分配。<br>再在队列内部进行垂直划分，使得一个组织内部分多个成员共享这个队列资源。<br><strong>在一个队列内部，资源调度是FIFO的</strong></p>
-<p><img src="/img/posts/Yarn/Scheduler_task_div.jpg" alt="文件划分"></p>
+<p><img src="/img/posts/Yarn/Scheduler_task_div.jpgs" alt="文件划分"></p>
 <h3 id="Fair-Scheduler"><a href="#Fair-Scheduler" class="headerlink" title="Fair Scheduler"></a>Fair Scheduler</h3><p>提供了yarn应用程序中共享大型资源的方式</p>
 <hr>
 <p>例如：<br>用户A、B都有自己的队列 -&gt; A启动一个作业，而B还没有，此时A分配了集群中所有可用的资源 -&gt; B在A仍在运行时启动了一个作业，一段时间后，A、B各自作业都使用了一半的资源 -&gt; 若B此时再开启第二个作业，它将于B的另一个作业共享资源。A的一个作业仍占有1&#x2F;2的资源，而B的两个作业各自占有1&#x2F;4的资源</p>
@@ -588,11 +588,23 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            DULULU oO
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93/" class="post-category">
+                                    数据仓库
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+                        <span class="chip bg-color">基础知识</span>
+                    </a>
+                    
                 </div>
                 
             </div>
