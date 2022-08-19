@@ -361,7 +361,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    652
+                    782
                 </div>
                 
 
@@ -396,6 +396,10 @@
 <p><img src="/img/posts/Yarn/Yarn%E7%A8%8B%E5%BA%8F%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B.jpg" alt="Yarn程序提交流程"></p>
 <h3 id="MR作业提交"><a href="#MR作业提交" class="headerlink" title="MR作业提交"></a>MR作业提交</h3><p>第一步:用户通过客户端向Yarn中的ResoourceManager提交应用程序（如Hadoop，jar提交MR程序）</p>
 <p>第二步：RM为该应用程序分配第一个container，并于对应的NM同学，要求它再这个container中启动该应用的AM</p>
+<p>第三步：AM启动成功后，向RM注册并保持同学，这样用户可以直接通过RM查看应用程序的运行状态</p>
+<p>第四步：AM为本次程序内部的各个Task向RM申请资源</p>
+<p>第五步：一旦AM申请到资源，便于对应的NM通信，要求他启动任务</p>
+<p>第六版不：NM为任务设置好运行环境之后，将任务启动命令写入到一个脚本之中，并通过运行该脚本启动任务</p>
 
                 
             </div>
@@ -834,7 +838,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">15.4k</span>
+                        class="white-color">15.5k</span>
             
             
             
