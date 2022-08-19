@@ -8,7 +8,7 @@
       <link href="/2022/08/19/shu-cang-ji-ben-gai-nian/"/>
       <url>/2022/08/19/shu-cang-ji-ben-gai-nian/</url>
       
-        <content type="html"><![CDATA[<p>数据仓库是构建面向分析的集成化数据环境，是一个用于存储、分析、报告的环境</p>]]></content>
+        <content type="html"><![CDATA[<p>数据仓库是构建面向分析的集成化数据环境，是一个用于存储、<strong>分析</strong>、报告的环境</p><h2 id="联机事务处理系统-OLTP"><a href="#联机事务处理系统-OLTP" class="headerlink" title="联机事务处理系统(OLTP)"></a>联机事务处理系统(OLTP)</h2><p>特征：前台接收的用户数据可以立即传送到后台进行处理，并在很短的时间内给出处理结果<br>关系型数据库是典型的OLTP应用，如MySQL，Oracle</p><p>数据库可以开展分析，但没必要。数据库一般读取压力明显大于写入的压力，如果直接再OLTP进行各种分析，会导致数据库读取压力倍增。</p><p><img src="/img/posts/DataRepos/01.jpg" alt="数仓例子"></p><h2 id="数仓主要特征"><a href="#数仓主要特征" class="headerlink" title="数仓主要特征"></a>数仓主要特征</h2><h3 id="Subject-Oriented"><a href="#Subject-Oriented" class="headerlink" title="Subject-Oriented"></a>Subject-Oriented</h3><p>主题是一个抽象概念，是较高层次上的<strong>数据综合</strong>、归类、并进行分析利用的抽象。再抽象层次上对数据进行完整、一致和准确的描述</p><h3 id="Non-Volatile"><a href="#Non-Volatile" class="headerlink" title="Non-Volatile"></a>Non-Volatile</h3><p>非易变性。数仓是分析数据的平台，而不是创造数据的平台。<br>书擦干的数据反应的是一段长时间内的历史数据的内容<br>数仓一般有<strong>大量的查询</strong>操作，但修改和删除很少</p><h3 id="Integrated"><a href="#Integrated" class="headerlink" title="Integrated"></a>Integrated</h3><p>主题相关的数据通常会分布在多个操作系统中，彼此分散、独立、异构。需要集成到数仓主题之下。</p><p>要统一源数据中的矛盾：包括字段的同名异义、单位不同、格式不同等</p><p>ETL：抽取、转换、加载</p><h3 id="Time-Variant"><a href="#Time-Variant" class="headerlink" title="Time-Variant"></a>Time-Variant</h3><p>时变性。数仓的数据需要随着时间更新，以适应决策的需要。</p><h2 id="数仓主流语言-SQL"><a href="#数仓主流语言-SQL" class="headerlink" title="数仓主流语言-SQL"></a>数仓主流语言-SQL</h2><p>结构化数据（行与列）–二维表结构来逻辑表达和实现的数据，严格遵循数据格式和长度规范</p>]]></content>
       
       
       <categories>
