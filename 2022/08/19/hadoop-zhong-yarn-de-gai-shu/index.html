@@ -52,34 +52,72 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
 
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="/css/loading.css">
+    <link rel="stylesheet" type="text/css" href="/css/loading-ghost.css">
 
 <meta name="generator" content="Hexo 6.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
     
-    <div id="loading-box">
-      <div class="loading-left-bg"></div>
-      <div class="loading-right-bg"></div>
-      <div class="spinner-box">
-        <div class="configure-border-1">
-          <div class="configure-core"></div>
+
+    <div id ="loading-box">
+        <div class="space">
+      <!-- 飞船部分 -->
+      <div class="ship">
+        <div class="ship-rotate">
+          <div class="pod"></div>
+          <div class="fuselage"></div>
+          <!-- 尾气部分 -->
+          <div class="exhaust-flame"></div>
+          <ul class="exhaust-fumes">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          
         </div>
-        <div class="configure-border-2">
-          <div class="configure-core"></div>
+      </div>
+      <!-- 阴影部分 -->
+      <div class="ship-shadow"></div>
+      <!-- 星球部分 -->
+      <div class="mars">
+        <div class="tentacle"></div>
+        <div class="flag">
+          <div class="small-tentacle"></div>
         </div>
-        <div class="loading-word">loading...</div>
+        <div class="planet">
+          <div class="surface"></div>
+          <div class="crater1"></div>
+          <div class="crater2"></div>
+          <div class="crater3"></div>
+        </div>
+        <div class = "loading-word">loading...</div>
       </div>
     </div>
-    <!-- 页面加载动画 -->
+</div>
     <script>
-      $(document).ready(function () {
+        // 获取动画
+    let loader = document.querySelector(".space");
+    // 加载完成事件
+    window.onload = function () {
+        // 加载完成，隐藏动画，显示内容
+      loader.style.display = "none";
+    }
+    /*
+    $(document).ready(function () {
         document.body.style.overflow = 'auto';
-        document.getElementById('loading-box').classList.add("loaded")
+        document.getElementById('').classList.add("loaded")
       })
-    </script>
-  
+      */
+    </script>    
+    
+
+
   
 
     <header class="navbar-fixed">
