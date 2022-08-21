@@ -45,8 +45,6 @@
 
 
     
-        <link rel="stylesheet" type="text/css" href="/css/reward.css">
-    
 
 
 
@@ -394,7 +392,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.1k
+                    1.3k
                 </div>
                 
 
@@ -424,15 +422,15 @@ start-yarn.sh
 <p>Hive不是分布式安装运行的软件，其分布式特效主要借助于Hadoop完成，包括分布式存储，分布式计算</p>
 <h2 id="Hadoop与Hive"><a href="#Hadoop与Hive" class="headerlink" title="Hadoop与Hive"></a>Hadoop与Hive</h2><p>需要在Hadoop中添加相关配置属性，以满足Hive在Hadoop上运行<br>修改Hadoop中core-site.xml,并且Hadoop集群同步配置文件重启生效</p>
 <!--整合Hive代理设置 -->
-<property>
-    <name>hadoop.proxyuser.root.hosts</name>
-    <value>*</value>
-</property>
-<property>
-    <name>hadoop.proxyuser.root.groups</name>
-    <value>*</value>
-</property>
-
+<pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.proxyuser.root.hosts<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.proxyuser.root.groups<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+</code></pre>
 <h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><ol>
 <li>卸载Centos7自带的mariadb</li>
 </ol>
@@ -611,7 +609,7 @@ export HIVE_AUX_JARS_PATH=/export/server/apache-hive-3.1.2-bin/lib
 </code></pre>
 </li>
 <li><p>上传mysql jdbc驱动到hive安装包lib下</p>
-<pre><code>mysql-connector-java-5.1.32.jar
+<pre class=" language-shell"><code class="language-shell">mysql-connector-java-5.1.32.jar
 </code></pre>
 </li>
 <li><p>初始化元数据</p>
@@ -630,6 +628,25 @@ hadoop fs -mkdir -p /user/hive/warehouse
 hadoop fs -chmod g+w /tmp
 hadoop fs -chmod g+w /user/hive/warehouse
 </code></pre>
+<h2 id="metastore启动"><a href="#metastore启动" class="headerlink" title="metastore启动"></a>metastore启动</h2><h3 id="前台启动"><a href="#前台启动" class="headerlink" title="前台启动"></a>前台启动</h3><p>进程会一直占据终端，ctrl+c结束进程</p>
+<ul>
+<li>启动前台</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">/export/server/appache-hive-3.1.2-bin/bin/hive --service metastore
+</code></pre>
+<ul>
+<li>前台启动开启debug日志</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">/export/server/apache-hive-3.1.2-bin/bin/hive --service metastore --hiveconf hive.root.logger=DEBUG,console 
+</code></pre>
+<h3 id="后台启动"><a href="#后台启动" class="headerlink" title="后台启动"></a>后台启动</h3><ul>
+<li>把程序当成一个进程</li>
+</ul>
+<pre class=" language-shell"><code class="language-shell">nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service metastore &
+</code></pre>
+<p>回车后再按一次回车，就成功启动在后台了</p>
+<p>之后通过jps 查看进程</p>
+<p>使用kill -9杀死进程</p>
 </li>
 </ul>
 
@@ -719,39 +736,6 @@ hadoop fs -chmod g+w /user/hive/warehouse
                 </div>
             </div>
             
-                <div id="reward">
-    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
-
-    <!-- Modal Structure -->
-    <div id="rewardModal" class="modal">
-        <div class="modal-content">
-            <a class="close modal-close"><i class="fas fa-times"></i></a>
-            <h4 class="reward-title">谢谢阅读~</h4>
-            <div class="reward-content">
-                <div class="reward-tabs">
-                    <ul class="tabs row">
-                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
-                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
-                    </ul>
-                    <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
-                    </div>
-                    <div id="wechat">
-                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    $(function () {
-        $('.tabs').tabs();
-    });
-</script>
-
-            
         </div>
     </div>
 
@@ -778,18 +762,17 @@ hadoop fs -chmod g+w /user/hive/warehouse
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/08/19/hive-xue-xi-zhi-lu-2-an-zhuang-bu-shu/">
+                <a href="/2022/08/21/hive-xue-xi-zhi-lu-3-hive-ke-hu-duan-de-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Hive学习之路2--安装部署">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hive学习之路3-Hive客户端的使用">
                         
-                        <span class="card-title">Hive学习之路2--安装部署</span>
+                        <span class="card-title">Hive学习之路3-Hive客户端的使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -799,9 +782,9 @@ hadoop fs -chmod g+w /user/hive/warehouse
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -814,7 +797,6 @@ hadoop fs -chmod g+w /user/hive/warehouse
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1062,7 +1044,7 @@ hadoop fs -chmod g+w /user/hive/warehouse
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">18k</span>
+                        class="white-color">18.2k</span>
             
             
             
