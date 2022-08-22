@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hive学习之路3-Hive客户端的使用, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="">
+    <meta name="description" content="推荐使用第二代客户端$HIVE_Home&amp;#x2F;bin&amp;#x2F;beeline，是一个JDBC客户端官方强烈推荐的Hive命令行工具，和第一代客户端相比，性能安全性提高
+图源：https://www.bilibili.com/vide">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -392,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    434
                 </div>
                 
 
@@ -414,7 +415,44 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>推荐使用第二代客户端$HIVE_Home&#x2F;bin&#x2F;beeline，是一个JDBC客户端<br>官方强烈推荐的Hive命令行工具，和第一代客户端相比，性能安全性提高</p>
+<p><img src="/img/posts/DataRepos/hive%E5%AE%A2%E6%88%B7%E7%AB%AF1&2.jpg" alt="Hive客户端与服务的关系"><br>图源：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CU4y1N7Sh?p=62&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad">https://www.bilibili.com/video/BV1CU4y1N7Sh?p=62&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad</a></p>
+<h2 id="HiveServer2服务"><a href="#HiveServer2服务" class="headerlink" title="HiveServer2服务"></a>HiveServer2服务</h2><p>在远程模式下，启动HiveServer2必须先启动mtastore服务<br>Beeline客户端只能通过HiveServer2服务访问Hive问bin&#x2F;hive是通过一代服务(metastore)访问的</p>
+<pre class=" language-shell"><code class="language-shell">nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service metastore &
+
+nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &
+</code></pre>
+<h3 id="其他机器连接一代客户端-metastore"><a href="#其他机器连接一代客户端-metastore" class="headerlink" title="其他机器连接一代客户端(metastore)"></a>其他机器连接一代客户端(metastore)</h3><p>将客户端拷贝到其他机器上，此处以node3为例</p>
+<pre class=" language-shell"><code class="language-shell">scp -r /export/server/apache-hive-3.1.2-bin root@node3:/export/server/
+</code></pre>
+<p>再在node3的finalshell中输入</p>
+<pre class=" language-shell"><code class="language-shell">/export/server/apache-hive-3.1.2-bin/bin/hive
+</code></pre>
+<p>但此时连接的是metastore， 是第一代客户端<br>进入hive&gt;<br>可以用show dtabases; show tables;分别查看数据库和表</p>
+<p>ctrl+c退出hive</p>
+<h3 id="其他机器连接二代客户端-HiveServer2"><a href="#其他机器连接二代客户端-HiveServer2" class="headerlink" title="其他机器连接二代客户端(HiveServer2)"></a>其他机器连接二代客户端(HiveServer2)</h3><p>将beeline客户端连接到hive服务器</p>
+<p>在node3的finalshell中输入</p>
+<pre class=" language-shell"><code class="language-shell">/export/server/apache-hive-3.1.2-bin/bin/beeline
+</code></pre>
+<ul>
+<li><p>进入beeline</p>
+</li>
+<li><p>输入 beeline&gt; ! connect jdbc:hive2:&#x2F;&#x2F;node1:10000<br>  连接到hive服务<br>  输入用户名：root<br>  密码直接回车</p>
+</li>
+<li><p>连接成功<br>  可以直接输入 show databases;<br>          show tables;<br>  进行基本查询</p>
+</li>
+</ul>
+<h2 id="Hive可视化客户端"><a href="#Hive可视化客户端" class="headerlink" title="Hive可视化客户端"></a>Hive可视化客户端</h2><p><strong>DataGrip</strong>,Dbeaver, Squirrel SQL client等</p>
+<h3 id="DataGrip的使用"><a href="#DataGrip的使用" class="headerlink" title="DataGrip的使用"></a>DataGrip的使用</h3><ul>
+<li><p>创建项目</p>
+</li>
+<li><p>attach directory to project<br>  这样之后写的sql文件都存在这个目录下</p>
+</li>
+<li><p>关联数据库<br>  选择右边栏database-&gt; 点击+号 -&gt; data source -&gt; Apache Hive</p>
+<p>  点开后，左边选择栏再选择Hive，配置Hive启动jar，配置好后，点击上方localhost，更改host为node1，user名为root，之后测试connection，，显示ok后，点击apply</p>
+</li>
+</ul>
+
                 
             </div>
             <hr/>
@@ -527,18 +565,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/08/21/hive-xue-xi-zhi-lu-3-hive-ke-hu-duan-de-shi-yong/">
+                <a href="/2022/08/22/hive-xue-xi-zhi-lu-hql-de-ying-yong-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hive学习之路3-Hive客户端的使用">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hive学习之路-HQL的应用1">
                         
-                        <span class="card-title">Hive学习之路3-Hive客户端的使用</span>
+                        <span class="card-title">Hive学习之路-HQL的应用1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -548,9 +585,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-22
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -563,7 +600,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -811,7 +847,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">18.2k</span>
+                        class="white-color">18.8k</span>
             
             
             

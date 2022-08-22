@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>Hive学习之路-HQL的应用1</title>
+      <link href="/2022/08/22/hive-xue-xi-zhi-lu-hql-de-ying-yong-1/"/>
+      <url>/2022/08/22/hive-xue-xi-zhi-lu-hql-de-ying-yong-1/</url>
+      
+        <content type="html"><![CDATA[<p>SQL中DDL(Data Defeinition Language)语言，主要是Create，ALter，DROP。DDL并不涉及表内部操作。</p><h2 id="Hive中的数据库"><a href="#Hive中的数据库" class="headerlink" title="Hive中的数据库"></a>Hive中的数据库</h2><p>在默认情况下，Hive的默认数据库default ,位于HDFS的&#x2F;user&#x2F;hive&#x2F;warehouse目录下<br>用户自己创建的数据库位于&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;databse_name.db下</p><h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>create databse用于创建新的数据库<br>COMMENT: 数据库的注释说明语句<br>LOCATION: 指定数据库再HDFS存储位置，默认为&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;dbname.db<br>With DBPROPERTIES: 用于指定一些数据库的属性配置</p><pre class=" language-SQL"><code class="language-SQL">CREATE (DATABASE|SCHEMA)[IF NOT EXISTS]database_name[COMMENT database_comment][LOCATION hdfs_path][WITH DBPROPERTIES(property_name=property_value,...)];</code></pre><h2 id="切换数据库"><a href="#切换数据库" class="headerlink" title="切换数据库"></a>切换数据库</h2><p>use database 进行切换</p><h2 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h2><p>要求数据库下没有标，为空时才可以删除</p><pre class=" language-SQL"><code class="language-SQL">DROP (DATABSE|SCHEMA)[IF EXSITS]database_name;</code></pre><h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><p>同理SQL</p><pre class=" language-SQL"><code class="language-SQL">CREATE TABLE[IF NOT EXSITS][db_name.]table_name(col_name datatype [COMMENT col_comment],...)[COMMENT table_comment][ROW FORMAT DELIMITED...];</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数仓开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hive </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hive学习之路3-Hive客户端的使用</title>
       <link href="/2022/08/21/hive-xue-xi-zhi-lu-3-hive-ke-hu-duan-de-shi-yong/"/>
       <url>/2022/08/21/hive-xue-xi-zhi-lu-3-hive-ke-hu-duan-de-shi-yong/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>推荐使用第二代客户端$HIVE_Home&#x2F;bin&#x2F;beeline，是一个JDBC客户端<br>官方强烈推荐的Hive命令行工具，和第一代客户端相比，性能安全性提高</p><p><img src="/img/posts/DataRepos/hive%E5%AE%A2%E6%88%B7%E7%AB%AF1&2.jpg" alt="Hive客户端与服务的关系"><br>图源：<a href="https://www.bilibili.com/video/BV1CU4y1N7Sh?p=62&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad">https://www.bilibili.com/video/BV1CU4y1N7Sh?p=62&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad</a></p><h2 id="HiveServer2服务"><a href="#HiveServer2服务" class="headerlink" title="HiveServer2服务"></a>HiveServer2服务</h2><p>在远程模式下，启动HiveServer2必须先启动mtastore服务<br>Beeline客户端只能通过HiveServer2服务访问Hive问bin&#x2F;hive是通过一代服务(metastore)访问的</p><pre class=" language-shell"><code class="language-shell">nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service metastore &nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &</code></pre><h3 id="其他机器连接一代客户端-metastore"><a href="#其他机器连接一代客户端-metastore" class="headerlink" title="其他机器连接一代客户端(metastore)"></a>其他机器连接一代客户端(metastore)</h3><p>将客户端拷贝到其他机器上，此处以node3为例</p><pre class=" language-shell"><code class="language-shell">scp -r /export/server/apache-hive-3.1.2-bin root@node3:/export/server/</code></pre><p>再在node3的finalshell中输入</p><pre class=" language-shell"><code class="language-shell">/export/server/apache-hive-3.1.2-bin/bin/hive</code></pre><p>但此时连接的是metastore， 是第一代客户端<br>进入hive&gt;<br>可以用show dtabases; show tables;分别查看数据库和表</p><p>ctrl+c退出hive</p><h3 id="其他机器连接二代客户端-HiveServer2"><a href="#其他机器连接二代客户端-HiveServer2" class="headerlink" title="其他机器连接二代客户端(HiveServer2)"></a>其他机器连接二代客户端(HiveServer2)</h3><p>将beeline客户端连接到hive服务器</p><p>在node3的finalshell中输入</p><pre class=" language-shell"><code class="language-shell">/export/server/apache-hive-3.1.2-bin/bin/beeline</code></pre><ul><li><p>进入beeline</p></li><li><p>输入 beeline&gt; ! connect jdbc:hive2:&#x2F;&#x2F;node1:10000<br>  连接到hive服务<br>  输入用户名：root<br>  密码直接回车</p></li><li><p>连接成功<br>  可以直接输入 show databases;<br>          show tables;<br>  进行基本查询</p></li></ul><h2 id="Hive可视化客户端"><a href="#Hive可视化客户端" class="headerlink" title="Hive可视化客户端"></a>Hive可视化客户端</h2><p><strong>DataGrip</strong>,Dbeaver, Squirrel SQL client等</p><h3 id="DataGrip的使用"><a href="#DataGrip的使用" class="headerlink" title="DataGrip的使用"></a>DataGrip的使用</h3><ul><li><p>创建项目</p></li><li><p>attach directory to project<br>  这样之后写的sql文件都存在这个目录下</p></li><li><p>关联数据库<br>  选择右边栏database-&gt; 点击+号 -&gt; data source -&gt; Apache Hive</p><p>  点开后，左边选择栏再选择Hive，配置Hive启动jar，配置好后，点击上方localhost，更改host为node1，user名为root，之后测试connection，，显示ok后，点击apply</p></li></ul>]]></content>
       
       
       <categories>
