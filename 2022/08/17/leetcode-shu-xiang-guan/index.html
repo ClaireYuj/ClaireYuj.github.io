@@ -394,7 +394,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    237
+                    303
                 </div>
                 
 
@@ -424,6 +424,26 @@
      TreeNode right;
      TreeNode(int x) &#123; val = x; &#125;
  &#125;
+</code></pre>
+<h2 id="94-二叉树的中序遍历"><a href="#94-二叉树的中序遍历" class="headerlink" title="94. 二叉树的中序遍历"></a>94. 二叉树的中序遍历</h2><p><img src="/img/posts/Leetcode/leetcode94.jpg" alt="Leetcode94"></p>
+<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>中序遍历 左-&gt;中-右</p>
+<pre class=" language-JAVA"><code class="language-JAVA">class Solution &#123;
+    public List<Integer> inorderTraversal(TreeNode root) &#123;
+        List<Integer> tree = new ArrayList<Integer>();
+        inOrder(root,tree);
+        return tree;
+        
+    &#125;
+
+    public void inOrder(TreeNode root,List<Integer> tree)&#123;
+        if(root==null)&#123;
+            return;
+        &#125;
+        inOrder(root.left,tree);
+        tree.add(root.val);
+        inOrder(root.right,tree);
+    &#125;
+&#125;
 </code></pre>
 <h2 id="95-不同的二叉搜索树"><a href="#95-不同的二叉搜索树" class="headerlink" title="95.不同的二叉搜索树"></a>95.不同的二叉搜索树</h2><p>给定一个整数 n，生成所有由 1 … n 为节点所组成的二叉搜索树。<br>（不只返回数字）</p>
 <h3 id="解法一-DFS-深度优先"><a href="#解法一-DFS-深度优先" class="headerlink" title="解法一:DFS 深度优先"></a>解法一:DFS 深度优先</h3><pre class=" language-Java"><code class="language-Java">/**
