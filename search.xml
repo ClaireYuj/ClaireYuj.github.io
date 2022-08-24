@@ -29,31 +29,6 @@
     
     
     <entry>
-      <title>Hive学习之路-HQL的应用1</title>
-      <link href="/2022/08/22/hive-xue-xi-zhi-lu-sql-de-ying-yong-1/"/>
-      <url>/2022/08/22/hive-xue-xi-zhi-lu-sql-de-ying-yong-1/</url>
-      
-        <content type="html"><![CDATA[<p>SQL中DDL(Data Defeinition Language)语言，主要是Create，ALter，DROP。DDL并不涉及表内部操作。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 数仓开发 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hive </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hive学习之路3-Hive客户端的使用</title>
       <link href="/2022/08/21/hive-xue-xi-zhi-lu-3-hive-ke-hu-duan-de-shi-yong/"/>
       <url>/2022/08/21/hive-xue-xi-zhi-lu-3-hive-ke-hu-duan-de-shi-yong/</url>
