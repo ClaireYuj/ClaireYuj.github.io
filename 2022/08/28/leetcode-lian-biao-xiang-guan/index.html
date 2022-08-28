@@ -4,9 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hadoop中Yarn的概述, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="学习参考Hadoop入门
-Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce与Yarn，是一个通用的资源管理系统和调度平台，可为上层应用提供统一的资源管理和调度，为集群再利用率，资源统一管理和数据共享等方面带来了巨">
+    <meta name="keywords" content="Leetcode-链表相关, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="赋值带随机指针的链表
+解法
+解法一：拼接+拆分将原链表假设为1-&amp;gt;2-&amp;gt;3复制1-&amp;gt;1-&amp;gt;2-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;null这样cur-&amp;gt;random-&amp;gt;next &amp;#x3D; cu">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +19,7 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hadoop中Yarn的概述 | DULULU</title>
+    <title>Leetcode-链表相关 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -330,12 +331,12 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hadoop中Yarn的概述</h1>
+                    <h1 class="description center-align post-title">Leetcode-链表相关</h1>
                 </div>
             </div>
         </div>
@@ -359,12 +360,8 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Hadoop/">
-                                <span class="chip bg-color">Hadoop</span>
-                            </a>
-                        
-                            <a href="/tags/Yarn/">
-                                <span class="chip bg-color">Yarn</span>
+                            <a href="/tags/leetcode/">
+                                <span class="chip bg-color">leetcode</span>
                             </a>
                         
                     </div>
@@ -375,8 +372,8 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E4%BB%93%E5%BC%80%E5%8F%91/" class="post-category">
-                                数仓开发
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
                             </a>
                         
                     </div>
@@ -388,7 +385,7 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-19
+                    2022-08-28
                 </div>
                 
 
@@ -397,7 +394,7 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.3k
+                    336
                 </div>
                 
 
@@ -419,37 +416,67 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>学习参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CU4y1N7Sh?p=49&spm_id_from=pageDriver&vd_source=f618be285e44e05f2b481fa28b9fe6ad">Hadoop入门</a></p>
-<h2 id="Yarn的简介"><a href="#Yarn的简介" class="headerlink" title="Yarn的简介"></a>Yarn的简介</h2><p>Hdfsd大数据存储系统中的资源管理器主要为MapReduce与Yarn，是一个通用的<strong>资源管理系统</strong>和<strong>调度</strong>平台，可为上层应用提供统一的资源管理和调度，为集群再利用率，资源统一管理和数据共享等方面带来了巨大好处</p>
-<p><strong>资源管理系统</strong>: 管理集群的硬件资源，包括内存，CPU等<br><strong>调度平台</strong>： 多个程序同时申请资源，如何进行合理的分配与调度<br>Yarn作为一个通用平台，说明它不仅仅支持MR（MapReuce）程序，理论上支持各种计算程序（Spark，HBase，Storm…）</p>
-<p>可以把Yarn理解为一个分布式的操作系统平台，HDFS是应用最广泛的大数存储系统，Yarn功不可没</p>
-<h2 id="Yarn中的组件"><a href="#Yarn中的组件" class="headerlink" title="Yarn中的组件"></a>Yarn中的组件</h2><p>主要是三大组件</p>
-<p>集群物理层面：   ResourceManager<br>                NodeManager<br>APP层面：       ApplicationMaster</p>
-<h3 id="ResourceManager-RM"><a href="#ResourceManager-RM" class="headerlink" title="ResourceManager(RM)"></a>ResourceManager(RM)</h3><p>Yarn集群中的著角色，决定系统中所有应用程序之间的资源分配器的<strong>最终</strong>权限，接收用户的作业提交，并通过NM分配，管理机器上的计算资源</p>
-<h3 id="NodeManager-NM"><a href="#NodeManager-NM" class="headerlink" title="NodeManager(NM)"></a>NodeManager(NM)</h3><p>Yarn中的从角色，一个机器上一个，负责管理本机器上的计算资源使用情况<br>根据RM命令，启动Container容器，监视容器的资源使用情况，并且向RM著角色汇报资源使用情况</p>
-<h3 id="ApplicationMaster-AM"><a href="#ApplicationMaster-AM" class="headerlink" title="ApplicationMaster(AM)"></a>ApplicationMaster(AM)</h3><p>用户提交的每个应用程序均包含一个AM<br>应用程序中的“老大”，负责程序内部个资源的申请，监督程序的执行情况<br>AM程序是应用程序内部启动的第一个程序</p>
-<h2 id="Yarn程序提交流程"><a href="#Yarn程序提交流程" class="headerlink" title="Yarn程序提交流程"></a>Yarn程序提交流程</h2><p>核心交互流程主要有四步：<br>MR作业提交  Client -&gt; RM<br>资源的申请  MRAppMaster -&gt; RM<br>MR作业状态汇报 Container(Map | Reduce Task) -&gt; Container (MRAppMaster)<br>节点的状态汇报(Yarn集群内布)  NM -&gt;RM </p>
-<h3 id="整体概述"><a href="#整体概述" class="headerlink" title="整体概述"></a>整体概述</h3><p>当用户向YARN中提交一个应用程序后，YARN将分为了两个阶段运行该应用程序<br>第一个阶段：客户端申请资源启动运行被刺程序的AppMaster<br>第二个阶段有AppMaster更具本次程序内部具体具体情况为她申请资源，并健康它的整个运行过程，知道运行完成</p>
-<p><img src="/img/posts/Yarn/Yarn%E7%A8%8B%E5%BA%8F%E6%8F%90%E4%BA%A4%E6%B5%81%E7%A8%8B.jpg" alt="Yarn程序提交流程"></p>
-<p>第一步:用户通过客户端向Yarn中的ResourceManager提交应用程序（如Hadoop，jar提交MR程序）</p>
-<p>第二步：RM为该应用程序分配第一个container，并于对应的NM同学，要求它再这个container中启动该应用的AM</p>
-<p>第三步：AM启动成功后，向RM注册并保持同学，这样用户可以直接通过RM查看应用程序的运行状态</p>
-<p>第四步：AM为本次程序内部的各个Task向RM申请资源</p>
-<p>第五步：一旦<strong>AM</strong>申请到资源，便于对应的NM通信，要求他启动任务</p>
-<p>第六版：NM为任务设置好运行环境之后，将任务启动命令写入到一个脚本之中，并通过运行该脚本启动任务</p>
-<p>第七步：各个人物通过某个<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/RPC%E5%8D%8F%E8%AE%AE/5019569?fr=aladdin">RPC协议</a>向AM汇报自己的状态和进度，以让AM随时掌握各个人物的运行状态，可以再任务失败时重新启动任务。<br>在应用程序运行过沉重，用户可随时通过RPC向AM查询应用程序当前运行状态</p>
-<p>第八步：应用程序运行完成后，AM向RM注销并关闭自己</p>
-<h2 id="Yarn的资源调度器Scheduler"><a href="#Yarn的资源调度器Scheduler" class="headerlink" title="Yarn的资源调度器Scheduler"></a>Yarn的资源调度器Scheduler</h2><p>在Yarn中，负责给应用分配资源的是schduler，是RM的内部核心组件之一。Schduler完全用于调度作业，无法跟踪应用程序的状态。Yarn提供了多种调度器和可配置的策略供选择，可在yarn-sit.xml中的yarn.resourcemanager.schduler.class进行配置</p>
-<h3 id="FIFO-Schduler"><a href="#FIFO-Schduler" class="headerlink" title="FIFO Schduler"></a>FIFO Schduler</h3><p>先入先出，拥有一个控制全局的队列Queue<br>不适合共享集群</p>
-<h3 id="Capacity-Scheduler"><a href="#Capacity-Scheduler" class="headerlink" title="Capacity Scheduler"></a>Capacity Scheduler</h3><p>Apache版本一般默认Capacity Scheduler<br><strong>允许多个组织共享集群资源</strong>，每个组织都可以获得一部分集群计算能力。通过为每个组织分配专门的队列，然后再为每个队列分配一定的集群资源，整个集群可以通过设置多个队列给多个组织提供服务。</p>
-<p>Capacity 可以理解为一个个的资源队列，这个资源队列是用户自行分配。<br>再在队列内部进行垂直划分，使得一个组织内部分多个成员共享这个队列资源。<br><strong>在一个队列内部，资源调度是FIFO的</strong></p>
-<p><img src="/img/posts/Yarn/Scheduler_task_div.jpg" alt="文件划分"></p>
-<h3 id="Fair-Scheduler"><a href="#Fair-Scheduler" class="headerlink" title="Fair Scheduler"></a>Fair Scheduler</h3><p>提供了yarn应用程序中共享大型资源的方式</p>
-<hr>
-<p>例如：<br>用户A、B都有自己的队列 -&gt; A启动一个作业，而B还没有，此时A分配了集群中所有可用的资源 -&gt; B在A仍在运行时启动了一个作业，一段时间后，A、B各自作业都使用了一半的资源 -&gt; 若B此时再开启第二个作业，它将于B的另一个作业共享资源。A的一个作业仍占有1&#x2F;2的资源，而B的两个作业各自占有1&#x2F;4的资源</p>
-<hr>
-<p>Fair Scheduler支持资源抢占、基于用户的映射</p>
+                <h2 id="赋值带随机指针的链表"><a href="#赋值带随机指针的链表" class="headerlink" title="赋值带随机指针的链表"></a>赋值带随机指针的链表</h2><p><img src="/img/posts/Leetcode/leetcode138.jpg" alt="Leetcode138"></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/9plk45/">解法</a></p>
+<h3 id="解法一：拼接-拆分"><a href="#解法一：拼接-拆分" class="headerlink" title="解法一：拼接+拆分"></a>解法一：拼接+拆分</h3><p>将原链表假设为1-&gt;2-&gt;3复制<br>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;null<br>这样cur-&gt;random-&gt;next &#x3D; cur-&gt;next-&gt;random<br>比如如果1-&gt;random &#x3D; 3,那么1-&gt;random &#x3D; 3, 3-&gt;next &#x3D; 3 &#x3D;&#x3D;&#x3D;&gt;1-&gt;random-&gt;next &#x3D; 3, 且1-&gt;next &#x3D; 1, 1-&gt;random &#x3D; 3 &#x3D;&#x3D;&#x3D;&gt; 1-&gt;next-&gt;random &#x3D; 3, 所以cur-&gt;next-&gt;random &#x3D; cur-&gt;random-&gt;next</p>
+<pre class=" language-JAVA"><code class="language-JAVA">/*
+// Definition for a Node.
+class Node &#123;
+    int val;
+    Node next;
+    Node random;
 
+    public Node(int val) &#123;
+        this.val = val;
+        this.next = null;
+        this.random = null;
+    &#125;
+&#125;
+*/
+
+class Solution &#123;
+    public Node copyRandomList(Node head) &#123;
+        if(head == null) return head;
+        Node cur = head;
+
+        Node p = cur;
+        //1. 复制节点并拼接
+        while(cur!=null)&#123; 
+            Node copy = new Node(cur.val);  //复制该节点
+            copy.next = cur.next; //连接copy节点的next
+            cur.next = copy; //关联该节点与复制节点
+            cur = copy.next; //移动指针
+        &#125;
+
+        // 2.构建random,使得cur->random->next = cur->next->random
+        cur = head; // java中对象传递是引用传递
+        while(cur!=null)&#123;
+            if(cur.random!=null)&#123;
+                cur.next.random = cur.random.next;  
+            &#125;
+            cur = cur.next.next;
+        &#125;
+
+        // 3. 将random拆出来
+        cur = head.next;
+        Node pre = head,res=head.next;
+        while(cur.next!=null)&#123;
+            /**注意pre和cur节点的顺序， pre要在cur之前，
+             */
+            pre.next = pre.next.next; 
+            cur.next = cur.next.next;
+            pre = pre.next;
+            cur = cur.next;
+          
+           
+        &#125;
+        pre.next = null;
+        return res;
+
+    &#125;
+&#125;
+</code></pre>
+<h3 id="解法二：哈希表"><a href="#解法二：哈希表" class="headerlink" title="解法二：哈希表"></a>解法二：哈希表</h3>
                 
             </div>
             <hr/>
@@ -475,7 +502,7 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/08/19/hadoop-zhong-yarn-de-gai-shu/">https://claireyuj.github.io/2022/08/19/hadoop-zhong-yarn-de-gai-shu/</a>
+                    <a href="https://claireyuj.github.io/2022/08/28/leetcode-lian-biao-xiang-guan/">https://claireyuj.github.io/2022/08/28/leetcode-lian-biao-xiang-guan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -513,12 +540,8 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Hadoop/">
-                                    <span class="chip bg-color">Hadoop</span>
-                                </a>
-                            
-                                <a href="/tags/Yarn/">
-                                    <span class="chip bg-color">Yarn</span>
+                                <a href="/tags/leetcode/">
+                                    <span class="chip bg-color">leetcode</span>
                                 </a>
                             
                         </div>
@@ -566,17 +589,18 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/08/19/shu-cang-ji-ben-gai-nian/">
+                <a href="/2022/08/28/leetcode-lian-biao-xiang-guan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="数仓基本概念">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Leetcode-链表相关">
                         
-                        <span class="card-title">数仓基本概念</span>
+                        <span class="card-title">Leetcode-链表相关</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -586,26 +610,27 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E4%BB%93%E5%BC%80%E5%8F%91/" class="post-category">
-                                    数仓开发
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
-                        <span class="chip bg-color">基础知识</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
@@ -619,13 +644,13 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/17/java-shu-ru-shu-chu/">
+                <a href="/2022/08/28/hive-xue-xi-zhi-lu-5-hql-de-ying-yong-2-load-yu-insert/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVA输入输出">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Hive学习之路5-HQL的应用2-load与insert">
                         
-                        <span class="card-title">JAVA输入输出</span>
+                        <span class="card-title">Hive学习之路5-HQL的应用2-load与insert</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -636,27 +661,15 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    基础知识
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            DULULU oO
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/JAVA/">
-                        <span class="chip bg-color">JAVA</span>
-                    </a>
-                    
                 </div>
                 
             </div>

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Leetcode-链表相关</title>
+      <link href="/2022/08/28/leetcode-lian-biao-xiang-guan/"/>
+      <url>/2022/08/28/leetcode-lian-biao-xiang-guan/</url>
+      
+        <content type="html"><![CDATA[<h2 id="赋值带随机指针的链表"><a href="#赋值带随机指针的链表" class="headerlink" title="赋值带随机指针的链表"></a>赋值带随机指针的链表</h2><p><img src="/img/posts/Leetcode/leetcode138.jpg" alt="Leetcode138"></p><p><a href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/9plk45/">解法</a></p><h3 id="解法一：拼接-拆分"><a href="#解法一：拼接-拆分" class="headerlink" title="解法一：拼接+拆分"></a>解法一：拼接+拆分</h3><p>将原链表假设为1-&gt;2-&gt;3复制<br>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;null<br>这样cur-&gt;random-&gt;next &#x3D; cur-&gt;next-&gt;random<br>比如如果1-&gt;random &#x3D; 3,那么1-&gt;random &#x3D; 3, 3-&gt;next &#x3D; 3 &#x3D;&#x3D;&#x3D;&gt;1-&gt;random-&gt;next &#x3D; 3, 且1-&gt;next &#x3D; 1, 1-&gt;random &#x3D; 3 &#x3D;&#x3D;&#x3D;&gt; 1-&gt;next-&gt;random &#x3D; 3, 所以cur-&gt;next-&gt;random &#x3D; cur-&gt;random-&gt;next</p><pre class=" language-JAVA"><code class="language-JAVA">/*// Definition for a Node.class Node &#123;    int val;    Node next;    Node random;    public Node(int val) &#123;        this.val = val;        this.next = null;        this.random = null;    &#125;&#125;*/class Solution &#123;    public Node copyRandomList(Node head) &#123;        if(head == null) return head;        Node cur = head;        Node p = cur;        //1. 复制节点并拼接        while(cur!=null)&#123;             Node copy = new Node(cur.val);  //复制该节点            copy.next = cur.next; //连接copy节点的next            cur.next = copy; //关联该节点与复制节点            cur = copy.next; //移动指针        &#125;        // 2.构建random,使得cur->random->next = cur->next->random        cur = head; // java中对象传递是引用传递        while(cur!=null)&#123;            if(cur.random!=null)&#123;                cur.next.random = cur.random.next;              &#125;            cur = cur.next.next;        &#125;        // 3. 将random拆出来        cur = head.next;        Node pre = head,res=head.next;        while(cur.next!=null)&#123;            /**注意pre和cur节点的顺序， pre要在cur之前，             */            pre.next = pre.next.next;             cur.next = cur.next.next;            pre = pre.next;            cur = cur.next;                             &#125;        pre.next = null;        return res;    &#125;&#125;</code></pre><h3 id="解法二：哈希表"><a href="#解法二：哈希表" class="headerlink" title="解法二：哈希表"></a>解法二：哈希表</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hive学习之路5-HQL的应用2-load与insert</title>
       <link href="/2022/08/28/hive-xue-xi-zhi-lu-5-hql-de-ying-yong-2-load-yu-insert/"/>
       <url>/2022/08/28/hive-xue-xi-zhi-lu-5-hql-de-ying-yong-2-load-yu-insert/</url>
