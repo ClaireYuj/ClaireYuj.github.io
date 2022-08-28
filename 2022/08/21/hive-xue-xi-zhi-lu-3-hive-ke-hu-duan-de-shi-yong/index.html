@@ -393,7 +393,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    711
+                    885
                 </div>
                 
 
@@ -509,6 +509,21 @@ nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &
 </ol>
 <p>进入node1:9870， browse file-&gt; user-&gt;hive -&gt;warehouse -&gt;test.db -&gt;upload</p>
 <p>之后进入datagrip用select 语句进行查看</p>
+<ol start="2">
+<li>通过将本地文件再finalshell中</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">hadoop fs -put 1.txt /user/hive/warehouse/test.db/t_1/
+</code></pre>
+<p>此处是将1.txt的淑君放到test数据库下的t_1表中</p>
+<p>然后再beeline&#x2F;datagrip中用select语句可以查看</p>
+<ol start="3">
+<li>用load加载（推荐）<br>load命令是一个纯复制纯移动的树，hive不会对数据做任何形式的改变<br>语句格式如下</li>
+</ol>
+<pre class=" language-SQL"><code class="language-SQL">LOAD DATA[LOCAL] INOATH 'filepath' [OVERWRITE] INTO TABLE tablename;
+</code></pre>
+<ul>
+<li>Local的本地–如果是对Hiveserver2服务器所在的机器使用此命令，local本地文件系统指的是Hiveserver2服务所在机器的本地linux文件系统，而非Hive客户端所在的本地文件系统。<br>也就是node1上的本地文件系统</li>
+</ul>
 
                 
             </div>
@@ -904,7 +919,7 @@ nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">19.6k</span>
+                        class="white-color">19.7k</span>
             
             
             
