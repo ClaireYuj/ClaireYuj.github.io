@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hive学习之路-HQL的应用1, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="keywords" content="Hive学习之路4-HQL的应用1-建表与show语句, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
     <meta name="description" content="SQL中DDL(Data Defeinition Language)语言，主要是Create，ALter，DROP。DDL并不涉及表内部操作。
 Hive中的数据库在默认情况下，Hive的默认数据库default ,位于HDFS的&amp;#x2F;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@ Hive中的数据库在默认情况下，Hive的默认数据库default ,位于HDF
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hive学习之路-HQL的应用1 | DULULU</title>
+    <title>Hive学习之路4-HQL的应用1-建表与show语句 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -330,12 +330,12 @@ Hive中的数据库在默认情况下，Hive的默认数据库default ,位于HDF
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hive学习之路-HQL的应用1</h1>
+                    <h1 class="description center-align post-title">Hive学习之路4-HQL的应用1-建表与show语句</h1>
                 </div>
             </div>
         </div>
@@ -393,7 +393,7 @@ Hive中的数据库在默认情况下，Hive的默认数据库default ,位于HDF
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    231
+                    321
                 </div>
                 
 
@@ -438,6 +438,24 @@ DROP (DATABSE|SCHEMA)[IF EXSITS]database_name;
 <p>最低限度</p>
 <pre class=" language-SQL"><code class="language-SQL">CREATE TABLE table_name (col_name datatype,...);
 </code></pre>
+<p>例</p>
+<pre class=" language-SQL"><code class="language-SQL">create table test.t_archar(
+    id int comment "ID编号",
+    name string,
+    hp_max int,
+    mp_max int,
+    attack_max int,
+    defense_max int,
+    attack_range string,
+    role_main string,
+    role_assist string
+)
+row format delimited
+fields terminated by "\t";
+</code></pre>
+<h3 id="show语法"><a href="#show语法" class="headerlink" title="show语法"></a>show语法</h3><p>用于查看schemas，tables和databases</p>
+<p>show tables;<br>show databases;<br>show schemas;<br>show tables in database1; &#x2F;&#x2F; 此处表示展示database1中的表<br>show tables in schema1; &#x2F;&#x2F; 此处表示展示schema1中的表</p>
+<p>查看元数据类型<br>desc formatted table1;</p>
 
                 
             </div>
@@ -464,7 +482,7 @@ DROP (DATABSE|SCHEMA)[IF EXSITS]database_name;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/08/22/hive-xue-xi-zhi-lu-hql-de-ying-yong-1/">https://claireyuj.github.io/2022/08/22/hive-xue-xi-zhi-lu-hql-de-ying-yong-1/</a>
+                    <a href="https://claireyuj.github.io/2022/08/22/hive-xue-xi-zhi-lu-4-hql-de-ying-yong-1-jian-biao-yu-show-yu-ju/">https://claireyuj.github.io/2022/08/22/hive-xue-xi-zhi-lu-4-hql-de-ying-yong-1-jian-biao-yu-show-yu-ju/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -837,7 +855,7 @@ DROP (DATABSE|SCHEMA)[IF EXSITS]database_name;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">19.2k</span>
+                        class="white-color">19.6k</span>
             
             
             
