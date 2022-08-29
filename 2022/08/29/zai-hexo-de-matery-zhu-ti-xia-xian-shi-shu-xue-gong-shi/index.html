@@ -430,10 +430,10 @@
 由于mathjax的渲染时间较长，故勾选全局mathjax为true后还需要在每篇文章的最上方输入mathjax:true</p>
 <p>此时就可以输入数学公式了，以矩阵为例</p>
 <p>输入</p>
-<pre class="highlight"><code class="">$$\begin{bmatrix}             
-        1&amp;1&amp;0\\                             
-        1&amp;0&amp;1\\
-        \end{bmatrix}$$
+<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{bmatrix}             
+        1<span class="hljs-built_in">&amp;</span>1<span class="hljs-built_in">&amp;</span>0<span class="hljs-keyword">\\</span>                             
+        1<span class="hljs-built_in">&amp;</span>0<span class="hljs-built_in">&amp;</span>1<span class="hljs-keyword">\\</span>
+        <span class="hljs-keyword">\end</span>{bmatrix}<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
 
 </code></pre>
 <p>以$$\begin开始,以\end{}$$结束<br>
@@ -467,32 +467,32 @@ npm i @upupming/hexo-renderer-markdown-it-plus --save
 </code></pre>
 <p>就完成了配置<br>
 可以用</p>
-<pre class="highlight"><code class="">$$\begin{bmatrix}             
-        1&amp;1&amp;0\\                             
-        1&amp;0&amp;1\\
-        \end{bmatrix}$$
+<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{bmatrix}             
+        1<span class="hljs-built_in">&amp;</span>1<span class="hljs-built_in">&amp;</span>0<span class="hljs-keyword">\\</span>                             
+        1<span class="hljs-built_in">&amp;</span>0<span class="hljs-built_in">&amp;</span>1<span class="hljs-keyword">\\</span>
+        <span class="hljs-keyword">\end</span>{bmatrix}<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
 
 </code></pre>
 <p>再测试一下，此时的matrix会分行了</p>
 <h2 id="markdown数学公式的使用"><a class="markdownIt-Anchor" href="#markdown数学公式的使用"></a> Markdown数学公式的使用</h2>
 <h3 id="基础格式"><a class="markdownIt-Anchor" href="#基础格式"></a> 基础格式</h3>
-<pre class="highlight"><code class="">$$\begin{equation}
-公式\\
-公式\\
-\end{equation}$$
+<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{equation}
+公式<span class="hljs-keyword">\\</span>
+公式<span class="hljs-keyword">\\</span>
+<span class="hljs-keyword">\end</span>{equation}<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
 </code></pre>
 <h3 id="上下标"><a class="markdownIt-Anchor" href="#上下标"></a> 上下标</h3>
 <p><strong>^<strong>表示上标，</strong>_<strong>表示下标，需要用</strong>{}</strong></p>
-<pre class="highlight"><code class="">$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
+<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span> x<span class="hljs-built_in">^</span>{y<span class="hljs-built_in">^</span>z}=(1+{<span class="hljs-keyword">\rm</span> e}<span class="hljs-built_in">^</span>x)<span class="hljs-built_in">^</span>{-2xy<span class="hljs-built_in">^</span>w} <span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
 </code></pre>
 <p>结果<br>
 <img src="/img/posts/Markdown/index.jpg" alt="结果"></p>
 <h3 id="矩阵表示"><a class="markdownIt-Anchor" href="#矩阵表示"></a> 矩阵表示</h3>
-<pre class="highlight"><code class="">$$\begin{matrix}
-0&amp;1&amp;1\\
-1&amp;1&amp;0\\
-1&amp;0&amp;1\\
-\end{matrix}$$
+<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{matrix}
+0<span class="hljs-built_in">&amp;</span>1<span class="hljs-built_in">&amp;</span>1<span class="hljs-keyword">\\</span>
+1<span class="hljs-built_in">&amp;</span>1<span class="hljs-built_in">&amp;</span>0<span class="hljs-keyword">\\</span>
+1<span class="hljs-built_in">&amp;</span>0<span class="hljs-built_in">&amp;</span>1<span class="hljs-keyword">\\</span>
+<span class="hljs-keyword">\end</span>{matrix}<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
 </code></pre>
 <p><img src="/img/posts/Markdown/matrix0.jpg" alt="矩阵表示"></p>
 <p>在起始、结束标记用下列词替换 matrix</p>
@@ -505,14 +505,14 @@ npm i @upupming/hexo-renderer-markdown-it-plus --save
 </ul>
 <p><img src="/img/posts/Markdown/matrix1.jpg" alt="边框矩阵表示"></p>
 <h3 id="方程组表示"><a class="markdownIt-Anchor" href="#方程组表示"></a> 方程组表示</h3>
-<pre class="highlight"><code class="">$$\begin{cases}
-a_1x+b_1y+c_1z=d_1\\
-a_2x+b_2y+c_2z=d_2\\
-a_3x+b_3y+c_3z=d_3\\
-\end{cases}
-$$
+<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{cases}
+a<span class="hljs-built_in">_</span>1x+b<span class="hljs-built_in">_</span>1y+c<span class="hljs-built_in">_</span>1z=d<span class="hljs-built_in">_</span>1<span class="hljs-keyword">\\</span>
+a<span class="hljs-built_in">_</span>2x+b<span class="hljs-built_in">_</span>2y+c<span class="hljs-built_in">_</span>2z=d<span class="hljs-built_in">_</span>2<span class="hljs-keyword">\\</span>
+a<span class="hljs-built_in">_</span>3x+b<span class="hljs-built_in">_</span>3y+c<span class="hljs-built_in">_</span>3z=d<span class="hljs-built_in">_</span>3<span class="hljs-keyword">\\</span>
+<span class="hljs-keyword">\end</span>{cases}
+<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
 </code></pre>
-<p><img src="/img/posts/Markdown/mequation0.jpg" alt="方程组表示"></p>
+<p><img src="/img/posts/Markdown/equation0.jpg" alt="方程组表示"></p>
 
                 
             </div>
