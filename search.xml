@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>机器学习2-矩阵方程</title>
+      <link href="/2022/08/29/ji-qi-xue-xi-2-ju-zhen-fang-cheng/"/>
+      <url>/2022/08/29/ji-qi-xue-xi-2-ju-zhen-fang-cheng/</url>
+      
+        <content type="html"><![CDATA[<h2 id="矩阵的基本概念"><a href="#矩阵的基本概念" class="headerlink" title="矩阵的基本概念"></a>矩阵的基本概念</h2><ul><li>dimension ：行x列 </li><li>矩阵表示<br>  $$\begin{bmatrix}<br>  1&amp;1&amp;0\<br>  1&amp;0&amp;1\<br>  \end{bmatrix}$$<br>      2<em>3的矩阵表示<br><br>  $$\begin{bmatrix}<br>  0&amp;1\<br>  1&amp;0\<br>  1&amp;1\<br>  \end{bmatrix}$$<br>      3</em>2的矩阵表示</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 线性代数 </tag>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>机器学习1--机器学习是干什么</title>
       <link href="/2022/08/29/ji-qi-xue-xi-1-ji-qi-xue-xi-shi-gan-shi-me/"/>
       <url>/2022/08/29/ji-qi-xue-xi-1-ji-qi-xue-xi-shi-gan-shi-me/</url>
