@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>机器学习1--机器学习是干什么</title>
+      <link href="/2022/08/29/ji-qi-xue-xi-1-ji-qi-xue-xi-shi-gan-shi-me/"/>
+      <url>/2022/08/29/ji-qi-xue-xi-1-ji-qi-xue-xi-shi-gan-shi-me/</url>
+      
+        <content type="html"><![CDATA[<p>监督学习与非监督学习，假设函数与代价函数，梯度下降</p><h2 id="监督学习与非监督学习"><a href="#监督学习与非监督学习" class="headerlink" title="监督学习与非监督学习"></a>监督学习与非监督学习</h2><blockquote><p><strong>有无预期输出</strong>是监督学习与非监督学习的最大区别</p></blockquote><ul><li>监督学习：学习一个模型使模型能够对任意给定的输入，对其相应的输出做出一个好的预测。</li></ul><p>即：利用训练数据集学习一个模型，再用模型对测试样本集进行预测。</p><p><strong>分类问题（离散）</strong>与<strong>回归问题（连续）</strong>等都是监督学习。</p><ul><li>非监督学习：直接对数据进行建模。没有给定事先标记过的训练范例，所用的数据没有属性或标签这一概念。事先不知道输入数据对应的输出结果是什么。</li></ul><p>自动对输入的资料进行分类或分群，以寻找数据的模型和规律。</p><p><strong>聚类算法</strong>是一种非监督学习，针对数据集，自动找出数据中的结构，从而把数据分成不同的簇。</p><h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>此处以最简单的线性回归（如房价预测）为例，线性回归的学习是为了预测未来房价</p><p>机器学习是在已知部分x与y的情况下，得出一个房价相关的线性函数y &#x3D; ax + b</p><p>所以代价函数是与参数a,b相关的函数,使得代价函数最小化，是线性回归中的学习目标</p><p>常用的代价函数有<br>    <img src="/img/posts/MeachineLearning/cost_function.jpg" alt="平方和代价函数"></p><h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 梯度下降 </tag>
+            
+            <tag> 代价函数 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode-链表相关</title>
       <link href="/2022/08/28/leetcode-lian-biao-xiang-guan/"/>
       <url>/2022/08/28/leetcode-lian-biao-xiang-guan/</url>
