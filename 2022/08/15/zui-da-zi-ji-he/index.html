@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="keywords" content="求最大子集和, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
     <meta name="description" content="求最大子集和53. 最大子数组和给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。子数组 是数组中的一个连续部分。
-法一 暴力class Solution &amp;#123;
-    pub">
+法一 暴力class Solution {
+    public i">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -397,7 +397,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    124
+                    120
                 </div>
                 
 
@@ -420,8 +420,8 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="求最大子集和"><a href="#求最大子集和" class="headerlink" title="求最大子集和"></a>求最大子集和</h2><h3 id="53-最大子数组和"><a href="#53-最大子数组和" class="headerlink" title="53. 最大子数组和"></a>53. 最大子数组和</h3><p>给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。<br>子数组 是数组中的一个连续部分。</p>
-<h4 id="法一-暴力"><a href="#法一-暴力" class="headerlink" title="法一 暴力"></a>法一 暴力</h4><pre class=" language-c++"><code class="language-c++">class Solution &#123;
-    public int numTrees(int n) &#123;
+<h4 id="法一-暴力"><a href="#法一-暴力" class="headerlink" title="法一 暴力"></a>法一 暴力</h4><pre class=" language-c++"><code class="language-c++">class Solution {
+    public int numTrees(int n) {
         int[] dp = new int[n+1];
         dp[0] = 1;
         dp[1] = 1;
@@ -431,8 +431,8 @@
                 dp[i] += dp[j-1] * dp[i-j];
         
         return dp[n];
-    &#125;
-&#125;
+    }
+}
 </code></pre>
 
                 
@@ -829,7 +829,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Hive学习之路4-HQL的应用1-建表与show语句, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
     <meta name="description" content="SQL中DDL(Data Defeinition Language)语言，主要是Create，ALter，DROP。DDL并不涉及表内部操作。
-Hive中的数据库在默认情况下，Hive的默认数据库default ,位于HDFS的&amp;#x2F;">
+Hive中的数据库在默认情况下，Hive的默认数据库default ,位于HDFS的/user/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -396,7 +396,7 @@ Hive中的数据库在默认情况下，Hive的默认数据库default ,位于HDF
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    321
+                    306
                 </div>
                 
 
@@ -419,8 +419,8 @@ Hive中的数据库在默认情况下，Hive的默认数据库default ,位于HDF
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>SQL中DDL(Data Defeinition Language)语言，主要是Create，ALter，DROP。DDL并不涉及表内部操作。</p>
-<h2 id="Hive中的数据库"><a href="#Hive中的数据库" class="headerlink" title="Hive中的数据库"></a>Hive中的数据库</h2><p>在默认情况下，Hive的默认数据库default ,位于HDFS的&#x2F;user&#x2F;hive&#x2F;warehouse目录下<br>用户自己创建的数据库位于&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;databse_name.db下</p>
-<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>create databse用于创建新的数据库<br>COMMENT: 数据库的注释说明语句<br>LOCATION: 指定数据库再HDFS存储位置，默认为&#x2F;user&#x2F;hive&#x2F;warehouse&#x2F;dbname.db<br>With DBPROPERTIES: 用于指定一些数据库的属性配置</p>
+<h2 id="Hive中的数据库"><a href="#Hive中的数据库" class="headerlink" title="Hive中的数据库"></a>Hive中的数据库</h2><p>在默认情况下，Hive的默认数据库default ,位于HDFS的/user/hive/warehouse目录下<br>用户自己创建的数据库位于/user/hive/warehouse/databse_name.db下</p>
+<h2 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h2><p>create databse用于创建新的数据库<br>COMMENT: 数据库的注释说明语句<br>LOCATION: 指定数据库再HDFS存储位置，默认为/user/hive/warehouse/dbname.db<br>With DBPROPERTIES: 用于指定一些数据库的属性配置</p>
 <pre class=" language-SQL"><code class="language-SQL">CREATE (DATABASE|SCHEMA)[IF NOT EXISTS]database_name
 [COMMENT database_comment]
 [LOCATION hdfs_path]
@@ -457,7 +457,7 @@ row format delimited
 fields terminated by "\t";
 </code></pre>
 <h3 id="show语法"><a href="#show语法" class="headerlink" title="show语法"></a>show语法</h3><p>用于查看schemas，tables和databases</p>
-<p>show tables;<br>show databases;<br>show schemas;<br>show tables in database1; &#x2F;&#x2F; 此处表示展示database1中的表<br>show tables in schema1; &#x2F;&#x2F; 此处表示展示schema1中的表</p>
+<p>show tables;<br>show databases;<br>show schemas;<br>show tables in database1; // 此处表示展示database1中的表<br>show tables in schema1; // 此处表示展示schema1中的表</p>
 <p>查看元数据类型<br>desc formatted table1;</p>
 
                 
@@ -858,7 +858,7 @@ fields terminated by "\t";
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             

@@ -422,7 +422,7 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>学习参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CU4y1N7Sh?p=49&spm_id_from=pageDriver&vd_source=f618be285e44e05f2b481fa28b9fe6ad">Hadoop入门</a></p>
+                <p>学习参考<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CU4y1N7Sh?p=49&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad">Hadoop入门</a></p>
 <h2 id="Yarn的简介"><a href="#Yarn的简介" class="headerlink" title="Yarn的简介"></a>Yarn的简介</h2><p>Hdfsd大数据存储系统中的资源管理器主要为MapReduce与Yarn，是一个通用的<strong>资源管理系统</strong>和<strong>调度</strong>平台，可为上层应用提供统一的资源管理和调度，为集群再利用率，资源统一管理和数据共享等方面带来了巨大好处</p>
 <p><strong>资源管理系统</strong>: 管理集群的硬件资源，包括内存，CPU等<br><strong>调度平台</strong>： 多个程序同时申请资源，如何进行合理的分配与调度<br>Yarn作为一个通用平台，说明它不仅仅支持MR（MapReuce）程序，理论上支持各种计算程序（Spark，HBase，Storm…）</p>
 <p>可以把Yarn理解为一个分布式的操作系统平台，HDFS是应用最广泛的大数存储系统，Yarn功不可没</p>
@@ -449,7 +449,7 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
 <p><img src="/img/posts/Yarn/Scheduler_task_div.jpg" alt="文件划分"></p>
 <h3 id="Fair-Scheduler"><a href="#Fair-Scheduler" class="headerlink" title="Fair Scheduler"></a>Fair Scheduler</h3><p>提供了yarn应用程序中共享大型资源的方式</p>
 <hr>
-<p>例如：<br>用户A、B都有自己的队列 -&gt; A启动一个作业，而B还没有，此时A分配了集群中所有可用的资源 -&gt; B在A仍在运行时启动了一个作业，一段时间后，A、B各自作业都使用了一半的资源 -&gt; 若B此时再开启第二个作业，它将于B的另一个作业共享资源。A的一个作业仍占有1&#x2F;2的资源，而B的两个作业各自占有1&#x2F;4的资源</p>
+<p>例如：<br>用户A、B都有自己的队列 -&gt; A启动一个作业，而B还没有，此时A分配了集群中所有可用的资源 -&gt; B在A仍在运行时启动了一个作业，一段时间后，A、B各自作业都使用了一半的资源 -&gt; 若B此时再开启第二个作业，它将于B的另一个作业共享资源。A的一个作业仍占有1/2的资源，而B的两个作业各自占有1/4的资源</p>
 <hr>
 <p>Fair Scheduler支持资源抢占、基于用户的映射</p>
 
@@ -851,7 +851,7 @@ Yarn的简介Hdfsd大数据存储系统中的资源管理器主要为MapReduce�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             

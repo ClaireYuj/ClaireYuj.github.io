@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="JSON配置, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="MAven 项目中以来的配置在maven项目中的pom.xml该项目有com.example  &amp;#x2F;&amp;#x2F;一般是公司名project  &amp;#x2F;&amp;#x2F;一般是项目名1.0  
-如果要配置依赖，需要在所有依赖外面先加de">
+    <meta name="description" content="MAven 项目中以来的配置在maven项目中的pom.xml该项目有com.example  //一般是公司名project  //一般是项目名1.0  
+如果要配置依赖，需要在所有依赖外面先加dependencies，如
+
+&amp;lt;de">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -400,7 +402,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    265
+                    260
                 </div>
                 
 
@@ -422,7 +424,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="MAven-项目中以来的配置"><a href="#MAven-项目中以来的配置" class="headerlink" title="MAven 项目中以来的配置"></a>MAven 项目中以来的配置</h2><p>在maven项目中的pom.xml<br>该项目有<br><groupId>com.example</groupID>  &#x2F;&#x2F;一般是公司名<br><artifactID>project</artifactID>  &#x2F;&#x2F;一般是项目名<br><version>1.0</version>  </p>
+                <h2 id="MAven-项目中以来的配置"><a href="#MAven-项目中以来的配置" class="headerlink" title="MAven 项目中以来的配置"></a>MAven 项目中以来的配置</h2><p>在maven项目中的pom.xml<br>该项目有<br><groupid>com.example</groupid>  //一般是公司名<br><artifactid>project</artifactid>  //一般是项目名<br><version>1.0</version>  </p>
 <p>如果要配置依赖，需要在所有依赖外面先加dependencies，如</p>
 <pre class=" language-xml"><code class="language-xml">
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
@@ -449,7 +451,7 @@
 
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span>
 </code></pre>
-<p>若配置了依赖，maven install时仍然报错，勾选settings-&gt;buid,execution,deployment中buol tolls下的maven下的runner，勾选嘴上的delegate IDE build&#x2F;run action to Maven</p>
+<p>若配置了依赖，maven install时仍然报错，勾选settings-&gt;buid,execution,deployment中buol tolls下的maven下的runner，勾选嘴上的delegate IDE build/run action to Maven</p>
 <p><img src="/img/posts/config/trust_maven.jpg" alt="Delegate IDE build/run action to Maven"></p>
 <p>记得配置maven的setting file和repository</p>
 <h2 id="配置JSON"><a href="#配置JSON" class="headerlink" title="配置JSON"></a>配置JSON</h2><p>在maven项目中的pom文件中先配置相关依赖</p>
@@ -853,7 +855,7 @@ import com.alibaba.fastjson.JSONObject;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             

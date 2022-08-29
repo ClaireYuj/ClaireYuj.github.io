@@ -7,7 +7,7 @@
     <meta name="keywords" content="Leetcode-链表相关, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
     <meta name="description" content="赋值带随机指针的链表
 解法
-解法一：拼接+拆分将原链表假设为1-&amp;gt;2-&amp;gt;3复制1-&amp;gt;1-&amp;gt;2-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;null这样cur-&amp;gt;random-&amp;gt;next &amp;#x3D; cu">
+解法一：拼接+拆分将原链表假设为1-&amp;gt;2-&amp;gt;3复制1-&amp;gt;1-&amp;gt;2-&amp;gt;2-&amp;gt;3-&amp;gt;3-&amp;gt;null这样cur-&amp;gt;random-&amp;gt;next = cur-&amp;gt">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -397,7 +397,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    336
+                    305
                 </div>
                 
 
@@ -421,49 +421,49 @@
             <div id="articleContent">
                 <h2 id="赋值带随机指针的链表"><a href="#赋值带随机指针的链表" class="headerlink" title="赋值带随机指针的链表"></a>赋值带随机指针的链表</h2><p><img src="/img/posts/Leetcode/leetcode138.jpg" alt="Leetcode138"></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/9plk45/">解法</a></p>
-<h3 id="解法一：拼接-拆分"><a href="#解法一：拼接-拆分" class="headerlink" title="解法一：拼接+拆分"></a>解法一：拼接+拆分</h3><p>将原链表假设为1-&gt;2-&gt;3复制<br>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;null<br>这样cur-&gt;random-&gt;next &#x3D; cur-&gt;next-&gt;random<br>比如如果1-&gt;random &#x3D; 3,那么1-&gt;random &#x3D; 3, 3-&gt;next &#x3D; 3 &#x3D;&#x3D;&#x3D;&gt;1-&gt;random-&gt;next &#x3D; 3, 且1-&gt;next &#x3D; 1, 1-&gt;random &#x3D; 3 &#x3D;&#x3D;&#x3D;&gt; 1-&gt;next-&gt;random &#x3D; 3, 所以cur-&gt;next-&gt;random &#x3D; cur-&gt;random-&gt;next</p>
+<h3 id="解法一：拼接-拆分"><a href="#解法一：拼接-拆分" class="headerlink" title="解法一：拼接+拆分"></a>解法一：拼接+拆分</h3><p>将原链表假设为1-&gt;2-&gt;3复制<br>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;null<br>这样cur-&gt;random-&gt;next = cur-&gt;next-&gt;random<br>比如如果1-&gt;random = 3,那么1-&gt;random = 3, 3-&gt;next = 3 ===&gt;1-&gt;random-&gt;next = 3, 且1-&gt;next = 1, 1-&gt;random = 3 ===&gt; 1-&gt;next-&gt;random = 3, 所以cur-&gt;next-&gt;random = cur-&gt;random-&gt;next</p>
 <pre class=" language-JAVA"><code class="language-JAVA">/*
 // Definition for a Node.
-class Node &#123;
+class Node {
     int val;
     Node next;
     Node random;
 
-    public Node(int val) &#123;
+    public Node(int val) {
         this.val = val;
         this.next = null;
         this.random = null;
-    &#125;
-&#125;
+    }
+}
 */
 
-class Solution &#123;
-    public Node copyRandomList(Node head) &#123;
+class Solution {
+    public Node copyRandomList(Node head) {
         if(head == null) return head;
         Node cur = head;
 
         Node p = cur;
         //1. 复制节点并拼接
-        while(cur!=null)&#123; 
+        while(cur!=null){ 
             Node copy = new Node(cur.val);  //复制该节点
             copy.next = cur.next; //连接copy节点的next
             cur.next = copy; //关联该节点与复制节点
             cur = copy.next; //移动指针
-        &#125;
+        }
 
         // 2.构建random,使得cur->random->next = cur->next->random
         cur = head; // java中对象传递是引用传递
-        while(cur!=null)&#123;
-            if(cur.random!=null)&#123;
+        while(cur!=null){
+            if(cur.random!=null){
                 cur.next.random = cur.random.next;  
-            &#125;
+            }
             cur = cur.next.next;
-        &#125;
+        }
 
         // 3. 将random拆出来
         cur = head.next;
         Node pre = head,res=head.next;
-        while(cur.next!=null)&#123;
+        while(cur.next!=null){
             /**注意pre和cur节点的顺序， pre要在cur之前，
              */
             pre.next = pre.next.next; 
@@ -472,12 +472,12 @@ class Solution &#123;
             cur = cur.next;
           
            
-        &#125;
+        }
         pre.next = null;
         return res;
 
-    &#125;
-&#125;
+    }
+}
 </code></pre>
 <h3 id="解法二：哈希表"><a href="#解法二：哈希表" class="headerlink" title="解法二：哈希表"></a>解法二：哈希表</h3>
                 
@@ -866,7 +866,7 @@ class Solution &#123;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             

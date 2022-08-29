@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Hive学习之路3-Hive客户端的使用, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="推荐使用第二代客户端$HIVE_Home&amp;#x2F;bin&amp;#x2F;beeline，是一个JDBC客户端官方强烈推荐的Hive命令行工具，和第一代客户端相比，性能安全性提高
-图源：https://www.bilibili.com/vide">
+    <meta name="description" content="推荐使用第二代客户端$HIVE_Home/bin/beeline，是一个JDBC客户端官方强烈推荐的Hive命令行工具，和第一代客户端相比，性能安全性提高
+图源：https://www.bilibili.com/video/BV1CU4y1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -396,7 +396,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    885
+                    879
                 </div>
                 
 
@@ -418,9 +418,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>推荐使用第二代客户端$HIVE_Home&#x2F;bin&#x2F;beeline，是一个JDBC客户端<br>官方强烈推荐的Hive命令行工具，和第一代客户端相比，性能安全性提高</p>
-<p><img src="/img/posts/DataRepos/hive%E5%AE%A2%E6%88%B7%E7%AB%AF1&2.jpg" alt="Hive客户端与服务的关系"><br>图源：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CU4y1N7Sh?p=62&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad">https://www.bilibili.com/video/BV1CU4y1N7Sh?p=62&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad</a></p>
-<h2 id="HiveServer2服务"><a href="#HiveServer2服务" class="headerlink" title="HiveServer2服务"></a>HiveServer2服务</h2><p>在远程模式下，启动HiveServer2必须先启动mtastore服务<br>Beeline客户端只能通过HiveServer2服务访问Hive问bin&#x2F;hive是通过一代服务(metastore)访问的</p>
+                <p>推荐使用第二代客户端$HIVE_Home/bin/beeline，是一个JDBC客户端<br>官方强烈推荐的Hive命令行工具，和第一代客户端相比，性能安全性提高</p>
+<p><img src="/img/posts/DataRepos/hive%E5%AE%A2%E6%88%B7%E7%AB%AF1&amp;2.jpg" alt="Hive客户端与服务的关系"><br>图源：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CU4y1N7Sh?p=62&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad">https://www.bilibili.com/video/BV1CU4y1N7Sh?p=62&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad</a></p>
+<h2 id="HiveServer2服务"><a href="#HiveServer2服务" class="headerlink" title="HiveServer2服务"></a>HiveServer2服务</h2><p>在远程模式下，启动HiveServer2必须先启动mtastore服务<br>Beeline客户端只能通过HiveServer2服务访问Hive问bin/hive是通过一代服务(metastore)访问的</p>
 <pre class=" language-shell"><code class="language-shell">nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service metastore &
 
 nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &
@@ -440,7 +440,7 @@ nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &
 <ul>
 <li><p>进入beeline</p>
 </li>
-<li><p>输入 beeline&gt; ! connect jdbc:hive2:&#x2F;&#x2F;node1:10000<br>  连接到hive服务<br>  输入用户名：root<br>  密码直接回车</p>
+<li><p>输入 beeline&gt; ! connect jdbc:hive2://node1:10000<br>  连接到hive服务<br>  输入用户名：root<br>  密码直接回车</p>
 </li>
 <li><p>连接成功<br>  可以直接输入 show databases;<br>          show tables;<br>  进行基本查询</p>
 </li>
@@ -518,7 +518,7 @@ nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &
 <pre class=" language-shell"><code class="language-shell">hadoop fs -put 1.txt /user/hive/warehouse/test.db/t_1/
 </code></pre>
 <p>此处是将1.txt的淑君放到test数据库下的t_1表中</p>
-<p>然后再beeline&#x2F;datagrip中用select语句可以查看</p>
+<p>然后再beeline/datagrip中用select语句可以查看</p>
 <ol start="3">
 <li>用load加载（推荐）<br>load命令是一个纯复制纯移动的树，hive不会对数据做任何形式的改变<br>语句格式如下</li>
 </ol>
@@ -922,7 +922,7 @@ nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service hiveserver2 &
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             

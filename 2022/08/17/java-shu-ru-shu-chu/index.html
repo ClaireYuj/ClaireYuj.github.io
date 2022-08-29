@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="JAVA输入输出, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="JAVA I&amp;#x2F;O在Java程序中要读取外部IO设备中的内容，要求先将数据传输到内存中，这一步需要借助操作系统实现。JDK中提供的IO操作框架，根据流的传输方向和读取单位分为字节流InputStream和outputSteam以及字">
+    <meta name="description" content="JAVA I/O在Java程序中要读取外部IO设备中的内容，要求先将数据传输到内存中，这一步需要借助操作系统实现。JDK中提供的IO操作框架，根据流的传输方向和读取单位分为字节流InputStream和outputSteam以及字符流Rea">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -395,7 +395,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    393
+                    367
                 </div>
                 
 
@@ -417,50 +417,50 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="JAVA-I-x2F-O"><a href="#JAVA-I-x2F-O" class="headerlink" title="JAVA I&#x2F;O"></a>JAVA I&#x2F;O</h1><p>在Java程序中要读取外部IO设备中的内容，要求先将数据传输到内存中，这一步需要借助操作系统实现。<br>JDK中提供的IO操作框架，根据流的传输方向和读取单位分为字节流InputStream和outputSteam以及字符流Reader和Writer</p>
-<p>字节流一次<strong>读取一个字节</strong>（1 byte）<br>字符流一次<strong>读取一个字符</strong>（1 char &#x3D;  2 byte）</p>
+                <h1 id="JAVA-I-x2F-O"><a href="#JAVA-I-x2F-O" class="headerlink" title="JAVA I/O"></a>JAVA I/O</h1><p>在Java程序中要读取外部IO设备中的内容，要求先将数据传输到内存中，这一步需要借助操作系统实现。<br>JDK中提供的IO操作框架，根据流的传输方向和读取单位分为字节流InputStream和outputSteam以及字符流Reader和Writer</p>
+<p>字节流一次<strong>读取一个字节</strong>（1 byte）<br>字符流一次<strong>读取一个字符</strong>（1 char =  2 byte）</p>
 <h1 id="文件流"><a href="#文件流" class="headerlink" title="文件流"></a>文件流</h1><h2 id="文件字节流"><a href="#文件字节流" class="headerlink" title="文件字节流"></a>文件字节流</h2><p>头文件</p>
 <pre class=" language-Java"><code class="language-Java">import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 </code></pre>
-<h3 id="创建输入流"><a href="#创建输入流" class="headerlink" title="创建输入流"></a>创建输入流</h3><pre class=" language-Java"><code class="language-Java">try&#123;
+<h3 id="创建输入流"><a href="#创建输入流" class="headerlink" title="创建输入流"></a>创建输入流</h3><pre class=" language-Java"><code class="language-Java">try{
     FileInputStream inputStream = new FileInputStream("test.txt"); 
-&#125;catch(FileNotFoundException e)&#123;
+}catch(FileNotFoundException e){
     e.printStackTrace();
-&#125;
+}
 </code></pre>
 <p>在使用完成后，要关闭流进行资源释放，在catch后加入finally</p>
 <pre class=" language-Java"><code class="language-Java">        FileInputStream inputStream = null;
-        try&#123;
+        try{
             inputStream = new FileInputStream("test.txt");
-        &#125;catch (FileNotFoundException e)&#123;
+        }catch (FileNotFoundException e){
             e.printStackTrace();
-        &#125;finally &#123;
-            try&#123;
+        }finally {
+            try{
                 if(inputStream !=null) inputStream.close();
-            &#125;catch (IOException e)&#123;
+            }catch (IOException e){
                 e.printStackTrace();
-            &#125;
-        &#125;
+            }
+        }
 </code></pre>
 <p><strong>但这样过于繁琐，尝试以下面方式进行简化</strong></p>
-<pre class=" language-Java"><code class="language-Java">    try(FileInputStream inputStream  = new FileInputStream("test.txt"))&#123;
+<pre class=" language-Java"><code class="language-Java">    try(FileInputStream inputStream  = new FileInputStream("test.txt")){
             
-    &#125;catch (FileNotFoundException e)&#123;
+    }catch (FileNotFoundException e){
             e.printStackTrace();
-    &#125;
+    }
 </code></pre>
 <p>将inputStream的初始化放到的括号中且不报错，原因是InputStream这个抽象类使用了Closeable的接口<br>而Closeable接口继承了AutoCloseable，如果一个对象是在try-with-resource(在JDK7中引入，JDK9中改进)代码块中生命的，则AutoCloseable的对象的close()方法会自动执行<br>字节流，字符流等都可以直接使用</p>
 <h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><p>inputStream.read() 一次读取一个英文字母（读的是ASCII码，需要char转换）</p>
 <p>一次性全部读完</p>
-<pre class=" language-Java"><code class="language-Java">try( FileInputStream inputStream = new FileInputStream("test.txt"))&#123;
+<pre class=" language-Java"><code class="language-Java">try( FileInputStream inputStream = new FileInputStream("test.txt")){
             int tmp;
-            while((tmp = inputStream.read()) != -1)&#123;
+            while((tmp = inputStream.read()) != -1){
                 System.out.println((char)tmp);
-            &#125;
-        &#125;catch (IOException e)&#123;
+            }
+        }catch (IOException e){
             e.printStackTrace();
-        &#125;
+        }
 </code></pre>
 
                 
@@ -861,7 +861,7 @@ import java.io.FileNotFoundException;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             

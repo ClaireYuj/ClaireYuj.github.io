@@ -400,7 +400,7 @@ TTL值：Time ">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    928
+                    898
                 </div>
                 
 
@@ -427,11 +427,11 @@ TTL值：Time ">
 <p>其中的数据内容如下：</p>
 <p>bytes值：字节数，也就是数据包大小。</p>
 <p>time值：响应时间，这个时间越小，说明连接速度越快。</p>
-<p>TTL值：Time To Live,表示DNS记录在DNS服务器上存在的时间，它是IP协议包的一个值，告诉路由器该数据包何时需要被丢弃。可以通过Ping返回的TTL值大小，粗略地判断目标系统类型是Windows系列还是UNIX&#x2F;Linux系列。</p>
-<p>默认情况下，Linux系统的TTL值为64或255，WindowsNT&#x2F;2000&#x2F;XP系统的TTL值为128，Windows98系统的TTL值为32，UNIX主机的TTL值为255。</p>
+<p>TTL值：Time To Live,表示DNS记录在DNS服务器上存在的时间，它是IP协议包的一个值，告诉路由器该数据包何时需要被丢弃。可以通过Ping返回的TTL值大小，粗略地判断目标系统类型是Windows系列还是UNIX/Linux系列。</p>
+<p>默认情况下，Linux系统的TTL值为64或255，WindowsNT/2000/XP系统的TTL值为128，Windows98系统的TTL值为32，UNIX主机的TTL值为255。</p>
 <p>因此一般TTL值：</p>
 <p>100~130ms之间，Windows系统 ；</p>
-<p>240~255ms之间，UNIX&#x2F;Linux系统。</p>
+<p>240~255ms之间，UNIX/Linux系统。</p>
 <h2 id="ping的步骤"><a href="#ping的步骤" class="headerlink" title="ping的步骤"></a>ping的步骤</h2><p>完整代码见：<a target="_blank" rel="noopener" href="https://github.com/ClaireYuj/PING-Traceroute/blob/main/ICMPPing.py">PING</a></p>
 <p>解析主机并，进行多次ping操作，输出结果，判断最终结果并输出四个步骤<br>ping的代码如下</p>
 <pre class=" language-Python"><code class="language-Python">def ping(host, timeout=1):
@@ -451,7 +451,7 @@ TTL值：Time ">
         print(e)
         print(" Error on extract the hostname")
         return
-    print(" Ping &#123;0&#125; [&#123;1&#125;] with 32 bytes of data:".format(host, destinationAddress))
+    print(" Ping {0} [{1}] with 32 bytes of data:".format(host, destinationAddress))
     lost = 0
     accept = 0
     timesum = 0.0
@@ -477,13 +477,13 @@ TTL值：Time ">
 
         else:
             delay = delay * 1000
-            print("reply from &#123;0&#125; : byte=32 seq = &#123;1&#125; time=&#123;2:.2f&#125;ms ttl = &#123;3&#125; ".format(destinationAddress, sequence, delay, ttl))
+            print("reply from {0} : byte=32 seq = {1} time={2:.2f}ms ttl = {3} ".format(destinationAddress, sequence, delay, ttl))
             accept += 1
             timesum += delay
             times.append(delay) # all the time
         time.sleep(1)
-    print('packet: send = &#123;0&#125;，received = &#123;1&#125;，loss= &#123;2&#125; (&#123;3&#125;% loss) \n\
-    Estimated round trip time: min = &#123;4:.2f&#125;ms，max = &#123;5:.2f&#125;ms，average = &#123;6:.2f&#125;ms'.format(
+    print('packet: send = {0}，received = {1}，loss= {2} ({3}% loss) \n\
+    Estimated round trip time: min = {4:.2f}ms，max = {5:.2f}ms，average = {6:.2f}ms'.format(
         count, accept, lost, lost / (lost + accept) * 100, min(times),
         max(times), sum(times) // (lost + accept)
     ))
@@ -1012,7 +1012,7 @@ def receiveOnePing(icmpSocket, destinationAddress, ID, timeout, startTime):
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             

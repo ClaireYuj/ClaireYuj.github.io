@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="在hexo的matery主题下显示数学公式, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
     <meta name="description" content="Markdown中激活mathjax插件，并使用数学公式，如矩阵与各种数学符号
- 激活mathjax插件
-主题config.yml文件里找到mathjax,改为true
-由于mathjax的渲染时间较长，故勾选全局mathjax为true后">
+激活mathjax插件主题config.yml文件里找到mathjax,改为true由于mathjax的渲染时间较长，故勾选全局mathjax为true后还需要">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -402,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    400
+                    383
                 </div>
                 
 
@@ -425,74 +423,62 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Markdown中激活mathjax插件，并使用数学公式，如矩阵与各种数学符号</p>
-<h2 id="激活mathjax插件"><a class="markdownIt-Anchor" href="#激活mathjax插件"></a> 激活mathjax插件</h2>
-<p>主题config.yml文件里找到mathjax,改为true<br>
-由于mathjax的渲染时间较长，故勾选全局mathjax为true后还需要在每篇文章的最上方输入mathjax:true</p>
+<h2 id="激活mathjax插件"><a href="#激活mathjax插件" class="headerlink" title="激活mathjax插件"></a>激活mathjax插件</h2><p>主题config.yml文件里找到mathjax,改为true<br>由于mathjax的渲染时间较长，故勾选全局mathjax为true后还需要在每篇文章的最上方输入mathjax:true</p>
 <p>此时就可以输入数学公式了，以矩阵为例</p>
 <p>输入</p>
-<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{bmatrix}             
-        1<span class="hljs-built_in">&amp;</span>1<span class="hljs-built_in">&amp;</span>0<span class="hljs-keyword">\\</span>                             
-        1<span class="hljs-built_in">&amp;</span>0<span class="hljs-built_in">&amp;</span>1<span class="hljs-keyword">\\</span>
-        <span class="hljs-keyword">\end</span>{bmatrix}<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
-
+<pre class=" language-Latex"><code class="language-Latex">$$\begin{bmatrix}             
+        1&1&0\\                             
+        1&0&1\\
+        \end{bmatrix}$$
 </code></pre>
-<p>以$$\begin开始,以\end{}$$结束<br>
-但由于matery主题的限制，矩阵不会换行，因此考虑使用markdown it Plus代替Marked渲染器</p>
-<h2 id="利用katex"><a class="markdownIt-Anchor" href="#利用katex"></a> 利用Katex</h2>
-<pre class="highlight"><code class="shell">npm un hexo-renderer-marked --save
+<p>以$$\begin开始,以\end{}$$结束<br>但由于matery主题的限制，矩阵不会换行，因此考虑使用markdown it Plus代替Marked渲染器</p>
+<h2 id="利用Katex"><a href="#利用Katex" class="headerlink" title="利用Katex"></a>利用Katex</h2><pre class=" language-shell"><code class="language-shell">npm un hexo-renderer-marked --save
 npm i hexo-renderer-markdown-it-plus --save
 </code></pre>
 <p>卸载marked，安装markdown-it-plus</p>
-<pre class="highlight"><code class="shell">npm un hexo-renderer-marked --save
+<pre class=" language-shell"><code class="language-shell">npm un hexo-renderer-marked --save
 npm i @upupming/hexo-renderer-markdown-it-plus --save
 </code></pre>
 <p>也可以考虑吧直接用升级版</p>
 <p>再修改hexo的config.yml文件</p>
-<pre class="highlight"><code class="yml"><span class="hljs-attr">markdown_it_plus:</span>
-  <span class="hljs-attr">render:</span>
-    <span class="hljs-attr">html:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">xhtmlOut:</span> <span class="hljs-literal">false</span>
-    <span class="hljs-attr">breaks:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">linkify:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">typographer:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">quotes:</span> <span class="hljs-string">'“”‘’'</span>
-  <span class="hljs-attr">plugins:</span>
-  <span class="hljs-attr">anchors:</span>
-    <span class="hljs-attr">level:</span> <span class="hljs-number">2</span>
-    <span class="hljs-attr">collisionSuffix:</span> <span class="hljs-string">'v'</span>
-    <span class="hljs-attr">permalink:</span> <span class="hljs-literal">true</span>
-    <span class="hljs-attr">permalinkClass:</span> <span class="hljs-string">header-anchor</span>
-    <span class="hljs-attr">permalinkSide:</span> <span class="hljs-string">'left'</span>
-    <span class="hljs-attr">permalinkSymbol:</span> <span class="hljs-string">¶</span>
+<pre class=" language-yml"><code class="language-yml">markdown_it_plus:
+  render:
+    html: true
+    xhtmlOut: false
+    breaks: true
+    linkify: true
+    typographer: true
+    quotes: '“”‘’'
+  plugins:
+  anchors:
+    level: 2
+    collisionSuffix: 'v'
+    permalink: true
+    permalinkClass: header-anchor
+    permalinkSide: 'left'
+    permalinkSymbol: ¶
 </code></pre>
-<p>就完成了配置<br>
-可以用</p>
-<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{bmatrix}             
-        1<span class="hljs-built_in">&amp;</span>1<span class="hljs-built_in">&amp;</span>0<span class="hljs-keyword">\\</span>                             
-        1<span class="hljs-built_in">&amp;</span>0<span class="hljs-built_in">&amp;</span>1<span class="hljs-keyword">\\</span>
-        <span class="hljs-keyword">\end</span>{bmatrix}<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
-
+<p>就完成了配置<br>可以用</p>
+<pre class=" language-Latex"><code class="language-Latex">$$\begin{bmatrix}             
+        1&1&0\\                             
+        1&0&1\\
+        \end{bmatrix}$$
 </code></pre>
 <p>再测试一下，此时的matrix会分行了</p>
-<h2 id="markdown数学公式的使用"><a class="markdownIt-Anchor" href="#markdown数学公式的使用"></a> Markdown数学公式的使用</h2>
-<h3 id="基础格式"><a class="markdownIt-Anchor" href="#基础格式"></a> 基础格式</h3>
-<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{equation}
-公式<span class="hljs-keyword">\\</span>
-公式<span class="hljs-keyword">\\</span>
-<span class="hljs-keyword">\end</span>{equation}<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
+<h2 id="Markdown数学公式的使用"><a href="#Markdown数学公式的使用" class="headerlink" title="Markdown数学公式的使用"></a>Markdown数学公式的使用</h2><h3 id="基础格式"><a href="#基础格式" class="headerlink" title="基础格式"></a>基础格式</h3><pre class=" language-Latex"><code class="language-Latex">$$\begin{equation}
+公式\\
+公式\\
+\end{equation}$$
 </code></pre>
-<h3 id="上下标"><a class="markdownIt-Anchor" href="#上下标"></a> 上下标</h3>
-<p><strong>^<strong>表示上标，</strong>_<strong>表示下标，需要用</strong>{}</strong></p>
-<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span> x<span class="hljs-built_in">^</span>{y<span class="hljs-built_in">^</span>z}=(1+{<span class="hljs-keyword">\rm</span> e}<span class="hljs-built_in">^</span>x)<span class="hljs-built_in">^</span>{-2xy<span class="hljs-built_in">^</span>w} <span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
+<h3 id="上下标"><a href="#上下标" class="headerlink" title="上下标"></a>上下标</h3><p><strong>^</strong>表示上标，**_<strong>表示下标，需要用</strong>{}** </p>
+<pre class=" language-Latex"><code class="language-Latex">$$ x^{y^z}=(1+{\rm e}^x)^{-2xy^w} $$
 </code></pre>
-<p>结果<br>
-<img src="/img/posts/Markdown/index.jpg" alt="结果"></p>
-<h3 id="矩阵表示"><a class="markdownIt-Anchor" href="#矩阵表示"></a> 矩阵表示</h3>
-<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{matrix}
-0<span class="hljs-built_in">&amp;</span>1<span class="hljs-built_in">&amp;</span>1<span class="hljs-keyword">\\</span>
-1<span class="hljs-built_in">&amp;</span>1<span class="hljs-built_in">&amp;</span>0<span class="hljs-keyword">\\</span>
-1<span class="hljs-built_in">&amp;</span>0<span class="hljs-built_in">&amp;</span>1<span class="hljs-keyword">\\</span>
-<span class="hljs-keyword">\end</span>{matrix}<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
+<p>结果<br><img src="/img/posts/Markdown/index.jpg" alt="结果"></p>
+<h3 id="矩阵表示"><a href="#矩阵表示" class="headerlink" title="矩阵表示"></a>矩阵表示</h3><pre class=" language-Latex"><code class="language-Latex">$$\begin{matrix}
+0&1&1\\
+1&1&0\\
+1&0&1\\
+\end{matrix}$$
 </code></pre>
 <p><img src="/img/posts/Markdown/matrix0.jpg" alt="矩阵表示"></p>
 <p>在起始、结束标记用下列词替换 matrix</p>
@@ -504,13 +490,12 @@ npm i @upupming/hexo-renderer-markdown-it-plus --save
 <li>Vmatrix：双竖线边框</li>
 </ul>
 <p><img src="/img/posts/Markdown/matrix1.jpg" alt="边框矩阵表示"></p>
-<h3 id="方程组表示"><a class="markdownIt-Anchor" href="#方程组表示"></a> 方程组表示</h3>
-<pre class="highlight"><code class="Latex"><span class="hljs-built_in">$</span><span class="hljs-built_in">$</span><span class="hljs-keyword">\begin</span>{cases}
-a<span class="hljs-built_in">_</span>1x+b<span class="hljs-built_in">_</span>1y+c<span class="hljs-built_in">_</span>1z=d<span class="hljs-built_in">_</span>1<span class="hljs-keyword">\\</span>
-a<span class="hljs-built_in">_</span>2x+b<span class="hljs-built_in">_</span>2y+c<span class="hljs-built_in">_</span>2z=d<span class="hljs-built_in">_</span>2<span class="hljs-keyword">\\</span>
-a<span class="hljs-built_in">_</span>3x+b<span class="hljs-built_in">_</span>3y+c<span class="hljs-built_in">_</span>3z=d<span class="hljs-built_in">_</span>3<span class="hljs-keyword">\\</span>
-<span class="hljs-keyword">\end</span>{cases}
-<span class="hljs-built_in">$</span><span class="hljs-built_in">$</span>
+<h3 id="方程组表示"><a href="#方程组表示" class="headerlink" title="方程组表示"></a>方程组表示</h3><pre class=" language-Latex"><code class="language-Latex">$$\begin{cases}
+a_1x+b_1y+c_1z=d_1\\
+a_2x+b_2y+c_2z=d_2\\
+a_3x+b_3y+c_3z=d_3\\
+\end{cases}
+$$
 </code></pre>
 <p><img src="/img/posts/Markdown/equation0.jpg" alt="方程组表示"></p>
 
@@ -916,7 +901,7 @@ a<span class="hljs-built_in">_</span>3x+b<span class="hljs-built_in">_</span>3y+
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.3k</span>
+                        class="white-color">19.5k</span>
             
             
             
