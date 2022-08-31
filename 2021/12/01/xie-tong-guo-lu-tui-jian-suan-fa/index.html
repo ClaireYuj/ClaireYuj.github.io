@@ -471,7 +471,7 @@
 <p><img src="/img/posts/MachineLearning/recommend_system7.jpg" alt="通过计算均值，得到了每个电影的均分矩阵"></p>
 <p><img src="/img/posts/MachineLearning/recommend_system8.jpg" alt="原评分矩阵中的元素减去对应的均值后，德奥新的评分矩阵"></p>
 <p>将均一化后的矩阵作为额数据集进行$\theta^{(j)}$参数的学习，预测函数为：<br>$${(\theta^{(j)})}^T{(X^{(i)})}+\mu_i$$</p>
-<p>对于没有打分的用户5<br>$$\theta^{(5)} = \begin {bmatrxi}0 &amp; 0 \end {bmatrix}$$</p>
+<p>对于没有打分的用户5<br>$$\theta^{(5)} = \begin {bmatrix}0 &amp; 0 \end {bmatrix}$$</p>
 <p>最终用户5的打分为 $\mu_i$</p>
 <p><strong>可用于解决用户冷启动问题</strong></p>
 
