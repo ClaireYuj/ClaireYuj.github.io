@@ -405,7 +405,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    590
+                    762
                 </div>
                 
 
@@ -452,7 +452,21 @@
 </li>
 </ul>
 <p>可以通过先随机地选取一些$\theta$地值来学习出不同电影地特征，在得到电影特征之后，再通过这些特征来预测另外的$\theta$值（用户喜爱程度，再根据这些$\theta$来预测电影特征…如此反复，最终将会收敛到一组合理的电影特征以及合理的对用户地预测</p>
-<h3 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h3>
+<h3 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h3><ol>
+<li><p>将$x^{(1)},x^{(2)}…x^{(n_m)}$,$\theta^{(1)},\theta^{(2)}…\theta{(n_u)}$初始化为一些小地随机出</p>
+</li>
+<li><p>使用梯度下降将代价函数最小化，</p>
+</li>
+</ol>
+<p><img src="/img/posts/MachineLearning/recommend_system3.jpg" alt="括号内的内容是对代价函数地偏导"></p>
+<ol start="3">
+<li>用一些有参数$\theta$的用户和有特征$x$的电影，来预测用户评分$\theta^Tx$</li>
+</ol>
+<h2 id="矩阵分解"><a href="#矩阵分解" class="headerlink" title="矩阵分解"></a>矩阵分解</h2><p>用户对电影评分可以写成如图所示评分矩阵<br><img src="/img/posts/MachineLearning/recommend_system4.jpg"></p>
+<p>该评分矩阵的实质是$\theta^{(j)}*x^{(i)}$</p>
+<p><img src="/img/posts/MachineLearning/recommend_system5.jpg"></p>
+<p>如果要给用户推荐相似的电影，可以通过两个电影之间的距离来判断，如果电影$x^{(i)}$与$x^{(j)}$非常相近，那么可以把$x^{(j)}$推荐给喜欢$x^{(i)}$的人</p>
+<h2 id="协同过滤算法中的均值归一化"><a href="#协同过滤算法中的均值归一化" class="headerlink" title="协同过滤算法中的均值归一化"></a>协同过滤算法中的均值归一化</h2>
                 
             </div>
             <hr/>
@@ -858,7 +872,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.7k</span>
+                        class="white-color">21.9k</span>
             
             
             
