@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>机器学习3-多元梯度下降</title>
+      <link href="/2022/08/30/ji-qi-xue-xi-3-duo-yuan-ti-du-xia-jiang/"/>
+      <url>/2022/08/30/ji-qi-xue-xi-3-duo-yuan-ti-du-xia-jiang/</url>
+      
+        <content type="html"><![CDATA[<h2 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h2><p>多元线性回归也就是用多个特征变量来进行预测  </p><div align="center"><font size="4">$h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3$+$\theta_4$$x_4$...+$\theta_n$$x_n$</font></div>    <center>定义$x_0$ = 1</center>  <p>所以<br>    x =<br>        $$\begin{bmatrix}<br>        x_0 x_1 x_2 … x_n<br>        \end{bmatrix}$$</p><p>$\theta$ = $$\begin{bmatrix}\theta_0 \ \theta_1  \ \theta_2 \ … \theta_n\end{bmatrix}$$</p><p>所以得出$h_\theta(x) = \theta^Tx$</p><h2 id="用梯度下降处理多元线性回归"><a href="#用梯度下降处理多元线性回归" class="headerlink" title="用梯度下降处理多元线性回归"></a>用梯度下降处理多元线性回归</h2><p>在梯度下降中的假设<br>$$h_\theta(x) = \theta^Tx$$</p><p>代价函数</p><p>$$J(\theta_0,\theta_1…\theta_n) = \frac{1}{2m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))^2$$</p><p>梯度下降</p><center>重复多次</center>    <p>$$\theta := \theta_j - \alpha \frac{\partial {J(\theta)}}{\partial \theta_j}$$</p><p>$\alpha$是学习率</p><p>最终梯度下降</p><center>重复</center>$$ \theta_j := \theta_j - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}$$<p>即<br>$$ \theta_0 := \theta_0 - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))x_0^{(i)}$$<br>$$ \theta_1 := \theta_1 - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))x_1^{(i)}$$<br>$$ \theta_2 := \theta_2 - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))x_2^{(i)}$$</p><h2 id="特征缩放-Feature-scaling"><a href="#特征缩放-Feature-scaling" class="headerlink" title="特征缩放(Feature scaling)"></a>特征缩放(Feature scaling)</h2><blockquote><p>不同特征的取值在一个相近的范围，这样梯度下降容易更好地收敛</p></blockquote><p>特征地范围不要过小也不要过大</p><h3 id="均值归一化-Mean-normalization"><a href="#均值归一化-Mean-normalization" class="headerlink" title="均值归一化(Mean normalization)"></a>均值归一化(Mean normalization)</h3><blockquote><p>将$x_i$用$x_i-\mu_i$代替是的特征均值为0</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 梯度下降 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>机器学习2-矩阵方程</title>
       <link href="/2022/08/29/ji-qi-xue-xi-2-ju-zhen-fang-cheng/"/>
       <url>/2022/08/29/ji-qi-xue-xi-2-ju-zhen-fang-cheng/</url>
       
-        <content type="html"><![CDATA[<h2 id="矩阵的基本概念"><a href="#矩阵的基本概念" class="headerlink" title="矩阵的基本概念"></a>矩阵的基本概念</h2><ul><li>dimension ：行x列 </li><li>矩阵表示<br>  2x3的矩阵表示:<br>  $$\begin{bmatrix}<br>  1&amp;1&amp;0\<br>  1&amp;0&amp;1\<br>  \end{bmatrix}$$<br><br>  3x2的矩阵表示:<br>  $$\begin{bmatrix}<br>  0&amp;1\<br>  1&amp;0\<br>  1&amp;1\<br>  \end{bmatrix}$$</li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="矩阵的基本概念"><a href="#矩阵的基本概念" class="headerlink" title="矩阵的基本概念"></a>矩阵的基本概念</h2><ul><li>dimension ：行x列 </li><li>矩阵表示<br>  2x3的矩阵表示:<br>  $$\begin{bmatrix}<br>  1&amp;1&amp;0 \<br>  1&amp;0&amp;1 \<br>  \end{bmatrix}$$<br><br>  3x2的矩阵表示:<br>  $$\begin{bmatrix}<br>  0&amp;1 \<br>  1&amp;0 \<br>  1&amp;1 \<br>  \end{bmatrix}$$</li></ul>]]></content>
       
       
       <categories>
@@ -267,6 +292,31 @@
             <tag> JSON </tag>
             
             <tag> maven </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构复习</title>
+      <link href="/2022/05/31/shu-ju-jie-gou-fu-xi/"/>
+      <url>/2022/05/31/shu-ju-jie-gou-fu-xi/</url>
+      
+        <content type="html"><![CDATA[<h2 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h2><ul><li><p>线式存储结构： 结构地址空间连接，可随机访问，但顺序存储插入操作需要移动之后的元素，要耗费许多时间。</p></li><li><p>链式存储：不要求逻辑上相邻的元素在物理上相连，元素之间的逻辑关系通过指针表示。</p></li><li><p>顺序存储： 逻辑上相邻物理也相邻</p></li></ul><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>栈： 先入后出，在表的末端（栈顶）进行插入删除，栈的存储结构分为<strong>基于数组的存储表示和顺序存储结构</strong>和<strong>基于链表的链式存储结构</strong><br>    - 顺序栈的内存结构：存放栈中元素的数组、栈顶指针、最大容纳元素个数<br>    - 链式栈的内存结构：栈顶指针  </p><h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><ul><li>队列：先入先出，队尾插入队首删除。<ul><li><p>队列的顺序存储结构利用一个<em>一维数组</em>作为存储结构，并设置头指针和尾指针两个指针来指示队首和队尾的位置。</p></li><li><p>队列的链式队列由队首指针和队尾指针构成。</p></li><li><p>循环队列元素个数 = （尾 - 头 + 表长） % 表长</p><ol><li>当尾 &gt; 头， 元素个数 = 尾 - 头</li><li>因为是循环队列，可能出现头&gt;尾的情况， 此时元素个数 = 尾 - 头 + 表长<br>  为了得到一个统一的公式–循环队列元素个数 = （尾 - 头 + 表长） % 表长</li></ol></li><li><p>判断循环队列队空、队满的方法：<br>  front表示队头指针（指向队列内首元素）,rear表示队尾指针（指向队列内尾元素的下一个位置）,m表示队列的容量（包括那个留空的位置）</p><p>  <strong>队列内元素个数：(rear - front + m) % m</strong></p><p>  <img src="/img/posts/DataStructure/cycle_queue3.jpg"></p><p>  当队列为空时条件：<strong>rear == front</strong>，当队列满时条件为：<strong>（rear+1）% maxsize == front</strong></p></li></ul></li></ul><h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p>hash表的实现主要包括构造哈希和处理哈希冲突两个方面：</p><p>对于构造哈希来说，主要包括直接地址法、平方取中法、除留余数法等。</p><p>对于处理哈希冲突来说，最常用的处理冲突的方法有开放定址法、再哈希法、链地址法、建立公共溢出区等方法。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
             
         </tags>
       
@@ -598,6 +648,31 @@
         <tags>
             
             <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>torch配置</title>
+      <link href="/2021/07/21/torch-pei-zhi/"/>
+      <url>/2021/07/21/torch-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>cuda:11.3.0（官网安装）<a href="https://developer.nvidia.com/cuda-11.3.0-download-archive?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exe_local">https://developer.nvidia.com/cuda-11.3.0-download-archive?target_os=Windows&amp;target_arch=x86_64&amp;target_version=10&amp;target_type=exe_local</a><br>Nvida CUDA 11.4.141<br>显卡： NVDIA Getforce RTX 3050 Ti</p></blockquote><p>troch安装网址：<a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CUDA </tag>
             
         </tags>
       
