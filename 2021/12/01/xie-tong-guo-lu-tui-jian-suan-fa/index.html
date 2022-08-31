@@ -405,7 +405,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    762
+                    918
                 </div>
                 
 
@@ -439,7 +439,7 @@
 <p>但是已知用户对于romance和action电影的喜爱度，$\theta^{(1)}$是Alice的特征，由此可知她对于romance电影的喜爱度为5，action的喜爱程度为0，$\theta^{(3)}$是Carol的特征，由此可知她对于romance电影的喜爱度为0，action的喜爱程度为5。</p>
 <p><img src="/img/posts/MachineLearning/recommend_system2.jpg" alt="用户特征"></p>
 <p>由此我们得出，需要满足以下条件：<br>$$(\theta^{(1)})x^{(1)} = 5$$<br>$$(\theta^{(2)})x^{(1)} = 5$$<br>$$(\theta^{(3)})x^{(1)} = 0$$<br>$$(\theta^{(4)})x^{(1)} = 0$$</p>
-<p>所以<br>$$ x^{(1)}  =  \begin{bmatrix}1 \ 1.0 \ 0.0 \end{bmatrix}$$<br>第一项是截距项</p>
+<p>所以<br>$$ x^{(1)}  =  \begin{bmatrix}1 &amp; 1.0 &amp; 0.0 \end{bmatrix}$$<br>第一项是截距项</p>
 <h3 id="算法推导过程"><a href="#算法推导过程" class="headerlink" title="算法推导过程"></a>算法推导过程</h3><p>如果用户已经给了我们偏好–特征$\theta^{(1)}$,$\theta^{(2)}$…$\theta^{(n)}$对$x^{(i)}$进行学习，我们要做的是求出：</p>
 <p>$$\min \frac{1}{2} \displaystyle \sum_{j:r(i,j)=1}({(\theta^{(j)})}^Tx^{(i)}-y^{(i,j)})^2+\frac{\lambda}{2} \displaystyle \sum_{k=1}^n(x_k^{(i)})^2$$</p>
 <p>这一步要做的是选择一个特征$x^{(i)}$，算法根据所有评价过电影的用户计算出一个值来预测某个用户会如何评价这部电影<br>$\frac {\lambda}{2} \displaystyle \sum_{k=1}^n(x_k^{(i)}$是一个正则项，防止特征值过大</p>
@@ -466,7 +466,15 @@
 <p>该评分矩阵的实质是$\theta^{(j)}*x^{(i)}$</p>
 <p><img src="/img/posts/MachineLearning/recommend_system5.jpg"></p>
 <p>如果要给用户推荐相似的电影，可以通过两个电影之间的距离来判断，如果电影$x^{(i)}$与$x^{(j)}$非常相近，那么可以把$x^{(j)}$推荐给喜欢$x^{(i)}$的人</p>
-<h2 id="协同过滤算法中的均值归一化"><a href="#协同过滤算法中的均值归一化" class="headerlink" title="协同过滤算法中的均值归一化"></a>协同过滤算法中的均值归一化</h2>
+<h2 id="协同过滤算法中的均值归一化"><a href="#协同过滤算法中的均值归一化" class="headerlink" title="协同过滤算法中的均值归一化"></a>协同过滤算法中的均值归一化</h2><p>对于没有看过电影的人，或者那些给所有电影都打分为零分的人，很难推荐电影给他们。可以通过已知用户对于电影的打分，计算出该电影的均分，最后生成均分矩阵<br>$$\mu = \begin {bmatrix} \mu_1 &amp; \mu_2 &amp; …&amp; \mu_n \end {bmatrix} $$</p>
+<p><img src="/img/posts/MachineLearning/recommend_system6.jpg" alt="5个电影的评分矩阵如图，但不知道最后一个人对于每个电影的打分"></p>
+<p><img src="/img/posts/MachineLearning/recommend_system7.jpg" alt="通过计算均值，得到了每个电影的均分矩阵"></p>
+<p><img src="/img/posts/MachineLearning/recommend_system8.jpg" alt="原评分矩阵中的元素减去对应的均值后，德奥新的评分矩阵"></p>
+<p>将均一化后的矩阵作为额数据集进行$\theta^{(j)}$参数的学习，预测函数为：<br>$${(\theta^{(j)})}^T{(X^{(i)})}+\mu_i$$</p>
+<p>对于没有打分的用户5<br>$$\theta^{(5)} = \begin {bmatrxi}0 &amp; 0 \end {bmatrix}$$</p>
+<p>最终用户5的打分为 $\mu_i$</p>
+<p><strong>可用于解决用户冷启动问题</strong></p>
+
                 
             </div>
             <hr/>
@@ -872,7 +880,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.9k</span>
+                        class="white-color">22k</span>
             
             
             

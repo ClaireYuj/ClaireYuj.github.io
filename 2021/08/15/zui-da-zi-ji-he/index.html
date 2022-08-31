@@ -397,7 +397,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    122
+                    120
                 </div>
                 
 
@@ -426,8 +426,8 @@
         dp[0] = 1;
         dp[1] = 1;
         
-        for(int i = 2; i &lt; n + 1; i++)
-            for(int j = 1; j &lt; i + 1; j++) 
+        for(int i = 2; i < n + 1; i++)
+            for(int j = 1; j < i + 1; j++) 
                 dp[i] += dp[j-1] * dp[i-j];
         
         return dp[n];
@@ -829,7 +829,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">21.9k</span>
+                        class="white-color">22k</span>
             
             
             
