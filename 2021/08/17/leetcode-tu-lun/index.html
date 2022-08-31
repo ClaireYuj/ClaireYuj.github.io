@@ -429,21 +429,41 @@
             return false;
         int[] par = new int[n];
         int par1 = 0,par2 = 0;
-        for(int i=0;i<n;i++) par[i]="i;" 并查集，每个点的父节点是自己="" for(int="" i="0;i<edges.length;i++){" par1="edges[i][0];" par2="edges[i][1];" 不断向上寻找得到par1和par2的祖先节点="" while(par1="" !="par[par1])" while(par2="" par2和par1不属于一个并查集，将par2并入par1，此时并查集个数n--="" if(par1="" par[par2]="par1;" n--;="" &#125;="" return="" n="=" 1;="" <="" code=""></n;i++)></code></pre><code class="language-Java">
+        for(int i=0;i<n;i++)
+            par[i]=i; //并查集，每个点的父节点是自己
+        for(int i=0;i<edges.length;i++){
+            par1 = edges[i][0];
+            par2 = edges[i][1];
+            /*不断向上寻找得到par1和par2的祖先节点*/
+            while(par1 != par[par1])
+                par1 = par[par1]; 
+            while(par2 != par[par2])
+                par2 = par[par2];
+            /*par2和par1不属于一个并查集，将par2并入par1，此时并查集个数n--*/
+            if(par1 != par2){
+                par[par2] = par1;
+                n--;
+            }
+        }
+        return n == 1;
+        
+    }
+}
+</code></pre>
 <h2 id="323-无向图中连通分量的数目"><a href="#323-无向图中连通分量的数目" class="headerlink" title="323. 无向图中连通分量的数目"></a>323. 无向图中连通分量的数目</h2><p>你有一个包含&nbsp;n 个节点的图。给定一个整数 n 和一个数组&nbsp;edges&nbsp;，其中&nbsp;edges[i] = [ai, bi]&nbsp;表示图中&nbsp;ai&nbsp;和&nbsp;bi&nbsp;之间有一条边。</p>
 <p><img src="/img/posts/Leetcode/leetcode323.jpg" alt="Leetcode323图示"></p>
 <h3 id="c-vector容器进行DFS-深度优先"><a href="#c-vector容器进行DFS-深度优先" class="headerlink" title="c++ vector容器进行DFS 深度优先"></a>c++ vector容器进行DFS 深度优先</h3><pre class=" language-c++"><code class="language-c++">class Solution {
 public:
-    int countComponents(int n, vector<vector<int>&gt;&amp; edges) {
+    int countComponents(int n, vector<vector<int>>& edges) {
         vector<int>a(n, 0);
-        vector<vector<int>&gt;arr(n, a);
+        vector<vector<int>>arr(n, a);
         for (auto it : edges) {
             arr[it[0]][it[1]] = 1;
             arr[it[1]][it[0]] = 1;
         }
         int res = 0;
         vector<int>mark(n, 0);
-        for (int i = 0; i &lt; n; i++) {
+        for (int i = 0; i < n; i++) {
             if (mark[i] == 0) {
                 DFS(arr, mark, i);
                 res++;
@@ -453,17 +473,17 @@ public:
         
     }
 private:
-    void DFS(vector<vector<int>&gt;&amp;arr, vector<int>&amp; mark,int b) {
+    void DFS(vector<vector<int>>&arr, vector<int>& mark,int b) {
             mark[b] = 1;
-            for (int i = 0; i &lt; arr.size(); i++) {
-                if (arr[i][b] == 1&amp;&amp;mark[i] == 0) {
+            for (int i = 0; i < arr.size(); i++) {
+                if (arr[i][b] == 1&&mark[i] == 0) {
                     DFS(arr, mark,i);
                 }
             }
             mark[b] = 2;
     }
 };
-</int></vector<int></int></vector<int></int></vector<int></code></pre>
+</code></pre>
 <h3 id="java-二维数组进行dfs"><a href="#java-二维数组进行dfs" class="headerlink" title="java 二维数组进行dfs"></a>java 二维数组进行dfs</h3><pre class=" language-Java"><code class="language-Java">class Solution {
     public int countComponents(int n, int[][] edges){
         int[][] map = new int[n][n];
@@ -473,7 +493,7 @@ private:
         }
         int res = 0;
         int[] mark = new int[n];
-        for(int i = 0; i &lt; n; i ++) {
+        for(int i = 0; i < n; i ++) {
             if(mark[i] == 0) {
                 dfs(map, mark, i);
                 res ++;
@@ -484,8 +504,8 @@ private:
     
     public void dfs(int[][] map, int[] mark, int i) {
         mark[i] = 1;
-        for(int j = 0; j &lt; map.length; j ++) {
-            if(map[i][j] == 1 &amp;&amp; mark[j] == 0) {
+        for(int j = 0; j < map.length; j ++) {
+            if(map[i][j] == 1 && mark[j] == 0) {
                 dfs(map,mark,j);
             }
         }
@@ -502,7 +522,7 @@ private:
     public int findCircleNum(int[][] M) {
         int ans = 0, N = M.length;
         int[] mark = new int[N];
-        for(int i = 0; i &lt; N; i++){
+        for(int i = 0; i < N; i++){
             if(mark[i] == 0){
                 ans++;
                 DFS(M,mark,i,N);
@@ -513,15 +533,15 @@ private:
     
     public void DFS(int[][] M, int[] mark, int si, int N){
         mark[si] = 1;
-        for(int j = 0; j &lt; N; j++){
-            if(M[si][j] == 1 &amp;&amp; mark[j] == 0){
+        for(int j = 0; j < N; j++){
+            if(M[si][j] == 1 && mark[j] == 0){
                 DFS(M,mark,j,N);
             }
         }
     }
 }
 </code></pre>
-</code>
+
                 
             </div>
             <hr/>
@@ -920,7 +940,7 @@ private:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">22.1k</span>
+                        class="white-color">22.2k</span>
             
             
             
