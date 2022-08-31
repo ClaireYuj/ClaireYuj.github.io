@@ -56,6 +56,31 @@
     
     
     <entry>
+      <title>强化学习学习笔记1</title>
+      <link href="/2022/08/31/qiang-hua-xue-xi-xue-xi-bi-ji-1/"/>
+      <url>/2022/08/31/qiang-hua-xue-xi-xue-xi-bi-ji-1/</url>
+      
+        <content type="html"><![CDATA[<p><strong>强化学习（reinforcement learning)是在与环境的互动中为了达成一个目标而进行的学习</strong><br>强化学习基本元素 <strong>Agent</strong>，<strong>Environment</strong>,<strong>goal</strong><br>强化学习主要元素 <strong>state</strong>,<strong>action</strong>,<strong>reward</strong><br>强化学习核心元素 <strong>policy</strong>,<strong>value</strong><br>强化学习学习的是一个好的价值函数，而一个好的价值函数决定了一个好的策略 </p><p><strong>试错</strong>与<strong>延时奖励</strong>是强化学习中主要特点。</p><p>价值是将来能够获得的所有奖励之和的期望值。</p><p>由于随机性，不能一直做贪婪选择。可以再大多数情况下做出贪婪的选择，再一定几率下做出随机的选择。 </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 强化学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>机器学习3-多元梯度下降</title>
       <link href="/2022/08/30/ji-qi-xue-xi-3-duo-yuan-ti-du-xia-jiang/"/>
       <url>/2022/08/30/ji-qi-xue-xi-3-duo-yuan-ti-du-xia-jiang/</url>
