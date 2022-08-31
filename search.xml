@@ -350,6 +350,33 @@
     
     
     <entry>
+      <title>协同过滤推荐算法</title>
+      <link href="/2021/12/01/xie-tong-guo-lu-tui-jian-suan-fa/"/>
+      <url>/2021/12/01/xie-tong-guo-lu-tui-jian-suan-fa/</url>
+      
+        <content type="html"><![CDATA[<p>协同过滤(collaborative filtering)算法</p><h2 id="基于内容的推荐系统"><a href="#基于内容的推荐系统" class="headerlink" title="基于内容的推荐系统"></a>基于内容的推荐系统</h2><p><img src="/img/posts/MachineLearning/recommend_system0.jpg" alt="4人对于5门电影的打分表，x1,x2表示电影的特征"></p><p>把每个用户的评分看作一个线性回归问题，对用户评分进行预测，不同的用户与不同的参数$\theta$相关</p><h2 id="协同过滤算法"><a href="#协同过滤算法" class="headerlink" title="协同过滤算法"></a>协同过滤算法</h2><ul><li>特征学习：可以自动学习所要使用的特征</li></ul><p>用户有一定的特征变量，并且已知用户对部分商品的兴趣</p><p>仍然是这个例子</p><p><img src="/img/posts/MachineLearning/recommend_system1.jpg" alt="现在不知道x1，x2的倾向"></p><p>但是已知用户对于romance和action电影的喜爱度，$\theta^{(1)}$是Alice的特征，由此可知她对于romance电影的喜爱度为5，action的喜爱程度为0，$\theta^{(3)}$是Carol的特征，由此可知她对于romance电影的喜爱度为0，action的喜爱程度为5。</p><p><img src="/img/posts/MachineLearning/recommend_system2.jpg" alt="用户特征"></p><p>由此我们得出，需要满足以下条件：<br>$$(\theta^{(1)})x^{(1)} = 5$$<br>$$(\theta^{(2)})x^{(1)} = 5$$<br>$$(\theta^{(3)})x^{(1)} = 0$$<br>$$(\theta^{(4)})x^{(1)} = 0$$</p><p>所以<br>&amp;&amp;x^{(1)} = \begin{bmatrix}1 1.0 0.0\end{bmatrix}&amp;&amp;<br>第一项是截距项</p><h3 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h3><p>如果用户已经给了我们偏好–特征$\theta^{(1)}$,$\theta^{(2)}$…$\theta^{(n)}$对$x^{(i)}$进行学习，我们要做的是求出：<br>$$min \frac {1}{2}\displaystyle \sum_{j:r(i,j)=1}((\theta^{(j)}^Tx^{(i)}-y^{(i,j)}))^2+\frac {\lambda}{2} \displaystyle \sum_{k=1}^n(x_k^{(i)})^2$$</p><p>这一步要做的是选择一个特征$x^{(i)}$，算法根据所有评价过电影的用户计算出一个值来预测某个用户会如何评价这部电影<br>$\frac {\lambda}{2} \displaystyle \sum_{k=1}^n(x_k^{(i)}$是一个正则项，防止特征值过大</p><p>为了学习所有电影的所有特征，也就是学习$x^{(1)},x^{(2)}…x^{(n_m)}$\，需要求出<br>(/img/posts/MachineLearning/recommend_system_equation.jpg)</p><p>$\displaystyle \sum_{i=1}^{n_m}$是对所有电影求和</p><h3 id="算法作用"><a href="#算法作用" class="headerlink" title="算法作用"></a>算法作用</h3><ul><li><p>可以通过用户喜爱程度$\theta^{(1)},\theta^{(2)}…\theta^{(n_u)}$来预测电影的特征$x^{(1)}…x^{(n_m)}$</p></li><li><p>也可以通过电影特征$x^{(1)}…x^{(n_m)}$来预测用户喜爱程度$\theta^{(1)},\theta^{(2)}…\theta^{(n_u)}$</p></li></ul><p>可以通过先随机地选取一些$\theta$地值来学习出不同电影地特征，在得到电影特征之后，再通过这些特征来预测另外的$\theta$值（用户喜爱程度，再根据这些$\theta$来预测电影特征…如此反复，最终将会收敛到一组合理的电影特征以及合理的对用户地预测</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 推荐系统 </tag>
+            
+            <tag> 协同过滤 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于Python实现的PING功能</title>
       <link href="/2021/11/28/ji-yu-python-shi-xian-de-ping-gong-neng/"/>
       <url>/2021/11/28/ji-yu-python-shi-xian-de-ping-gong-neng/</url>
