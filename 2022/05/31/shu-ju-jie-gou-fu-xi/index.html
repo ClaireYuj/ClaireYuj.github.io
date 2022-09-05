@@ -403,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    556
+                    888
                 </div>
                 
 
@@ -457,6 +457,40 @@
 <h3 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h3><p>hash表的实现主要包括构造哈希和处理哈希冲突两个方面：</p>
 <p>对于构造哈希来说，主要包括直接地址法、平方取中法、除留余数法等。</p>
 <p>对于处理哈希冲突来说，最常用的处理冲突的方法有开放定址法、再哈希法、链地址法、建立公共溢出区等方法。</p>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><h4 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h4><ul>
+<li><p>保持原图的n个系节点，并且有保持图联通的最少边。简单来说是有钱仅有n个点n-1条边的连通图。</p>
+</li>
+<li><p>最小生成树就是最小权重生成树的简称，即所有边的权值之和最小的生成树。</p>
+</li>
+</ul>
+<p>求解最小生成树的方法有一下两种</p>
+<h5 id="Kruskal算法（克鲁斯卡）"><a href="#Kruskal算法（克鲁斯卡）" class="headerlink" title="Kruskal算法（克鲁斯卡）"></a>Kruskal算法（克鲁斯卡）</h5><p>Kruskal是一种贪心算法</p>
+<ul>
+<li><p>核心思想：每次选择一条最小的边，使这两条边两头连通 </p>
+</li>
+<li><p>将图中的每个edge按照权重大小进行排序，每次从边集中取出权重最小且两个顶点都不在同一个集合的边加入生成树。</p>
+</li>
+<li><p>如果两个顶点在同一个集合内，说明已经通过其他边相连，如果将这条边加入生成树，就会形成环，因此不可取</p>
+</li>
+</ul>
+<p>Kruskal算法时间复杂的：O(mlogm),Kruskal算法的简单实现</p>
+<pre class=" language-Java"><code class="language-Java">//Kruskal算法简单实现
+void Kruskal(V,T)
+{
+    T=V; //初始化树T，仅含顶点
+    numS=n; //连通分量数
+    while(numS > 1) //若连通分量数大于1
+    {
+        从E中取出权值最小的边(v,u);
+        if(v和u属于T中不同的连通分量)
+        {
+            T=T∪{(v,u)}; //将此边加入生成树中
+            numS--; //连通分量数减1
+        }
+    }
+}
+</code></pre>
+<p><img src="/img/posts/DataStructure/kruskal0.jpg"></p>
 
                 
             </div>
@@ -574,13 +608,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/08/14/json-pei-zhi/">
+                <a href="/2022/08/05/yolo-xue-xi-bi-ji-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="JSON配置">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="YOLO学习笔记1">
                         
-                        <span class="card-title">JSON配置</span>
+                        <span class="card-title">YOLO学习笔记1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -591,14 +625,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-14
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-05
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    基础知识
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
                                 </a>
                             
                             
@@ -608,12 +642,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JSON/">
-                        <span class="chip bg-color">JSON</span>
-                    </a>
-                    
-                    <a href="/tags/maven/">
-                        <span class="chip bg-color">maven</span>
+                    <a href="/tags/Yolo/">
+                        <span class="chip bg-color">-Yolo</span>
                     </a>
                     
                 </div>
@@ -856,7 +886,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">24k</span>
+                        class="white-color">24.7k</span>
             
             
             
