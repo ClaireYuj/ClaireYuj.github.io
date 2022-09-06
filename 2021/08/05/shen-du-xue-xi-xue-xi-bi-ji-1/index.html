@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="深度学习学习笔记1, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="参考学习https://blog.csdn.net/qq_36816848/article/details/122286610?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522">
+    <meta name="description" content="关于深度学习深度学习是通过多层来获得更为抽象的特征表达，如果有一个n层(S1,S2,S3…Sn)的深度学习系统, 输入为I，输出是O，那么深度学习的过程可以抽象的表示为: I =&amp;gt;S1=&amp;gt;S2=&amp;gt;S3=&amp;gt;…=&amp;gt;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -399,7 +399,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    6.6k
+                    6.5k
                 </div>
                 
 
@@ -421,13 +421,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>参考学习<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36816848/article/details/122286610?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166244950816782391845436%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166244950816782391845436&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-122286610-null-null.142%5Ev46%5Epc_rank_34_2&amp;utm_term=%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&amp;spm=1018.2226.3001.4187">https://blog.csdn.net/qq_36816848/article/details/122286610?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166244950816782391845436%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166244950816782391845436&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-122286610-null-null.142^v46^pc_rank_34_2&amp;utm_term=%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&amp;spm=1018.2226.3001.4187</a></p>
-<h2 id="关于深度学习"><a href="#关于深度学习" class="headerlink" title="关于深度学习"></a>关于深度学习</h2><p><img src="/img/posts/MachineLearning/Mindmap.jpg" alt="神经网络与深度学习结构(图片选自《神经网络与深度学习》一邱锡鹏)"></p>
-<p>深度学习是通过多层来获得更为抽象的特征表达，如果有一个n层(S1,S2,S3…Sn)的深度学习系统, 输入为I，输出是O，那么深度学习的过程可以抽象的表示为: I =&gt;S1=&gt;S2=&gt;S3=&gt;…=&gt;O，每一层的信息处理都会丢失部分信息，最后的O很难是初始的I，<strong>但是如果我们可以通过深度学习调节系统中的参数使得它的输出仍然是I那么我们就可以自动的获取输入I的一系列层次特征，即S1，S2…Sn</strong></p>
+                <h2 id="关于深度学习"><a href="#关于深度学习" class="headerlink" title="关于深度学习"></a>关于深度学习</h2><p>深度学习是通过多层来获得更为抽象的特征表达，如果有一个n层(S1,S2,S3…Sn)的深度学习系统, 输入为I，输出是O，那么深度学习的过程可以抽象的表示为: I =&gt;S1=&gt;S2=&gt;S3=&gt;…=&gt;O，每一层的信息处理都会丢失部分信息，最后的O很难是初始的I，<strong>但是如果我们可以通过深度学习调节系统中的参数使得它的输出仍然是I那么我们就可以自动的获取输入I的一系列层次特征，即S1，S2…Sn</strong></p>
+<p><img src="/img/posts/MachineLearning/Mindmap.jpg" alt="神经网络与深度学习结构(图片选自《神经网络与深度学习》一邱锡鹏"></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36816848/article/details/122286610?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166244950816782391845436%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166244950816782391845436&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-2-122286610-null-null.142%5Ev46%5Epc_rank_34_2&amp;utm_term=%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&amp;spm=1018.2226.3001.4187">参考学习</a></p>
 <h3 id="浅层学习"><a href="#浅层学习" class="headerlink" title="浅层学习"></a>浅层学习</h3><p>是只含有一层隐层节点/没有节点的浅层模型，如支持向量机、最大熵方法（逻辑回归）、多层感知机等</p>
 <p><img src="/img/posts/MachineLearning/perceptron.jpg" alt="感知机perceptron"></p>
 <p><img src="/img/posts/MachineLearning/simple_perceptron.jpg" alt="简单感知机"></p>
-<p><img src="/img/posts/MachineLearning/multi_layel__perceptron.jpg" alt="多层感知机"></p>
+<p><img src="/img/posts/MachineLearning/multi_layel_perceptron.jpg" alt="多层感知机"></p>
 <p>利用人工神经网络的反向传播算法（Back Propagation算法或者BP算法），让一个人工神经网络模型从大量训练样本中学习统计规律，从而对未知事件做预测。</p>
 <ul>
 <li>前向传播与反向传播：前向传播（foward propagation）作用于<strong>每一层的输入</strong>，通过逐层计算得到输出结果；反向传播（backward propagation）作用于网络的<strong>输出</strong>，通过计算<strong>梯度</strong>由<strong>深</strong>到<strong>浅</strong>更新网络参数。</li>
@@ -436,7 +436,7 @@
 <h3 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h3><p>深度学习的实质，是通过构建具有很多隐层的机器学习模型和海量的训练数据，来学习更有用的特征，从而最终提升分类或预测的准确性。<strong>通过深度学习最终达到特征学习的目标</strong></p>
 <p>在深度学习中，明确突出了特征学习的重要性，通过<strong>逐层特征变换</strong>，将样本在原空间的特征表示变换到一个新特征空间，从而使分类或预测更加容易。</p>
 <h2 id="深度学习与神经网络"><a href="#深度学习与神经网络" class="headerlink" title="深度学习与神经网络"></a>深度学习与神经网络</h2><p><img src="/img/posts/MachineLearning/neutral_network.jpg" alt="神经网络的结构"></p>
-<p><img src="/img/posts/MachineLearning/model_nws.jpg" alt="神经网络的主要模型"></p>
+<p><img src="/img/posts/MachineLearning/model_nw.jpg" alt="神经网络的主要模型"></p>
 <p>深度学习采用了神经网络相似的分层结构，系统由包括输入层、隐层（多层）、输出层组成的多层网络，只有相邻层节点之间有连接，同一层以及跨层节点之间相互无连接，每一层可以看作是一个<strong>逻辑回归</strong>模型。</p>
 <p>但DL与传统神经网络的区别在于，传统神经网络中，采用的是反向传播的方式进行，也就是采用迭代的算法来训练整个网络，随机设定初值，计算当前网络的输出，然后根据当前输出和label之间的差去改变前面各层的参数，直到收敛（整体是一个梯度下降法）。而DL整体上是一个layer-wise的训练机制。这样做的原因是因为，如果采用b反向传播的机制，对于一个深层网络（7层以上），残差传播到最前面的层已经变得太小，便会出现梯度扩散(gradient diffusion)。因此传统的BP算法不能用在深度神经网络。</p>
 <ul>
@@ -447,7 +447,7 @@
 <li>由于随机初始值，最终收敛到局部最小</li>
 <li>只能通过有标签的数据集进行训练，不能学习无标签的数据集，也就是监督学习</li>
 </ol>
-<h3 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h3><p>参考（<a target="_blank" rel="noopener" href="https://blog.csdn.net/zouxy09/article/details/8775518%EF%BC%89">https://blog.csdn.net/zouxy09/article/details/8775518）</a></p>
+<h3 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zouxy09/article/details/8775518">参考博客</a></p>
 <p>如果对所有层同时训练，时间复杂度会太高；如果每次训练一层，偏差就会逐层传递。这会面临跟上面监督学习中相反的问题，会严重欠拟合（因为深度网络的神经元和参数太多了）。</p>
 <p>简单来说分为两步：</p>
 <p>1）首先逐层构建单层神经元，这样每次都是训练一个单层网络。</p>
@@ -484,7 +484,7 @@
 </ol>
 </li>
 </ul>
-<p>常见的激活函数有：Logistic函数，Tanh函数，ReLU函数，SoftPlus函数，可见参考[【推荐】深度学习笔记——常用的激活（激励）函数]（<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wj-1314/p/12015278.html%EF%BC%89">https://www.cnblogs.com/wj-1314/p/12015278.html）</a><br><img src="/img/posts/MachineLearning/activate_fun.jpg" alt="激活函数"></p>
+<p>常见的激活函数有：Logistic函数，Tanh函数，ReLU函数，SoftPlus函数，可见参考[【推荐】深度学习笔记——常用的激活（激励）函数](<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wj-1314/p/12015278.html%EF%BC%89">https://www.cnblogs.com/wj-1314/p/12015278.html）</a><br><img src="/img/posts/MachineLearning/activate_fun.jpg" alt="激活函数"></p>
 <h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>在机器学习任务中，大部分监督学习算法都会有一个目标函数 (Objective Function),算法对该目标函数进行优化，称为优化算法的过程。 例如在分类或者回归任务中，<strong>使用损失函数( Loss Function )作为其目标函数对算法模型进行优化</strong>。</p>
 <p>在BP神经网络中，使用均方误差作为损失函数，而在实际中，常用交叉熵作为损失函数。</p>
 <ul>
@@ -529,7 +529,7 @@
 <p>3.优化函数：也就是如何把<strong>损失值</strong>从神经网络的最外层<strong>传递到最前面</strong>。如最基础的梯度下降算法，随机梯度下降算法，批量梯度下降算法，带动量的梯度下降算法，Adagrad，Adadelta，Adam等。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u013250416/article/details/81090059">优化函数</a></p>
 <p>CNN由<strong>卷积层</strong>、<strong>池化层</strong>、<strong>全连接层</strong>三部分组成。</p>
-<h2 id="卷积神经网络CNN"><a href="#卷积神经网络CNN" class="headerlink" title="卷积神经网络CNN"></a>卷积神经网络CNN</h2><p>[卷积](<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22298352/answer/91131073">https://www.zhihu.com/question/22298352/answer/91131073</a></p>
+<h2 id="卷积神经网络CNN"><a href="#卷积神经网络CNN" class="headerlink" title="卷积神经网络CNN"></a>卷积神经网络CNN</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/22298352/answer/91131073">卷积</a></p>
 <p>卷积网络执行的是监督训练，所以其样本集是由形如：（输入向量，理想输出向量）的向量对构成的。</p>
 <ul>
 <li><p>CNN的特点：</p>
@@ -805,13 +805,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/05/yolo-xue-xi-bi-ji-1/">
+                <a href="/2021/07/30/leetcode-ha-xi-biao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="深度学习学习笔记1">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Leetcode-哈希表">
                         
-                        <span class="card-title">深度学习学习笔记1</span>
+                        <span class="card-title">Leetcode-哈希表</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -822,14 +822,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-30
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    机器学习
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
@@ -839,12 +839,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
@@ -1045,7 +1041,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">37.6k</span>
+                        class="white-color">30.9k</span>
             
             
             
