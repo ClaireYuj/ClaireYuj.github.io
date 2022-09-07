@@ -397,7 +397,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    544
+                    588
                 </div>
                 
 
@@ -428,17 +428,45 @@
      TreeNode(int x) { val = x; }
  }
 </code></pre>
+<h2 id="剑指Offer25-树的子结构"><a href="#剑指Offer25-树的子结构" class="headerlink" title="剑指Offer25. 树的子结构"></a>剑指Offer25. 树的子结构</h2><p>输入两棵二叉树A和B，判断B是不是A的子结构。(约定空树不是任意一个树的子结构)</p>
+<p>B是A的子结构， 即 A中有出现和B相同的结构和节点值。<br><img src="/img/posts/Leetcode/offer26.jpg"><br>前序遍历，从A树和B树相同的结点开始，B树的左子树 = A树的左子树；A树的右子树 = B树的右子树<br>结束条件==》B树符合A树左子树条件||A树 = null</p>
+<pre class=" language-Java"><code class="language-Java">/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+
+    public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if(A==null||B==null) return false;
+        return travel(A,B)||isSubStructure(A.left,B)||isSubStructure(A.right,B); // 从该节点开始遍历||判断从A的左节点开始遍历，B是不是A的左子树的子结构|| 判断B是不是A的右子树的子结构
+
+    }
+
+    public boolean travel(TreeNode A, TreeNode B){
+        if(B == null) return true; // 表示在B为null前A与B 的val一直相等
+        else if(A == null && B != null) return false;
+        else if(A.val != B.val) return false;
+        return travel(A.left, B.left)&&travel(A.right, B.right); // 分辨遍历左右子树
+    }
+}
+</code></pre>
+<h2 id="Offer27-二叉树的镜像"><a href="#Offer27-二叉树的镜像" class="headerlink" title="Offer27.二叉树的镜像"></a>Offer27.二叉树的镜像</h2><p>请完成一个函数，输入一个二叉树，该函数输出它的镜像。<br><img src="/img/posts/Leetcode/offer27.jpg"></p>
 <h2 id="94-二叉树的中序遍历"><a href="#94-二叉树的中序遍历" class="headerlink" title="94. 二叉树的中序遍历"></a>94. 二叉树的中序遍历</h2><p><img src="/img/posts/Leetcode/leetcode94.jpg" alt="Leetcode94"></p>
 <h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>中序遍历 左-&gt;中-右</p>
 <pre class=" language-JAVA"><code class="language-JAVA">class Solution {
-    public List<integer> inorderTraversal(TreeNode root) {
-        List<integer> tree = new ArrayList<integer>();
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> tree = new ArrayList<Integer>();
         inOrder(root,tree);
         return tree;
         
     }
 
-    public void inOrder(TreeNode root,List<integer> tree){
+    public void inOrder(TreeNode root,List<Integer> tree){
         if(root==null){
             return;
         }
@@ -447,7 +475,7 @@
         inOrder(root.right,tree);
     }
 }
-</integer></integer></integer></integer></code></pre>
+</code></pre>
 <h2 id="95-不同的二叉搜索树"><a href="#95-不同的二叉搜索树" class="headerlink" title="95.不同的二叉搜索树"></a>95.不同的二叉搜索树</h2><p>给定一个整数 n，生成所有由 1 … n 为节点所组成的二叉搜索树。<br>（不只返回数字）</p>
 <h3 id="解法一-DFS-深度优先"><a href="#解法一-DFS-深度优先" class="headerlink" title="解法一:DFS 深度优先"></a>解法一:DFS 深度优先</h3><pre class=" language-Java"><code class="language-Java">/**
  * Definition for a binary tree node.
@@ -459,21 +487,21 @@
  * }
  */
 class Solution {
-    public List<treenode> generateTrees(int n) {
-        if(n == 0) return new ArrayList<treenode>();
+    public List<TreeNode> generateTrees(int n) {
+        if(n == 0) return new ArrayList<TreeNode>();
         return helper(1, n); 
     } 
 
-    List<treenode> helper(int start, int end){
-        List<treenode> list = new ArrayList&lt;&gt;();
-        if(start &gt; end) list.add(null);
+    List<TreeNode> helper(int start, int end){
+        List<TreeNode> list = new ArrayList<>();
+        if(start > end) list.add(null);
         
-        for(int i = start; i &lt;= end; i++){
-            List<treenode> left = helper(start, i - 1);
-            List<treenode> right = helper(i + 1, end);
+        for(int i = start; i <= end; i++){
+            List<TreeNode> left = helper(start, i - 1);
+            List<TreeNode> right = helper(i + 1, end);
             
-            for(int j = 0; j &lt; left.size(); j++){
-                for(int k = 0; k &lt; right.size(); k++){
+            for(int j = 0; j < left.size(); j++){
+                for(int k = 0; k < right.size(); k++){
                     TreeNode root = new TreeNode(i);
                     root.left = left.get(j);
                     root.right = right.get(k);
@@ -484,15 +512,15 @@ class Solution {
         return list;  
     }
 }  
-</treenode></treenode></treenode></treenode></treenode></treenode></code></pre>
+</code></pre>
 <h3 id="解法二：DP-动态规划"><a href="#解法二：DP-动态规划" class="headerlink" title="解法二：DP 动态规划"></a>解法二：DP 动态规划</h3><pre class=" language-Java"><code class="language-Java">class Solution {
     public int numTrees(int n) {
         int[] dp = new int[n+1];
         dp[0] = 1;
         dp[1] = 1;
         
-        for(int i = 2; i &lt; n + 1; i++)
-            for(int j = 1; j &lt; i + 1; j++) 
+        for(int i = 2; i < n + 1; i++)
+            for(int j = 1; j < i + 1; j++) 
                 dp[i] += dp[j-1] * dp[i-j];
         
         return dp[n];
@@ -508,7 +536,27 @@ class Solution {
             return false;
         int[] par = new int[n];
         int par1 = 0,par2 = 0;
-        for(int i=0;i<n;i++) par[i]="i;" 并查集，每个点的父节点是自己="" for(int="" i="0;i<edges.length;i++){" par1="edges[i][0];" par2="edges[i][1];" 不断向上寻找得到par1和par2的祖先节点="" while(par1="" !="par[par1])" while(par2="" par2和par1不属于一个并查集，将par2并入par1，此时并查集个数n--="" if(par1="" par[par2]="par1;" n--;="" &#125;="" return="" n="=" 1;="" <="" code=""></n;i++)></code></pre><code class="language-Java">
+        for(int i=0;i<n;i++)
+            par[i]=i; //并查集，每个点的父节点是自己
+        for(int i=0;i<edges.length;i++){
+            par1 = edges[i][0];
+            par2 = edges[i][1];
+            //不断向上寻找得到par1和par2的祖先节点
+            while(par1 != par[par1])
+                par1 = par[par1]; 
+            while(par2 != par[par2])
+                par2 = par[par2];
+            //par2和par1不属于一个并查集，将par2并入par1，此时并查集个数n--
+            if(par1 != par2){
+                par[par2] = par1;
+                n--;
+            }
+        }
+        return n == 1;
+        
+    }
+}
+</code></pre>
 <h2 id="515-在二叉树的每一行中找到最大的值。"><a href="#515-在二叉树的每一行中找到最大的值。" class="headerlink" title="515. 在二叉树的每一行中找到最大的值。"></a>515. 在二叉树的每一行中找到最大的值。</h2><h3 id="解法：BFS-广度优先"><a href="#解法：BFS-广度优先" class="headerlink" title="解法：BFS 广度优先"></a>解法：BFS 广度优先</h3><pre class=" language-Java"><code class="language-Java">/**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -519,16 +567,16 @@ class Solution {
  * }
  */
 class Solution {
-    public List<integer> largestValues(TreeNode root) {
-        List<integer> rlist = new ArrayList&lt;&gt;();
+    public List<Integer> largestValues(TreeNode root) {
+        List<Integer> rlist = new ArrayList<>();
         if(root==null) return rlist;
         
-        List<treenode> nodeList = new LinkedList&lt;&gt;();
+        List<TreeNode> nodeList = new LinkedList<>();
         nodeList.add(root);
         while(!nodeList.isEmpty()){
             int size = nodeList.size();
             int max = nodeList.get(0).val;
-            for(int i = 0;i&lt; size;i++){
+            for(int i = 0;i< size;i++){
                 TreeNode node = nodeList.remove(0);
                 max = Math.max(node.val,max);
                 if(node.left!=null) nodeList.add(node.left);
@@ -541,8 +589,8 @@ class Solution {
         
     }
 }
-</treenode></integer></integer></code></pre>
-</code>
+</code></pre>
+
                 
             </div>
             <hr/>
@@ -937,7 +985,7 @@ class Solution {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">30.9k</span>
+                        class="white-color">31k</span>
             
             
             
