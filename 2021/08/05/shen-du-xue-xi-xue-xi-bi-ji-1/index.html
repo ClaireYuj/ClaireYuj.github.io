@@ -403,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    7.7k
+                    3.5k
                 </div>
                 
 
@@ -548,8 +548,14 @@ plt.show()
 <ul>
 <li><strong>无饱和区，收敛快，计算简单</strong>，有时候会比较脆弱，如果变量的更新太快，还没有找到最佳值，就进入小于零的分段就会使得梯度变为零，无法更新直接死掉了。</li>
 </ul>
-<p>$$ {ReLu(x) = max(x,0)}$$<br>当x&gt;=0时，ReLu(x) = x<br>当x&lt;0&gt;时， ReLu(x) = 9</p>
-<p>ReLu’(x) = 1, 当x&gt;=0时<br>ReLu’(x) =0,当x&lt;0时</p>
+<p>$$ {ReLu(x) = max(x,0)}$$</p>
+<center>当x&gt;=0时，ReLu(x) = x </center>
+<center>当x&lt;0时， ReLu(x) = 9 </center>
+<center>ReLu'(x) = 1, 当x&gt;=0时</center>
+<center>ReLu'(x) = 0, 当x&lt;0时</center>
+    
+
+
 <p><img src="/img/posts/MachineLearning/ReLu.jpg" alt="ReLu函数即其导数图像"></p>
 <pre class=" language-Python"><code class="language-Python">from matplotlib import pyplot as plt
 import numpy as np
@@ -564,6 +570,40 @@ plt.plot(x,x>0,"o")
 plt.title("y = relu'(x)")
 plt.show()
 </code></pre>
+<p><strong>ReLU函数在零点不可导</strong><br>在反向传播中，对于ReLU间断点的求导按照做到书来计算，即默认情况下默认导数为零，negative_gradient = 0</p>
+<p>可由caffe源码可知<br>~/caffe/src/caffe/layers/relu_layer.cpp倒数第十行代码：</p>
+<pre class=" language-Python"><code class="language-Python">bottom_diff[i] = top_diff[i] * ((bottom_data[i] > 0)+ negative_slope * (bottom_data[i] <= 0));
+</code></pre>
+<h4 id="ReLU的优缺点"><a href="#ReLU的优缺点" class="headerlink" title="ReLU的优缺点"></a>ReLU的优缺点</h4><p>ReLU函数就是一个取最大值函数，因为它的导数等于1或者就是0<br><strong>因为ReLU是线性的，而sigmoid和tanh是非线性的</strong>。相对于sigmoid和tanh激励函数，对ReLU求梯度非常简单，计算也很简单，可以非常大程度地提升随机梯度下降的收敛速度。</p>
+<ul>
+<li><p>优点： </p>
+<ol>
+<li>解决了梯度消失</li>
+<li>计算方便，秩序判断输入是否大于0</li>
+<li>收敛速度远远大于Sigmoid函数和tanh函数，可以加速网络训练</li>
+</ol>
+</li>
+<li><p>缺点： 随着训练的进行，可能出现神经元死亡的情况，当有一个很大的梯度流经ReLu后，权重的更新结果可能是在此之后的任何数据点都无法激活改神经元</p>
+<ol>
+<li>由于负数部分恒为零，，、当x为负时导数等于零，会导致一些神经元无法激活</li>
+<li>输出不是zero-centered</li>
+<li>learning rate 太高，导致在训练过程中参数更新太大</li>
+</ol>
+</li>
+</ul>
+<h4 id="Leaky-ReLu函数"><a href="#Leaky-ReLu函数" class="headerlink" title="Leaky ReLu函数"></a>Leaky ReLu函数</h4><p>Leaky ReLU解决了ReLU会杀死一部分神经元的情况。Leaky ReLU 是给所有负值赋予一个非零斜率。Leaky ReLU 激活函数是在声学模型（2013）中首次提出。</p>
+<p><img src="/img/posts/MachineLearning/LeakyReLu.jpg"></p>
+<p><img src="/img/posts/MachineLearning/Leaky_ReLu.jpg" alt="Leaky_ReLu函数即其导数图像"></p>
+<p>　人们为了解决 Dead ReLU Problem(ReLU的死神经问题), 提出了将 ReLU 的前半段设为 ax 而非0，通常 a = 0.01，另外一种直观的想法是基于参数的方法，即 ParmetricReLU ： f(x)=max(ax, x)，其中 a 可由方向传播算法学出来。理论上来说，Leaky ReLU 有ReLU的所有优点，外加不会有 Dead ReLU 问题，但是在实际操作当中，并没有完全证明 Leaky ReLU 总是好于 ReLU。</p>
+<p><strong>Leaky  ReLU 主要是为了避免梯度消失，当神经元处于非激活状态时，允许一个非0的梯度存在</strong>，这样不会出现梯度消失，收敛速度快。他的优缺点和ReLU类似。</p>
+<h3 id="Softmax函数"><a href="#Softmax函数" class="headerlink" title="Softmax函数"></a>Softmax函数</h3><pre><code>[Softmax理解](https://blog.csdn.net/lz_peter/article/details/84574716?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166289193816800184112865%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166289193816800184112865&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-84574716-null-null.142^v47^control_1,201^v3^add_ask&amp;utm_term=softmax&amp;spm=1018.2226.3001.4187)
+</code></pre>
+<p>　　softmax 函数，又称为归一化指数函数。它是二分类函数 Sigmoid在多分类上的推广，目的是将多分类的结果以概率的形式展现出来。</p>
+<p>他把<strong>一些输入映射为0-1之间的实数，并且归一化保证和为1，因此多分类的概率之和也刚好为1。</strong></p>
+<p><img src="/img/posts/MachineLearning/Softmax01.jpg" alt="Softmax解释"></p>
+<p>假设有一个数组V， $V_i$​表示V中的第i个元素，那么这个元素的softmax值为:</p>
+<p>$$ S_i = \frac {e^i}{\sum_je^j} $$</p>
+<p>该元素的softmax值，就是该元素的指数与所有元素指数和的比值。</p>
 <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>在机器学习任务中，大部分监督学习算法都会有一个目标函数 (Objective Function),算法对该目标函数进行优化，称为优化算法的过程。 例如在分类或者回归任务中，<strong>使用损失函数( Loss Function )作为其目标函数对算法模型进行优化</strong>。</p>
 <p>在BP神经网络中，使用均方误差作为损失函数，而在实际中，常用交叉熵作为损失函数。</p>
 <ul>
@@ -575,7 +615,7 @@ plt.show()
 </li>
 <li><p>负对数似然损失函数<br>  <img src="/img/posts/MachineLearning/neg_log_loss.jpg"></p>
 </li>
-<li><p>交叉熵损失函数:Logistic损失函数和负对数似然损失函数只能处理二分类问题，对于两个分类扩展到M个分类，使用交叉熵损失函数(Cross Entropy Loss)，其定义如下：<br>  <img src="/img/posts/MachineLearning/cross_entropy_loss.jpg"></p>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tsyccnh/article/details/79163834?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166289228816782412517434%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166289228816782412517434&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-79163834-null-null.142%5Ev47%5Econtrol_1,201%5Ev3%5Eadd_ask&amp;utm_term=%E4%BA%A4%E5%8F%89%E7%86%B5&amp;spm=1018.2226.3001.4187">交叉熵损失函数</a>:Logistic损失函数和负对数似然损失函数只能处理二分类问题，对于两个分类扩展到M个分类，使用交叉熵损失函数(Cross Entropy Loss)，其定义如下：<br>  <img src="/img/posts/MachineLearning/cross_entropy_loss.jpg"></p>
 </li>
 <li><p>Hige:典型分类器是SVM算法因为 Hinge 损失可以用来解决间隔最大化问题。当分类模型需要硬分类结果的，例如分类结果是 0 或 1 、 -1或 1 的二分类数据， Hinge 损失是最方便的选择 。Hinge 损失函数定义如下：<br>  <img src="/img/posts/MachineLearning/hinge_loss.jpg"></p>
 </li>
@@ -1120,7 +1160,7 @@ plt.show()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">32.5k</span>
+                        class="white-color">28.3k</span>
             
             
             
