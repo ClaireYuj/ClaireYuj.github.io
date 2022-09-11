@@ -403,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    3.5k
+                    3.6k
                 </div>
                 
 
@@ -490,14 +490,18 @@
 </ul>
 <p>常见的激活函数有：Logistic函数，Tanh函数，ReLU函数，SoftPlus函数，可见参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wj-1314/p/12015278.html">【推荐】深度学习笔记——常用的激活（激励）函数</a><br><img src="/img/posts/MachineLearning/activate_fun.jpg" alt="激活函数"></p>
 <h3 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h3><p>Sigmoid也就是Logistic函数，表达式如下：  </p>
-<p>$${S(x)} = \frac{1}{1+e^(x)}$$  </p>
+<p>$${S(x)} = \frac{1}{1+e^{(-x)}}$$  </p>
 <p><img src="/img/posts/MachineLearning/Sigmoid.jpg" alt="Sigmoid函数即其导数图像"><br>绘图对应代码：</p>
 <pre class=" language-Python"><code class="language-Python">from matplotlib import pyplot as plt
 import numpy as np
 fig = plt.figure()
-x = np.arange(-10, 10, 0.025)
+# np.arrange(起点，终点，步长)
+x = np.arange(-10, 10, 0.025) 
+# plot(x,y)
 plt.plot(x,1/(1+np.exp(-x)))
 plt.title("y = 1/(1+exp(-x))")
+# savefig存储要在show之前，不然输出的图片 会是空白
+plt.savefig('img/output_relu\'(x).png')
 plt.show()
  
 plt.plot(x,np.exp(-x)/(1+np.exp(-x))**2)
@@ -561,6 +565,7 @@ plt.show()
 import numpy as np
 fig = plt.figure()
 x = np.arange(-10, 10, 0.025)
+# clip(x,最小，最大)
 plt.plot(x,np.clip(x,0,10e30))
 plt.title("y = relu(x)=max(x,0)")
 plt.show()
@@ -596,8 +601,7 @@ plt.show()
 <p><img src="/img/posts/MachineLearning/Leaky_ReLu.jpg" alt="Leaky_ReLu函数即其导数图像"></p>
 <p>　人们为了解决 Dead ReLU Problem(ReLU的死神经问题), 提出了将 ReLU 的前半段设为 ax 而非0，通常 a = 0.01，另外一种直观的想法是基于参数的方法，即 ParmetricReLU ： f(x)=max(ax, x)，其中 a 可由方向传播算法学出来。理论上来说，Leaky ReLU 有ReLU的所有优点，外加不会有 Dead ReLU 问题，但是在实际操作当中，并没有完全证明 Leaky ReLU 总是好于 ReLU。</p>
 <p><strong>Leaky  ReLU 主要是为了避免梯度消失，当神经元处于非激活状态时，允许一个非0的梯度存在</strong>，这样不会出现梯度消失，收敛速度快。他的优缺点和ReLU类似。</p>
-<h3 id="Softmax函数"><a href="#Softmax函数" class="headerlink" title="Softmax函数"></a>Softmax函数</h3><pre><code>[Softmax理解](https://blog.csdn.net/lz_peter/article/details/84574716?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166289193816800184112865%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166289193816800184112865&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-84574716-null-null.142^v47^control_1,201^v3^add_ask&amp;utm_term=softmax&amp;spm=1018.2226.3001.4187)
-</code></pre>
+<h3 id="Softmax函数"><a href="#Softmax函数" class="headerlink" title="Softmax函数"></a>Softmax函数</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lz_peter/article/details/84574716?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166289193816800184112865%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166289193816800184112865&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-84574716-null-null.142%5Ev47%5Econtrol_1,201%5Ev3%5Eadd_ask&amp;utm_term=softmax&amp;spm=1018.2226.3001.4187">Softmax理解</a></p>
 <p>　　softmax 函数，又称为归一化指数函数。它是二分类函数 Sigmoid在多分类上的推广，目的是将多分类的结果以概率的形式展现出来。</p>
 <p>他把<strong>一些输入映射为0-1之间的实数，并且归一化保证和为1，因此多分类的概率之和也刚好为1。</strong></p>
 <p><img src="/img/posts/MachineLearning/Softmax01.jpg" alt="Softmax解释"></p>
@@ -615,8 +619,8 @@ plt.show()
 </li>
 <li><p>负对数似然损失函数<br>  <img src="/img/posts/MachineLearning/neg_log_loss.jpg"></p>
 </li>
-<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tsyccnh/article/details/79163834?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166289228816782412517434%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166289228816782412517434&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-79163834-null-null.142%5Ev47%5Econtrol_1,201%5Ev3%5Eadd_ask&amp;utm_term=%E4%BA%A4%E5%8F%89%E7%86%B5&amp;spm=1018.2226.3001.4187">交叉熵损失函数</a>:Logistic损失函数和负对数似然损失函数只能处理二分类问题，对于两个分类扩展到M个分类，使用交叉熵损失函数(Cross Entropy Loss)，其定义如下：<br>  <img src="/img/posts/MachineLearning/cross_entropy_loss.jpg"></p>
-</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/tsyccnh/article/details/79163834?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522166289228816782412517434%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=166289228816782412517434&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-79163834-null-null.142%5Ev47%5Econtrol_1,201%5Ev3%5Eadd_ask&amp;utm_term=%E4%BA%A4%E5%8F%89%E7%86%B5&amp;spm=1018.2226.3001.4187">交叉熵损失函数</a>:Logistic损失函数和负对数似然损失函数只能处理二分类问题，对于两个分类扩展到M个分类，使用交叉熵损失函数(Cross Entropy Loss)，熵用来表示所有信息量的期望[信息量：当越不可能的事件发生了，我们获取到的信息量就越大。越可能发生的事件发生了，我们获取到的信息量就越小，信息量和事件发生的概率]，其定义如下：</p>
+<h2 id=""><a href="#" class="headerlink" title="  "></a>  <img src="/img/posts/MachineLearning/cross_entropy_loss.jpg"></h2></li>
 <li><p>Hige:典型分类器是SVM算法因为 Hinge 损失可以用来解决间隔最大化问题。当分类模型需要硬分类结果的，例如分类结果是 0 或 1 、 -1或 1 的二分类数据， Hinge 损失是最方便的选择 。Hinge 损失函数定义如下：<br>  <img src="/img/posts/MachineLearning/hinge_loss.jpg"></p>
 </li>
 </ul>
@@ -1160,7 +1164,7 @@ plt.show()
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">28.3k</span>
+                        class="white-color">28.9k</span>
             
             
             
