@@ -53,7 +53,11 @@
     <link rel="stylesheet" type="text/css" href="/css/loading-ghost.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
 
-<meta name="generator" content="Hexo 6.2.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -400,7 +404,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    305
+                    269
                 </div>
                 
 
@@ -426,18 +430,18 @@
 <p>安装好之后File &gt; new &gt; Spring Initializr &gt; 此时注意到选择初始化服务器的defalut那有一个start.spring.io<br>File &gt; Appearance $ Beahavior &gt; System Settings &gt;HTTP Proxy &gt; 选择 Auto-detect后点击左下角的check connection按钮，输入<a target="_blank" rel="noopener" href="http://start.spring.io/">http://start.spring.io</a></p>
 <h2 id="建立项目"><a href="#建立项目" class="headerlink" title="建立项目"></a>建立项目</h2><p>版本选择 2.2.6.RELEASE<br>包的名字记得改</p>
 <h2 id="配置Maven"><a href="#配置Maven" class="headerlink" title="配置Maven"></a>配置Maven</h2><p>File &gt; Buil, Execution, Deployment &lt; Build Tools &gt; Maven 配置maven的setting.xml于repository， 在maven的安装路径下conf文件夹中找到settings.xml，再在maven根目录新建repository文件夹，并在 setting.xml 文件中添加（找到repository注释下一行，进行添加）</p>
-<pre><code>    &lt;localRepository&gt;
+<pre class=" language-XML"><code class="language-XML">    <localRepository>
         D:\Environment\Maven\apache-maven-3.2.5\store
-        &lt;/localRepository&gt;
+        </localRepository>
 </code></pre>
 <p>此处地址为自己创建的repository的地址</p>
 <p>再找到mirror<br>将原代码更换为</p>
-<pre><code>    &lt;mirror&gt;  
-      &lt;id&gt;alimaven&lt;/id&gt;  
-      &lt;name&gt;aliyun maven&lt;/name&gt;  
-      &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;  
-      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;          
-     &lt;/mirror&gt; 
+<pre class=" language-XML"><code class="language-XML">    <mirror>  
+      <id>alimaven</id>  
+      <name>aliyun maven</name>  
+      <url>http://maven.aliyun.com/nexus/content/groups/public/</url>  
+      <mirrorOf>central</mirrorOf>          
+     </mirror> 
 </code></pre>
 <p>再重新生成maven项目，拉开idea右侧maven栏，点击左上角刷新按钮</p>
 <h3 id="报错java-程序包org-springframework-boot不存在"><a href="#报错java-程序包org-springframework-boot不存在" class="headerlink" title="报错java: 程序包org.springframework.boot不存在"></a>报错java: 程序包org.springframework.boot不存在</h3><p>是依赖库仓库出现问题，cd到该项目目录下，mvn idea:idea 重新安装依赖即可</p>
@@ -840,7 +844,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">31k</span>
+                        class="white-color">32.6k</span>
             
             
             

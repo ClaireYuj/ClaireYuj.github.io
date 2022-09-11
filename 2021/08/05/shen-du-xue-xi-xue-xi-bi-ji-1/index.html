@@ -52,7 +52,11 @@
     <link rel="stylesheet" type="text/css" href="/css/loading-ghost.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
 
-<meta name="generator" content="Hexo 6.2.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -399,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    6.5k
+                    7.7k
                 </div>
                 
 
@@ -485,7 +489,82 @@
 </li>
 </ul>
 <p>常见的激活函数有：Logistic函数，Tanh函数，ReLU函数，SoftPlus函数，可见参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wj-1314/p/12015278.html">【推荐】深度学习笔记——常用的激活（激励）函数</a><br><img src="/img/posts/MachineLearning/activate_fun.jpg" alt="激活函数"></p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>在机器学习任务中，大部分监督学习算法都会有一个目标函数 (Objective Function),算法对该目标函数进行优化，称为优化算法的过程。 例如在分类或者回归任务中，<strong>使用损失函数( Loss Function )作为其目标函数对算法模型进行优化</strong>。</p>
+<h3 id="Sigmoid"><a href="#Sigmoid" class="headerlink" title="Sigmoid"></a>Sigmoid</h3><p>Sigmoid也就是Logistic函数，表达式如下：  </p>
+<p>$${S(x)} = \frac{1}{1+e^(x)}$$  </p>
+<p><img src="/img/posts/MachineLearning/Sigmoid.jpg" alt="Sigmoid函数即其导数图像"><br>绘图对应代码：</p>
+<pre class=" language-Python"><code class="language-Python">from matplotlib import pyplot as plt
+import numpy as np
+fig = plt.figure()
+x = np.arange(-10, 10, 0.025)
+plt.plot(x,1/(1+np.exp(-x)))
+plt.title("y = 1/(1+exp(-x))")
+plt.show()
+ 
+plt.plot(x,np.exp(-x)/(1+np.exp(-x))**2)
+plt.title("y = exp(-x)/(1+exp(-x))^2")
+plt.show()
+</code></pre>
+<ul>
+<li>Sigmoid函数连续可导，值域为(0,1)</li>
+<li>相比较于阶跃函数，可以直接利用梯度下降算法优化网络参数</li>
+<li>作为激活函数，将inputs映射到(0,1)，在早期的神经网络中使用地非常多，因为它很好地解释了神经元受到刺激后是否被激活和向后传递的场景（0：几乎没有被激活；1：完全被激活）。因此可以通过Simoid函数将<strong>输出转化为概率输出</strong>，常用于分类问题的<strong>事件概率</strong></li>
+</ul>
+<p>$$ {S’(x)} = {S(x)}{(1-S(x))} = \frac{e^{-x}}{(1+e^{-x})}$$</p>
+<ul>
+<li>在input x = 0时，导数醉倒为0.25，当输入为正负无穷时，导数趋于0，会发生梯度弥散  </li>
+<li>Sigmoid函数光滑，易于求导，但是时指数级计算，计算量大，容易出现梯度弥散或者梯度饱和</li>
+<li>当神经网络的层数很多时，如果每一层的激活函数都采用Sigmoid函数的话，就会产生梯度弥散和梯度爆炸的问题，其中梯度爆炸发生的概率非常小，而梯度消失发生的概率比较大。</li>
+</ul>
+<p>当一个激活函数S(x)满足<br>右饱和：$ \lim_{n\to +\infty} {S(x)} = 0 $<br>左饱和：$ \lim_{n\to -\infty} {S(x)} = 0 $<br>当S(x)同时满足左饱和与右饱和时，称之为饱和</p>
+<h3 id="tanh"><a href="#tanh" class="headerlink" title="tanh"></a>tanh</h3><p>tanh是双曲函数中的一个，tanh() 为双曲正切，关于原点中心对称。在数学中，双曲正切 tanh 是由双曲正弦和双曲余弦这两者基本双曲函数推导而来。  </p>
+<p>正切函数时非常常见的激活函数，<strong>与Sigmoid函数相比，它的输出均值是0</strong>，使得其<strong>收敛速度要比Sigmoid快</strong>，减少迭代次数。相对于Sigmoid的好处是它的输出的均值为0，克服了第二点缺点。<strong>但是当饱和的时候还是会杀死梯度。</strong></p>
+<p>$$ {tanh(x)} = \frac {1-e^{-2x}}{1+e^{-2x}}$$</p>
+<p>$$ {tanh’(x)} = {1-(tanh(x)^2)} =\frac {4e^{-2x}}{(1+e^{-2x})^2}$$</p>
+<p><img src="/img/posts/MachineLearning/tanh.jpg" alt="tanh函数即其导数图像"><br>绘图代码如下</p>
+<pre class=" language-Python"><code class="language-Python">from matplotlib import pyplot as plt
+import numpy as np
+fig = plt.figure()
+x = np.arange(-10, 10, 0.025)
+plt.plot(x,(1-np.exp(-2*x))/(1+np.exp(-2*x)))
+plt.title("y = (1-exp(-2x))/(1+exp(-2x))")
+plt.show()
+ 
+plt.plot(x,4*np.exp(-2*x)/(1+np.exp(-2*x))**2)
+plt.title("y = 4exp(-2x)/(1+exp(-2x))^2")
+plt.show()
+</code></pre>
+<ul>
+<li>tanh函数的值域(-1,1)</li>
+<li>在神经网络的应用中，tanh通常要优于Sigmoid的，因为tanh的输出在 -1~1之间，均值为0，更方便下一层网络的学习。</li>
+<li>但是如果做二分类，输出层可以使用 Sigmoid，因为它可以算出属于某一类的概率。</li>
+<li>tanh函数也存在着梯度弥散或梯度饱和和幂运算的缺点</li>
+</ul>
+<p>从tanh函数和sigmoid函数表达式中可以看出，<strong>tanh(x)的梯度消失问题比Simgoid(x)要轻，梯度如果过早消失会导致收敛速度较慢</strong></p>
+<ul>
+<li>以零为中心的影响，如果当前参数（w0, w1）的最佳优化方向是 （+d0, -d1），则根据反向传播计算公式，我们希望x0和x1符号相反，但是如果上一级神经元采用 Sigmoid 函数作为激活函数，Sigmoid不以零为中心，输出值恒为正，那么我们无法进行更快的参数更新，而是走Z字形逼近最优解。</li>
+</ul>
+<h3 id="ReLu函数"><a href="#ReLu函数" class="headerlink" title="ReLu函数"></a>ReLu函数</h3><p>针对Sigmoid函数和tanh的缺点，提出ReLU函数。</p>
+<p>线性整流函数（Rectified Linear Unit, ReLU），又称修正线性单元，是一种人工神经网络中常用的激活函数（activation function），通常指代以斜坡函数及其变种为代表的非线性函数。<strong>解决了梯度消失现象</strong>，,收敛速度远远大于 Sigmoid函数和 tanh函数,计算速度更快。计算方便，求导方便，计算速度非常快，只需要判断输入是否大于0。  </p>
+<ul>
+<li><strong>无饱和区，收敛快，计算简单</strong>，有时候会比较脆弱，如果变量的更新太快，还没有找到最佳值，就进入小于零的分段就会使得梯度变为零，无法更新直接死掉了。</li>
+</ul>
+<p>$$ {ReLu(x) = max(x,0)$$<br>当x&gt;=0时，ReLu(x) = x<br>当x&lt;0&gt;时， ReLu(x) = 9</p>
+<p>ReLu’(x) = 1, 当x&gt;=0时<br>ReLu’(x) =0,当x&lt;0时</p>
+<p><img src="/img/posts/MachineLearning/ReLu.jpg" alt="ReLu函数即其导数图像"></p>
+<pre class=" language-Python"><code class="language-Python">from matplotlib import pyplot as plt
+import numpy as np
+fig = plt.figure()
+x = np.arange(-10, 10, 0.025)
+plt.plot(x,np.clip(x,0,10e30))
+plt.title("y = relu(x)=max(x,0)")
+plt.show()
+ 
+from matplotlib import pyplot as plt
+plt.plot(x,x>0,"o")
+plt.title("y = relu'(x)")
+plt.show()
+</code></pre>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>在机器学习任务中，大部分监督学习算法都会有一个目标函数 (Objective Function),算法对该目标函数进行优化，称为优化算法的过程。 例如在分类或者回归任务中，<strong>使用损失函数( Loss Function )作为其目标函数对算法模型进行优化</strong>。</p>
 <p>在BP神经网络中，使用均方误差作为损失函数，而在实际中，常用交叉熵作为损失函数。</p>
 <ul>
 <li><p>均方误差作为损失函数收敛速度慢，可能会陷入局部最优解；<strong>交叉熵</strong>作为损失函数的<strong>收敛速度</strong>比均方误差<strong>快</strong>，且较为容易找到函数最优解.</p>
@@ -501,7 +580,7 @@
 <li><p>Hige:典型分类器是SVM算法因为 Hinge 损失可以用来解决间隔最大化问题。当分类模型需要硬分类结果的，例如分类结果是 0 或 1 、 -1或 1 的二分类数据， Hinge 损失是最方便的选择 。Hinge 损失函数定义如下：<br>  <img src="/img/posts/MachineLearning/hinge_loss.jpg"></p>
 </li>
 </ul>
-<h4 id="神经网络中常用的损失函数"><a href="#神经网络中常用的损失函数" class="headerlink" title="神经网络中常用的损失函数"></a>神经网络中常用的损失函数</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44222014/article/details/103271192">常用损失函数参考介绍</a></p>
+<h3 id="神经网络中常用的损失函数"><a href="#神经网络中常用的损失函数" class="headerlink" title="神经网络中常用的损失函数"></a>神经网络中常用的损失函数</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44222014/article/details/103271192">常用损失函数参考介绍</a></p>
 <ol>
 <li><p>ReLU + MSE(均方差)<br> 均方误差损失函数无法处理梯度消失问题，而使用 Leak ReLU 激活函数能够减少计算时梯度消失的问题，因此在神经网络中如果需要使用均方误差损失函数，一般采用 Leak ReLU 等可以减少梯度消失的激活函数。另外，由于均方误差具有普遍性，一般作为衡量损失值的标准，因此使用均方误差作为损失函数表现既不会太好也不至于太差。</p>
 </li>
@@ -1041,7 +1120,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">31k</span>
+                        class="white-color">32.6k</span>
             
             
             

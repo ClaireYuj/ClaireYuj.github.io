@@ -54,7 +54,11 @@
     <link rel="stylesheet" type="text/css" href="/css/loading-ghost.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
 
-<meta name="generator" content="Hexo 6.2.0">
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
@@ -397,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    588
+                    789
                 </div>
                 
 
@@ -455,7 +459,45 @@ class Solution {
     }
 }
 </code></pre>
-<h2 id="Offer27-二叉树的镜像"><a href="#Offer27-二叉树的镜像" class="headerlink" title="Offer27.二叉树的镜像"></a>Offer27.二叉树的镜像</h2><p>请完成一个函数，输入一个二叉树，该函数输出它的镜像。<br><img src="/img/posts/Leetcode/offer27.jpg"></p>
+<h2 id="Offer27-二叉树的镜像"><a href="#Offer27-二叉树的镜像" class="headerlink" title="Offer27.二叉树的镜像"></a>Offer27.二叉树的镜像</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/invert-binary-tree/">请完成一个函数，输入一个二叉树，该函数输出它的镜像</a><br><img src="/img/posts/Leetcode/offer27.jpg"></p>
+<ul>
+<li>思路： 从根的叶结点开始， 一个一个交换左右子树，一直到为null</li>
+</ul>
+<pre class=" language-Java"><code class="language-Java">    class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null ) return null;
+        TreeNode tmp = root.left;
+        root.left = root.right;
+        root.right = tmp;
+        invertTree(root.right);
+        invertTree(root.left);
+        return root;
+    }
+}
+
+</code></pre>
+<h2 id="Offer28-对称的二叉树"><a href="#Offer28-对称的二叉树" class="headerlink" title="Offer28.对称的二叉树"></a>Offer28.对称的二叉树</h2><p><img src="https://leetcode.cn/leetbook/read/illustration-of-algorithm/5d412v/"><br>依旧是递归，不过考虑到判断对称，要求：<br>左子树的左子树等于右子树的右子树，右子树的左子树=左子树的右子树，依次递归</p>
+<pre class=" language-Java"><code class="language-Java">class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root == null) return true;
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        if(left!=null&&right!=null&&right.val==left.val){
+            return travel(left,right);
+        }
+        else if(left == null &&right==null)return true;
+        else return false;
+
+    }
+
+    public boolean travel(TreeNode left, TreeNode right){
+        if(left==null&&right==null) return true;
+        if(left!=null&&right!=null&&left.val!=right.val) return false;
+        else if(left==null||right==null) return false;
+        return travel(left.left,right.right)&&travel(right.left,left.right);
+    }
+}
+</code></pre>
 <h2 id="94-二叉树的中序遍历"><a href="#94-二叉树的中序遍历" class="headerlink" title="94. 二叉树的中序遍历"></a>94. 二叉树的中序遍历</h2><p><img src="/img/posts/Leetcode/leetcode94.jpg" alt="Leetcode94"></p>
 <h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>中序遍历 左-&gt;中-右</p>
 <pre class=" language-JAVA"><code class="language-JAVA">class Solution {
@@ -985,7 +1027,7 @@ class Solution {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">31k</span>
+                        class="white-color">32.6k</span>
             
             
             
