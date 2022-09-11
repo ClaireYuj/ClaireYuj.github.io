@@ -548,7 +548,7 @@ plt.show()
 <ul>
 <li><strong>无饱和区，收敛快，计算简单</strong>，有时候会比较脆弱，如果变量的更新太快，还没有找到最佳值，就进入小于零的分段就会使得梯度变为零，无法更新直接死掉了。</li>
 </ul>
-<p>$$ {ReLu(x) = max(x,0)$$<br>当x&gt;=0时，ReLu(x) = x<br>当x&lt;0&gt;时， ReLu(x) = 9</p>
+<p>$$ {ReLu(x) = max(x,0)}$$<br>当x&gt;=0时，ReLu(x) = x<br>当x&lt;0&gt;时， ReLu(x) = 9</p>
 <p>ReLu’(x) = 1, 当x&gt;=0时<br>ReLu’(x) =0,当x&lt;0时</p>
 <p><img src="/img/posts/MachineLearning/ReLu.jpg" alt="ReLu函数即其导数图像"></p>
 <pre class=" language-Python"><code class="language-Python">from matplotlib import pyplot as plt
