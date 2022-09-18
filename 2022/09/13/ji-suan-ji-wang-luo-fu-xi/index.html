@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="机器学习3-多元梯度下降, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="多元线性回归多元线性回归也就是用多个特征变量来进行预测  
-$h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3$+$\theta_">
+    <meta name="keywords" content="计算机网络复习, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="什么是网络
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@ $h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>机器学习3-多元梯度下降 | DULULU</title>
+    <title>计算机网络复习 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -337,12 +337,12 @@ $h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">机器学习3-多元梯度下降</h1>
+                    <h1 class="description center-align post-title">计算机网络复习</h1>
                 </div>
             </div>
         </div>
@@ -366,8 +366,8 @@ $h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
-                                <span class="chip bg-color">梯度下降</span>
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">计算机网络</span>
                             </a>
                         
                     </div>
@@ -378,8 +378,8 @@ $h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                机器学习
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                计算机网络
                             </a>
                         
                     </div>
@@ -391,7 +391,7 @@ $h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-30
+                    2022-09-13
                 </div>
                 
 
@@ -400,7 +400,7 @@ $h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    301
+                    5
                 </div>
                 
 
@@ -422,35 +422,7 @@ $h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h2><p>多元线性回归也就是用多个特征变量来进行预测  </p>
-<div align="center"><font size="4">$h_\theta$($\theta$) = $\theta_0$+$\theta_1$$x_1$+$\theta_2$$x_2$+$\theta_3$$x_3$+$\theta_4$$x_4$...+$\theta_n$$x_n$</font></div>  
-  
-
-<center>定义$x_0$ = 1</center>  
-
-<p>所以<br>    x =<br>        $$\begin{bmatrix}<br>        x_0 x_1 x_2 … x_n<br>        \end{bmatrix}$$</p>
-<p>$\theta$ = $$\begin{bmatrix}\theta_0 \ \theta_1  \ \theta_2 \ … \theta_n\end{bmatrix}$$</p>
-<p>所以得出$h_\theta(x) = \theta^Tx$</p>
-<h2 id="用梯度下降处理多元线性回归"><a href="#用梯度下降处理多元线性回归" class="headerlink" title="用梯度下降处理多元线性回归"></a>用梯度下降处理多元线性回归</h2><p>在梯度下降中的假设<br>$$h_\theta(x) = \theta^Tx$$</p>
-<p>代价函数</p>
-<p>$$J(\theta_0,\theta_1…\theta_n) = \frac{1}{2m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))^2$$</p>
-<p>梯度下降</p>
-<center>重复多次</center>
-    
-<p>$$\theta := \theta_j - \alpha \frac{\partial {J(\theta)}}{\partial \theta_j}$$</p>
-<p>$\alpha$是学习率</p>
-<p>最终梯度下降</p>
-<center>重复</center>
-$$ \theta_j := \theta_j - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))x_j^{(i)}$$
-
-<p>即<br>$$ \theta_0 := \theta_0 - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))x_0^{(i)}$$<br>$$ \theta_1 := \theta_1 - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))x_1^{(i)}$$<br>$$ \theta_2 := \theta_2 - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\theta(x^{(i)}-y^{(i)}))x_2^{(i)}$$</p>
-<h2 id="特征缩放-Feature-scaling"><a href="#特征缩放-Feature-scaling" class="headerlink" title="特征缩放(Feature scaling)"></a>特征缩放(Feature scaling)</h2><blockquote>
-<p>不同特征的取值在一个相近的范围，这样梯度下降容易更好地收敛</p>
-</blockquote>
-<p>特征地范围不要过小也不要过大</p>
-<h3 id="均值归一化-Mean-normalization"><a href="#均值归一化-Mean-normalization" class="headerlink" title="均值归一化(Mean normalization)"></a>均值归一化(Mean normalization)</h3><blockquote>
-<p>将$x_i$用$x_i-\mu_i$代替是的特征均值为0</p>
-</blockquote>
+                <p>什么是网络</p>
 
                 
             </div>
@@ -477,7 +449,7 @@ $$ \theta_j := \theta_j - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\thet
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/08/30/ji-qi-xue-xi-3-duo-yuan-ti-du-xia-jiang/">https://claireyuj.github.io/2022/08/30/ji-qi-xue-xi-3-duo-yuan-ti-du-xia-jiang/</a>
+                    <a href="https://claireyuj.github.io/2022/09/13/ji-suan-ji-wang-luo-fu-xi/">https://claireyuj.github.io/2022/09/13/ji-suan-ji-wang-luo-fu-xi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -515,8 +487,8 @@ $$ \theta_j := \theta_j - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\thet
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
-                                    <span class="chip bg-color">梯度下降</span>
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">计算机网络</span>
                                 </a>
                             
                         </div>
@@ -564,9 +536,60 @@ $$ \theta_j := \theta_j - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\thet
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
+            <div class="card">
+                <a href="/2022/09/13/ji-suan-ji-wang-luo-fu-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="计算机网络复习">
+                        
+                        <span class="card-title">计算机网络复习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    计算机网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">计算机网络</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/08/31/qiang-hua-xue-xi-xue-xi-bi-ji-1/">
                     <div class="card-image">
@@ -584,9 +607,9 @@ $$ \theta_j := \theta_j - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\thet
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-31
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-31
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -604,59 +627,6 @@ $$ \theta_j := \theta_j - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\thet
                     
                     <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">
                         <span class="chip bg-color">强化学习</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/08/29/ji-qi-xue-xi-2-ju-zhen-fang-cheng/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="机器学习2-矩阵方程">
-                        
-                        <span class="card-title">机器学习2-矩阵方程</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-29
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    机器学习
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                        <span class="chip bg-color">线性代数</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
                     </a>
                     
                 </div>
@@ -777,13 +747,6 @@ $$ \theta_j := \theta_j - \alpha \frac{1}{m} \displaystyle \sum_{i=1}^m (h_\thet
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
 
 
 

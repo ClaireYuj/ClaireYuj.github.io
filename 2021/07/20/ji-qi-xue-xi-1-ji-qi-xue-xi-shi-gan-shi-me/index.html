@@ -4,10 +4,15 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="机器学习2-矩阵方程, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="矩阵的基本概念
-dimension ：行x列 
-矩阵表示  2x3的矩阵表示:  $$\begin{bmatrix}  1&amp;amp;1&amp;amp;0 \  1&amp;amp;0&amp;amp;1 \  \end{bmatrix}$$  3x2的矩阵表示:">
+    <meta name="keywords" content="机器学习1--机器学习是干什么, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="监督学习与非监督学习，假设函数与代价函数，梯度下降
+监督学习与非监督学习
+有无预期输出是监督学习与非监督学习的最大区别
+
+
+监督学习：学习一个模型使模型能够对任意给定的输入，对其相应的输出做出一个好的预测。
+
+即：利用训练数据集学习一个模型">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +24,7 @@ dimension ：行x列
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>机器学习2-矩阵方程 | DULULU</title>
+    <title>机器学习1--机器学习是干什么 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -338,12 +343,12 @@ dimension ：行x列
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">机器学习2-矩阵方程</h1>
+                    <h1 class="description center-align post-title">机器学习1--机器学习是干什么</h1>
                 </div>
             </div>
         </div>
@@ -367,12 +372,12 @@ dimension ：行x列
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                                <span class="chip bg-color">线性代数</span>
+                            <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
+                                <span class="chip bg-color">梯度下降</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">机器学习</span>
+                            <a href="/tags/%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0/">
+                                <span class="chip bg-color">代价函数</span>
                             </a>
                         
                     </div>
@@ -396,7 +401,7 @@ dimension ：行x列
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-29
+                    2021-07-20
                 </div>
                 
 
@@ -405,7 +410,7 @@ dimension ：行x列
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    54
+                    562
                 </div>
                 
 
@@ -427,10 +432,44 @@ dimension ：行x列
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="矩阵的基本概念"><a href="#矩阵的基本概念" class="headerlink" title="矩阵的基本概念"></a>矩阵的基本概念</h2><ul>
-<li>dimension ：行x列 </li>
-<li>矩阵表示<br>  2x3的矩阵表示:<br>  $$\begin{bmatrix}<br>  1&amp;1&amp;0 \<br>  1&amp;0&amp;1 \<br>  \end{bmatrix}$$<br><br>  3x2的矩阵表示:<br>  $$\begin{bmatrix}<br>  0&amp;1 \<br>  1&amp;0 \<br>  1&amp;1 \<br>  \end{bmatrix}$$</li>
+                <p>监督学习与非监督学习，假设函数与代价函数，梯度下降</p>
+<h2 id="监督学习与非监督学习"><a href="#监督学习与非监督学习" class="headerlink" title="监督学习与非监督学习"></a>监督学习与非监督学习</h2><blockquote>
+<p><strong>有无预期输出</strong>是监督学习与非监督学习的最大区别</p>
+</blockquote>
+<ul>
+<li>监督学习：学习一个模型使模型能够对任意给定的输入，对其相应的输出做出一个好的预测。</li>
 </ul>
+<p>即：利用训练数据集学习一个模型，再用模型对测试样本集进行预测。</p>
+<p><strong>分类问题（离散）</strong>与<strong>回归问题（连续）</strong>等都是监督学习。</p>
+<ul>
+<li>非监督学习：直接对数据进行建模。没有给定事先标记过的训练范例，所用的数据没有属性或标签这一概念。事先不知道输入数据对应的输出结果是什么。</li>
+</ul>
+<p>自动对输入的资料进行分类或分群，以寻找数据的模型和规律。</p>
+<p><strong>聚类算法</strong>是一种非监督学习，针对数据集，自动找出数据中的结构，从而把数据分成不同的簇。</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>此处以最简单的线性回归（如房价预测）为例，线性回归的学习是为了预测未来房价</p>
+<p>机器学习是在已知部分x与y的情况下，得出一个房价相关的线性函数y = ax + b</p>
+<p>所以代价函数是与参数a,b相关的函数,使得代价函数最小化，是线性回归中的学习目标</p>
+<p>常用的代价函数有<br>    <img src="/img/posts/MachineLearning/cost_function.jpg" alt="平方和代价函数"></p>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><h3 id="梯度下降的过程"><a href="#梯度下降的过程" class="headerlink" title="梯度下降的过程"></a>梯度下降的过程</h3><ol>
+<li>选定几个参数a1,a2,a3…</li>
+<li>选择初始值</li>
+<li>从初值开始按照给定的步幅进行梯度下降，寻找局部极小值</li>
+</ol>
+<p><img src="/img/posts/MachineLearning/slope0.jpg" alt="梯度下降可以用等高线图具象化"></p>
+<p><img src="/img/posts/MachineLearning/slope1.jpg" alt="选择初始点"></p>
+<p><img src="/img/posts/MachineLearning/slope3.jpg" alt="从a点一步一步往下梯度下降"></p>
+<p><img src="/img/posts/MachineLearning/slope2.jpg" alt="从b点一步一步往下梯度下降"></p>
+<blockquote>
+<p>从不同的点进行梯度下降可能得到<strong>不同</strong>的局部极小值</p>
+</blockquote>
+<h3 id="梯度下降的数理解释"><a href="#梯度下降的数理解释" class="headerlink" title="梯度下降的数理解释"></a>梯度下降的数理解释</h3><p><img src="/img/posts/MachineLearning/slope_definition.jpg" alt="梯度下降的数理解释"></p>
+<p>a是学习率<br>下一步的值 = 这一步的值 - 学习率*代价函数分别对参数a1,a2,a3…的偏导</p>
+<p>对于梯度下降公式中偏导的简化</p>
+<p><img src="/img/posts/MachineLearning/slope_deri0.jpg" alt="符合求偏导"></p>
+<p>梯度下降是一种<strong>同步更新</strong>算法，要求参数a1,a2,a3同步更新，所以<br><img src="/img/posts/MachineLearning/slope_detail0.jpg" alt="要按照左侧的顺序来"></p>
+<h3 id="线性回归中的梯度下降"><a href="#线性回归中的梯度下降" class="headerlink" title="线性回归中的梯度下降"></a>线性回归中的梯度下降</h3><p><img src="/img/posts/MachineLearning/slope_linear.jpg" alt="梯度下降再线性回归中的模型"></p>
+<p>将代数函数用等高线图（右侧）表示</p>
+<p><img src="/img/posts/MachineLearning/slope4.jpg" alt="由于该代数函数是一个凹函数，所以局部极小就是全局最小，因此要得到左侧最拟合的目标函数，需要右侧趋近于等高线图最中间的圆圈"></p>
 
                 
             </div>
@@ -457,7 +496,7 @@ dimension ：行x列
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/08/29/ji-qi-xue-xi-2-ju-zhen-fang-cheng/">https://claireyuj.github.io/2022/08/29/ji-qi-xue-xi-2-ju-zhen-fang-cheng/</a>
+                    <a href="https://claireyuj.github.io/2021/07/20/ji-qi-xue-xi-1-ji-qi-xue-xi-shi-gan-shi-me/">https://claireyuj.github.io/2021/07/20/ji-qi-xue-xi-1-ji-qi-xue-xi-shi-gan-shi-me/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -495,12 +534,12 @@ dimension ：行x列
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-                                    <span class="chip bg-color">线性代数</span>
+                                <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
+                                    <span class="chip bg-color">梯度下降</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">机器学习</span>
+                                <a href="/tags/%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0/">
+                                    <span class="chip bg-color">代价函数</span>
                                 </a>
                             
                         </div>
@@ -552,13 +591,13 @@ dimension ：行x列
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/08/30/ji-qi-xue-xi-3-duo-yuan-ti-du-xia-jiang/">
+                <a href="/2021/07/21/torch-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="机器学习3-多元梯度下降">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="torch配置">
                         
-                        <span class="card-title">机器学习3-多元梯度下降</span>
+                        <span class="card-title">torch配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -569,7 +608,7 @@ dimension ：行x列
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-30
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-21
                         </span>
                         <span class="publish-author">
                             
@@ -586,8 +625,8 @@ dimension ：行x列
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
-                        <span class="chip bg-color">梯度下降</span>
+                    <a href="/tags/CUDA/">
+                        <span class="chip bg-color">CUDA</span>
                     </a>
                     
                 </div>
@@ -601,13 +640,13 @@ dimension ：行x列
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/08/29/ji-qi-xue-xi-1-ji-qi-xue-xi-shi-gan-shi-me/">
+                <a href="/2021/07/11/shi-bie-mnist-shou-xie-shu-zi-shu-ju-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="机器学习1--机器学习是干什么">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="识别mnist手写数字数据集">
                         
-                        <span class="card-title">机器学习1--机器学习是干什么</span>
+                        <span class="card-title">识别mnist手写数字数据集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -618,7 +657,7 @@ dimension ：行x列
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-11
                             </span>
                         <span class="publish-author">
                             
@@ -635,12 +674,12 @@ dimension ：行x列
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D/">
-                        <span class="chip bg-color">梯度下降</span>
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0/">
-                        <span class="chip bg-color">代价函数</span>
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
                     </a>
                     
                 </div>
@@ -761,13 +800,6 @@ dimension ：行x列
 
 </main>
 
-
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
 
 
 

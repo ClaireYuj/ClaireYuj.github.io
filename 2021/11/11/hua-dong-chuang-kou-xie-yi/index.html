@@ -4,10 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="识别mnist手写数字数据集, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="MNIST包含70,000张手写数字图像: 60,000张用于培训，10,000张于测试。图像是灰度的，28x28像素的。识别mnist手写数字及可以视作图像识别的入门学习任务需要准备pytorch环境
-import torch
-impor">
+    <meta name="keywords" content="滑动窗口协议, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="滑动窗口协议
+是TCP协议的一种，用于数据传输时的流量控制，避免拥塞的发送。  
+
+滑动窗口协议允许发送方在在收到确认之前发送多个数据分组，因此发送方不必没收到一个分组就停下来等待确认，因此该协议可以加速数据的传输，提高网络吞吐量。
+
+如果">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +22,7 @@ impor">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>识别mnist手写数字数据集 | DULULU</title>
+    <title>滑动窗口协议 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -338,12 +341,12 @@ impor">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">识别mnist手写数字数据集</h1>
+                    <h1 class="description center-align post-title">滑动窗口协议</h1>
                 </div>
             </div>
         </div>
@@ -367,12 +370,12 @@ impor">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">
+                                <span class="chip bg-color">数据传输</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">机器学习</span>
+                            <a href="/tags/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/">
+                                <span class="chip bg-color">流量控制</span>
                             </a>
                         
                     </div>
@@ -383,8 +386,8 @@ impor">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                机器学习
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
+                                计算机网络
                             </a>
                         
                     </div>
@@ -396,7 +399,7 @@ impor">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-04-11
+                    2021-11-11
                 </div>
                 
 
@@ -405,7 +408,7 @@ impor">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    547
+                    248
                 </div>
                 
 
@@ -427,68 +430,26 @@ impor">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>MNIST包含70,000张手写数字图像: 60,000张用于培训，10,000张于测试。图像是灰度的，28x28像素的。<br>识别mnist手写数字及可以视作图像识别的入门学习任务<br>需要准备pytorch环境</p>
-<pre class=" language-Python"><code class="language-Python">import torch
-import torchvision
-from torch.utils.data import DataLoader
-</code></pre>
-<h2 id="定义参数"><a href="#定义参数" class="headerlink" title="定义参数"></a>定义参数</h2><pre class=" language-Python"><code class="language-Python">n_epochs = 3 # 整个训练集训练的次数
-batch_size_train = 64  # 训练集的批次大小
-batch_size_test = 1000  # 测试机batchsize
-learning_rate = 0.01
-momentum = 0.5
-log_interval = 10
-# 对于可重复实验设置随机种子，进行重复实验，设置随机种子
-random_seed = 1
-torch.manual_seed(random_seed)
-</code></pre>
-<p>learning_rate和momentum是我们稍后将使用的优化器的超参数。  </p>
-<h2 id="下载数据集"><a href="#下载数据集" class="headerlink" title="下载数据集"></a>下载数据集</h2><p>直接利用torchvision加载minist数据集，我们将使用batch_size=64进行训练，并使用size=1000对这个数据集进行测试。下面的Normalize()转换使用的值0.1307和0.3081是MNIST数据集的全局平均值和标准偏差，此处我们将它们作为给定值。</p>
-<pre class=" language-Python"><code class="language-Python"> # 下载训练集和测试集, './minist_data'是目录下相对路径
- # 记得要设置download为true，不然可能下载到一般突然中断
- # train=True是训练集，batch_size=batch_size_train
-train_loader = dataLoader(
-    torchvision.datasets.MNIST('./mnist_data',train=True, download=True,
-                          transform= torchvision.transforms.Compose([
-                              torchvision.transforms.ToTensor(),
-                              torchvision.transforms.Normalize((0.1307,),(0.3081,))
-                          ])),
-    batch_size=batch_size_train, shuffle=True
-)
+                <h2 id="滑动窗口协议"><a href="#滑动窗口协议" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h2><ul>
+<li><p>是<strong>TCP协议</strong>的一种，用于数据传输时的流量控制，避免拥塞的发送。  </p>
+</li>
+<li><p>滑动窗口协议允许发送方在在收到确认之前发送多个数据分组，因此<strong>发送方不必没收到一个分组就停下来等待确认</strong>，因此该协议可以加速数据的传输，提高网络吞吐量。</p>
+</li>
+<li><p>如果多个客户端向服务器发送到大量数据包，但服务器没有足够的接收这么多数据包的能力，那么会导致拥塞的发生。因此我们需要控制发送方的发送速度，控制它不要发送过快。</p>
+</li>
+</ul>
+<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><ul>
+<li><p>窗口：允许使用的序列号范围</p>
+<ul>
+<li>窗口尺寸： 若窗口尺寸为n，意味着最多有n个等待确认的消息</li>
+</ul>
+</li>
+<li><p>滑动窗口： 随着协议的运行，窗口在序列号范围内向前移动  </p>
+</li>
+<li><p>滑动窗口协议： GBN，SR</p>
+</li>
+</ul>
 
- # train=False是测试集，batch_size=batch_size_test
-test_loader = dataLoader(
-    torchvision.datasets.MNIST('./mnist_data',train=False, download=True,
-                          transform= torchvision.transforms.Compose([
-                              torchvision.transforms.ToTensor(),
-                              torchvision.transforms.Normalize((0.1307,),(0.3081,))
-                          ])),
-    batch_size=batch_size_test, shuffle=True
-)
-</code></pre>
-<p>下载完成后，在目录./mnist_data/MNIST/raw目录下可以看到这些<br><img src="/img/posts/Programming/mnist0.jpg"></p>
-<p>利用train_loader来看训练数据的组成</p>
-<pre class=" language-Python"><code class="language-Python">examples = enumerate(train_loader)
-batch_idx, (example_data, example_targets) = nex(examples)
-print(example_targets)  # example_targets是图片实际对应的数字标签
-print(example_data.shape)  # 一批训练数据是一个数据张量
-</code></pre>
-<p>输出结果<br><img src="/img/posts/Programming/mnist1.jpg"></p>
-<p>这意味着我们有64个例子的28x28像素的灰度(即没有rgb通道)。</p>
-<p>尝试用mathplotllib绘制部分</p>
-<pre class=" language-Python"><code class="language-Python">import matplotlib.pyplot as plt
-fig = plt.figure()
-for i in range(12):
-    plt.subplot(3,4,i+1)  # subplot(m,n,i) 说明是m*n的网格表示，i表示每个plot的编号， 这样可以把几张图放在一张图片中表示出来
-    plt.tight_layout()
-    plt.imshow(example_data[i][0], cmap='gray', interpolation='none')
-    plt.title("Ground Truth:{}".format(example_targets[i]))
-    plt.xticks([])
-    plt.yticks([])
-plt.show()
-</code></pre>
-<p><img src="/img/posts/Programming/mnist2.jpg" alt="输出结果"></p>
-<h2 id="构建网络"><a href="#构建网络" class="headerlink" title="构建网络"></a>构建网络</h2>
                 
             </div>
             <hr/>
@@ -514,7 +475,7 @@ plt.show()
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/04/11/shi-bie-mnist-shou-xie-shu-zi-shu-ju-ji/">https://claireyuj.github.io/2022/04/11/shi-bie-mnist-shou-xie-shu-zi-shu-ju-ji/</a>
+                    <a href="https://claireyuj.github.io/2021/11/11/hua-dong-chuang-kou-xie-yi/">https://claireyuj.github.io/2021/11/11/hua-dong-chuang-kou-xie-yi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -552,12 +513,12 @@ plt.show()
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">
+                                    <span class="chip bg-color">数据传输</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">机器学习</span>
+                                <a href="/tags/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/">
+                                    <span class="chip bg-color">流量控制</span>
                                 </a>
                             
                         </div>
@@ -609,13 +570,13 @@ plt.show()
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2022/05/31/shu-ju-jie-gou-fu-xi/">
+                <a href="/2021/11/17/java-shu-ru-shu-chu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="数据结构复习">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVA输入输出">
                         
-                        <span class="card-title">数据结构复习</span>
+                        <span class="card-title">JAVA输入输出</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -626,8 +587,57 @@ plt.show()
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-31
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-17
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
+                                    基础知识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/10/17/leetcode-shu-xiang-guan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Leetcode--树相关">
+                        
+                        <span class="card-title">Leetcode--树相关</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -643,57 +653,8 @@ plt.show()
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/03/16/linux-ji-ben-zhi-shi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Linux基本知识">
-                        
-                        <span class="card-title">Linux基本知识</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-category">
-                                    操作系统
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
                     </a>
                     
                 </div>
