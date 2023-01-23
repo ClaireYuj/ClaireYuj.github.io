@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>Leetcode--双指针</title>
+      <link href="/2023/01/23/leetcode-shuang-zhi-zhen-1/"/>
+      <url>/2023/01/23/leetcode-shuang-zhi-zhen-1/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Leetcode--双指针</title>
+      <link href="/2022/12/31/leetcode-shuang-zhi-zhen/"/>
+      <url>/2022/12/31/leetcode-shuang-zhi-zhen/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一些Java中指针的基本概念"><a href="#一些Java中指针的基本概念" class="headerlink" title="一些Java中指针的基本概念"></a>一些Java中指针的基本概念</h2><p>java“指针”就是对象的引用，是存放在堆中的，因为Java中对象是存放在堆中。我们知道java中的内存分为堆内存（heap）和栈内存（stack）。堆就是用来存放对象的，而栈则是存放一些数据基本类型的值，如int,float,double,char…….</p><h3 id="Java之堆"><a href="#Java之堆" class="headerlink" title="Java之堆"></a>Java之堆</h3><p>JVM只有一个堆区，在虚拟机启动时创建，被所有线程共享，堆区不放基本类型（成员变量除外）和对象的引用，只存储对象本身（包括class对象和异常对象）和数组，堆是GC所管理的主要区域（对不需要的对象进行标记，而后进行清除）<br>堆是用来存放程序动态生成的数据。（<strong>new 出来的对象的实例存储在堆中</strong>，但是<strong>仅仅</strong>存储的是成员<strong>变量</strong>，也就是平时所说的实例变量，<strong>成员变量的值</strong>则存储在常量池中。成员方法是此类所实现实例共享的，并不是每一次new 都会创建成员方法。成员方法被存储在方法区，并不是存储在第一个创建的对象中，因为那样的话，第一个对象被回收，后面创建的对象也就没有方法引用了。静态变量也存储在方法区中。局部变量在栈内存中，JVM为每一个类分配一个栈帧，然后引用类型的局部变量指向堆内存中的地址），堆是内存中共享的区域，要考虑线程安全的问题。</p><h3 id="Java之栈"><a href="#Java之栈" class="headerlink" title="Java之栈"></a>Java之栈</h3><p>用来存放基本数据类型和引用数据类型的实例的（也就是实例对象的在堆中的首地址，Person p = new Person; p存贮在堆栈中,值为@23651dff。还有就是堆栈是线程独享的。每一个线程都有自己的线程栈。</p><h3 id="x3D-x3D-与equal"><a href="#x3D-x3D-与equal" class="headerlink" title="==与equal"></a>==与equal</h3><ul><li><p>‘==’比较的是地址</p></li><li><p>equals比较的是内容</p></li></ul><h2 id="167-两数之和-II-输入有序数组"><a href="#167-两数之和-II-输入有序数组" class="headerlink" title="167. 两数之和 II - 输入有序数组"></a>167. 两数之和 II - 输入有序数组</h2><p><a href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted">题目</a>:给你一个下标从 1 开始的整数数组&nbsp;numbers ，该数组已按 非递减顺序排列&nbsp; ，请你从数组中找出满足相加之和等于目标数&nbsp;target 的两个数。如果设这两个数分别是 numbers[index1] 和 numbers[index2] ，则 1 &lt;= index1 &lt; index2 &lt;= numbers.length 。<br>以长度为 2 的整数数组 [index1, index2] 的形式返回这两个整数的下标 index1 和 index2。<br>你可以假设每个输入 只对应唯一的答案 ，而且你 不可以 重复使用相同的元素。你所设计的解决方案必须只使用常量级的额外空间。</p><p><img src="/img/posts/Leetcode/leetcode167.jpg" alt="Leetcode167图示"></p><h3 id="暴力解决法"><a href="#暴力解决法" class="headerlink" title="暴力解决法"></a>暴力解决法</h3><p>虽然不太聪明，但很暴力</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>直接用index1和index2， 如果</p><ol><li>number[index1]+number[index2]&lt;target，index2右移</li><li>number[index1]+number[index2]&gt;target, index1右移， 且index2归位，index2=index1+1</li><li>number[index1]+number[index2]=target, 返回该值</li></ol><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class=" language-Java"><code class="language-Java">class Solution {    public int[] twoSum(int[] numbers, int target) {      int index_1 = 0,index_2 = 1;        for(; index_1<numbers.length;){            int sum = numbers[index_1]+numbers[index_2];            if(sum<target&&index_2<numbers.length-1)  {                index_2++;            }            else if(sum==target) {                index_1++;                index_2++;                break;            }            else{                index_1++;                index_2 = index_1+1;            }        }        int[] results = {index_1,index_2};        return results;    }}</code></pre><h3 id="双指针法（推荐）"><a href="#双指针法（推荐）" class="headerlink" title="双指针法（推荐）"></a>双指针法（推荐）</h3><p>注意该数组是一个有序的递增数组，所以可以用该方法</p><pre class=" language-Java"><code class="language-Java">public int[] twoSum(int[] numbers, int target) {    int i = 0;    int j = numbers.length - 1;    while (i < j) {        int sum = numbers[i] + numbers[j];        if (sum < target) {            i++;        } else if (sum > target) {            j--;        } else {            return new int[]{i+1, j+1};        }    }    return new int[]{-1, -1};}作者：nettee链接：https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/solution/yi-zhang-tu-gao-su-ni-on-de-shuang-zhi-zhen-jie-fa/来源：力扣（LeetCode）著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</code></pre><h2 id="剑指offer18：-删除链表中的节点"><a href="#剑指offer18：-删除链表中的节点" class="headerlink" title="剑指offer18： 删除链表中的节点"></a>剑指offer18： 删除链表中的节点</h2><p><a href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/509cy5/">题目</a><br>给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。</p><p>返回删除后的链表的头节点。</p><p>注意：此题对比原题有改动</p><p>示例 1:</p><p>输入: head = [4,5,1,9], val = 5<br>输出: [4,1,9]<br>解释: 给定你链表中值为&nbsp;5&nbsp;的第二个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 1 -&gt; 9.<br>示例 2:</p><p>输入: head = [4,5,1,9], val = 1<br>输出: [4,5,9]<br>解释: 给定你链表中值为&nbsp;1&nbsp;的第三个节点，那么在调用了你的函数之后，该链表应变为 4 -&gt; 5 -&gt; 9.</p><h3 id="单指针法"><a href="#单指针法" class="headerlink" title="单指针法"></a>单指针法</h3><p>构造一个虚拟链表 cur 以 0 开始，并让该链表指向头指针 cur.next = head; 假设 head 为 <strong>1-&gt;2-&gt;3-&gt;4</strong><br>此时 cur = 0-&gt;1-&gt;2-&gt;3-&gt;4</p><p>若要删除数字3，需要利用<strong>cur.next.val</strong>来判断是否与val相等, 当cur.next.val = 3时，此时cur = 2-&gt;3-&gt;4<br>删除3要求，cur-&gt;next = cur-&gt;next-&gt;next<br>cur = 2-&gt;4, 同时head中的3也被删去了</p><pre class=" language-Java"><code class="language-Java">    public ListNode deleteNode(ListNode head, int val){        ListNode cur = new ListNode(0);        cur.next = head;        if(head.val == val){            return head.next;        }        for(;cur.next!=null;){            if(cur.next.val==val){                cur.next = cur.next.next;                break;            }            cur = cur.next;        }        return head;    }</code></pre><h3 id="双指针法"><a href="#双指针法" class="headerlink" title="双指针法"></a>双指针法</h3><pre class=" language-Java"><code class="language-Java"> public ListNode deleteNode(ListNode head, int val) {        ListNode pre = head;        ListNode cur = head.next;        if(head.val == val){            return head.next;        }        for(;cur!=null;){            if(cur.val==val){                cur = cur.next;                break;            }            pre = pre.next;            cur = cur.next;        }        pre.next = cur;        return head;}</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> leetcode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机网络复习笔记1--概述</title>
       <link href="/2022/10/05/ji-suan-ji-wang-luo-fu-xi-bi-ji-1/"/>
       <url>/2022/10/05/ji-suan-ji-wang-luo-fu-xi-bi-ji-1/</url>
