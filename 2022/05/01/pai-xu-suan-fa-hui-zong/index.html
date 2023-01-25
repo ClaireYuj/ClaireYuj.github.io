@@ -598,7 +598,44 @@ protected void swap(int[] num, int i, int j) {
 </code></pre>
 </li>
 </ul>
-<h4 id="堆排序-1"><a href="#堆排序-1" class="headerlink" title="堆排序"></a>堆排序</h4><h3 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h3><h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3>
+<h4 id="堆排序-1"><a href="#堆排序-1" class="headerlink" title="堆排序"></a>堆排序</h4><h3 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h3><p>参考<a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/p57uhr/">Leetcode图解算法结构–快速排序</a><br>快速排序算法有两个核心点，分别为 哨兵划分 和 递归 .</p>
+<h4 id="哨兵划分："><a href="#哨兵划分：" class="headerlink" title="哨兵划分："></a>哨兵划分：</h4><p>以数组某个元素（一般选取首元素）为 基准数 ，将所有小于基准数的元素移动至其左边，大于基准数的元素移动至其右边。</p>
+<p>如数组 [3,2,5,1,0,4]<br>选取最左元素arr[0] = 3作为 l， 最右元素arr[5] = 4 作为r，假设以arr[0] = 3作为哨兵，那么令 i 从 l 开始向左移动，令 j 从 r 开始向右移动<br>[3,2,5,1,0,4]<br> i         j<br> 此时arr[j]=4&gt;3,所以j左移<br>[3,2,5,1,0,4]<br> i       j<br> 此时arr[j] = 0 &lt; 3, j不动， i开始移动<br>[3,2,5,1,0,4]<br>     i   j<br>此时arr[i] = 5 &lt; 3，所以<strong>此时arr[i]与arr[j]元素交换位置</strong>，原数组变为[3,2,0,1,5,4]， j继续左移<br>[3,2,0,1,5,4]<br>     i j<br> 此时arr[j] = 1 &lt; 3, j不动， i开始移动</p>
+<p>[3,2,0,1,5,4]<br>       ij<br>此时i,j相遇，将该元素与最左元素，也就是<strong>哨兵元素</strong>换位，原数组变为<br>[1,2,0,3,5,4]</p>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>以哨兵元素作为划分标准，哨兵元素左侧的数组为左子数组，哨兵元素右侧的数组为右子数组。<br>快排后数组[1,2,0,3,5,4],左子数组为[1,2,0] 哨兵：3 右子数组为[5,4]<br>然后对左右子数组重复快排<br>左子数组[1,2,0] -&gt; [1,0,2] -&gt; [0,1,2]<br>右子数组[5,4] -&gt; [4,5]</p>
+<p>[0,1,2] 3 [4,5]</p>
+<p>排序完成</p>
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><pre class=" language-Java"><code class="language-Java">public void QuickSort(int arr[]){
+        int l = 0, r = arr.length-1;
+        int sentry = arr[0];
+        int j = r,i = l;
+        for(; i != j;){
+            if(arr[j]<sentry){
+                if(arr[i]>sentry){
+                    int tmp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = tmp;
+                    
+                }
+                else{
+                    i++;
+                }
+                System.out.println("i:"+i+" j:"+j);
+
+            }
+            else{
+                j--;
+            }
+            System.out.println("j:"+j +" i:"+i);
+        }
+        
+        int tmp = arr[0];
+        arr[0] = arr[i];
+        arr[i] = tmp;
+    }
+    
+</code></pre>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3>
                 
             </div>
             <hr/>
@@ -997,7 +1034,7 @@ protected void swap(int[] num, int i, int j) {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">30.2k</span>
+                        class="white-color">30.6k</span>
             
             
             

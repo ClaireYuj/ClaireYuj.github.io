@@ -399,7 +399,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    753
+                    1.3k
                 </div>
                 
 
@@ -442,12 +442,12 @@
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><pre class=" language-Java"><code class="language-Java">class Solution {
     public int[] twoSum(int[] numbers, int target) {
       int index_1 = 0,index_2 = 1;
-        for(; index_1<numbers.length;){
+        for(; index_1 < numbers.length;){
             int sum = numbers[index_1]+numbers[index_2];
-            if(sum<target&&index_2<numbers.length-1)  {
-                index_2++;
+            if(sum < target&&index_2 < numbers.length-1)  {
+                index_2++; 
             }
-            else if(sum==target) {
+            else if(sum == target) {
                 index_1++;
                 index_2++;
                 break;
@@ -479,11 +479,6 @@
     }
     return new int[]{-1, -1};
 }
-
-作者：nettee
-链接：https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/solution/yi-zhang-tu-gao-su-ni-on-de-shuang-zhi-zhen-jie-fa/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 </code></pre>
 <h2 id="剑指offer18：-删除链表中的节点"><a href="#剑指offer18：-删除链表中的节点" class="headerlink" title="剑指offer18： 删除链表中的节点"></a>剑指offer18： 删除链表中的节点</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/509cy5/">题目</a><br>给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。</p>
 <p>返回删除后的链表的头节点。</p>
@@ -499,8 +494,8 @@
         if(head.val == val){
             return head.next;
         }
-        for(;cur.next!=null;){
-            if(cur.next.val==val){
+        for(;cur.next != null;){
+            if(cur.next.val == val){
                 cur.next = cur.next.next;
                 break;
             }
@@ -515,8 +510,8 @@
         if(head.val == val){
             return head.next;
         }
-        for(;cur!=null;){
-            if(cur.val==val){
+        for(;cur != null;){
+            if(cur.val == val){
                 cur = cur.next;
                 break;
             }
@@ -640,11 +635,12 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2023/01/23/leetcode-shuang-zhi-zhen-1/">
+                <a href="/2022/12/31/leetcode-shuang-zhi-zhen/">
                     <div class="card-image">
                         
                         
@@ -660,16 +656,29 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-31
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            DULULU oO
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -898,7 +907,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">30.2k</span>
+                        class="white-color">30.6k</span>
             
             
             
