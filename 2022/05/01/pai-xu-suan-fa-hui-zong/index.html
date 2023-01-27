@@ -605,37 +605,98 @@ protected void swap(int[] num, int i, int j) {
 <h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>以哨兵元素作为划分标准，哨兵元素左侧的数组为左子数组，哨兵元素右侧的数组为右子数组。<br>快排后数组[1,2,0,3,5,4],左子数组为[1,2,0] 哨兵：3 右子数组为[5,4]<br>然后对左右子数组重复快排<br>左子数组[1,2,0] -&gt; [1,0,2] -&gt; [0,1,2]<br>右子数组[5,4] -&gt; [4,5]</p>
 <p>[0,1,2] 3 [4,5]</p>
 <p>排序完成</p>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><pre class=" language-Java"><code class="language-Java">public void QuickSort(int arr[]){
-        int l = 0, r = arr.length-1;
-        int sentry = arr[0];
+<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><pre class=" language-Java"><code class="language-Java">
+    /**
+     * 分类，其中每次返回的i其实正是哨兵的数字
+     * @param arr
+     * @param l
+     * @param r
+     * @return
+     */
+    public int Sort(int arr[], int l, int r){
+        
+        int sentry = arr[l]; // 定义哨兵
         int j = r,i = l;
         for(; i != j;){
-            if(arr[j]<sentry){
-                if(arr[i]>sentry){
-                    int tmp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = tmp;
-                    
-                }
-                else{
-                    i++;
-                }
-                System.out.println("i:"+i+" j:"+j);
-
+            if(arr[j] < sentry){
+                if(arr[i]>sentry)   swap(arr, i, j);
+                else  i++;
             }
-            else{
-                j--;
-            }
-            System.out.println("j:"+j +" i:"+i);
+            else    j--;
         }
-        
-        int tmp = arr[0];
-        arr[0] = arr[i];
-        arr[i] = tmp;
+        return i;
     }
-    
+
+    void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+
+    /**
+     * 递归，多次快排
+     * @param arr
+     * @param l
+     * @param r
+     */
+    public void SortInRecurse(int[] arr, int l, int r){
+        if(l >= r) return;
+        int index = Sort(arr, l ,r);
+        System.out.println("num:"+index);
+
+        SortInRecurse(arr, l, index-1);
+        SortInRecurse(arr, index+1, r);
+
+    }
 </code></pre>
-<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3>
+<h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/p5l0js/">算法解析</a><br>归并排序体现了 “分而治之” 的算法思想，具体为：</p>
+<p>「分」： 不断将数组从 中点位置 划分开，将原数组的排序问题转化为子数组的排序问题；<br>「治」： 划分到子数组长度为 1 时，开始向上合并，不断将 左右两个较短排序数组 合并为 一个较长排序数组，直至合并至原数组时完成排序；</p>
+<p><img src="/img/posts/DataStructure/merge_sort.jpg" alt="Merge"></p>
+<p>该算法可以分为划分子数组和合并子数组两步</p>
+<p>如数组[4,2,3,1]<br>先分为[4,2],[3,1]<br>再分为[4][2][3][1]</p>
+<p>合并：对于原数组[4，2，3，1]，构建一个tmp数组，存放每次递归中的<strong>arr子数组</strong>。如第一次<strong>递归tmp[] = [4,2]</strong>,m为原数组中间数 = (r+l)/2 = 0，l为最左侧 = 0，r为最右侧 = 1。<br> 令i = 0, j = m-l+1 = 1, tmp[i] = 4, tmp[j] = 2 , 因为2&lt;4， 令arr[0]2，然后j++, 发现右数组遍历完成，由此原数组 **arr = [2,2,3,1]**<br>在arr[1] = tmp[j], 原数组 **arr[] = [2，4，3，1]**, j++, tmp[j] = 3 &gt; tmp[i] = 2</p>
+<p>[1，3]同理（此时是新一轮为递归）, 此时原数组为[2，4，3，1],tmp[] = [3,1], l = 2, r = 3, m = 2, 重新令i = 0, j = m-l+1 = 1。 tmp[i] = 1 &gt; tmp[j] = 3, 因此arr[2] = tmp[j] = 1，原数组 <strong>arr[] = [2,4,1,1]</strong>,j++,发现j&gt;=r-l, 开始直接将tmp[i]加入数组，此时原数组 <strong>arr[] = [2,4,1,3]</strong>,归并结束 </p>
+<h4 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h4><pre class=" language-Java"><code class="language-Java">
+    public void merge(int arr[], int l, int r){
+        if(l>=r) return;
+
+        // partition
+        int m = (r+l)/2;
+        merge(arr, l, m);
+        merge(arr, m+1, r);
+
+        // merge
+        int[] tmp = new int[r-l+1];
+        int i = 0, j = m-l+1;
+        for(int k = 0; k<r-l+1;k++){
+            tmp[k] = arr[k+l];
+        }
+
+        /*
+        注意因为每次递归都会更新一部分的arr
+        比如原arr[3,1,4,2]
+        第一次递归对3,1排序， 排完后arr变成[1,3,4,2]
+        第二次递归需要对4,2排序,所以要求arr的下标从arr[2]也就是4开始,因此int k = l 而不是 0
+         */
+        for(int k = l; k <= r; k++){
+
+            if(i > m-l)  {
+                arr[k] = tmp[i];// if left approch the end
+                i++;
+            }
+            else if(j > r-l) {
+                arr[k] = tmp[i++];
+            }
+            else if(tmp[i] <= tmp[j]){
+                arr[k] = tmp[i++];
+            }
+            else if(tmp[i] > tmp[j]){
+                arr[k] = tmp[j++];
+            }
+        }
+    }
+</code></pre>
+
                 
             </div>
             <hr/>
@@ -1034,7 +1095,7 @@ protected void swap(int[] num, int i, int j) {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">30.6k</span>
+                        class="white-color">30.7k</span>
             
             
             
