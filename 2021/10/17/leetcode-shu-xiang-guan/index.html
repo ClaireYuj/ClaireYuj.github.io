@@ -401,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    789
+                    982
                 </div>
                 
 
@@ -518,6 +518,52 @@ class Solution {
     }
 }
 </code></pre>
+<h2 id="Offer22-广度优先算法"><a href="#Offer22-广度优先算法" class="headerlink" title="Offer22. 广度优先算法"></a>Offer22. 广度优先算法</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/9ackoe/">从上到下打印出二叉树的每个节点，同一层的节点按照从左到右的顺序打印。</a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class=" language-Java"><code class="language-Java">**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+        
+        public int[] levelOrder(TreeNode root) {
+
+            int[] arr = this.bfs(root);
+            return arr;
+        }
+        
+        // 广度优先要用queue
+        public int[] bfs(TreeNode root){
+            Queue<TreeNode> queue = new LinkedList<>();
+            LinkedList<Integer> ans =  new LinkedList<>(); //用来确定int[] arr的大小
+            if(root != null)
+                queue.offer(root); //先将root入队列
+
+            for(;!queue.isEmpty();){
+                TreeNode treeNode = queue.remove(); // 将根节点出列
+                ans.add(treeNode.val);
+                // 两个if实现了广度有限中将同层次的叶节点加入队列
+                if(treeNode.left!=null){
+                    queue.offer(treeNode.left);
+                }
+                if (treeNode.right != null){
+                    queue.offer(treeNode.right);
+                }
+            }
+            int[] arr = new int[ans.size()];
+            for (int i = 0; i < arr.length;i++){
+                arr[i] = ans.get(i);
+            }
+
+            return arr;
+        }
+
+}
+</code></pre>
 <h2 id="95-不同的二叉搜索树"><a href="#95-不同的二叉搜索树" class="headerlink" title="95.不同的二叉搜索树"></a>95.不同的二叉搜索树</h2><p>给定一个整数 n，生成所有由 1 … n 为节点所组成的二叉搜索树。<br>（不只返回数字）</p>
 <h3 id="解法一-DFS-深度优先"><a href="#解法一-DFS-深度优先" class="headerlink" title="解法一:DFS 深度优先"></a>解法一:DFS 深度优先</h3><pre class=" language-Java"><code class="language-Java">/**
  * Definition for a binary tree node.
@@ -570,7 +616,7 @@ class Solution {
 }
 </code></pre>
 <h2 id="261-以图判树"><a href="#261-以图判树" class="headerlink" title="261. 以图判树"></a>261. 以图判树</h2><h3 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h3><p>给定从 0 到 n-1 标号的 n 个结点，和一个无向边列表（每条边以结点对来表示），请编写一个函数用来判断这些边是否能够形成一个合法有效的树结构。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class=" language-Java"><code class="language-Java">class Solution {
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><pre class=" language-Java"><code class="language-Java">class Solution {
     //判断无向图是否有换，以及是否为单连通分量
     //当只有n-1条边，且连通数为1时，符合条件
     public boolean validTree(int n, int[][] edges) {
@@ -1031,7 +1077,7 @@ class Solution {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">30.9k</span>
+                        class="white-color">31.1k</span>
             
             
             
