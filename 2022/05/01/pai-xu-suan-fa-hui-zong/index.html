@@ -408,7 +408,7 @@ protected void swap(int[] num, int i, int j) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.4k
+                    1.2k
                 </div>
                 
 
@@ -617,13 +617,12 @@ protected void swap(int[] num, int i, int j) {
         
         int sentry = arr[l+r/2]; // 定义哨兵
         int j = r,i = l;
-        for(; i != j;){
-            if(arr[j] < sentry){
-                if(arr[i] > sentry)   swap(arr, i, j);
-                else  i++;
-            }
-            else    j--;
+       for(; i < j;){
+            while (i < j && arr[j] >= arr[l]) j--;
+            while (i < j && arr[i] <= arr[l]) i++;
+            swap(arr, i, j);
         }
+        swap(arr, i, l);
         return i;
     }
 
@@ -1129,7 +1128,7 @@ protected void swap(int[] num, int i, int j) {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">31.4k</span>
+                        class="white-color">31.2k</span>
             
             
             
