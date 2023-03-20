@@ -406,7 +406,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    117
+                    213
                 </div>
                 
 
@@ -432,6 +432,18 @@
 <h2 id="上传图片加载不出来，但在本地预览可以显示"><a href="#上传图片加载不出来，但在本地预览可以显示" class="headerlink" title="上传图片加载不出来，但在本地预览可以显示"></a>上传图片加载不出来，但在本地预览可以显示</h2><p>图片格式最好选用jpg而不是png</p>
 <h2 id="无法解析XML和HTML语言"><a href="#无法解析XML和HTML语言" class="headerlink" title="无法解析XML和HTML语言"></a>无法解析XML和HTML语言</h2><p>尚未完全解决，实在不行就不标明那一段是个代码段，直接放代码</p>
 <h2 id="首页博客排序方式"><a href="#首页博客排序方式" class="headerlink" title="首页博客排序方式"></a>首页博客排序方式</h2><p>主题下_config.yml中index_generate:order_by: (+/-)(title/date)<br>+表示正序排列<br>-表示倒序排列</p>
+<h2 id="ssh相关"><a href="#ssh相关" class="headerlink" title="ssh相关"></a>ssh相关</h2><p>ssh密钥一般存在/user/.ssh/目录下<br>如果没有配置ssh密钥，可以通过</p>
+<pre class=" language-cmd"><code class="language-cmd">cd /.ssh
+</code></pre>
+<p>创建ssh key</p>
+<pre class=" language-cmd"><code class="language-cmd">ssh-keygen -t rsa -C "邮件地址"
+</code></pre>
+<p>复制console生成的密钥，把他粘贴到.ssh目录下的 id_rsa.pub</p>
+<p>在github的ssh设置中，添加ssh key，粘贴刚刚复制的内容</p>
+<p>通过</p>
+<pre class=" language-cmd"><code class="language-cmd">ssh -T git@github.com
+</code></pre>
+<p>检查是否配置成功</p>
 
                 
             </div>
@@ -831,7 +843,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">33.8k</span>
+                        class="white-color">33.9k</span>
             
             
             
