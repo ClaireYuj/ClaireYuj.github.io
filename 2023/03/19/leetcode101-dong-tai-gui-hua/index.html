@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.1k
+                    1.4k
                 </div>
                 
 
@@ -475,7 +475,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h2 id="一维动态规划"><a href="#一维动态规划" class="headerlink" title="一维动态规划"></a>一维动态规划</h2><h3 id="70-爬楼梯-（https-leetcode-cn-problems-climbing-stairs-）"><a href="#70-爬楼梯-（https-leetcode-cn-problems-climbing-stairs-）" class="headerlink" title="[70.爬楼梯]（https://leetcode.cn/problems/climbing-stairs/）"></a>[70.爬楼梯]（<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/%EF%BC%89">https://leetcode.cn/problems/climbing-stairs/）</a></h3><ol start="70">
+<h2 id="一维动态规划"><a href="#一维动态规划" class="headerlink" title="一维动态规划"></a>一维动态规划</h2><h3 id="70-爬楼梯"><a href="#70-爬楼梯" class="headerlink" title="70.爬楼梯"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/climbing-stairs/">70.爬楼梯</a></h3><ol start="70">
 <li>爬楼梯<br>假设你正在爬楼梯。需要 n 阶你才能到达楼顶。</li>
 </ol>
 <p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢</p>
@@ -555,7 +555,7 @@
 <p>例如，[1,3,5,7,9]、[7,7,7,7] 和 [3,-1,-5,-9] 都是等差数列。<br>给你一个整数数组 nums ，返回数组 nums 中所有为等差数组的子数组个数。</p>
 <p>子数组是数组中的一个连续序列。</p>
 <blockquote>
-<p>示例：<br>    输入：nums = [1,2,3,4]<br>    输出：3<br>    解释：nums 中有三个子等差数组：[1, 2, 3]、[2, 3, 4] 和 [1,2,3,4] 自身。</p>
+<p>  示例：<br>    输入：nums = [1,2,3,4]<br>    输出：3<br>    解释：nums 中有三个子等差数组：[1, 2, 3]、[2, 3, 4] 和 [1,2,3,4] 自身。</p>
 </blockquote>
 <pre class=" language-java"><code class="language-java">
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
@@ -587,6 +587,35 @@
         <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span>count<span class="token punctuation">)</span><span class="token operator">*</span>count<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="二维动态规划"><a href="#二维动态规划" class="headerlink" title="二维动态规划"></a>二维动态规划</h2><h3 id="60-最短路径和"><a href="#60-最短路径和" class="headerlink" title="60.最短路径和"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-path-sum/">60.最短路径和</a></h3><p>给定一个包含非负整数的 m x n 网格 grid ，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。</p>
+<p>说明：每次只能向下或者向右移动一步。</p>
+<p><img src="/img/posts/Leetcode/leetcode64.jpg" alt="示例"></p>
+<blockquote>
+<p>示例<br>    输入：grid = [[1,3,1],[1,5,1],[4,2,1]]<br>    输出：7<br>    解释：因为路径 1→3→1→1→1 的总和最小 </p>
+</blockquote>
+<p>类Dijkstra，由于要求最短路径，只能接受从上或从左路径输入<br><strong>dp[a][b] = min(dp[a-1][b], dp[a][b-1]) + num[a][b]</strong></p>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">minPathSum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> m <span class="token operator">=</span> grid<span class="token punctuation">.</span>length<span class="token punctuation">,</span> n <span class="token operator">=</span> grid<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> dp<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>m<span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> grid<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> grid<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> grid<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>j <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span>grid<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">+</span>grid<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> dp<span class="token punctuation">[</span>m<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
 
@@ -986,7 +1015,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">34.8k</span>
+                        class="white-color">35.1k</span>
             
             
             
