@@ -15,6 +15,10 @@
     outline: none;
 }
 
+.headerlink {
+    color: #5c83bd;
+}
+
 .toc-fixed {
     position: fixed;
     top: 64px;
