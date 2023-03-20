@@ -29,31 +29,6 @@
     
     
     <entry>
-      <title>Jupyter使用指北</title>
-      <link href="/2023/03/17/jupyter-shi-yong-zhi-bei/"/>
-      <url>/2023/03/17/jupyter-shi-yong-zhi-bei/</url>
-      
-        <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用pip进行安装，为了避免可能产生的配置错误，这里直接进入conda虚拟环境进行安装</p><pre class=" language-cmd"><code class="language-cmd">    conda activate jupyter    pip install jupyter</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class=" language-cmd"><code class="language-cmd">    jupyter notebook</code></pre><p>注意使用该命令所在的目录，如果直接在user目录下运行该指令，打开jupyter会出现<br><img src="/img/posts/config/Jupyter_desktop.jpg" alt="C:\Users> jupyter notebook"><br>如果有要直接打开的项目，可cd到指定的目录下在运行jupyter notebook命令</p><h2 id="Kernel-内核配置"><a href="#Kernel-内核配置" class="headerlink" title="Kernel 内核配置"></a>Kernel 内核配置</h2><ul><li><p>查看内核</p><pre class=" language-cmd"><code class="language-cmd">    jupyter kernelspec list</code></pre><p>可以查看指定目录下的kernel.json文件，看python解释器的位置是否正确</p></li><li><p>添加内核(在该虚拟环境下)</p><pre class=" language-cmd"><code class="language-cmd">    python -m ipykernel install --name jupyerEnv --display-name jupyterEnv --prefix=E:\Software\Anaconda\Anaconda\envs\unity\</code></pre><p>  会添加到E:\Software\Anaconda\Anaconda\share\jupyter\kernels\jupyterEnv目录下</p></li><li><p>删除内核</p><pre class=" language-cmd"><code class="language-cmd">    jupyter kernelspec remove jupyterEnv</code></pre></li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 环境配置 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Jupyter </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Leetcode101-贪心算法</title>
       <link href="/2023/03/09/leetcode101-tan-xin-suan-fa/"/>
       <url>/2023/03/09/leetcode101-tan-xin-suan-fa/</url>
@@ -363,6 +338,31 @@
             <tag> 数据结构 </tag>
             
             <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Jupyter使用指北</title>
+      <link href="/2022/03/17/jupyter-shi-yong-zhi-bei/"/>
+      <url>/2022/03/17/jupyter-shi-yong-zhi-bei/</url>
+      
+        <content type="html"><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>使用pip进行安装，为了避免可能产生的配置错误，这里直接进入conda虚拟环境进行安装</p><pre class=" language-cmd"><code class="language-cmd">    conda activate jupyter    pip install jupyter</code></pre><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><pre class=" language-cmd"><code class="language-cmd">    jupyter notebook</code></pre><p>注意使用该命令所在的目录，如果直接在user目录下运行该指令，打开jupyter会出现<br><img src="/img/posts/config/Jupyter_desktop.jpg" alt="C:\Users> jupyter notebook"><br>如果有要直接打开的项目，可cd到指定的目录下在运行jupyter notebook命令</p><h2 id="Kernel-内核配置"><a href="#Kernel-内核配置" class="headerlink" title="Kernel 内核配置"></a>Kernel 内核配置</h2><ul><li><p>查看内核</p><pre class=" language-cmd"><code class="language-cmd">    jupyter kernelspec list</code></pre><p>可以查看指定目录下的kernel.json文件，看python解释器的位置是否正确</p></li><li><p>添加内核(在该虚拟环境下)</p><pre class=" language-cmd"><code class="language-cmd">    python -m ipykernel install --name jupyerEnv --display-name jupyterEnv --prefix=E:\Software\Anaconda\Anaconda\envs\unity\</code></pre><p>  会添加到E:\Software\Anaconda\Anaconda\share\jupyter\kernels\jupyterEnv目录下</p></li><li><p>删除内核</p><pre class=" language-cmd"><code class="language-cmd">    jupyter kernelspec remove jupyterEnv</code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 环境配置 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Jupyter </tag>
             
         </tags>
       
