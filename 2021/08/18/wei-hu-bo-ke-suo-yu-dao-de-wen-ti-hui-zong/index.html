@@ -406,7 +406,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    237
+                    264
                 </div>
                 
 
@@ -444,6 +444,12 @@
 <pre class=" language-cmd"><code class="language-cmd">ssh -T git@github.com
 </code></pre>
 <p>检查是否配置成功，如果hexo g -d显示连接有问题，可以进bash查看一下ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
+<p>windows系统可以，连接ssh-agent</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">eval</span> <span class="token variable"><span class="token variable">$(</span>ssh-agent<span class="token variable">)</span></span>
+</code></pre>
+<p>之后在ssh-agent中添加自己的key</p>
+<pre class=" language-bash"><code class="language-bash">ssh-add ~/.ssh/id_rsa
+</code></pre>
 
                 
             </div>
@@ -843,7 +849,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">33.9k</span>
+                        class="white-color">34k</span>
             
             
             
