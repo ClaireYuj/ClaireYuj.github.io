@@ -424,47 +424,47 @@
             <div id="articleContent">
                 <h2 id="剑指-Offer-24-反转链表"><a href="#剑指-Offer-24-反转链表" class="headerlink" title="剑指 Offer 24. 反转链表"></a>剑指 Offer 24. 反转链表</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/9pdjbm/">剑指Offer24.反转链表</a></p>
 <p>定义一个函数，输入一个链表的头节点，反转该链表并输出反转后链表的头节点。<br>如：输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
-<h3 id="解法一，头插：用一个节点暂存"><a href="#解法一，头插：用一个节点暂存" class="headerlink" title="解法一，头插：用一个节点暂存"></a>解法一，头插：用一个节点暂存</h3><pre class=" language-Java"><code class="language-Java">/**
+<h3 id="解法一，头插：用一个节点暂存"><a href="#解法一，头插：用一个节点暂存" class="headerlink" title="解法一，头插：用一个节点暂存"></a>解法一，头插：用一个节点暂存</h3><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * Definition for singly-linked list.
  * public class ListNode {
  *     int val;
  *     ListNode next;
  *     ListNode(int x) { val = x; }
  * }
- */
-class Solution {
-    public ListNode reverseList(ListNode head) {
-        if(head==null) return head;
-        ListNode reve = new ListNode(head.val);
-        ListNode tmp = null;
-        while(head.next!=null){
-            tmp = new ListNode(head.next.val);
-            tmp.next = reve;
-            reve = tmp;
-            head = head.next;
-        }
-        return reve;
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">reverseList</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>head<span class="token operator">==</span>null<span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>
+        ListNode reve <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ListNode tmp <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>next<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            tmp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>head<span class="token punctuation">.</span>next<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            tmp<span class="token punctuation">.</span>next <span class="token operator">=</span> reve<span class="token punctuation">;</span>
+            reve <span class="token operator">=</span> tmp<span class="token punctuation">;</span>
+            head <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> reve<span class="token punctuation">;</span>
 
-    }
-}
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<h3 id="解法二：递归"><a href="#解法二：递归" class="headerlink" title="解法二：递归"></a>解法二：递归</h3><pre class=" language-Java"><code class="language-Java">class Solution {
-    public ListNode reverseList(ListNode head) {
-        return recur(null,head);
-    }
+<h3 id="解法二：递归"><a href="#解法二：递归" class="headerlink" title="解法二：递归"></a>解法二：递归</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">reverseList</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">recur</span><span class="token punctuation">(</span>null<span class="token punctuation">,</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public ListNode recur(ListNode cur,ListNode head){
-        if(head==null) return cur; //递归终止条件，所以最后返回的是cur
-        ListNode res = recur(head,head.next);
-        head.next = cur; //
-        return res;
-    }
-}
+    <span class="token keyword">public</span> ListNode <span class="token function">recur</span><span class="token punctuation">(</span>ListNode cur<span class="token punctuation">,</span>ListNode head<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>head<span class="token operator">==</span>null<span class="token punctuation">)</span> <span class="token keyword">return</span> cur<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//递归终止条件，所以最后返回的是cur</span>
+        ListNode res <span class="token operator">=</span> <span class="token function">recur</span><span class="token punctuation">(</span>head<span class="token punctuation">,</span>head<span class="token punctuation">.</span>next<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        head<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 id="赋值带随机指针的链表"><a href="#赋值带随机指针的链表" class="headerlink" title="赋值带随机指针的链表"></a>赋值带随机指针的链表</h2><p><img src="/img/posts/Leetcode/leetcode138.jpg" alt="Leetcode138"></p>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/leetbook/read/illustration-of-algorithm/9plk45/">解法</a></p>
 <h3 id="解法一：拼接-拆分"><a href="#解法一：拼接-拆分" class="headerlink" title="解法一：拼接+拆分"></a>解法一：拼接+拆分</h3><p>将原链表假设为1-&gt;2-&gt;3复制<br>1-&gt;1-&gt;2-&gt;2-&gt;3-&gt;3-&gt;null<br>这样cur-&gt;random-&gt;next = cur-&gt;next-&gt;random<br>比如如果1-&gt;random = 3,那么1-&gt;random = 3, 3-&gt;next = 3 ===&gt;1-&gt;random-&gt;next = 3, 且1-&gt;next = 1, 1-&gt;random = 3 ===&gt; 1-&gt;next-&gt;random = 3, 所以cur-&gt;next-&gt;random = cur-&gt;random-&gt;next</p>
-<pre class=" language-JAVA"><code class="language-JAVA">/*
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
 // Definition for a Node.
 class Node {
     int val;
@@ -477,49 +477,49 @@ class Node {
         this.random = null;
     }
 }
-*/
+*/</span>
 
-class Solution {
-    public Node copyRandomList(Node head) {
-        if(head == null) return head;
-        Node cur = head;
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> Node <span class="token function">copyRandomList</span><span class="token punctuation">(</span>Node head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>head <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> head<span class="token punctuation">;</span>
+        Node cur <span class="token operator">=</span> head<span class="token punctuation">;</span>
 
-        Node p = cur;
-        //1. 复制节点并拼接
-        while(cur!=null){ 
-            Node copy = new Node(cur.val);  //复制该节点
-            copy.next = cur.next; //连接copy节点的next
-            cur.next = copy; //关联该节点与复制节点
-            cur = copy.next; //移动指针
-        }
+        Node p <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//1. 复制节点并拼接</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span> 
+            Node copy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//复制该节点</span>
+            copy<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//连接copy节点的next</span>
+            cur<span class="token punctuation">.</span>next <span class="token operator">=</span> copy<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//关联该节点与复制节点</span>
+            cur <span class="token operator">=</span> copy<span class="token punctuation">.</span>next<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//移动指针</span>
+        <span class="token punctuation">}</span>
 
-        // 2.构建random,使得cur->random->next = cur->next->random
-        cur = head; // java中对象传递是引用传递
-        while(cur!=null){
-            if(cur.random!=null){
-                cur.next.random = cur.random.next;  
-            }
-            cur = cur.next.next;
-        }
+        <span class="token comment" spellcheck="true">// 2.构建random,使得cur->random->next = cur->next->random</span>
+        cur <span class="token operator">=</span> head<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// java中对象传递是引用传递</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>random<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>random <span class="token operator">=</span> cur<span class="token punctuation">.</span>random<span class="token punctuation">.</span>next<span class="token punctuation">;</span>  
+            <span class="token punctuation">}</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
 
-        // 3. 将random拆出来
-        cur = head.next;
-        Node pre = head,res=head.next;
-        while(cur.next!=null){
-            /**注意pre和cur节点的顺序， pre要在cur之前，
-             */
-            pre.next = pre.next.next; 
-            cur.next = cur.next.next;
-            pre = pre.next;
-            cur = cur.next;
+        <span class="token comment" spellcheck="true">// 3. 将random拆出来</span>
+        cur <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        Node pre <span class="token operator">=</span> head<span class="token punctuation">,</span>res<span class="token operator">=</span>head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>cur<span class="token punctuation">.</span>next<span class="token operator">!=</span>null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">/**注意pre和cur节点的顺序， pre要在cur之前，
+             */</span>
+            pre<span class="token punctuation">.</span>next <span class="token operator">=</span> pre<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span> 
+            cur<span class="token punctuation">.</span>next <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            pre <span class="token operator">=</span> pre<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
           
            
-        }
-        pre.next = null;
-        return res;
+        <span class="token punctuation">}</span>
+        pre<span class="token punctuation">.</span>next <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
 
-    }
-}
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h3 id="解法二：哈希表"><a href="#解法二：哈希表" class="headerlink" title="解法二：哈希表"></a>解法二：哈希表</h3>
                 
