@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>机器学习4-图神经网络</title>
+      <link href="/2023/03/21/ji-qi-xue-xi-4-tu-shen-jing-wang-luo/"/>
+      <url>/2023/03/21/ji-qi-xue-xi-4-tu-shen-jing-wang-luo/</url>
+      
+        <content type="html"><![CDATA[<p>图神经网络是一种深度学习方法，用于处理图形数据结构。图形数据结构中的节点表示实体，边表示实体之间的关系。GNNs可以学习这些实体及其关系的复杂模式，用于各种任务，如节点分类、链接预测和图分类。</p><h2 id="图神经网络的组合优化"><a href="#图神经网络的组合优化" class="headerlink" title="图神经网络的组合优化"></a><a href="https://github.com/amazon-science/co-with-gnns-example">图神经网络的组合优化</a></h2><h3 id="什么是组织优化问题？"><a href="#什么是组织优化问题？" class="headerlink" title="什么是组织优化问题？"></a>什么是组织优化问题？</h3><p>同时面对许多决策，每一个决策只有yes/no两种取值，视为一个0-1变量。那么解空间就是全部0-1变量的所有组合。<br>每种不同的决策组合都会得到一个<strong>目标函数值</strong>（例如成本或收益），这个目标函数就是优化的对象</p><p>组合优化问题的两个相关例子是最大切割（maximum cut）与最大独立集（maximum independent set）。给定一个图，这两个问题可以简单理解为对每个节点进行一次二分类：<br><strong>最大切割</strong>：把这个图的节点分为两堆，使得这两堆节点之间的边数最多。两堆节点的标签分别是0和1。<br><strong>最大独立集</strong>：在这个图中找出尽可能多的节点，使得这些节点之间互相没有边相连。找出的节点标签为1，其余为0。</p><h3 id="用QUBO求解最大切割和最大独立集问题"><a href="#用QUBO求解最大切割和最大独立集问题" class="headerlink" title="用QUBO求解最大切割和最大独立集问题"></a>用QUBO求解最大切割和最大独立集问题</h3><p><a href="https://blog.csdn.net/econe_wei/article/details/103555430">最大切割与最大独立集问题的目标函数可以在QUBO（二次无约束二进制优化）</a></p><p>在说明什么是QUBO之前，需要先说明量子退火。量子退火法是模拟退火算法的量子实现，量子退火法都必须把问题映射成一个叫【哈密顿算符(Hamiltonian) 】的能量表达式。一般用H表示，然后求出让H值最小的变量组合。这个表达式是个二次多项式，里面的变量只能取0或1如：</p><p>$$<br>H = x_1^2 - x_2^2 + 2<br>$$</p><p>也就是x1和x2都只能取值0或1，我们要算出来，让H最小的x1和x2的值。因为x1和x2的取值组合和对应的H值，如下表所示：</p><p>x1  x2   H<br>0   0    2<br>0   1    1<br>1   0    3<br>1   1    2</p><p>从上面的表格可以看出，(x1, x2) = (0, 1)的时候，H=2，是最小值。使用量子退火解决法，可以解决所有可以转变成二次多项式的，变量取值只能是0或1的问题。</p><p>上面的例子只有两个变量，所以很容易算出(x1, x2)的最优解，但是当有成千上万个x变量时，普通计算机就要花很久来计算，而量子退火机可以在数分钟内得出结果（计算时间依赖问题规模而定）</p><p><strong>QUBO</strong>就是将这个哈密顿算符表达式通过矩阵形式表示的中间矩阵，如该哈密顿算符的表达就是：<br>            [1  0][x1]<br>    [x1 x2] [0  1][x2]</p><p>中间的[1  0] 就是QUBO<br>      [0  1]</p><h3 id="GNN是什么"><a href="#GNN是什么" class="headerlink" title="GNN是什么"></a>GNN是什么</h3><p>图神经网络的一般输入是一个图，它由节点集、边集、邻接矩阵等基本特征组成。对于节点集中的每一个节点，都可以用一个固定形状的张量来表示其特征，用邻接矩阵表征节点之间的关系，最简单的图神经网络认为边只代表邻接关系而没有节点那样的高维特征。</p><blockquote><p>作用：利用图的信息，<strong>进行节点或边的分类、节点或边的特征预测</strong>等。训练与预测的基本框架等与其他神经网络没有区别，只是处理的数据结构不同。</p></blockquote><h3 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h3><p>在本研究中，提出了一个高度可扩展的基于 GNN 的求解器，以（大约）解决具有数百万个变量的组合优化问题</p><p>方法： 把组合优化问题<strong>转化为图上的最大切割或者最大独立集</strong>等QUBO问题，进一步转化为一个<strong>图节点二分类</strong>问题。然后用<strong>图神经网络处理节点间的邻接信息</strong>，把QUBO的<strong>目标函数松弛</strong>，用<strong>连续的分类概率</strong>代替离散的0-1变量，作为神经网络的loss函数，训练这个图神经网络（输出节点类别概率）。最后用阈值分割得到每个节点/变量的0-1值。</p><p>demo用d-regular方法生成了一个随机图，<br><img src="/img/posts/MachineLearning/gnn_org.jpg" alt="随机种子生成的随机图"><br>参数是n=100, d=3, seed=1，代表100节点，平均度3。共训练了13092轮，patience=100意味着最后100轮loss没有提升，达到耐心上限早停（提前停止）了<br><img src="/img/posts/MachineLearning/gnn_train_result.jpg" alt="训练结果"><br>这一部分见./utils.py下的run_gnn_training()函数。最佳的loss值是-40.85710144042969，也就是MIS问题松弛的QUBO目标函数的最好解。GNN找到的独立集节点数是41个，违背最大独立集限制条件的节点数为0。花费131.4s,其中 model training took 131.357s。</p><p>使用networkx的MIS求解器求解得到的独立集节点数是39个，违背最大独立集限制条件的节点数为0。<br><img src="/img/posts/MachineLearning/gnn_classical_optim.jpg" alt="MIS求解结果"></p><blockquote><p>结果:GNN求解器求解得到的最大独立集结果，好于networkx的MIS求解器求解得到的最大独立集。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+            <tag> 图神经网络 </tag>
+            
+            <tag> 神经网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode101-动态规划</title>
       <link href="/2023/03/20/leetcode101-dong-tai-gui-hua/"/>
       <url>/2023/03/20/leetcode101-dong-tai-gui-hua/</url>
