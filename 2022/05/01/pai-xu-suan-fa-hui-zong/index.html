@@ -554,21 +554,25 @@
 <li>一般采用大根堆–当一个节点比父节点大时，需要交换这两个节点。交换后可能还比它的新的父节点大，因此需要不断地进行比较和交换，这就是上浮操作。</li>
 </ul>
 <p>k/2是父节点</p>
-<p>``jJava<br>private void swim(int k) {<br>    while (k &gt; 1 &amp;&amp; k / 2 &lt; k) {<br>        swap(k / 2, k);<br>        k = k / 2;<br>    }<br>}</p>
-<pre><code>类似地，当一个节点比子节点来得小，也需要不断地向下进行比较和交换操作，把这种操作称为下沉。一个节点如果有两个子节点，应当与两个子节点中最大那个节点进行交换。
-
-```java
-private void sink(int k) {
-    while (2 * k &lt;= N) {
-        int j = 2 * k;
-        if (j &lt; N &amp;&amp; j &lt; j + 1)
-            j++;
-        if (k &gt; j)
-            break;
-        swap(k, j);
-        k = j;
-    }
-}
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">swim</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>k <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> k <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">&lt;</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">swap</span><span class="token punctuation">(</span>k <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        k <span class="token operator">=</span> k <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>类似地，当一个节点比子节点来得小，也需要不断地向下进行比较和交换操作，把这种操作称为下沉。一个节点如果有两个子节点，应当与两个子节点中最大那个节点进行交换。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">sink</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> k <span class="token operator">&lt;=</span> N<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">2</span> <span class="token operator">*</span> k<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> N <span class="token operator">&amp;&amp;</span> j <span class="token operator">&lt;</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            j<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>k <span class="token operator">></span> j<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token function">swap</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> j<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        k <span class="token operator">=</span> j<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="插入与删除"><a href="#插入与删除" class="headerlink" title="插入与删除"></a>插入与删除</h4><ul>
 <li><p>插入：将新元素放到数组末尾，然后上浮到合适的位置</p>
@@ -925,6 +929,10 @@ private void sink(int k) {
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
                     <a href="/tags/Jupyter/">
                         <span class="chip bg-color">Jupyter</span>
                     </a>
@@ -1120,7 +1128,7 @@ private void sink(int k) {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">37.2k</span>
+                        class="white-color">37.6k</span>
             
             
             
