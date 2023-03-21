@@ -448,7 +448,7 @@
 </blockquote>
 <h3 id="具体方法"><a href="#具体方法" class="headerlink" title="具体方法"></a>具体方法</h3><p>在本研究中，提出了一个高度可扩展的基于 GNN 的求解器，以（大约）解决具有数百万个变量的组合优化问题</p>
 <p>方法： 把组合优化问题<strong>转化为图上的最大切割或者最大独立集</strong>等QUBO问题，进一步转化为一个<strong>图节点二分类</strong>问题。然后用<strong>图神经网络处理节点间的邻接信息</strong>，把QUBO的<strong>目标函数松弛</strong>，用<strong>连续的分类概率</strong>代替离散的0-1变量，作为神经网络的loss函数，训练这个图神经网络（输出节点类别概率）。最后用阈值分割得到每个节点/变量的0-1值。</p>
-<p>demo用d-regular方法生成了一个随机图，<br><img src="/img/posts/MachineLearning/gnn_org.jpg" alt="随机种子生成的随机图"><br>参数是n=100, d=3, seed=1，代表100节点，平均度3。共训练了13092轮，patience=100意味着最后100轮loss没有提升，达到耐心上限早停（提前停止）了<br><img src="/img/posts/MachineLearning/gnn_train_result.jpg" alt="训练结果"><br>这一部分见./utils.py下的run_gnn_training()函数。最佳的loss值是-40.85710144042969，也就是MIS问题松弛的QUBO目标函数的最好解。GNN找到的独立集节点数是41个，违背最大独立集限制条件的节点数为0。花费131.4s,其中 model training took 131.357s。</p>
+<p>demo用d-regular方法生成了一个随机图，<br><img src="/img/posts/MachineLearning/gnn_org.jpg" alt="随机种子生成的随机图"><br>参数是n=100, d=3, seed=1，代表100节点，平均度3。共训练了13092轮，patience=100意味着最后100轮loss没有提升，达到耐心上限早停（提前停止）了<br><img src="/img/posts/MachineLearning/gnn_train_result.jpg" alt="训练结果"><br>这一部分见./utils.py下的run_gnn_training()函数。最佳的loss值是-40.85710144042969，也就是MIS问题松弛的QUBO目标函数的最好解。GNN找到的独立集节点数是41个，违背最大独立集限制条件的节点数为0。花费131.4s,其中 model training took 131.357s。<br><img src="/img/posts/MachineLearning/gnn_vis_result.jpg" alt="最终结果"></p>
 <p>使用networkx的MIS求解器求解得到的独立集节点数是39个，违背最大独立集限制条件的节点数为0。<br><img src="/img/posts/MachineLearning/gnn_classical_optim.jpg" alt="MIS求解结果"></p>
 <blockquote>
 <p>结果:GNN求解器求解得到的最大独立集结果，好于networkx的MIS求解器求解得到的最大独立集。</p>
