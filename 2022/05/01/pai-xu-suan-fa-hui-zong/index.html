@@ -5,12 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="排序算法汇总, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="
-为了方便表示,提前定义swap(num[],i,j)
-protected void swap(int[] num, int i, int j) {
-    int t = a[i];
-    a[i] = a[j];
-    a[j] =">
+    <meta name="description" content="冒泡排序，插入排序，希尔排序，堆排序，快排，归并">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -408,7 +403,7 @@ protected void swap(int[] num, int i, int j) {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2k
+                    2.7k
                 </div>
                 
 
@@ -431,31 +426,31 @@ protected void swap(int[] num, int i, int j) {
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li>为了方便表示,提前定义swap(num[],i,j)<pre class=" language-Java"><code class="language-Java">
-protected void swap(int[] num, int i, int j) {
-    int t = a[i];
-    a[i] = a[j];
-    a[j] = t;
-}
+<li>为了方便表示,提前定义swap(num[],i,j)<pre class=" language-java"><code class="language-java">
+<span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> num<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> t <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    a<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 </li>
 </ul>
 <h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><ul>
 <li>从左到右不断交换相邻的逆序的元素，复杂度为O(N^2)</li>
 </ul>
-<pre class=" language-Java"><code class="language-Java">    public void sort(int[] nums) {
-        int N = nums.length;
-        boolean isSorted = false;
-        for (int i = N - 1; i > 0 && !isSorted; i--) {
-            isSorted = true;
-            for (int j = 0; j < i; j++) {
-                if (nums[j + 1] < nums[j]) {
-                    isSorted = false;
-                    swap(nums, j, j + 1);
-                }
-            }
-        }
-    }
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> N <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> isSorted <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>isSorted<span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            isSorted <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    isSorted <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                    <span class="token function">swap</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
     
 </code></pre>
 <h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><ul>
@@ -468,14 +463,14 @@ protected void swap(int[] num, int i, int j) {
 <li><p>Best case:数组有序</p>
 </li>
 </ul>
-<pre class=" language-Java"><code class="language-Java">public void sort(int[] nums) {
-        int N = nums.length;
-        for (int i = 1; i < N; i++) {
-            for (int j = i; j > 0 && nums[j] < nums[j - 1]; j--) { /* 这一步会把左边的都排好序 */
-                swap(nums, j, j - 1);
-            }
-        }
-    }
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> N <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;</span> nums<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">/* 这一步会把左边的都排好序 */</span>
+                <span class="token function">swap</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <p>时间复杂度：*<em>最坏情况下为O(N</em>N)**，此时待排序列为逆序，或者说接近逆序最好情况下为O(N)，此时待排序列为升序，或者说接近升序。<br>空间复杂度：O(1)</p>
 <h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><p>插入排序不适用于，因为它只能交换相邻的元素，每次只能将逆序数量减少 1。希尔排序的出现就是为了解决插入排序的难以处理大规模数组的问题，它通过交换不相邻的元素，每次可以将逆序数量减少大于 1。</p>
@@ -485,39 +480,39 @@ protected void swap(int[] num, int i, int j) {
 <li><p>eg:<br>  3 2 5 4 1 6(gap = 6)<br>  3 2 5 4 1 6(gap = 6/2 = 3) (3,4)是正序，不需要改变<br>  3 1 5 4 2 6(gap = 3) (2,1)变成（1,2）<br>  3 1 5 4 2 6(gap = 3) (5,6)是正序不需要改变<br>  3/2 = 1,此时用插入排序（若gap = 10，10/2 = 5， 5/2 =2&gt;1,则在以gap = 2进行排序</p>
 </li>
 </ul>
-<pre class=" language-Java"><code class="language-Java">public void sort(T[] nums) {
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-        int N = nums.length;
-        int h = 1;
+        <span class="token keyword">int</span> N <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> h <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
 
-        while (h < N / 3) {
-            h = 3 * h + 1; // 1, 4, 13, 40, ...
-        }
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>h <span class="token operator">&lt;</span> N <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            h <span class="token operator">=</span> <span class="token number">3</span> <span class="token operator">*</span> h <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 1, 4, 13, 40, ...</span>
+        <span class="token punctuation">}</span>
 
-        while (h >= 1) {
-            for (int i = h; i < N; i++) {
-                for (int j = i; j >= h && less(nums[j], nums[j - h]); j -= h) {
-                    swap(nums, j, j - h);
-                }
-            }
-            h = h / 3;
-        }
-    }
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>h <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> h<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i<span class="token punctuation">;</span> j <span class="token operator">>=</span> h <span class="token operator">&amp;&amp;</span> <span class="token function">less</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>j <span class="token operator">-</span> h<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j <span class="token operator">-=</span> h<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token function">swap</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> j<span class="token punctuation">,</span> j <span class="token operator">-</span> h<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            h <span class="token operator">=</span> h <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <p><strong>时间复杂度平均：O(N^1.3)</strong><br><strong>空间复杂度：O(1)</strong></p>
 <h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>每次从待排序列中选出一个最小值，然后放在序列的起始位置，直到全部待排数据排完即可。</p>
-<pre class=" language-Java"><code class="language-Java">public void sort(int[] nums) {
-        int N = nums.length;
-        for (int i = 0; i < N - 1; i++) {
-            int min = i;
-            for (int j = i + 1; j < N; j++) {
-                if (nums[j]< nums[min]) {
-                    min = j;
-                }
-            }
-            swap(nums, i, min);
-        }
-    }
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> N <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> min <span class="token operator">=</span> i<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">&lt;</span> nums<span class="token punctuation">[</span>min<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    min <span class="token operator">=</span> j<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token function">swap</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> i<span class="token punctuation">,</span> min<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 <p>时间复杂度：最坏情况：<strong>O(N^2)</strong><br>            最好情况：O(N^2)<br>空间复杂度：O(1)</p>
 <ul>
@@ -527,52 +522,48 @@ protected void swap(int[] num, int i, int j) {
 <ul>
 <li>大根堆：所有父节点大于子节点<br>  小根堆：所有父节点小于子节点</li>
 </ul>
-<h4 id="堆的定义"><a href="#堆的定义" class="headerlink" title="堆的定义"></a>堆的定义</h4><pre class=" language-Java"><code class="language-Java">public class Heap<T extends Comparable<T>> {
+<h4 id="堆的定义"><a href="#堆的定义" class="headerlink" title="堆的定义"></a>堆的定义</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Heap</span><span class="token operator">&lt;</span>T <span class="token keyword">extends</span> <span class="token class-name">Comparable</span><span class="token operator">&lt;</span>T<span class="token operator">>></span> <span class="token punctuation">{</span>
 
-    private T[] heap;
-    private int N = 0;
+    <span class="token keyword">private</span> T<span class="token punctuation">[</span><span class="token punctuation">]</span> heap<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
-    public Heap(int maxN) {
-        this.heap = (T[]) new Comparable[maxN + 1];
-    }
+    <span class="token keyword">public</span> <span class="token function">Heap</span><span class="token punctuation">(</span><span class="token keyword">int</span> maxN<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>heap <span class="token operator">=</span> <span class="token punctuation">(</span>T<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">new</span> <span class="token class-name">Comparable</span><span class="token punctuation">[</span>maxN <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public boolean isEmpty() {
-        return N == 0;
-    }
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> N <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    public int size() {
-        return N;
-    }
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> N<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    private boolean less(int i, int j) {
-        return heap[i].compareTo(heap[j]) < 0;
-    }
+    <span class="token keyword">private</span> <span class="token keyword">boolean</span> <span class="token function">less</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    private void swap(int i, int j) {
-        T t = heap[i];
-        heap[i] = heap[j];
-        heap[j] = t;
-    }
-}
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        T t <span class="token operator">=</span> heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        heap<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        heap<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h4 id="堆的上浮与下沉"><a href="#堆的上浮与下沉" class="headerlink" title="堆的上浮与下沉"></a>堆的上浮与下沉</h4><ul>
 <li>一般采用大根堆–当一个节点比父节点大时，需要交换这两个节点。交换后可能还比它的新的父节点大，因此需要不断地进行比较和交换，这就是上浮操作。</li>
 </ul>
 <p>k/2是父节点</p>
-<pre class=" language-Java"><code class="language-Java">private void swim(int k) {
-    while (k > 1 && k / 2 < k) {
-        swap(k / 2, k);
-        k = k / 2;
-    }
-}
-</code></pre>
-<p>类似地，当一个节点比子节点来得小，也需要不断地向下进行比较和交换操作，把这种操作称为下沉。一个节点如果有两个子节点，应当与两个子节点中最大那个节点进行交换。</p>
-<pre class=" language-Java"><code class="language-Java">private void sink(int k) {
-    while (2 * k <= N) {
+<p>``jJava<br>private void swim(int k) {<br>    while (k &gt; 1 &amp;&amp; k / 2 &lt; k) {<br>        swap(k / 2, k);<br>        k = k / 2;<br>    }<br>}</p>
+<pre><code>类似地，当一个节点比子节点来得小，也需要不断地向下进行比较和交换操作，把这种操作称为下沉。一个节点如果有两个子节点，应当与两个子节点中最大那个节点进行交换。
+
+```java
+private void sink(int k) {
+    while (2 * k &lt;= N) {
         int j = 2 * k;
-        if (j < N && j < j + 1)
+        if (j &lt; N &amp;&amp; j &lt; j + 1)
             j++;
-        if (k > j)
+        if (k &gt; j)
             break;
         swap(k, j);
         k = j;
@@ -581,20 +572,20 @@ protected void swap(int[] num, int i, int j) {
 </code></pre>
 <h4 id="插入与删除"><a href="#插入与删除" class="headerlink" title="插入与删除"></a>插入与删除</h4><ul>
 <li><p>插入：将新元素放到数组末尾，然后上浮到合适的位置</p>
-<pre class=" language-Java"><code class="language-Java">    public void insert(Comparable v) {
-        heap[++N] = v;
-        swim(N);
-    }
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span>Comparable v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        heap<span class="token punctuation">[</span><span class="token operator">++</span>N<span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">;</span>
+        <span class="token function">swim</span><span class="token punctuation">(</span>N<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 </li>
 <li><p>删除：从堆顶端删除最大的元素，并将数组的最后一个元素放到顶端，并让这个元素下沉到合适的位置。</p>
-<pre class=" language-Java"><code class="language-Java">    public T delMax() {
-        T max = heap[1];
-        swap(1, N--);
-        heap[N + 1] = null;
-        sink(1);
-        return max;
-    }
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> T <span class="token function">delMax</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        T max <span class="token operator">=</span> heap<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token function">swap</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> N<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        heap<span class="token punctuation">[</span>N <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token function">sink</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> max<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 </code></pre>
 </li>
 </ul>
@@ -1129,7 +1120,7 @@ protected void swap(int[] num, int i, int j) {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">35k</span>
+                        class="white-color">35.9k</span>
             
             
             

@@ -5,10 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="维护博客所遇到的问题汇总, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="链接到本地图片在source下创建img文件夹，每次引用都是/img…
-上传图片加载不出来，但在本地预览可以显示图片格式最好选用jpg而不是png
-无法解析XML和HTML语言尚未完全解决，实在不行就不标明那一段是个代码段，直接放代码
-首页">
+    <meta name="description" content="零零散散记一些对博客缝缝补补，修修改改的操作">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -406,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    264
+                    305
                 </div>
                 
 
@@ -431,7 +428,7 @@
                 <h2 id="链接到本地图片"><a href="#链接到本地图片" class="headerlink" title="链接到本地图片"></a>链接到本地图片</h2><p>在source下创建img文件夹，每次引用都是/img…</p>
 <h2 id="上传图片加载不出来，但在本地预览可以显示"><a href="#上传图片加载不出来，但在本地预览可以显示" class="headerlink" title="上传图片加载不出来，但在本地预览可以显示"></a>上传图片加载不出来，但在本地预览可以显示</h2><p>图片格式最好选用jpg而不是png</p>
 <h2 id="无法解析XML和HTML语言"><a href="#无法解析XML和HTML语言" class="headerlink" title="无法解析XML和HTML语言"></a>无法解析XML和HTML语言</h2><p>尚未完全解决，实在不行就不标明那一段是个代码段，直接放代码</p>
-<h2 id="首页博客排序方式"><a href="#首页博客排序方式" class="headerlink" title="首页博客排序方式"></a>首页博客排序方式</h2><p>主题下_config.yml中index_generate:order_by: (+/-)(title/date)<br>+表示正序排列<br>-表示倒序排列</p>
+<h2 id="首页博客排序方式"><a href="#首页博客排序方式" class="headerlink" title="首页博客排序方式"></a>首页博客排序方式</h2><p>项目下（不是主题下）_config.yml中index_generate:order_by: (+/-)(title/date)<br>+表示正序排列<br>-表示倒序排列</p>
 <h2 id="ssh相关"><a href="#ssh相关" class="headerlink" title="ssh相关"></a>ssh相关</h2><p>ssh密钥一般存在/user/.ssh/目录下<br>如果没有配置ssh密钥，可以通过</p>
 <pre class=" language-cmd"><code class="language-cmd">cd /.ssh
 </code></pre>
@@ -449,6 +446,17 @@
 </code></pre>
 <p>之后在ssh-agent中添加自己的key</p>
 <pre class=" language-bash"><code class="language-bash">ssh-add ~/.ssh/id_rsa
+</code></pre>
+<h2 id="代码块中-被转义"><a href="#代码块中-被转义" class="headerlink" title="代码块中{}被转义"></a>代码块中{}被转义</h2><p> 在node_modules\hexo-prism-plugin\src\index.js中添加</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'&amp;#39;'</span><span class="token punctuation">:</span> <span class="token string">'\''</span><span class="token punctuation">,</span>
+  <span class="token string">'&amp;amp;'</span><span class="token punctuation">:</span> <span class="token string">'&amp;'</span><span class="token punctuation">,</span>
+  <span class="token string">'&amp;gt;'</span><span class="token punctuation">:</span> <span class="token string">'>'</span><span class="token punctuation">,</span>
+  <span class="token string">'&amp;lt;'</span><span class="token punctuation">:</span> <span class="token string">'&lt;'</span><span class="token punctuation">,</span>
+  <span class="token string">'&amp;quot;'</span><span class="token punctuation">:</span> <span class="token string">'"'</span><span class="token punctuation">,</span>
+  <span class="token string">'&amp;#123;'</span><span class="token punctuation">:</span> <span class="token string">'{'</span><span class="token punctuation">,</span>
+  <span class="token string">'&amp;#125;'</span><span class="token punctuation">:</span> <span class="token string">'}'</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
 </code></pre>
 
                 
@@ -849,7 +857,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">35k</span>
+                        class="white-color">35.9k</span>
             
             
             
