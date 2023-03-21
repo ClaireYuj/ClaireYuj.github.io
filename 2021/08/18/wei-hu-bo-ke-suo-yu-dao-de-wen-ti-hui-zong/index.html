@@ -403,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    305
+                    380
                 </div>
                 
 
@@ -446,6 +446,14 @@
 </code></pre>
 <p>之后在ssh-agent中添加自己的key</p>
 <pre class=" language-bash"><code class="language-bash">ssh-add ~/.ssh/id_rsa
+</code></pre>
+<h2 id="git报错-–-Connection-reset-by-server-ip-port-22"><a href="#git报错-–-Connection-reset-by-server-ip-port-22" class="headerlink" title="git报错 – Connection reset by [server_ip] port 22"></a>git报错 – Connection reset by [server_ip] port 22</h2><p>解决git报错 – Connection reset by [server_ip] port 22<br>第一种情况，自己防火墙设置了22端口跳转</p>
+<pre><code>解决方法
+    打开windows防火墙，选择高级设置
+    新建入站规则，
+    选择端口
+    新建特定端口，22
+    保存就ok了
 </code></pre>
 <h2 id="代码块中-被转义"><a href="#代码块中-被转义" class="headerlink" title="代码块中{}被转义"></a>代码块中{}被转义</h2><p> 在node_modules\hexo-prism-plugin\src\index.js中添加</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> map <span class="token operator">=</span> <span class="token punctuation">{</span>
