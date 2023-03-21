@@ -115,6 +115,18 @@
         <content type="html"><![CDATA[<p>复习计算机网络相关知识</p><h2 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h2><ol><li>速率<br>网络技术中的速率指的是<strong>数据的传送速率</strong>，也称为<strong>数据率</strong>或<strong>比特率</strong>。单位是bit/s。<br>一般提到网络的速率指的是额定速率（标定速率），而非实际运行的速率。</li><li>带宽<br>贷款用来表示网络中某<strong>通道</strong>传送数据的能力，因此网络带宽表示再单位时间内网络中<strong>某信道</strong>所能通过的<strong>最高数据率</strong>。单位是bit/s</li><li>吞吐量<br>在单位时间内通过某个网络（或信道、接口）的<strong>实际数据量</strong>。吞吐量收网络带宽与网络额定速率的限制。接入网络主机的实际吞吐量取决于<strong>互联网的具体情况</strong>。</li><li>时延<br>数据（一个报文、分组甚至比特）从网络的一端到另一端所需的时间。<br>总时延 = 发送时延+传播时延+处理时延+排队时延<br>主要影响是<strong>发送时延</strong>和<strong>传播时延</strong><br>传播时延是比特在链路上传播的时延。</li><li>时延带宽积<br>时延带宽积 = 传播时延 x 带宽<br>等同在任何特定时间该网络线路上的<strong>最大数据量</strong>——已发送但尚未确认的数据。<br>链路像一个空心管道，时延是管道长，带宽是管道切面面积</li><li>往返时间RTT<br>大部分情况下，互联网上的信息不是单方传输而是双向交互的。</li></ol><h2 id="计算机网络体系结构"><a href="#计算机网络体系结构" class="headerlink" title="计算机网络体系结构"></a>计算机网络体系结构</h2><p><strong>协议</strong>: 网络协议是为进行网络中的数据交换而建立的规则。这些规则明确规定了数据的格式以及预期有关的同步问题。<br>协议主要由一下三个要素组成：语法（数据和控制信息的结构或者格式）、语义（需要发出何种控制信息）、同步（时间实现顺序的详细说明）。</p><h3 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h3><p><img src="/img/posts/ComputerNetwork/OSI.jpg" alt="OSI"><br><img src="/img/posts/ComputerNetwork/TCP_IP.jpg" alt="TCP/IP"><br><img src="/img/posts/ComputerNetwork/OSI_TCPIP.jpg" alt="OSI与TCP/IP的对比"></p>]]></content>
       
       
+      <categories>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
       
     </entry>
     
