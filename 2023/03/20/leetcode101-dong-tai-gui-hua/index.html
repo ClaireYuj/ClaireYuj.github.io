@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.1k
+                    2.3k
                 </div>
                 
 
@@ -730,6 +730,31 @@
     <span class="token punctuation">}</span>
     
 <span class="token punctuation">}</span>
+</code></pre>
+<h2 id="切割问题"><a href="#切割问题" class="headerlink" title="切割问题"></a>切割问题</h2><h3 id="279-完全平方数"><a href="#279-完全平方数" class="headerlink" title="279. 完全平方数"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/perfect-squares/">279. 完全平方数</a></h3><p>给你一个整数 n ，返回 和为 n 的完全平方数的最少数量 。</p>
+<p>完全平方数 是一个整数，其值等于另一个整数的平方；换句话说，其值等于一个整数自乘的积。例如，1、4、9 和 16 都是完全平方数，而 3 和 11 不是。</p>
+<blockquote>
+<p>示例<br>    输入：n = 12<br>    输出：3<br>    解释：12 = 4 + 4 + 4</p>
+</blockquote>
+<blockquote>
+<p>示例<br>    输入：n = 13<br>    输出：2<br>    解释：13 = 4 + 9</p>
+</blockquote>
+<p>转移方程: <strong>f(n) = 1 + min(f(n - j*j))</strong> (j小于n开方)</p>
+<p>仍然是用<strong>数组来存每个状态</strong></p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">numSquares</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> f<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 状态初态</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> min <span class="token operator">=</span> <span class="token number">10001</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                min <span class="token operator">=</span> min <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">+</span> f<span class="token punctuation">[</span>i <span class="token operator">-</span> j<span class="token operator">*</span>j<span class="token punctuation">]</span><span class="token operator">?</span><span class="token number">1</span> <span class="token operator">+</span> f<span class="token punctuation">[</span>i <span class="token operator">-</span> j<span class="token operator">*</span>j<span class="token punctuation">]</span><span class="token operator">:</span>min<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 转移方程</span>
+            <span class="token punctuation">}</span>
+            f<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> min<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> f<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
 </code></pre>
 
                 
@@ -1134,7 +1159,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">37.9k</span>
+                        class="white-color">38.1k</span>
             
             
             
