@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.3k
+                    2.6k
                 </div>
                 
 
@@ -756,6 +756,36 @@
     <span class="token punctuation">}</span>
 
 </code></pre>
+<h3 id="91-解码方法"><a href="#91-解码方法" class="headerlink" title="91.解码方法"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/decode-ways/">91.解码方法</a></h3><p>一条包含字母 A-Z 的消息通过以下映射进行了 编码 ：</p>
+<p>‘A’ -&gt; “1”<br>‘B’ -&gt; “2”<br>…<br>‘Z’ -&gt; “26”要 解码 已编码的消息，所有数字必须基于上述映射的方法，反向映射回字母（可能有多种方法）。例如，”11106” 可以映射为：</p>
+<p>“AAJF” ，将消息分组为 (1 1 10 6)<br>“KJF” ，将消息分组为 (11 10 6)<br>注意，消息不能分组为&nbsp; (1 11 06) ，因为 “06” 不能映射为 “F” ，这是由于 “6” 和 “06” 在映射中并不等价。</p>
+<p>给你一个只含数字的 非空 字符串 s ，请计算并返回 解码 方法的 总数 。</p>
+<p>题目数据保证答案肯定是一个 32 位 的整数。</p>
+<blockquote>
+<p>示例<br>    输入：s = “12”<br>    输出：2<br>    解释：它可以解码为 “AB”（1 2）或者 “L”（12）。</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java">
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">numDecodings</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> f <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        f<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                f<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> f<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token string">'0'</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">+</span> <span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                f<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> f<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> f<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>分两种情况</p>
+<blockquote>
+<p>第一种情况是我们使用了一个字符，f[n] += f[n-1]<br>第二中情况使用两个字符, f[n] += f[n-2]</p>
+</blockquote>
 
                 
             </div>
@@ -1159,7 +1189,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">38.1k</span>
+                        class="white-color">38.5k</span>
             
             
             
