@@ -399,7 +399,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.7k
+                    1.9k
                 </div>
                 
 
@@ -588,6 +588,48 @@
         <span class="token punctuation">}</span>
         Arrays<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>nums1<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+</code></pre>
+<h2 id="142-环形链表-https-leetcode-cn-problems-linked-list-cycle-ii-submissions"><a href="#142-环形链表-https-leetcode-cn-problems-linked-list-cycle-ii-submissions" class="headerlink" title="(142.环形链表)[https://leetcode.cn/problems/linked-list-cycle-ii/submissions/]"></a>(142.环形链表)[<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/submissions/]">https://leetcode.cn/problems/linked-list-cycle-ii/submissions/]</a></h2><p><img src="/img/posts/Leetcode/leetcode547.jpg"></p>
+<p>假设从头节点走到入环节点需要a步， 每个环中有b个元素（也就是b步走完一个环）<br>核心在于确定当快慢指针相遇时的条件：</p>
+<ol>
+<li>当第一次slow和fast相遇：此时 <strong>fast=2 slow</strong><br> 但由于fast比slow多走了nb<br> 可以得出 **fast = 2 nb ** <strong>slow = nb</strong><br>但关键在于确定从从头节点走到入环点，由于从头节点走到入环点 = a， 走完这个环 = b，所以从此时slow再走a步就可以到达入环的节点，因为此时slow已经走了nb步了</li>
+<li>所以此时将fast放到head，从head走到入环点需要a步，而在环中的slow要再度走到入环点也需要a步，当fast和slow相遇的时候就是入环点了</li>
+</ol>
+<p><img src="/img/posts/Leetcode/leetcode547_explanation.jpg" alt="图解"></p>
+<pre class=" language-java"><code class="language-java">
+<span class="token comment" spellcheck="true">/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">detectCycle</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ListNode fast <span class="token operator">=</span> head<span class="token punctuation">,</span> slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>fast<span class="token operator">==</span>null <span class="token operator">||</span> fast<span class="token punctuation">.</span>next<span class="token operator">==</span>null<span class="token punctuation">)</span> <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+            
+            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>fast <span class="token operator">==</span> slow<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            
+        <span class="token punctuation">}</span>
+        fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>fast<span class="token operator">!=</span>slow<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> fast<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 
                 
@@ -984,7 +1026,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">40.2k</span>
+                        class="white-color">40.5k</span>
             
             
             
