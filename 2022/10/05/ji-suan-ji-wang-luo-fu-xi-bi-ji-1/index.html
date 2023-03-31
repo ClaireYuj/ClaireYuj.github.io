@@ -448,8 +448,8 @@
 <h2 id="TCP和UDP的区别"><a href="#TCP和UDP的区别" class="headerlink" title="TCP和UDP的区别"></a>TCP和UDP的区别</h2><p>TCP是面对<strong>连接的</strong>传输层协议，提供可靠的数据传世。但TCP的传输速度较慢，需要进行较多的数据包确认和重传，适用于对数据可靠性要求较高的应用场景。</p>
 <p>UDP是<strong>无连接的</strong>的传输协议，提供不可靠的数据传输，通过UDP数据报进行数据传世不能保证数据可靠性。但UDP穿的较快，适用于对实时性要求较高的场景</p>
 <h2 id="TCP的三次握手和四次挥手"><a href="#TCP的三次握手和四次挥手" class="headerlink" title="TCP的三次握手和四次挥手"></a>TCP的三次握手和四次挥手</h2><blockquote>
+<p>三次握手（用于建立连接） 1. 客户端-&gt;服务器发送一个SYN，请求建立连接 2. 服务器接收到SYN后向客户端发送SYN+ACK，同意建立连接 3. 客户端接收到服务器的SYN+ACK后，向服务器发送一个ACK表示确认收到服务器的SYN+ACK。连接建立</p>
 </blockquote>
-<p> 三次握手（用于建立连接） 1. 客户端-&gt;服务器发送一个SYN，请求建立连接 2. 服务器接收到SYN后向客户端发送SYN+ACK，同意建立连接 3. 客户端接收到服务器的SYN+ACK后，向服务器发送一个ACK表示确认收到服务器的SYN+ACK。连接建立</p>
 <blockquote>
 <p>四次挥手（用于断开连接） 1.客户端向服务器发送一个FIN包，发送断开连接的请求 2. 服务器接收到客户端的FIN包后，向客户端发送一个ACK。 3. 服务器接着发送一个FIN给客户端 4. 客户端接收到后发送一个ACK。 至此连接断开</p>
 </blockquote>
