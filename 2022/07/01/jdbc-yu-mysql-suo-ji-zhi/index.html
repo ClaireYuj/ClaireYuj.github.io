@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="求最大子集和, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="求最大子集和53. 最大子数组和给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。子数组 是数组中的一个连续部分。
-法一 暴力class Solution {
-    public i">
+    <meta name="keywords" content="JDBC与mysql锁机制, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="事务的ACIDACID，即原子性、一致性、隔离性和持久性。
+
+原子性：要么全部提交（commit后写日志），要么全部失败（回滚事务）。保证十五的原子性要求在发生异常是，对事务所有执行过的操作进行回滚，回滚是通过回滚日志实现。回滚日志种记录了">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>求最大子集和 | DULULU</title>
+    <title>JDBC与mysql锁机制 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -338,12 +338,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">求最大子集和</h1>
+                    <h1 class="description center-align post-title">JDBC与mysql锁机制</h1>
                 </div>
             </div>
         </div>
@@ -367,8 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/leetcode/">
-                                <span class="chip bg-color">leetcode</span>
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">-MySQL</span>
                             </a>
                         
                     </div>
@@ -379,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                数据结构
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                -数据库
                             </a>
                         
                     </div>
@@ -392,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-08-15
+                    2022-07-01
                 </div>
                 
 
@@ -401,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    120
+                    3.8k
                 </div>
                 
 
@@ -423,20 +423,136 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="求最大子集和"><a href="#求最大子集和" class="headerlink" title="求最大子集和"></a>求最大子集和</h2><h3 id="53-最大子数组和"><a href="#53-最大子数组和" class="headerlink" title="53. 最大子数组和"></a>53. 最大子数组和</h3><p>给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。<br>子数组 是数组中的一个连续部分。</p>
-<h4 id="法一-暴力"><a href="#法一-暴力" class="headerlink" title="法一 暴力"></a>法一 暴力</h4><pre class=" language-c++"><code class="language-c++">class Solution {
-    public int numTrees(int n) {
-        int[] dp = new int[n+1];
-        dp[0] = 1;
-        dp[1] = 1;
-        
-        for(int i = 2; i < n + 1; i++)
-            for(int j = 1; j < i + 1; j++) 
-                dp[i] += dp[j-1] * dp[i-j];
-        
-        return dp[n];
-    }
-}
+                <h3 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h3><p>ACID，即原子性、一致性、隔离性和持久性。</p>
+<ul>
+<li><p>原子性：要么全部提交（commit后写日志），要么全部失败（回滚事务）。保证十五的原子性要求在发生异常是，对事务所有执行过的操作进行回滚，回滚是通过<strong>回滚日志</strong>实现。回滚日志种记录了所有操作的逆操作，因此回滚就是将该事务回滚日志种的所有操作再执行一遍。</p>
+</li>
+<li><p>隔离性：该会话事务内部的SQL操作及操作的数据库对象<strong>与并发的其它会话事务是隔离的</strong>。<strong>事务的隔离级别是由数据库</strong>提供的,数据库隔离级别在服务器端保证客户端用户一定不会发生哪些并发冲突。方法有：隐式锁、多版本（MVCC）等。应用场景是数据库多并发控制</p>
+</li>
+<li><p>一致性：是事务对数据完整性约束的遵循。这些约束可能包括主键约束、外键约束或是一些用户自定义约束（触发器等）。事务执行的前后都是合法的数据状态，不会违背任何的数据完整性，这就是“一致”的意思。应用场景是：但用户场景</p>
+</li>
+<li><p>持久性：事务一旦提交，对数据库的改变是永久的，被提交后就<strong>无法回滚</strong>。事务的持久性也是事务日志保证的</p>
+</li>
+</ul>
+<h3 id="并发冲突"><a href="#并发冲突" class="headerlink" title="并发冲突"></a>并发冲突</h3><h4 id="读不一致"><a href="#读不一致" class="headerlink" title="读不一致"></a>读不一致</h4><p>读不一致性本质上是读写操作的不一致性</p>
+<p><strong>脏读</strong>：一个事务读取了另一个事务<strong>未提交</strong>的数据。当事务A查询事物B修改后但是未提交的数据时，事物B有可能会因为某些情况进行回滚，此时事物A读到的数据就是错的，这是的数据也称之为脏数据。它是对一条记录而言的。脏读本质上是读写操作的冲突，<strong>解决办法是写完之后再读。</strong></p>
+<p><strong>不可重复读</strong>：一个事务<strong>两次读取同一个数据</strong>，两次读取的<strong>数据不一致</strong>。当事务A查询第一次是，事物B虽然修改了数据但是没有提交，此时事物A查询的还是之前未修改的值，但是当事物B提交后，事物A第二次查询，此时查询到的值是事物B修改后的值，这次查询的值不一样，即读取的数据不一致。它是对一条记录而言的。不可重复读本质上是读写操作的冲突，<strong>解决办法是读完再写。</strong></p>
+<p><strong>幻读</strong>：一个事务<strong>两次读取一个范围的记录，两次读取的记录数不一致。</strong>假设事务A第一次查询一段范围的rows中的某数据时，此时有5列。但是之后又另外一个事物B增加了一列，当事物A再次进行相同的查询时，发现有6列，这就是所谓的幻读。<strong>它是对多条记录而言的</strong>。幻读本质上是读写操作的冲突，解决办法是<strong>读完再插入/删除。</strong></p>
+<h4 id="写不一致"><a href="#写不一致" class="headerlink" title="写不一致"></a>写不一致</h4><p>写不一致性本质上是写写操作的不一致性<br>出现<strong>丢失修改</strong>（一个事务的更新覆盖了另一个事务的更新）。事务A和事务B需要对同一个row的元素进行修改。A和B同时读到该row的的数据，分别修改，后提交的事务B覆盖了事务A的更新。更新丢失本质上是写写操作的冲突，解决办法是<strong>一个一个地写。</strong><br>防止丢失修改的并发控制类型常见的有三种方法：</p>
+<ol>
+<li>加锁（保守式并发控制）- 在从获取记录直到记录在数据库中更新的这段时间内，该行对用户不可用。</li>
+<li>开放式并发控制（原始值） - 只有当实际更新数据时，该行才对其他用户不可用。更新将在数据库中检查该行并确定是否进行了任何更改。如果试图更新已更改的记录，则将导致并发冲突。</li>
+<li>最后的更新生效 - 只有当实际更新数据时，该行才对其他用户不可用。但是，不会将更新与初始记录进行比较；而只是写出记录，这可能就改写了自上次刷新记录后其他用户所进行的更改。</li>
+</ol>
+<h3 id="为什么要MySQL锁"><a href="#为什么要MySQL锁" class="headerlink" title="为什么要MySQL锁"></a>为什么要MySQL锁</h3><p>要控制数据库中的事务并发性需要使用MySQL中的锁，注意Synchronized这种只能用于控制Java代码块的并发访问，但不能控制数据库的并发访问</p>
+<p>MySQL 提供了多种锁机制，包括<strong>共享锁（Shared Lock）和排他锁（Exclusive Lock）</strong>等。其中，<strong>共享锁用于防止其他事务对资源进行写操作，而排他锁则用于防止其他事务对资源进行读写操作。</strong></p>
+<p>在 JDBC 中，可以通过以下方式来使用 MySQL 锁机制：</p>
+<ol>
+<li><p>通过设置 SQL 语句的 Isolation Level 属性来指定事务的隔离级别，从而控制并发访问。</p>
+</li>
+<li><p>在 SQL 语句中使用 Lock In Share Mode（共享锁）或 For Update（排他锁）等关键字来控制锁机制。</p>
+</li>
+</ol>
+<h3 id="多用户场景下并发控制的手段"><a href="#多用户场景下并发控制的手段" class="headerlink" title="多用户场景下并发控制的手段"></a>多用户场景下并发控制的手段</h3><h4 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h4><blockquote>
+<p>使用<strong>隔离级别</strong>:一个会话事务对数据库的存取与并发的另一个会话事务的隔离程度。数据库规定了多种事务隔离级别, 不同隔离级别对应不同的干扰程度, 隔离级别越高, 并发一致性就越好, 但并发性越弱。</p>
+</blockquote>
+<p>数据库中，事务隔离级别（Transaction Isolation Level）指的是多个事务同时执行时，各自之间的隔离程度。数据库系统提供了四种事务隔离级别，分别为：</p>
+<p>1.读未提交（RU）<br>具有Read uncommitted隔离级别的事务，<strong>允许读取未被其他事务提交的变更</strong>，可能出现脏读、不可重复读、幻读，以及丢失修改。选择Read uncommitted的原因是，在只读的历史数据库中，可以提高效率。<br>2. 读已提交（RC）<br>具有Read committed隔离级别的事务，确保只允许读取已经被其他事务提交的变更。<br>当隔离级别设置为Read committed时，避免了脏读，但是可能出现不可重复读、幻读，丢失修改。大多数数据库的默认隔离级别是Read committed，比如Sql Server , Oracle。<br>3. 可重复读（RR）<br>具有Repeatable read隔离级别的事务，可以确保多次从一个记录中读取相同的值，在这个事务持续期间，禁止其他事务对这条记录进行更新。隔离级别设置为Repeatable read时，可以避免脏读、不可重复读。但是可能出现幻读。MySQL的默认隔离级别就是Repeatable read。<br>4.串行化（S）<br>具有Serializable隔离级别的事务，<strong>可以确保从一个表中读取相同的行数，在这个事务持续期间，禁止其他事务对该表执行插入、更新和删除操作，所有并发问题都可以避免，</strong>但性能十分低。<br><strong>Serializable是最高的事务隔离级别，提供了最高程度的隔离性，</strong>同时代价也花费最高，性能很低，这个隔离级别通常会降低并发性，一般很少使用，在该级别下，事务顺序执行，不仅可以避免脏读、不可重复读，还避免了幻像读和丢失修改。如果事务隔离级别设置为SERIALIZABLE，具有SERIALIZABLE隔离级别的事务开始之后，不会看到数据库中其它会话事务作出的任何修改，直到提交SERIALIZABLE事务为止</p>
+<h4 id="加锁"><a href="#加锁" class="headerlink" title="加锁"></a>加锁</h4><p>使用锁的原则：在满足完整性约束、业务需求，解决多事务并发冲突，保证数据正确性的前提下，尽可能<strong>减少阻塞和避免死锁</strong>，提高事务的并发性，保证程序的并发质量</p>
+<p><strong>避免阻塞</strong>的手段：</p>
+<ol>
+<li>总原则是<strong>缩小锁粒度，尽可能减少共享数据；锁的模式尽可能弱，尽可能减少锁的互斥；互斥锁的持续时间尽可能短；</strong></li>
+<li>尽可能减少共享数据，提高会话的并发性。锁的粒度尽可能小（行锁—&gt;表锁，加锁的范围逐渐大），封锁的粒度越大，并发性就越小，同时系统的开销也就越小；相反，封锁的粒度越小，并发就越高，系统开销也就越大。</li>
+<li>尽可能减少锁的互斥，提高会话的并发性。锁的模式尽可能弱（不加锁—&gt;加S锁—&gt;加X锁，加锁的类逐渐加强）</li>
+<li>在并发比较高的系统中，不要加显式锁，特别是在事务里加显式锁。例如，select…for update句。</li>
+<li>尽可能减少阻塞。这里有两种方案：1.减少锁的持续时间，事务内部访问某对象的时机。一般多事要经常访问的表的引用放在事务的末尾，以便将控制锁的持续时间减至最短。2. 尽可能缩短事（事务本身要短），以便将长期锁减至最少，改善并发性。</li>
+<li>进行事务的分解，分解的原则是事务业务是最小原子操作。对于数据量很大的操作，在保证数据一性/原子性的条件下，可以将其分成几组提交事务，这样可以避免长时间地占用资源。<br>7.在表中添加索引。查询会扫描更少的索引记录，并且因此也可以设置更少的锁定。</li>
+<li>尽量按照主键/索引去查找记录，范围查找增加了锁冲突的可能性，也不要利用数据库做一些额外计算工作。比如，用select…where…order by rand();这样的语句，由于类似这样的语句用不到引，因此将导致整个表的数据都被锁住。</li>
+<li>优化SQL和表设计，减少同时占用太多资源的情况。比如，减少连接的表，将复杂SQL分解为多个简的SQL。</li>
+</ol>
+<p><strong>避免死锁</strong>：调整访问共享资源的SQL顺序，对于多个会话的事务内部要按相同的固定顺序访问共享资源（多个表对象，多条记录），避免出现死锁</p>
+<h5 id="多版本"><a href="#多版本" class="headerlink" title="多版本"></a>多版本</h5><p>在商业数据库中，通过多版本，select不需要加锁，也不会读到脏数据，不存在读写依赖，写的排它锁不会阻塞读，加大了并发性。这属于<strong>乐观控制模型</strong></p>
+<h3 id="MySQL锁的种类"><a href="#MySQL锁的种类" class="headerlink" title="MySQL锁的种类"></a>MySQL锁的种类</h3><p><img src="/img/posts/MySQL/mysql_lock.jpg" alt="OSI"></p>
+<h4 id="锁粒度"><a href="#锁粒度" class="headerlink" title="锁粒度"></a>锁粒度</h4><p>就是一次性会锁住多少<br>表锁会锁住一整个表<br>行锁是锁定行（容易发生死锁）<br>页锁–MySQL特有，介于表锁和行锁之间</p>
+<h4 id="锁分类"><a href="#锁分类" class="headerlink" title="锁分类"></a>锁分类</h4><h5 id="共享锁（读锁）"><a href="#共享锁（读锁）" class="headerlink" title="共享锁（读锁）"></a>共享锁（读锁）</h5><p>是读取操作（SELECT）时创建的锁。其他用户可以并发读取数据，但在读锁未释放前，也就是查询事务结束前，任何事务都不能对数据进行修改（获取数据上的写锁），直到已释放所有读锁。</p>
+<p>  如果事务A对数据B加上读锁后，则其他事务只能对数据B上加读锁，不能加写锁。获得读锁的事务只能读数据，不能修改数据。</p>
+<pre class=" language-sql"><code class="language-sql">
+<span class="token keyword">SELECT</span> … <span class="token keyword">LOCK</span> <span class="token operator">IN</span> <span class="token keyword">SHARE MODE</span><span class="token punctuation">;</span>
+</code></pre>
+<h5 id="排他锁（写锁）"><a href="#排他锁（写锁）" class="headerlink" title="排他锁（写锁）"></a>排他锁（写锁）</h5><p>如果事务A对数据B加上写锁后，则其他事务不能再对数据B加任何类型的锁。获得写锁的事务既能读数据，又能修改数据。</p>
+<pre class=" language-sql"><code class="language-sql"><span class="token keyword">SELECT</span> … <span class="token keyword">FOR</span> <span class="token keyword">UPDATE</span><span class="token punctuation">;</span>
+</code></pre>
+<h5 id="意向锁"><a href="#意向锁" class="headerlink" title="意向锁"></a>意向锁</h5><p>意向锁属于表级锁，其设计目的主要是为了在一个事务中揭示下一行将要被请求锁的类型。InnoDB 中的两个表锁：</p>
+<blockquote>
+<p>意向共享锁（IS）：表示事务<strong>准备</strong>给数据行加入共享锁，就是说一个数据行加共享锁前必须先取得该表的IS锁；<br>意向排他锁（IX）：类似上面，表示事务<strong>准备</strong>给数据行加排他锁，说明事务在一个数据行加排他锁前必须先取得该的IX锁。</p>
+</blockquote>
+<h4 id="加锁机制"><a href="#加锁机制" class="headerlink" title="加锁机制"></a>加锁机制</h4><p><strong>悲观锁</strong>：认为数据出现冲突的可能性更大，一般就是利用类似 SELECT … FOR UPDATE 这样的语句，对数据加锁，避免其他事务意外修改数据。共享锁和排他锁都是悲观锁的实现</p>
+<p><strong>乐观锁</strong>：更新数据库时认为操作不会导致冲突，在操作数据时不加锁，而在进行更新后再去判断是否有冲突了。</p>
+<ul>
+<li>通过添加版本号进行实现：<br>  先查询出那条记录，获取出version字段。<br>  如果要对那条记录进行更新操作，则先判断version的值是否与刚刚查询出来时的version的等。<br>  如果相等，则说明这段期间没有其他程序对其进作，则可以执行更新，将version字段的值加1。<br>  如果version值与刚刚获取出来的version的值不相则说明这段期 间已经有其他程序对其进行操作了，进行更新操作</li>
+</ul>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><h4 id="使用锁机制来实现对账户余额的更新操作"><a href="#使用锁机制来实现对账户余额的更新操作" class="headerlink" title="使用锁机制来实现对账户余额的更新操作"></a>使用锁机制来实现对账户余额的更新操作</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 连接数据库</span>
+Connection conn <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 关闭自动提交</span>
+conn<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 设置事务隔离级别</span>
+conn<span class="token punctuation">.</span><span class="token function">setTransactionIsolation</span><span class="token punctuation">(</span>Connection<span class="token punctuation">.</span>TRANSACTION_REPEATABLE_READ<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 查询账户余额</span>
+    PreparedStatement pstmt <span class="token operator">=</span> conn<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span><span class="token string">"select balance from account where id = ? for update"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pstmt<span class="token punctuation">.</span><span class="token function">setInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> accountId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    ResultSet rs <span class="token operator">=</span> pstmt<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    rs<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> balance <span class="token operator">=</span> rs<span class="token punctuation">.</span><span class="token function">getInt</span><span class="token punctuation">(</span><span class="token string">"balance"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    rs<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 更新账户余额</span>
+    PreparedStatement pstmt2 <span class="token operator">=</span> conn<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span><span class="token string">"update account set balance = ? where id = ?"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pstmt2<span class="token punctuation">.</span><span class="token function">setInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> balance <span class="token operator">-</span> amount<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pstmt2<span class="token punctuation">.</span><span class="token function">setInt</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> accountId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    pstmt2<span class="token punctuation">.</span><span class="token function">executeUpdate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 提交事务</span>
+    conn<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">SQLException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 回滚事务</span>
+    conn<span class="token punctuation">.</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 关闭数据库连接</span>
+    conn<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h4 id="获取共享锁"><a href="#获取共享锁" class="headerlink" title="获取共享锁"></a>获取共享锁</h4><p>使用了FOR SHARE语句来获取共享锁。在多个事务同时访问该表时，只有其中一个事务可以获取共享锁，并且其他事务只能读取该行数据，不能修改该行数据。需要注意的是，获取共享锁的事务需要先获取到行级锁，否则会出现死锁等问题。</p>
+<pre class=" language-java"><code class="language-java">Connection conn <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+conn<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+String sql <span class="token operator">=</span> <span class="token string">"SELECT * FROM my_table WHERE id = ? FOR SHARE"</span><span class="token punctuation">;</span>
+
+PreparedStatement pstmt <span class="token operator">=</span> conn<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+pstmt<span class="token punctuation">.</span><span class="token function">setInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ResultSet rs <span class="token operator">=</span> pstmt<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 处理查询结果</span>
+
+conn<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="获取排他锁"><a href="#获取排他锁" class="headerlink" title="获取排他锁"></a>获取排他锁</h4><p>使用了FOR UPDATE语句来获取排他锁。在多个事务同时访问该表时，只有其中一个事务可以获取排他锁，并且其他事务不能读取或修改该行数据。需要注意的是，获取排他锁的事务需要先获取到行级锁，并且需要在事务结束前释放锁，否则会出现死锁等问题。</p>
+<pre class=" language-java"><code class="language-java">
+Connection conn <span class="token operator">=</span> DriverManager<span class="token punctuation">.</span><span class="token function">getConnection</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> username<span class="token punctuation">,</span> password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+conn<span class="token punctuation">.</span><span class="token function">setAutoCommit</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+String sql <span class="token operator">=</span> <span class="token string">"SELECT * FROM my_table WHERE id = ? FOR UPDATE"</span><span class="token punctuation">;</span>
+
+PreparedStatement pstmt <span class="token operator">=</span> conn<span class="token punctuation">.</span><span class="token function">prepareStatement</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">;</span>
+pstmt<span class="token punctuation">.</span><span class="token function">setInt</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ResultSet rs <span class="token operator">=</span> pstmt<span class="token punctuation">.</span><span class="token function">executeQuery</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 处理查询结果</span>
+
+conn<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 
                 
@@ -464,7 +580,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2021/08/15/zui-da-zi-ji-he/">https://claireyuj.github.io/2021/08/15/zui-da-zi-ji-he/</a>
+                    <a href="https://claireyuj.github.io/2022/07/01/jdbc-yu-mysql-suo-ji-zhi/">https://claireyuj.github.io/2022/07/01/jdbc-yu-mysql-suo-ji-zhi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -502,8 +618,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/leetcode/">
-                                    <span class="chip bg-color">leetcode</span>
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">-MySQL</span>
                                 </a>
                             
                         </div>
@@ -555,13 +671,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/08/17/leetcode-tu-lun/">
+                <a href="/2022/08/02/leetcode-bu-fen-hui-zong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Leetcode-图论">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Leetcode部分汇总">
                         
-                        <span class="card-title">Leetcode-图论</span>
+                        <span class="card-title">Leetcode部分汇总</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -572,7 +688,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-02
                         </span>
                         <span class="publish-author">
                             
@@ -604,13 +720,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/05/shen-du-xue-xi-xue-xi-bi-ji-1/">
+                <a href="/2022/05/31/shu-ju-jie-gou-fu-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="深度学习学习笔记1">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="数据结构复习">
                         
-                        <span class="card-title">深度学习学习笔记1</span>
+                        <span class="card-title">数据结构复习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -621,14 +737,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-31
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    机器学习
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
                                 </a>
                             
                             
@@ -638,12 +754,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">深度学习</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
