@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    3k
+                    3.4k
                 </div>
                 
 
@@ -826,6 +826,38 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<h2 id="回文"><a href="#回文" class="headerlink" title="回文"></a>回文</h2><p>回文问题可以用dp来判定，假设boolean dp[1][3]记录了从1-&gt;3的子字符串是否为回文串，那么判断dp[0][4]是否为回文串可以根据</p>
+<blockquote>
+<p>dp[0][4] = (s.charAt(0)==s.charAt(4) &amp;&amp; dp[1][3])?true:false;</p>
+</blockquote>
+<p>整理为通用公式<strong>dp[start][end] = (s[start]==s[end] &amp;&amp; dp[start+1][end-1])</strong></p>
+<h3 id="5-最长回文子串"><a href="#5-最长回文子串" class="headerlink" title="5. 最长回文子串"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/longest-palindromic-substring/">5. 最长回文子串</a></h3><p>给你一个字符串 s，找到 s 中最长的回文子串。</p>
+<p>如果字符串的反序与原始字符串相同，则该字符串称为回文字符串。</p>
+<p>示例 1：<br>输入：s = “babad”<br>输出：”bab”<br>解释：”aba” 同样是符合题意的答案。</p>
+<p>示例 2：</p>
+<p>输入：s = “cbbd”<br>输出：”bb”</p>
+<h4 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> String <span class="token function">longestPalindrome</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> dp<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">boolean</span><span class="token punctuation">[</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> max <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">,</span> start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> end <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> right <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>right<span class="token operator">&lt;</span>s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>right<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> left <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>left<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>left<span class="token punctuation">)</span> <span class="token operator">==</span> s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span>right<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>right <span class="token operator">-</span> left <span class="token operator">&lt;=</span><span class="token number">2</span> <span class="token operator">||</span> dp<span class="token punctuation">[</span>left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>right<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    dp<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span><span class="token punctuation">(</span>right<span class="token operator">-</span>left<span class="token operator">+</span><span class="token number">1</span> <span class="token operator">></span> max<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        max <span class="token operator">=</span> right<span class="token operator">-</span>left<span class="token punctuation">;</span>
+                        start <span class="token operator">=</span> left<span class="token punctuation">;</span>
+                        end <span class="token operator">=</span> right<span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>该题中判断回文的起始状态要分三种情况 <strong>dabac</strong>, <strong>dabbc</strong>, <strong>dbbac</strong>,也就是中心扩散，中心右扩散和中心左扩散<br>所以在判断条件处需要或一个(right-left&lt;=2),也就是任意满足一种扩散条件都可以</p>
+<p>java类中substring的用法：s.substring(0,2)只包含s[0]和s[1]，所以如果要返回s[0-2],需要写作s.substring(0,3)</p>
 
                 
             </div>
@@ -1229,7 +1261,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">46.5k</span>
+                        class="white-color">49.4k</span>
             
             
             

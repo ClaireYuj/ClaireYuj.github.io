@@ -1,0 +1,1497 @@
+<!DOCTYPE HTML>
+<html lang="en-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="C++基本数据结构, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="C++基础指针与引用
+不存在空引用，但可以有空指针。
+一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。
+引用必须在创建时被初始化。指针可以在任何时间被初始化。
+
+在64位系统中地址的总线宽度是8个字">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>C++基本数据结构 | DULULU</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/loading-ghost.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    
+
+    <div id ="loading-box">
+        <div class="space">
+      <!-- 飞船部分 -->
+      <div class="ship">
+        <div class="ship-rotate">
+          <div class="pod"></div>
+          <div class="fuselage"></div>
+          <!-- 尾气部分 -->
+          <div class="exhaust-flame"></div>
+          <ul class="exhaust-fumes">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          
+        </div>
+      </div>
+      <!-- 阴影部分 -->
+      <div class="ship-shadow"></div>
+      <!-- 星球部分 -->
+      <div class="mars">
+        <div class="tentacle"></div>
+        <div class="flag">
+          <div class="small-tentacle"></div>
+        </div>
+        <div class="planet">
+          <div class="surface"></div>
+          <div class="crater1"></div>
+          <div class="crater2"></div>
+          <div class="crater3"></div>
+        </div>
+        <div class = "loading-word">loading...</div>
+      </div>
+    </div>
+</div>
+    <script>
+        // 获取动画
+    let loader = document.querySelector(".space");
+    // 加载完成事件
+    window.onload = function () {
+        // 加载完成，隐藏动画，显示内容
+      loader.style.display = "none";
+    }
+    /*
+    $(document).ready(function () {
+        document.body.style.overflow = 'auto';
+        document.getElementById('').classList.add("loaded")
+      })
+      */
+    </script>    
+    
+
+
+  
+
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">DULULU</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>Index</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>Tags</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>Categories</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>Me</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">DULULU</div>
+        <div class="logo-desc">
+            
+            嘟噜嘟噜嘟噜噜
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			Index
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			Tags
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			Categories
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			Me
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/ClaireYuj" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/ClaireYuj" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">C++基本数据结构</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">-C++ -数据结构</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
+                    2023-04-04
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
+                    1.3k
+                </div>
+                
+
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>Read Count:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="C-基础"><a href="#C-基础" class="headerlink" title="C++基础"></a>C++基础</h2><h3 id="指针与引用"><a href="#指针与引用" class="headerlink" title="指针与引用"></a>指针与引用</h3><ol>
+<li>不存在空引用，但可以有空指针。</li>
+<li>一旦引用被初始化为一个对象，就不能被指向到另一个对象。指针可以在任何时候指向到另一个对象。</li>
+<li>引用必须在创建时被初始化。指针可以在任何时间被初始化。</li>
+</ol>
+<p>在64位系统中地址的总线宽度是8个字节，32位系统4个字节，所以32位系统中一个指针式4个bit，64位系统上是8个bit</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>    
+
+    <span class="token keyword">int</span> i <span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">&amp;</span>s <span class="token operator">=</span> i<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token operator">&amp;</span>i<span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token string">"i: "</span><span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>i<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token string">"s："</span><span class="token operator">&lt;&lt;</span><span class="token operator">&amp;</span>s<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    cout<span class="token operator">&lt;&lt;</span><span class="token string">"p: "</span><span class="token operator">&lt;&lt;</span>p<span class="token operator">&lt;&lt;</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<blockquote>
+<p>输出：<br> i: 0x61ff04<br> s：0x61ff04<br> p: 0x61ff04</p>
+</blockquote>
+<p> 引用分配到内存和指针指向的内存都是同一块内存</p>
+<p> C++中用引用传参更加安全，如swap(&amp;a,&amp;b)</p>
+<h3 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h3><p>C++中的struct对C中的struct进行了扩充，它已经不再只是一个包含不同数据类型的数据结构了，它已经获取了太多的功能</p>
+<ol>
+<li>struct能包含成员函数</li>
+<li>struct能继承</li>
+<li>struct能实现多态</li>
+</ol>
+<p>结构体和类最本质的一个区别就是默认的访问控制： </p>
+<p>默认的继承访问权限：struct是public的，class是private的</p>
+<p>C++中，不使用结构体丝毫不会影响程序的表达能力。C++之所以要引入结构体，是为了保持和C程序的兼容性</p>
+<p>但有时仍会在C++中使用结构体，是因为可以使用结构体将不同类型数据组成整体，方便于保存数据(若用类来保存，因类中成员默认为私有，还要为每个数据成员特定函数来读取和改写各个属性，比较麻烦)</p>
+<p>struct可以继承class，同样class也可以继承struct</p>
+<p>struct是一种数据结构的实现体，虽然它是可以像class一样的用。我依旧将struct里的变量叫数据，class内的变量叫成员，虽然它们并无区别</p>
+<p>概念：class和struct的语法基本相同，从声明到使用，都很相似，但是struct的约束要比class多，理论上，struct能做到的class都能做到，但class能做到的stuct却不一定做的到<br>类型：<strong>struct是值类型，class是引用类型</strong>，因此它们具有所有值类型和引用类型之间的差异<br>效率：由于堆栈的执行效率要比堆的执行效率高，但是堆栈资源却很有限，不适合处理逻辑复杂的大对象，因此struct常用来处理作为基类型对待的小对象，而class来处理某个商业逻辑<br>关系：struct不仅能继承也能被继承 ，而且可以实现接口，不过Class可以完全扩展。内部结构有区别，struct只能添加带参的构造函数，不能使用abstract和protected等修饰符，不能初始化实例字段</p>
+<h3 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h3><p>内存分成5个区，<strong>堆，栈，自由存储区，全局/静态存续区，常量存续区</strong>。</p>
+<p>栈区(stack sagment)：由<strong>编译</strong>器自动分配释放，存放<strong>函数的参数的值，局部变量的值</strong>等。在Windows下，栈是向低地址扩展的数据结构，是一块<strong>连续的内存的</strong>区域。这句话的意思是<strong>栈顶的地址和栈的最大容量是系统预先规定好的</strong>，在Windows下，栈的大小是1M，如果申请的空间超过栈的剩余空间时，将提示stack overflow。因此，能从栈获得的空间较小。</p>
+<p>堆区(heap sagment) ：程序<strong>运行时动态内存分配</strong>，堆是可以上增长的。 一般由程序员分配释放，内存使用new进行分配，使用delete或delete[]释放。如果未能对内存进行正确的释放，会造成内存泄漏。但在程序结束时，会由操作系统自动回收。它与数据结构中的堆是两回事。<strong>堆是向高地址扩展的数据结构，是不连续的内存区域</strong>。这是由于系统是用链表来存储的空闲内存地址的，自然是不连续的，而链表的遍历方向是由低地址向高地址。堆的大小受限于计算机系统中有效的虚拟内存。由此可见，堆获得的空间比较灵活，也比较大。</p>
+<p>自由存储区：使用malloc进行分配，使用free进行回收。</p>
+<p>全局/静态存储区：<strong>全局变量和静态变量被分配到同一块内存中</strong>，C语言中区分初始化和未初始化的，C++中不再区分了。（全局变量、静态数据 存放在全局数据区）</p>
+<h3 id="构造函数与析构函数"><a href="#构造函数与析构函数" class="headerlink" title="构造函数与析构函数"></a>构造函数与析构函数</h3><p>构造函数–初始化对象时执行<br>析构函数在每次删除所创建的对象时执行，它<strong>不会返回任何值，也不能带有任何参数</strong>。析构函数有助于在跳出程序（比如关闭文件、释放内存等）前释放资源。</p>
+<pre class=" language-c++"><code class="language-c++">#include<iostream>
+using namespace std;
+class test{
+   
+    public:
+        int val;
+        test(string s);
+        ~test();
+};
+
+test::test(string s){
+    cout<<"create test:"<<s<<endl;
+}
+
+test::~test(){
+    cout<<"delete test"<<endl;
+}
+
+int main()
+{    
+    test t("test 1");
+    t.val = 10;
+    printf("hello world, %d\n", t.val);  
+    return 0;
+}
+</code></pre>
+<blockquote>
+<p>输出<br> create test:test 1<br> hello world, 10<br> delete test</p>
+</blockquote>
+<h4 id="实例化方法"><a href="#实例化方法" class="headerlink" title="实例化方法"></a>实例化方法</h4><h5 id="直接创建"><a href="#直接创建" class="headerlink" title="直接创建"></a>直接创建</h5><pre class=" language-c++"><code class="language-c++">test t("test");
+</code></pre>
+<p>创建在栈里</p>
+<h5 id="new"><a href="#new" class="headerlink" title="new"></a>new</h5><pre class=" language-c++"><code class="language-c++">
+    test* t = new test("test");
+    (*t).val=1;
+    cout<<"hello:"<<(*t).val<<endl;
+    delete t;
+
+</code></pre>
+<p>指针形式，常用于初始化链表头。<br>创建在堆里，需要自己手动释放内存</p>
+<p>使用new的方式，如果对象没有初始化，此时没有分配内存空间，也无法delete。<br>不要new一个null对象</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><blockquote>
+<p>class derived-class: access-specifier base-class</p>
+</blockquote>
+<p>访问修饰符是public，protected，private</p>
+<pre class=" language-c++"><code class="language-c++">// 基类
+class Animal {
+    // eat() 函数
+    // sleep() 函数
+};
+
+
+//派生类
+class Dog : public Animal {
+    // bark() 函数
+};
+</code></pre>
+<h3 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h3><p><strong>public</strong>: 可以被类以外成员访问<br><strong>private</strong>： 只可以被类和友元函数访问，要想修改相应的参数或操作，只能通过类中public函数和友元函数，类中成员默认是private<br><strong>protected</strong>： 可以被派生类访问</p>
+<h3 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h3><p>拷贝是指将一个对象的值或状态复制到另一个对象中，使得两个对象在某些方面具有相同的特性。</p>
+<h4 id="拷贝构造函数"><a href="#拷贝构造函数" class="headerlink" title="拷贝构造函数"></a>拷贝构造函数</h4><p>拷贝构造函数必须<strong>是当前类的引用</strong><br><strong>拷贝构造函数是const 引用</strong></p>
+<p>拷贝构造函数的目的是用其它对象的数据来初始化当前对象，并没有期望更改其它对象的数据</p>
+<pre class=" language-c++"><code class="language-c++">class MyClass {
+public:
+  int x;
+  MyClass(int value) : x(value) {} // 普通构造函数
+  MyClass(const MyClass& other) : x(other.x) {} // 拷贝构造函数
+};
+
+MyClass obj1(42); // 使用普通构造函数创建对象
+MyClass obj2(obj1); // 使用拷贝构造函数创建对象
+</code></pre>
+<p>在创建对象 obj1 时，使用了普通构造函数，将参数值 42 赋值给成员变量 x；在创建对象 obj2 时，使用了拷贝构造函数，将对象 obj1 的值复制到新对象 obj2 中。</p>
+<h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><p>浅拷贝（shallow copy）是指将<strong>对象的所有成员变量直接复制到另一个对象中，包括指针类型成员变量所指向的内存地址</strong>。因此，如果两个对象共用同一块内存地址，那么<strong>它们之间的关系就会非常紧密，任何一方的修改都会影响到另一方。</strong></p>
+<pre class=" language-c++"><code class="language-c++">class MyString {
+public:
+  char* str;
+  MyString(const char* s) {
+    str = new char[strlen(s) + 1];
+    strcpy(str, s);
+  }
+  ~MyString() {
+    delete[] str;
+  }
+  MyString(const MyString& other) {
+    str = other.str;
+  }
+};
+
+MyString str1("hello");
+MyString str2(str1); // 浅拷贝
+str1.str[0] = 'H';
+std::cout << str1.str << std::endl; // 输出 "Hello"
+std::cout << str2.str << std::endl; // 输出 "Hello"
+</code></pre>
+<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><p>深拷贝（deep copy）是指将对象的所有成员变量复制到另一个对象中，并<strong>为指针类型成员变量分配新的内存空间，将原来指向的内存数据复制到新的内存空间中。</strong>因此，深拷贝可以避免共用内存带来的问题。</p>
+<pre class=" language-c++"><code class="language-c++">class MyString {
+public:
+  char* str;
+  MyString(const char* s) {
+    str = new char[strlen(s) + 1]; 
+    strcpy(str, s);
+  }
+  ~MyString() {
+    delete[] str;
+  }
+  MyString(const MyString& other) {
+    str = new char[strlen(other.str) + 1]; //分配新的内存空间
+    strcpy(str, other.str);
+  }
+};
+
+MyString str1("hello");
+MyString str2(str1); // 深拷贝
+str1.str[0] = 'H';
+std::cout << str1.str << std::endl; // 输出 "Hello"
+std::cout << str2.str << std::endl; // 输出 "hello"
+</code></pre>
+<h2 id="数据结构-容器"><a href="#数据结构-容器" class="headerlink" title="数据结构(容器)"></a>数据结构(容器)</h2><h3 id="array"><a href="#array" class="headerlink" title="array"></a>array</h3><p>内存空间连续的一段地址，无法改变大小</p>
+<pre class=" language-c++"><code class="language-c++"># include<array> //头文件
+
+array<int,10> myarray; //初始化
+
+for(int i=0;i<myarray.size();i++){
+    myarray[i] = i;
+} //赋值
+
+for(auto it = myarray.begin;it!=myarray.end();it++){
+    cout<<*it<<endl;
+} //遍历
+
+cout<<myarray[3]<<endl;//获取特定数值
+</code></pre>
+<h3 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h3><p>动态数组</p>
+<pre class=" language-c++"><code class="language-c++">
+# include<vector> // 头文件
+vector<int> myvector;
+
+//添加元素
+for(int i = 0; i<10;i++) myvector.push_back(i);
+
+//遍历
+for(auto it = myvector.begin();it!=myvector.end();it++) cout<< *it << endl;
+
+int size = myvector.size();
+bool isEmpty = myvector.empty();
+myvector.insert(myvector.end(),5,3);//在末尾插入五个3
+
+myvector.pop_back();//删除末尾元素
+myvector.at(0);//返回第一个元素
+
+iterator it = myvector.begin();//获取迭代首地址
+</code></pre>
+<h3 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h3><pre class=" language-c++"><code class="language-c++">#include<list>
+int num[] = {1,2,3,4,5};
+list<int> mylist(num,num+sizeof(num/sizeof(int)))//使用数组创建list
+
+for(auto it = mylist.begin;it!=mylist.end();it++){
+    cout << *it << endl;
+
+}//遍历
+
+auto it = mylist.begin();
+for(int i = 0; i < 5; i++){
+    mylist.insert(it,i);//插入
+}
+
+
+</code></pre>
+<p>都大差不差</p>
+<pre class=" language-c++"><code class="language-c++">typedef struct Link
+{
+    char elem;//代表数据域
+    struct Link * next;//代表指针域，指向直接后继元素
+}link;
+</code></pre>
+<p>双向链表</p>
+<pre class=" language-c++"><code class="language-c++">//C++双向链表模板
+class MyList
+{
+private:
+    struct ListNode
+    {
+        int val;
+        ListNode *next,*prev;
+        ListNode(int x):val(x),next(nullptr),prev(nullptr){} //复制val->x,next->nullptr,prev->nullptr
+    };
+private:
+    //头节点尾节点都为空，表示为空链表
+    ListNode *head,*tail;
+    int size=0;
+public:
+    MyList():size(0),head(nullptr),tail(nullptr){}
+}
+</code></pre>
+<p>实现反转链表</p>
+<pre class=" language-c++"><code class="language-c++">ListNode* reverseList(ListNode* head)
+    {
+        ListNode* pre = nullptr;
+        ListNode* cur = head;
+        ListNode* nex ;        
+        while(cur)
+        {
+            nex = cur->next;//提前该语句
+            cur->next=pre;
+            pre=cur;
+            cur=nex;
+           // nex = cur->next;//当cur为空指针时该语句会报错，运行超时，需要将该语句提前
+        }
+        return pre;
+    }
+</code></pre>
+<h3 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h3><p>deque:前后两端都可以进行数据的插入和删除，至此数据的快速随机访问</p>
+<pre class=" language-c++"><code class="language-c++">#include<iostream>
+#include<deque>
+using namespace std;
+
+int main(){
+    deque<int> D;
+    D.push_back(1);
+    D.push_back(2);
+    D.push_back(3); //赋值
+    for(auto it = D.begin();it!=D.end();it++){
+        cout<<*it<<" ";//遍历
+        }
+    cout<<endl;
+    D.insert(D.begin()+1,10); //在索引为1的地方插入10
+        for(auto it = D.begin();it!=D.end();it++){
+        cout<<*it<<" ";//遍历
+        }
+
+    D.push_front(-1); //在头部插入
+    cout<<endl;
+    for(auto it = D.begin();it!=D.end();it++){
+        cout<<*it<<" ";//遍历
+        }
+
+    D.pop_front();//头部弹出
+    cout<<endl;
+    return 0;
+}
+</code></pre>
+<blockquote>
+<p>输出<br> 1 2 3<br> 1 10 2 3<br> -1 1 10 2 3 </p>
+</blockquote>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>后入先出LIFO<br>动态实现：</p>
+<pre class=" language-c++"><code class="language-c++">typedef struct SqStack_dynamic{
+    int* base;//栈底 
+    int* top;//栈顶 
+}SqStack_dynamic;
+</code></pre>
+<p>静态实现</p>
+<pre class=" language-c++"><code class="language-c++">
+typedef struct SqStack_static{
+    int data[Maxsize];
+    int top;//栈顶 
+}SqStack_static;
+</code></pre>
+<p>STL中的栈</p>
+<pre class=" language-c++"><code class="language-c++">#include<iostream>
+#include<stack>
+using namespace std;
+
+int main(){
+
+    stack<int> S;
+    S.push(1);
+    S.push(2);
+    S.push(3);
+    for(;!S.empty();){
+        cout<<S.top()<<" ";
+        S.pop();
+    }
+
+    return 0;
+}
+</code></pre>
+<h3 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h3><pre class=" language-c++"><code class="language-c++">#include<iostream>
+#include<map>
+using namespace std;
+
+int main(){
+    map<int, string> my_map;
+    //三种插入的方式
+    my_map.insert(pair<int,string>(1,"first")); //插入pair对
+    my_map[2] = "insert second";
+    my_map[10] = "ten"; 
+    for(auto it = my_map.begin();it!=my_map.end();it++){
+        cout<<it->first <<"->"<<it->second<<endl;
+    } //it->first得到第一个的值，it->second得到第二个的值
+
+    //map的删除
+    my_map.erase(2);//删除2
+    auto it = my_map.find(10);
+    my_map.erase(it); //删除找到的10
+    return 0;
+}
+</code></pre>
+<h3 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h3><p>set也是一种关联性容器，它同map一样，底层使用红黑树实现，插入删除操作时仅仅移动指针即可，不涉及内存的移动和拷贝，所以效率比较高。从中文名就可以明显地看出，<strong>在set中不会存在重复的元素</strong>，若是保存相同的元素，将直接视为无效。</p>
+<p>unordered_set常用：<br><strong>insert</strong>:插入指定元素<br><strong>erase</strong>: 删除指定元素<br><strong>find</strong>:查找指定元素<br><strong>size</strong>,获取容器中元素的数量<br><strong>empty</strong>:判断是否为空<br><strong>swap</strong>:交换</p>
+<pre class=" language-c++"><code class="language-c++">
+#include <iostream>
+#include <unordered_set>
+using namespace std;
+
+int main()
+{
+    unordered_set<int> us;
+    //插入元素（去重）
+    us.insert(1);
+    us.insert(4);
+    us.insert(3);
+    us.insert(3);
+    us.insert(2);
+    us.insert(2);
+    us.insert(3);
+    //遍历容器方式一（范围for）
+    for (auto e : us)
+    {
+        cout << e << " ";
+    }
+    cout << endl; //1 4 3 2
+    //删除元素方式一
+    us.erase(3);
+    //删除元素方式二
+    unordered_set<int>::iterator pos = us.find(1); //查找值为1的元素
+    if (pos != us.end())
+    {
+        us.erase(pos);
+    }
+    //遍历容器方式二（迭代器遍历）
+    unordered_set<int>::iterator it = us.begin();
+    while (it != us.end())
+    {
+        cout << *it << " ";
+        it++;
+    }
+    cout << endl; //4 2
+    //容器中值为2的元素个数
+    cout << us.count(2) << endl; //1
+    //容器大小
+    cout << us.size() << endl; //2
+    //清空容器
+    us.clear();
+    //容器判空
+    cout << us.empty() << endl; //1
+    //交换两个容器的数据
+    unordered_set<int> tmp{ 11, 22, 33, 44 };
+    us.swap(tmp);
+    for (auto e : us)
+    {
+        cout << e << " ";
+    }
+    cout << endl; //11 22 33 44
+    return 0;
+}
+</code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        Author:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">DULULU oO</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        Link:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://claireyuj.github.io/2023/04/04/c-ji-ben-shu-ju-jie-gou/">https://claireyuj.github.io/2023/04/04/c-ji-ben-shu-ju-jie-gou/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        Reprint policy:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    All articles in this blog are used except for special statements
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    reprint policy. If reproduced, please indicate source
+                    <a href="/about" target="_blank">DULULU oO</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>Copied successfully, please follow the reprint policy of this article</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">more</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">-C++ -数据结构</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+            <div class="card">
+                <a href="/2023/04/04/chang-yong-de-cmd-ming-ling/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="常用的cmd命令">
+                        
+                        <span class="card-title">常用的cmd命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-04
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/cmd/">
+                        <span class="chip bg-color">cmd</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/04/03/leetcode101-lian-biao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Leetcode101--链表">
+                        
+                        <span class="card-title">Leetcode101--链表</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Leetcode/" class="post-category">
+                                    Leetcode
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;TOC</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022-2023</span>
+            
+            <a href="/about" target="_blank">DULULU oO</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
+                        class="white-color">49.4k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/ClaireYuj" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:konan_yu@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1847853176" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1847853176" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+    <a href="https://claireyuj.github.io/medias/myconfig/personal_cv.pdf" class="tooltipped" target="_blank" data-tooltip="个人简历 " data-position="top" data-delay="50">
+        <i class="far fa-address-card"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
+            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
