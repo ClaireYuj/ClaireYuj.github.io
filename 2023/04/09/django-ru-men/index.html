@@ -4,8 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hive学习之路2--安装部署, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="参考：https://www.bilibili.com/video/BV1CU4y1N7Sh?p=60&amp;amp;spm_id_from=pageDriver&amp;amp;vd_source=f618be285e44e05f2b481fa28b9">
+    <meta name="keywords" content="Django入门, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="创建项目进入虚拟环境 pip install django打开anaconda，cd 到一个你想放置你代码的目录，输入：
+        django-admin startproject web
+
+在该目录下会新建一个web项目存在web">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hive学习之路2--安装部署 | DULULU</title>
+    <title>Django入门 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,12 +339,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hive学习之路2--安装部署</h1>
+                    <h1 class="description center-align post-title">Django入门</h1>
                 </div>
             </div>
         </div>
@@ -363,25 +366,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Hive/">
-                                <span class="chip bg-color">Hive</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">No tag</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E4%BB%93%E5%BC%80%E5%8F%91/" class="post-category">
-                                数仓开发
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -390,7 +380,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-08-19
+                    2023-04-09
                 </div>
                 
 
@@ -399,7 +389,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.3k
+                    886
                 </div>
                 
 
@@ -421,241 +411,48 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>参考：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1CU4y1N7Sh?p=60&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad">https://www.bilibili.com/video/BV1CU4y1N7Sh?p=60&amp;spm_id_from=pageDriver&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad</a> </p>
-<p>在Linux环境下，保证Hadoop集群健康可用<br>在启动Hive之前必须先启动Hadoop集群，<strong>需等待HDFS安全模式关闭之后再运行Hive</strong></p>
-<pre class=" language-shell"><code class="language-shell">start-dfs.sh
-start-yarn.sh
+                <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>进入虚拟环境 pip install django<br>打开anaconda，cd 到一个你想放置你代码的目录，输入：</p>
+<pre class=" language-cmd"><code class="language-cmd">        django-admin startproject web
 </code></pre>
-<p>Hive不是分布式安装运行的软件，其分布式特效主要借助于Hadoop完成，包括分布式存储，分布式计算</p>
-<h2 id="Hadoop与Hive"><a href="#Hadoop与Hive" class="headerlink" title="Hadoop与Hive"></a>Hadoop与Hive</h2><p>需要在Hadoop中添加相关配置属性，以满足Hive在Hadoop上运行<br>修改Hadoop中core-site.xml,并且Hadoop集群同步配置文件重启生效</p>
-<!--整合Hive代理设置 -->
-<pre class=" language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.proxyuser.root.hosts<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.proxyuser.root.groups<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<p>在该目录下会新建一个web项目存在<br>web/<br>    manage.py<br>    web/<br>        <strong>init</strong>.py<br>        settings.py<br>        urls.py<br>        asgi.py<br>        wsgi.py</p>
+<p>分别的用处：<br>这些目录和文件的用处是：</p>
+<pre><code>最外层的 web/ 根目录只是你项目的容器， 根目录名称对 Django 没有影响，你可以将它重命名为任何你喜欢的名称。
+manage.py: 一个让你用各种方式管理 Django 项目的命令行工具。你可以阅读 django-admin 和 manage.py 获取所有 manage.py 的细节。
+里面一层的 web/ 目录包含你的项目，它是一个纯 Python 包。它的名字就是当你引用它内部任何东西时需要用到的 Python 包名。 (比如 myweb.urls).
+web/__init__.py：一个空文件，告诉 Python 这个目录应该被认为是一个 Python 包。如果你是 Python 初学者，阅读官方文档中的 更多关于包的知识。
+web/settings.py：Django 项目的配置文件。如果你想知道这个文件是如何工作的，请查看 Django 配置 了解细节。
+web/urls.py：Django 项目的 URL 声明，就像你网站的“目录”。阅读 URL调度器 文档来获取更多关于 URL 的内容。
+web/asgi.py：作为你的项目的运行在 ASGI 兼容的 Web 服务器上的入口。阅读 如何使用 ASGI 来部署 了解更多细节。
+web/wsgi.py：作为你的项目的运行在 WSGI 兼容的Web服务器上的入口。阅读 如何使用 WSGI 进行部署 了解更多细节。
 </code></pre>
-<h2 id="MySQL安装"><a href="#MySQL安装" class="headerlink" title="MySQL安装"></a>MySQL安装</h2><ol>
-<li>卸载Centos7自带的mariadb</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">rpm -qa|grep mariadb
-# 结果mariadb-libs-5.5.64-1.el7.x86_64
-rpm -e mariadb-libs-5.5.64-1.el7.x86_64 --nodeps
-# 进行删除
-rpm -qa|grep mariadb                            
-# 再次查询，无结果
+<p>在该目录下运行</p>
+<pre class=" language-cmd"><code class="language-cmd">py manage.py runserver
 </code></pre>
-<ol start="2">
-<li>安装mysql</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell"># 创建目录
-mkdir /export/software/mysql
-
-# 选择finalShell，找到/export。software/mysql 拖拽文件上传mysql-5.7.29-1.el7.x86_64.rpm-bundle.tar
-
-#到上述文件夹下  解压
-tar xvf mysql-5.7.29-1.el7.x86_64.rpm-bundle.tar
-
-#执行安装依赖
-yum -y install libaio
-
-# 进行mysql的安装
-rpm -ivh mysql-community-common-5.7.29-1.el7.x86_64.rpm    mysql-community-libs-5.7.29-1.el7.x86_64.rpm    mysql-community-client-5.7.29-1.el7.x86_64.rpm      mysql-community-server-5.7.29-1.el7.x86_64.rpm 
-
-warning: mysql-community-common-5.7.29-1.el7.x86_64.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY
-Preparing...                          ################################# [100%]
-Updating / installing...
-   1:mysql-community-common-5.7.29-1.e################################# [ 25%]
-   2:mysql-community-libs-5.7.29-1.el7################################# [ 50%]
-   3:mysql-community-client-5.7.29-1.e################################# [ 75%]
-   4:mysql-community-server-5.7.29-1.e################                  ( 49%)
+<p>在localhost:8000上部署成功<br>如果想要换端口，就输入py manage.py runserver+端口。<br>如果想要用ip地址访问（也称为远程访问），需要在8080前加上0.0.0.0:<br>也就是</p>
+<pre class=" language-cmd"><code class="language-cmd">py manage.py runserver 0.0.0.0:8080
 </code></pre>
-<ol start="3">
-<li>mysql初始化设置</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">#初始化
-mysqld --initialize
-
-#更改所属组
-chown mysql:mysql /var/lib/mysql -R
-
-#启动mysql
-systemctl start mysqld.service
-
-#查看生成的临时root密码
-cat  /var/log/mysqld.log
-
-[Note] A temporary password is generated for root@localhost: o+TU+KDOm004
+<p>然后可以在浏览器输入本机ip：8080访问</p>
+<h2 id="创建应用"><a href="#创建应用" class="headerlink" title="创建应用"></a>创建应用</h2><pre class=" language-cmd"><code class="language-cmd">python manage.py startapp myapp
 </code></pre>
-<ol start="4">
-<li>修改root密码 授权远程访问 设置开机自启动</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell"># 登录mysql
-mysql -u root -p
-
-# Enter password:     #这里输入在日志中生成的临时密码
-
-# Welcome to the MySQL monitor.  Commands end with ; or \g.
-# Your MySQL connection id is 3
-# Server version: 5.7.29
-
-Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> 
-
-
-#更新root密码  设置为hadoop
-mysql> alter user user() identified by "hadoop";
-Query OK, 0 rows affected (0.00 sec)
-
-
-#授权
-mysql> use mysql;
-
-mysql> GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'hadoop' WITH GRANT OPTION;
-
-mysql> FLUSH PRIVILEGES; 
-
-# ctrl+D 结束 退出mysql
-
-#mysql的启动和关闭 状态查看 （这几个命令必须记住）
-systemctl stop mysqld
-systemctl status mysqld
-systemctl start mysqld
-
-#建议设置为开机自启动服务
-systemctl enable  mysqld    
-
-#Created symlink from /etc/systemd/system/multi-user.target.wants/mysqld.service to /usr/lib/systemd/system/mysqld.service.
-
-#查看是否已经设置自启动成功
-systemctl list-unit-files | grep mysqld
-
-# mysqld.service enabled 
+<p>myapp目录如下：</p>
+<p>|web							项目根目录<br>├── myapp							应用名称<br>│   ├── migrations					数据模型迁移记录目录<br>│   │   └── <strong>init</strong>.py				inti文件，标识当前所在的数据模型迁移记录目录是一个 Python 包<br>│   ├── <strong>init</strong>.py					inti文件，标识当前所在的应用目录是一个 Python 包<br>│   ├── admin.py					Django Admin 应用的配置文件<br>│   ├── apps.py						应用程序本身的属性配置文件<br>│   ├── models.py					用于定义应用中所需要的数据表的配置文件<br>│   ├── tests.py					用于编写当前应用程序的单元测试的测试文件<br>│   └── views.py					用来定义视图处理函数的文件<br>├── web					项目名称<br>│   ├── <strong>init</strong>.py					<br>│   ├── settings.py					<br>│   ├── urls.py						<br>│   └── wsgi.py						<br>└── manage.py						</p>
+<p>migrations 数据模型迁移记录目录：migrations 目录用于存储数据库迁移时生成的文件，该目录下的 <strong>init</strong>.py 文件标识 migrations 是一个 Python 包。</p>
+<p>admin.py 文件：admin.py 用于将 Model 定义的数据表注册到管理后台，是 Django Admin 应用的配置文件；</p>
+<p>apps.py 文件：apps.py 用于应用程序本身的属性配置文件；</p>
+<p>models.py 文件：models.py 用于定义应用中所需要的数据表；</p>
+<p>tests.py 文件：tests.py 用于编写当前应用程序的单元测试；</p>
+<p>views.py 文件：views.py 用来定义视图处理函数的文件；</p>
+<h3 id="添加项目"><a href="#添加项目" class="headerlink" title="添加项目"></a>添加项目</h3><p>在settings.py中</p>
+<pre class=" language-python"><code class="language-python">INSTALLED_APPS <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token string">'django.contrib.admin'</span><span class="token punctuation">,</span>
+    <span class="token string">'django.contrib.auth'</span><span class="token punctuation">,</span>
+    <span class="token string">'django.contrib.contenttypes'</span><span class="token punctuation">,</span>
+    <span class="token string">'django.contrib.sessions'</span><span class="token punctuation">,</span>
+    <span class="token string">'django.contrib.messages'</span><span class="token punctuation">,</span>
+    <span class="token string">'django.contrib.staticfiles'</span><span class="token punctuation">,</span>
+    <span class="token string">'myapp'</span><span class="token punctuation">,</span>     <span class="token comment" spellcheck="true"># 添加应用</span>
+<span class="token punctuation">]</span>
 </code></pre>
-<h2 id="Hive安装"><a href="#Hive安装" class="headerlink" title="Hive安装"></a>Hive安装</h2><ul>
-<li><p>上传安装包 解压</p>
-<pre class=" language-shell"><code class="language-shell">tar zxvf apache-hive-3.1.2-bin.tar.gz
-</code></pre>
-</li>
-<li><p>解决Hive与Hadoop之间guava版本差异</p>
-<pre class=" language-shell"><code class="language-shell">cd /export/server/apache-hive-3.1.2-bin/
-rm -rf lib/guava-19.0.jar
-cp /export/server/hadoop-3.3.0/share/hadoop/common/lib/guava-27.0-jre.jar ./lib/
-</code></pre>
-</li>
-<li><p>修改配置文件</p>
-<ul>
-<li><p>hive-env.sh</p>
-<pre class=" language-shell"><code class="language-shell">cd /export/server/apache-hive-3.1.2-bin/conf
-mv hive-env.sh.template hive-env.sh
-
-vim hive-env.sh
-
-## 大G小o 跳转到最后一行
-export HADOOP_HOME=/export/server/hadoop-3.3.0
-export HIVE_CONF_DIR=/export/server/apache-hive-3.1.2-bin/conf
-export HIVE_AUX_JARS_PATH=/export/server/apache-hive-3.1.2-bin/lib
-# Esc(退出输入模式)+shift+zz 快速保存
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p>hive-site.xml</p>
-<pre class=" language-shell"><code class="language-shell">vim hive-site.xml
-</code></pre>
-<pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
-<span class="token comment" spellcheck="true">&lt;!-- 存储元数据mysql相关配置 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionURL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>jdbc:mysql://node1:3306/hive3?createDatabaseIfNotExist=true<span class="token entity" title="&amp;">&amp;amp;</span>useSSL=false<span class="token entity" title="&amp;">&amp;amp;</span>useUnicode=true<span class="token entity" title="&amp;">&amp;amp;</span>characterEncoding=UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionDriverName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>com.mysql.jdbc.Driver<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionUserName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>root<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionPassword<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hadoop<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-
-<span class="token comment" spellcheck="true">&lt;!-- H2S运行绑定host --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hive.server2.thrift.bind.host<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>node1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-
-<span class="token comment" spellcheck="true">&lt;!-- 远程模式部署metastore metastore地址 --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hive.metastore.uris<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>thrift://node1:9083<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-
-<span class="token comment" spellcheck="true">&lt;!-- 关闭元数据存储授权  --></span> 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hive.metastore.event.db.notification.api.auth<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span>
-</code></pre>
-</li>
-<li><p>上传mysql jdbc驱动到hive安装包lib下</p>
-<pre class=" language-shell"><code class="language-shell">mysql-connector-java-5.1.32.jar
-</code></pre>
-</li>
-<li><p>初始化元数据</p>
-</li>
-</ul>
-<p>检验安装是否正确</p>
-<pre class=" language-shell"><code class="language-shell">cd /export/server/apache-hive-3.1.2-bin/
-
-bin/schematool -initSchema -dbType mysql -verbos
-#初始化成功会在mysql中创建74张表
-</code></pre>
-<ul>
-<li><p>在hdfs创建hive存储目录（如存在则不用操作）</p>
-<pre class=" language-shell"><code class="language-shell">hadoop fs -mkdir /tmp
-hadoop fs -mkdir -p /user/hive/warehouse
-hadoop fs -chmod g+w /tmp
-hadoop fs -chmod g+w /user/hive/warehouse
-</code></pre>
-<h2 id="metastore启动"><a href="#metastore启动" class="headerlink" title="metastore启动"></a>metastore启动</h2><h3 id="前台启动"><a href="#前台启动" class="headerlink" title="前台启动"></a>前台启动</h3><p>进程会一直占据终端，ctrl+c结束进程</p>
-<ul>
-<li>启动前台</li>
-</ul>
-<pre class=" language-shell"><code class="language-shell">/export/server/appache-hive-3.1.2-bin/bin/hive --service metastore
-</code></pre>
-<ul>
-<li>前台启动开启debug日志</li>
-</ul>
-<pre class=" language-shell"><code class="language-shell">/export/server/apache-hive-3.1.2-bin/bin/hive --service metastore --hiveconf hive.root.logger=DEBUG,console 
-</code></pre>
-<h3 id="后台启动"><a href="#后台启动" class="headerlink" title="后台启动"></a>后台启动</h3><ul>
-<li>把程序当成一个进程</li>
-</ul>
-<pre class=" language-shell"><code class="language-shell">nohup /export/server/apache-hive-3.1.2-bin/bin/hive --service metastore &
-</code></pre>
-<p>回车后再按一次回车，就成功启动在后台了</p>
-<p>之后通过jps 查看进程</p>
-<p>使用kill -9杀死进程</p>
-</li>
-</ul>
 
                 
             </div>
@@ -682,7 +479,7 @@ hadoop fs -chmod g+w /user/hive/warehouse
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2022/08/19/hive-xue-xi-zhi-lu-2-an-zhuang-bu-shu/">https://claireyuj.github.io/2022/08/19/hive-xue-xi-zhi-lu-2-an-zhuang-bu-shu/</a>
+                    <a href="https://claireyuj.github.io/2023/04/09/django-ru-men/">https://claireyuj.github.io/2023/04/09/django-ru-men/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -719,11 +516,7 @@ hadoop fs -chmod g+w /user/hive/warehouse
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/Hive/">
-                                    <span class="chip bg-color">Hive</span>
-                                </a>
-                            
+                            <span class="chip bg-color">No tag</span>
                         </div>
                     
                 </div>
@@ -769,66 +562,18 @@ hadoop fs -chmod g+w /user/hive/warehouse
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2022/08/21/hive-xue-xi-zhi-lu-3-hive-ke-hu-duan-de-shi-yong/">
+                <a href="/2023/04/09/django-ru-men/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Hive学习之路3-Hive客户端的使用">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Django入门">
                         
-                        <span class="card-title">Hive学习之路3-Hive客户端的使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-21
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%95%B0%E4%BB%93%E5%BC%80%E5%8F%91/" class="post-category">
-                                    数仓开发
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Hive/">
-                        <span class="chip bg-color">Hive</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/08/19/hive-xue-xi-zhi-lu-1-ji-ben-gai-nian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Hive学习之路1--基本概念">
-                        
-                        <span class="card-title">Hive学习之路1--基本概念</span>
+                        <span class="card-title">Django入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -839,14 +584,52 @@ hadoop fs -chmod g+w /user/hive/warehouse
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            DULULU oO
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/04/04/chang-yong-de-cmd-ming-ling/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="常用的cmd命令">
+                        
+                        <span class="card-title">常用的cmd命令</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E4%BB%93%E5%BC%80%E5%8F%91/" class="post-category">
-                                    数仓开发
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -856,8 +639,8 @@ hadoop fs -chmod g+w /user/hive/warehouse
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hive/">
-                        <span class="chip bg-color">Hive</span>
+                    <a href="/tags/cmd/">
+                        <span class="chip bg-color">cmd</span>
                     </a>
                     
                 </div>
