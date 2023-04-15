@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.5k
+                    4.1k
                 </div>
                 
 
@@ -484,7 +484,102 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 </blockquote>
 <h4 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h4><p><strong>StringBuilder</strong>: 也代表可变字符串对象，这点和StringBuffer很相似，但StringBuilder不是线程安全的</p>
 <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>参数化类型–把一种明确的工作推迟到<strong>实际创建对象</strong>时才确定名曲的数据类型<br>如：ArrayList<object> arr = new Arraylist&lt;&gt;()<br>各种泛型类：List，Set，Map<p></p>
-<h2 id="java的四种引用类型"><a href="#java的四种引用类型" class="headerlink" title="java的四种引用类型"></a>java的四种引用类型</h2><p>强引用:</p>
+<h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>JVM就是java虚拟机，JVM运行时数据区有<strong>方法区</strong>，<strong>Java堆</strong>、<strong>程序计数器</strong>，<strong>本地方法栈</strong>，<strong>虚拟机栈</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43122090/article/details/105093777?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168142794216782425193986%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=168142794216782425193986&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-105093777-null-null.142%5Ev83%5Einsert_down1,239%5Ev2%5Einsert_chatgpt&amp;utm_term=jvm&amp;spm=1018.2226.3001.4187">参考博客</a></p>
+<h3 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h3><h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>方法区是所有线程共享的内存区域，它用于存储已被Java虚拟机加载的<strong>类信息、常量、静态变量时编译器编译后的代码</strong>等数据。<br>它有个别命叫Non-Heap（非堆）。当方法区无法满足内存分配需求时，抛出OutOfMemoryErro常。</p>
+<h4 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h4><p>java堆是java虚拟机所管理的内存中最大的一块，是被所有线程共享的一块内存区域，在虚拟机启动时创建。此内存区域的唯一目的就是<strong>存放对象实例</strong>。<strong>所有的对象实例以及数组</strong>都要在堆上分配。</p>
+<p>java堆是垃圾收集器管理的主要区域，因此也被成为“GC堆”。从内存回收角度来看java堆可分为：新生代和老生代。</p>
+<p>无论怎么划分，都与存放内容无关，无论哪个区域，存储的都是对象实例，进一步的划分都是为了更好的回收内存，或者更快的分配内存。<br>根据Java虚拟机规范的规定，<strong>java堆可以处于物理上不连续的内存空间中</strong>。当前主流的虚拟机都是可扩展的（通过 -Xmx 和 -Xms 控制）。如果堆中没有内存可以完成实例分配，并且<strong>堆也无法再扩展时，将会抛出OutOfMemoryError异常。</strong></p>
+<h4 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h4><p>程序计数器是一块较小的内存空间，它可以看作是：保存当前线程所正在执行的字节码指令的地址(行号)</p>
+<p>由于Java虚拟机的多线程是通过<strong>线程轮流切换</strong>并分配处理器执行时间的方式来实现的，一个处理器都只会执行一条线程中的指令。因此，为了线程切换后能恢复到正确的执行位置，每条线程都有一个独立的程序计数器，各个线程之间计数器互不影响，独立存储。称之为“线程私有”的内存。<strong>程序计数器内存区域是虚拟机中唯一没有规定OutOfMemoryError情况的区域。</strong></p>
+<p>可以把它看作线程计数器，由于线程时最小的执行单元，不具备记忆功能，所以当线程A被线程B打断后它会挂起，然后等到线程B执行完成后，从程序计数器中恢复A之前的状态。</p>
+<h4 id="Java虚拟机栈（Java-Virtual-Machine-Stacks）"><a href="#Java虚拟机栈（Java-Virtual-Machine-Stacks）" class="headerlink" title="Java虚拟机栈（Java Virtual Machine Stacks）"></a>Java虚拟机栈（Java Virtual Machine Stacks）</h4><p>java虚拟机是线程私有的，它的生命周期和线程相同。虚拟机栈描述的是Java方法执行的内存模型：<strong>每个方法在执行的同时都会创建一个栈帧</strong>（StaFrame）用于存储<strong>局部变量表、操作数栈、动态链接、方法出口</strong>等信息。</p>
+<p><strong>局部变量表</strong>：是用来存储我们临时8个基本数据类型、对象引用地址、returnAddress类型。（returnAddress中保存的是return后要执行的字节码的指令地址。）</p>
+<p><strong>操作数栈</strong>：操作数栈就是用来操作的，例如代码中有个 i = 6*6，他在一开始的时候就会进行操作，读取我们的代码，进行计算后再放入局部变量表中去</p>
+<p><strong>动态链接</strong>：假如我方法中，有个 service.add()方法，要链接到别的方法中去，这就是动态链接，存储链接的地方</p>
+<p><strong>出口</strong>：出口正常的话就是return 不正常的话就是抛出异常落</p>
+<p><strong>一个方法调用另一个方法，会创建很多栈帧吗？</strong><br>答：会创建。如果一个栈中有动态链接调用别的方法，就会去创建新的栈帧，栈中是由顺序的，一个栈帧调用另一个栈帧，另一个栈帧就会排在调用者下面</p>
+<p><strong>本地方法栈（Native Method Stack）</strong></p>
+<p>本地方法栈很好理解，他很栈很像，只不过方法上带了 native 关键字的栈字<br>它是虚拟机栈为虚拟机执行Java方法（也就是字节码）的服务<br>native关键字的方法是看不到的，必须要去oracle官网去下载才可以看的到，而且native关键字饰的大部分源码都是C和C++的代码。</p>
+<h3 id="Java内存结构"><a href="#Java内存结构" class="headerlink" title="Java内存结构"></a>Java内存结构</h3><p><img src="/img/posts/interview/jvm2.jpg"></p>
+<p><strong>直接内存与堆内存的区别</strong>：<br>直接内存申请空间耗费很高的性能，<strong>堆内存申请空间耗费比较低</strong><br><strong>直接内存的IO读写的性能要优于堆内存</strong>，在多次读写操作的情况相差非常明显</p>
+<p>虚拟机核心的组件就是执行引擎，它负责执行虚拟机的字节码，一般户先进行编译成机器码后执行。</p>
+<p>“虚拟机”是一个相对于“物理机”的概念，<strong>虚拟机的字节码是不能直接在物理机上运行的，需要JVM字节码执行引擎编译成机器码后才可在物理机上执行</strong>。</p>
+<h3 id="JVM垃圾回收机制"><a href="#JVM垃圾回收机制" class="headerlink" title="JVM垃圾回收机制"></a>JVM垃圾回收机制</h3><p>GC主要用于Java<strong>堆</strong>的管理。Java 中的堆是 JVM 所管理的最大的一块内存空间，主要用于存放各种类的实例对象。</p>
+<blockquote>
+<p>什么是内存垃圾？</p>
+</blockquote>
+<p>程序在运行过程中，会产生大量的内存垃圾（<strong>一些没有引用指向的内存对象</strong>都属于内存垃圾，因为这些对象已经无法访问，程序用不了它们了，对程序而言它们已经死亡），为了确保程序运行时的性能，java虚拟机在程序运行的过程中不断地进行自动的垃圾回收（GC）</p>
+<blockquote>
+<p>怎么清理内存垃圾？<br>GC是不定时去堆内存中清理不可达对象。不可达的对象并不会马上就会直接回收， 垃圾收集器在一个Java程序中的执行是自动的，不能强制执行清楚那个对象，即使程序员能明确地判断出有一块内存已经无用了，是应该回收的，程序员也不能强制垃圾收集器回收该内存块。程序员唯一能做的就是通过调用System.gc 方法来”建议”执行垃圾收集器，但是他是否执行，什么时候执行却都是不可知的。这也是垃圾收集器的最主要的缺点。当然相对于它给程序员带来的巨大方便性而言，这个缺点是瑕不掩瑜的。</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>lijie<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Test test <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        test <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 手动回收垃圾</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">finalize</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> Throwable <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// gc回收垃圾之前调用</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"gc回收垃圾之前调用的方法"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="JVM参数设置"><a href="#JVM参数设置" class="headerlink" title="JVM参数设置"></a>JVM参数设置</h3><pre class=" language-java"><code class="language-java">#常用的设置
+<span class="token operator">-</span>Xms：初始堆大小，JVM 启动的时候，给定堆空间大小。 
+
+<span class="token operator">-</span>Xmx：最大堆大小，JVM 运行过程中，如果初始堆空间不足的时候，最大可以扩展到多少。 
+
+<span class="token operator">-</span>Xmn：设置堆中年轻代大小。整个堆大小<span class="token operator">=</span>年轻代大小<span class="token operator">+</span>年老代大小<span class="token operator">+</span>持久代大小。 
+
+<span class="token operator">-</span>XX<span class="token operator">:</span>NewSize<span class="token operator">=</span>n 设置年轻代初始化大小大小 
+
+<span class="token operator">-</span>XX<span class="token operator">:</span>MaxNewSize<span class="token operator">=</span>n 设置年轻代最大值
+
+<span class="token operator">-</span>XX<span class="token operator">:</span>NewRatio<span class="token operator">=</span>n 设置年轻代和年老代的比值。如<span class="token operator">:</span> <span class="token operator">-</span>XX<span class="token operator">:</span>NewRatio<span class="token operator">=</span><span class="token number">3</span>，表示年轻代与年老代比值为 <span class="token number">1</span>：<span class="token number">3</span>，年轻代占整个年轻代<span class="token operator">+</span>年老代和的 <span class="token number">1</span><span class="token operator">/</span><span class="token number">4</span> 
+
+<span class="token operator">-</span>XX<span class="token operator">:</span>SurvivorRatio<span class="token operator">=</span>n 年轻代中 Eden 区与两个 Survivor 区的比值。注意 Survivor 区有两个。<span class="token number">8</span>表示两个Survivor <span class="token operator">:</span>eden<span class="token operator">=</span><span class="token number">2</span><span class="token operator">:</span><span class="token number">8</span> <span class="token punctuation">,</span>即一个Survivor占年轻代的<span class="token number">1</span><span class="token operator">/</span><span class="token number">10</span>，默认就为<span class="token number">8</span>
+
+<span class="token operator">-</span>Xss：设置每个线程的堆栈大小。JDK5后每个线程 Java 栈大小为 1M，以前每个线程堆栈大小为 256K。
+
+<span class="token operator">-</span>XX<span class="token operator">:</span>ThreadStackSize<span class="token operator">=</span>n 线程堆栈大小
+
+<span class="token operator">-</span>XX<span class="token operator">:</span>PermSize<span class="token operator">=</span>n 设置持久代初始值	
+
+<span class="token operator">-</span>XX<span class="token operator">:</span>MaxPermSize<span class="token operator">=</span>n 设置持久代大小
+ 
+<span class="token operator">-</span>XX<span class="token operator">:</span>MaxTenuringThreshold<span class="token operator">=</span>n 设置年轻带垃圾对象最大年龄。如果设置为 <span class="token number">0</span> 的话，则年轻代对象不经过 Survivor 区，直接进入年老代。
+
+#下面是一些不常用的
+
+<span class="token operator">-</span>XX<span class="token operator">:</span>LargePageSizeInBytes<span class="token operator">=</span>n 设置堆内存的内存页大小
+
+<span class="token operator">-</span>XX<span class="token operator">:</span><span class="token operator">+</span>UseFastAccessorMethods 优化原始类型的getter方法性能
+
+<span class="token operator">-</span>XX<span class="token operator">:</span><span class="token operator">+</span>DisableExplicitGC 禁止在运行期显式地调用System<span class="token punctuation">.</span><span class="token function">gc</span><span class="token punctuation">(</span><span class="token punctuation">)</span>，默认启用	
+
+<span class="token operator">-</span>XX<span class="token operator">:</span><span class="token operator">+</span>AggressiveOpts 是否启用JVM开发团队最新的调优成果。例如编译优化，偏向锁，并行年老代收集等，jdk6纸之后默认启动
+
+<span class="token operator">-</span>XX<span class="token operator">:</span><span class="token operator">+</span>UseBiasedLocking 是否启用偏向锁，JDK6默认启用	
+
+<span class="token operator">-</span>Xnoclassgc 是否禁用垃圾回收
+
+<span class="token operator">-</span>XX<span class="token operator">:</span><span class="token operator">+</span>UseThreadPriorities 使用本地线程的优先级，默认启用	
+
+等等等<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<h3 id="JVM调优总结"><a href="#JVM调优总结" class="headerlink" title="JVM调优总结"></a>JVM调优总结</h3><ol>
+<li>在实际工作中，我们可以直接将初始的堆大小与最大堆大小相等，这样的好处是可以减少程序运行时垃圾回收次数，从而提高效率。</li>
+<li>初始堆值和最大堆内存内存越大，吞吐量就越高，但是也要根据自己电脑(服务器)的实际内存来比较。</li>
+<li>最好使用并行收集器,因为并行收集器速度比串行吞吐量高，速度快。当然，服务器一定要是多线程的</li>
+<li>设置堆内存新生代的比例和老年代的比例最好为1:2或者1:3。默认的就是1:2<br>5.减少GC对老年代的回收。设置生代带垃圾对象最大年龄，进量不要有大量连续内存空间的java对象，因为会直接到老年代，内存不够就会执行GC</li>
+</ol>
+<h2 id="java的四种引用类型"><a href="#java的四种引用类型" class="headerlink" title="java的四种引用类型"></a>java的四种引用类型</h2><p>强引用: 在程序内存不足(OOM)的时候也不会被回收 -&gt; 是创建一个对象，并把这个对象赋给一个引用遍历<br>软引用：只有在OOM的时候，要迫切释放空间的时候，JVM才会释放软引用的对象 -&gt; 软引用可实现内存敏感的告诉缓存，比如网页缓存与图片缓存，使用软引用能防止内存泄漏，增强程序的鲁棒性<br>弱引用：JVM发现了弱引用就会回收。<br>虚引用：和弱引用差不多，但在被回收前胡放入referenceQueue中</p>
+<h2 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h2><p><strong>深拷贝</strong>:</p>
+<p><strong>浅拷贝</strong>:</p>
 </object></p>
                 
             </div>
@@ -884,7 +979,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">61.6k</span>
+                        class="white-color">64.9k</span>
             
             
             

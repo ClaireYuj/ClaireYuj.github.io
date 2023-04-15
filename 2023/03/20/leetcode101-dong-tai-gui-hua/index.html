@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    3.4k
+                    4.1k
                 </div>
                 
 
@@ -858,6 +858,88 @@
 </code></pre>
 <h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>该题中判断回文的起始状态要分三种情况 <strong>dabac</strong>, <strong>dabbc</strong>, <strong>dbbac</strong>,也就是中心扩散，中心右扩散和中心左扩散<br>所以在判断条件处需要或一个(right-left&lt;=2),也就是任意满足一种扩散条件都可以</p>
 <p>java类中substring的用法：s.substring(0,2)只包含s[0]和s[1]，所以如果要返回s[0-2],需要写作s.substring(0,3)</p>
+<h2 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42.接雨水"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/trapping-rain-water/">42.接雨水</a></h2><p><img src="/img/posts/Leetcode/leetcode42.jpg"></p>
+<h3 id="贪心"><a href="#贪心" class="headerlink" title="贪心"></a>贪心</h3><p>先左遍历，当最后一个子容器为[高，低]而非[高，低，高]时，也就是最后一个子容器没有封口时，再右遍历</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">trap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> max <span class="token operator">=</span> height<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> subsum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 先从左往右，把整个容器分为多个[高，低，高]容器，获得所有形如[高，低，高]的容器中的容量</span>
+        <span class="token comment" spellcheck="true">// 但此时需要注意几种特殊情况</span>
+        <span class="token comment" spellcheck="true">// 1. 结尾形如[2,4,3,2],此时最后三个并没有形成[高，低，高]，而是[高，低]，因此最后一个容器并没有封口</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>height<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> max<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                subsum <span class="token operator">+=</span> max <span class="token operator">-</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                max <span class="token operator">=</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                sum <span class="token operator">+=</span> subsum<span class="token punctuation">;</span>
+                subsum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment" spellcheck="true">// 当最后一个容器没有封口时，也就是subsum!=0，此时有形如[高，低]的容器在尾部</span>
+        <span class="token comment" spellcheck="true">// 从右往左遍历，直到遇到[高，低]容器中的最高点</span>
+        <span class="token comment" spellcheck="true">// 注意边界， while的边界要 &lt; 最高点</span>
+        <span class="token comment" spellcheck="true">// 可能导致最后的submax仍然不为0</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>subsum <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            subsum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> right_max <span class="token operator">=</span> height<span class="token punctuation">[</span>height<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> i <span class="token operator">=</span> height<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> max<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> right_max<span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    subsum <span class="token operator">+=</span> right_max <span class="token operator">-</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token keyword">else</span><span class="token punctuation">{</span>
+                    right_max <span class="token operator">=</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    sum <span class="token operator">+=</span> subsum<span class="token punctuation">;</span>
+                    subsum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                i<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">// 当形如[4,2,3]时，由于从左往右遍历时，[高，低]没有封口</span>
+        <span class="token comment" spellcheck="true">// 从右往左遍历时，最后的subsum不为0</span>
+        <span class="token comment" spellcheck="true">// 所以在最后的返回值处要在sum的基础上加上subsum</span>
+        <span class="token keyword">return</span> sum<span class="token operator">+</span>subsum<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="dp"><a href="#dp" class="headerlink" title="dp"></a>dp</h3><p>下标为i处的高度可以接到的最多的雨水等于<strong>其左边最大值与其右边最大值两者取小</strong>减去i处的高度，因为下标为i的柱子处在左边最大值与右边最大值围成的区域中，这个区域可以接到的雨水高度只取决于左边最大值的柱子，那么我们再用左边最大值的柱子减去i处的高度就得到了下标为i处的高度可以接到的最多的雨水</p>
+<p>使用两个数组，leftMax[i], rightMax[i]分别表示包括柱子i的左边最大值，与右边最大值</p>
+<p>初始状态为：</p>
+<blockquote>
+<p>leftMax[0] = height[0];<br>  rightMax[height.length - 1] = height[height.length - 1];</p>
+</blockquote>
+<p>递推公式为：</p>
+<blockquote>
+<p>leftMax[i] = max(leftMax[i - 1], height[i]);<br>  rightMax[i] = max(rightMax[i + 1], height[i]);</p>
+</blockquote>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">trap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> height<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token keyword">int</span> left_max<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>height<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> right_max<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>height<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        left_max<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> height<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        right_max<span class="token punctuation">[</span>height<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> height<span class="token punctuation">[</span>height<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span>height<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> left_max<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>left_max<span class="token punctuation">[</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> height<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">;</span> j <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">)</span> right_max<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>right_max<span class="token punctuation">[</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> maxSize <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> height<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//如果左边最大值或者右边最大值小于等于i处的柱子的高度，那么显然这个柱子本身作为了区域的边界</span>
+            <span class="token comment" spellcheck="true">//那么它可以接到的雨水显然为0</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>left_max<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">||</span> right_max<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span> maxSize <span class="token operator">+=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>left_max<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> right_max<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> maxSize<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
                 
             </div>
@@ -1261,7 +1343,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">61.6k</span>
+                        class="white-color">64.9k</span>
             
             
             
