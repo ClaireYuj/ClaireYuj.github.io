@@ -505,7 +505,7 @@
 <p>是用数学方法进行推导的，以[1,2,3,4,5]为例<br><strong>dp[i]表示1~i形成的二叉搜索树的数量</strong></p>
 <p><img src="/img/posts/Leetcode/leetcode96_1.jpg"></p>
 <p>当root=3时，左子树为[1,2] 右子树为[4,5],因为<strong>对于二叉搜索树而言，确定了序列，也就确定了这棵树</strong>，所有[1,2] = [4,5] = dp[2], **[1,2][3][4,5] = dp[2] * dp[2] = dp[i-1]<em>dp[n-i]</em>*<br>由于[1,2,3,4,5]可以分别以1~5为根，因此公式为</p>
-<center>dp[n] = dp[n-1]*dp[0] + dp[n-2]*dp[1]....+dp[0]*dp[n-1]&lt;\center&gt;
+<center>dp[n] = dp[n-1]*dp[0] + dp[n-2]*dp[1]....+dp[0]*dp[n-1]
 
 
 <pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
