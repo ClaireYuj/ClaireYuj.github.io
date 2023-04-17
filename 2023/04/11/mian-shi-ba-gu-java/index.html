@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    4.1k
+                    5.2k
                 </div>
                 
 
@@ -483,6 +483,20 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <p>扩容规则：<br>    先原始容量 * 2 + 2（加2是因为拼接字符串通常末尾都会有个多余的字符）<br>    如果扩容了之后，容量够用，新的容量就为扩容之后的容量。<br>    如果扩容了之后，容量不够用，新的容量就是所需要的容量，即原始字符串长度加上新添加的字符串长度。<br>    扩容完成之后，将原始数组复制到新的容量中，然后将新的字符串添加进去</p>
 </blockquote>
 <h4 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h4><p><strong>StringBuilder</strong>: 也代表可变字符串对象，这点和StringBuffer很相似，但StringBuilder不是线程安全的</p>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><ol>
+<li>JDK8以后hashmap的底层数据结构由数据+链表+红黑树实现<br>2、jdk8以后插入数据采用尾插法。因为引入了树形结构，总是要遍历</li>
+</ol>
+<p><strong>红黑树是一种自平衡的二叉查找树，是一种高效的查找树。</strong></p>
+<p>首先，红黑树是一个二叉搜索树，它在每个节点增加了一个存储位记录节点的颜色，可以是RED,也可以是BLACK；通过任意一条从根到叶子简单路径上颜色的约束，红黑树保证最长路径不超过最短路径的二倍，因而近似平衡（最短路径就是全黑节点，最长路径就是一个红节点一个黑节点，当从根节点到叶子节点的路径上黑色节点相同时，最长路径刚好是最短路径的两倍）。它同时满足以下特性：</p>
+<ol>
+<li>节点是红色或黑色</li>
+<li>根是黑色</li>
+<li>叶子节点（外部节点，空节点）都是黑色，这里的叶子节点指的是最底层的空节点（外部节点），下中的那些null节点才是叶子节点，null节点的父节点在红黑树里不将其看作叶子节点</li>
+<li>红色节点的子节点都是黑色，红色节点的父节点都是黑色，从根节点到叶子节点的所有路径上不能有 2 个连续的红色节点</li>
+<li>从任一节点到叶子节点的所有路径都包含相同数目的黑色节点</li>
+</ol>
+<p><strong>为什么用红黑树不用平衡二叉树：</strong>平衡二叉追求完全平衡，在实际应用中的空间开销较大，读取方面表现优异，但维护代价大。而红黑树不追求完全平衡，性能更优。</p>
+<p><strong>为什么不选择B树和B+树</strong>：B+树比B树更加矮胖，且由于B+树的非叶子节点上不存储数据，在HashMap中数据率较少的情况下，数据会挤在一个节点中，退化成为链表。且B树和B+树主要用于数据存储在磁盘上的场景，而红黑树用于内存排序。</p>
 <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>参数化类型–把一种明确的工作推迟到<strong>实际创建对象</strong>时才确定名曲的数据类型<br>如：ArrayList<object> arr = new Arraylist&lt;&gt;()<br>各种泛型类：List，Set，Map<p></p>
 <h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>JVM就是java虚拟机，JVM运行时数据区有<strong>方法区</strong>，<strong>Java堆</strong>、<strong>程序计数器</strong>，<strong>本地方法栈</strong>，<strong>虚拟机栈</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43122090/article/details/105093777?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168142794216782425193986%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=168142794216782425193986&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-105093777-null-null.142%5Ev83%5Einsert_down1,239%5Ev2%5Einsert_chatgpt&amp;utm_term=jvm&amp;spm=1018.2226.3001.4187">参考博客</a></p>
 <h3 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h3><h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>方法区是所有线程共享的内存区域，它用于存储已被Java虚拟机加载的<strong>类信息、常量、静态变量时编译器编译后的代码</strong>等数据。<br>它有个别命叫Non-Heap（非堆）。当方法区无法满足内存分配需求时，抛出OutOfMemoryErro常。</p>
@@ -578,8 +592,13 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <li>设置堆内存新生代的比例和老年代的比例最好为1:2或者1:3。默认的就是1:2<br>5.减少GC对老年代的回收。设置生代带垃圾对象最大年龄，进量不要有大量连续内存空间的java对象，因为会直接到老年代，内存不够就会执行GC</li>
 </ol>
 <h2 id="java的四种引用类型"><a href="#java的四种引用类型" class="headerlink" title="java的四种引用类型"></a>java的四种引用类型</h2><p>强引用: 在程序内存不足(OOM)的时候也不会被回收 -&gt; 是创建一个对象，并把这个对象赋给一个引用遍历<br>软引用：只有在OOM的时候，要迫切释放空间的时候，JVM才会释放软引用的对象 -&gt; 软引用可实现内存敏感的告诉缓存，比如网页缓存与图片缓存，使用软引用能防止内存泄漏，增强程序的鲁棒性<br>弱引用：JVM发现了弱引用就会回收。<br>虚引用：和弱引用差不多，但在被回收前胡放入referenceQueue中</p>
-<h2 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h2><p><strong>深拷贝</strong>:</p>
-<p><strong>浅拷贝</strong>:</p>
+<h2 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h2><p><strong>深拷贝</strong>: 深拷贝是一个独立的对象拷贝，拷贝所有的属性的同时，对其他对象的引用仍然指向原来的对象</p>
+<p><strong>浅拷贝</strong>: 被复制的对象的所有变量都与原来对象的值相同，但所有对其它对象的引用仍然指向原来的对象</p>
+<h2 id="重载和重写"><a href="#重载和重写" class="headerlink" title="重载和重写"></a>重载和重写</h2><p><strong>重写</strong>：子类重写父类的方法<br><strong>重载</strong>：同名方法，不同的参数类型、参数数量、参数顺序</p>
+<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="final"><a href="#final" class="headerlink" title="final"></a>final</h3><p>final修饰的类不可以被继承，但可以继承其他类<br>final修改的方法不可以被覆盖，但可以被继承<br>final修饰的基本数据类型是常量</p>
+<h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p>static方法：静态方法不能访问类的非静态成员变量和非静态成员方法<br>static变量：静态变量被所有的对象所共享，在内存中只有一个父辈，在创建对象时被初始化</p>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/didi1663478999/article/details/98523122">示例</a><br>在多线程中，volatile和synchronized都起到非常重要的作用，synchronized是通过加锁来实现线程的安全性。而volatile的主要作用是在多处理器开发中保证共享变量对于多线程的可见性。<br>可见性的意思是，<strong>当一个线程修改一个共享变量时，另外一个线程能读取到修改以后的值</strong></p>
+<h3 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h3><p>synchronied主要用于解决多线程的资源同步性，对于普通同步方法–锁是当前实例对象，对于静态同步方法，锁是当前类的class对象。对于同步方法块，所是synchronized括号里配置的对象。<br>synchronized是所著当前变量，只有当前线程可以访问该变量，其他线程会block<br>voliate仅仅能在变量级别使用，而synchronzed可以在变量、方法和类级别使用<br>volatile进能实现变量的修改可见性，不能保证原子性，而synchronized可以保证变量的修改可见性和原子性</p>
 </object></p>
                 
             </div>
@@ -979,7 +998,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">65.1k</span>
+                        class="white-color">69.6k</span>
             
             
             

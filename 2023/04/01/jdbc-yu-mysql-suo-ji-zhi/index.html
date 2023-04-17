@@ -5,9 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="JDBC与mysql锁机制, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="事务的ACIDACID，即原子性、一致性、隔离性和持久性。
-
-原子性：要么全部提交（commit后写日志），要么全部失败（回滚事务）。保证十五的原子性要求在发生异常是，对事务所有执行过的操作进行回滚，回滚是通过回滚日志实现。回滚日志种记录了">
+    <meta name="description" content="数据库的三大范式第一范式：表中的所有字段都是不可分解的原子值第二范式：表中的每一列都与主键相关第三范式：表中不包含在其他表中的非主键字段
+事务的ACID事务：事务是一个由有限操作集合组成的逻辑单元，事务操作的目的是数据一致和操作隔离。数据一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -383,6 +382,10 @@
                                 数据库
                             </a>
                         
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                面试
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -401,7 +404,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    3.8k
+                    4.1k
                 </div>
                 
 
@@ -423,7 +426,9 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h3><p>ACID，即原子性、一致性、隔离性和持久性。</p>
+                <h3 id="数据库的三大范式"><a href="#数据库的三大范式" class="headerlink" title="数据库的三大范式"></a>数据库的三大范式</h3><p>第一范式：表中的所有字段都是不可分解的原子值<br>第二范式：表中的每一列都与主键相关<br>第三范式：表中不包含在其他表中的非主键字段</p>
+<h3 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h3><p><strong>事务</strong>：事务是一个由有限操作集合组成的逻辑单元，事务操作的目的是<strong>数据一致</strong>和<strong>操作隔离</strong>。<br><strong>数据一致</strong>是事务提交时保证十五欸的所有操作全部成功完成，并且更改永久生效；事务回滚时，保证可以恢复到事务执行之前的状态。<strong>操作隔离</strong>是指多个同时执行的事物之间应该相互独立，互不影响。</p>
+<p>ACID，即原子性、一致性、隔离性和持久性。</p>
 <ul>
 <li><p>原子性：要么全部提交（commit后写日志），要么全部失败（回滚事务）。保证十五的原子性要求在发生异常是，对事务所有执行过的操作进行回滚，回滚是通过<strong>回滚日志</strong>实现。回滚日志种记录了所有操作的逆操作，因此回滚就是将该事务回滚日志种的所有操作再执行一遍。</p>
 </li>
@@ -436,8 +441,8 @@
 </ul>
 <h3 id="并发冲突"><a href="#并发冲突" class="headerlink" title="并发冲突"></a>并发冲突</h3><h4 id="读不一致"><a href="#读不一致" class="headerlink" title="读不一致"></a>读不一致</h4><p>读不一致性本质上是读写操作的不一致性</p>
 <p><strong>脏读</strong>：一个事务读取了另一个事务<strong>未提交</strong>的数据。当事务A查询事物B修改后但是未提交的数据时，事物B有可能会因为某些情况进行回滚，此时事物A读到的数据就是错的，这是的数据也称之为脏数据。它是对一条记录而言的。脏读本质上是读写操作的冲突，<strong>解决办法是写完之后再读。</strong></p>
-<p><strong>不可重复读</strong>：一个事务<strong>两次读取同一个数据</strong>，两次读取的<strong>数据不一致</strong>。当事务A查询第一次是，事物B虽然修改了数据但是没有提交，此时事物A查询的还是之前未修改的值，但是当事物B提交后，事物A第二次查询，此时查询到的值是事物B修改后的值，这次查询的值不一样，即读取的数据不一致。它是对一条记录而言的。不可重复读本质上是读写操作的冲突，<strong>解决办法是读完再写。</strong></p>
-<p><strong>幻读</strong>：一个事务<strong>两次读取一个范围的记录，两次读取的记录数不一致。</strong>假设事务A第一次查询一段范围的rows中的某数据时，此时有5列。但是之后又另外一个事物B增加了一列，当事物A再次进行相同的查询时，发现有6列，这就是所谓的幻读。<strong>它是对多条记录而言的</strong>。幻读本质上是读写操作的冲突，解决办法是<strong>读完再插入/删除。</strong></p>
+<p><strong>不可重复读</strong>：一个事务<strong>两次读取同一个数据</strong>，两次读取的<strong>数据不一致</strong>（也就是有另一个事务修改了数据并提交了）。当事务A查询第一次是，事物B虽然修改了数据但是没有提交，此时事物A查询的还是之前未修改的值，但是当事物B提交后，事物A第二次查询，此时查询到的值是事物B修改后的值，这次查询的值不一样，即读取的数据不一致。它是对一条记录而言的。不可重复读本质上是读写操作的冲突，<strong>解决办法是读完再写。</strong></p>
+<p><strong>幻读</strong>：一个事务<strong>两次读取一个事务某个范围的记录，两次读取的记录不一致。</strong>假设事务A第一次查询一段范围的rows中的某数据时，此时有5列。但是之后又另外一个事物B增加了一列，当事物A再次进行相同的查询时，发现有6列，这就是所谓的幻读。<strong>它是对多条记录而言的</strong>。幻读本质上是读写操作的冲突，解决办法是<strong>读完再插入/删除。</strong><br>不可重复读是record维度，而幻读是transaction维度。<br>不可重复读主要发生在update，而幻读主要发生在insert和delete</p>
 <h4 id="写不一致"><a href="#写不一致" class="headerlink" title="写不一致"></a>写不一致</h4><p>写不一致性本质上是写写操作的不一致性<br>出现<strong>丢失修改</strong>（一个事务的更新覆盖了另一个事务的更新）。事务A和事务B需要对同一个row的元素进行修改。A和B同时读到该row的的数据，分别修改，后提交的事务B覆盖了事务A的更新。更新丢失本质上是写写操作的冲突，解决办法是<strong>一个一个地写。</strong><br>防止丢失修改的并发控制类型常见的有三种方法：</p>
 <ol>
 <li>加锁（保守式并发控制）- 在从获取记录直到记录在数据库中更新的这段时间内，该行对用户不可用。</li>
@@ -554,6 +559,8 @@ ResultSet rs <span class="token operator">=</span> pstmt<span class="token punct
 
 conn<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>通过索引的唯一性，可以保证数据库每一行数据的唯一性。索引的主要结构为B+树和哈希表，对于的索引分别为B+树索引和哈希索引，默认索引为B+树索引</p>
+<h4 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h4><h4 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h4><p><strong>主键索引</strong>:名为primary的唯一非空索引，不允许有空值。<br><strong>唯一索引</strong>：索引列中的值必须唯一，但可以为null<br><strong>组合索引</strong>：</p>
 
                 
             </div>
@@ -949,7 +956,7 @@ conn<span class="token punctuation">.</span><span class="token function">commit<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">65.1k</span>
+                        class="white-color">69.6k</span>
             
             
             
