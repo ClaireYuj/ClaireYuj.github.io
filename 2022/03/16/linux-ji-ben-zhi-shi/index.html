@@ -404,7 +404,7 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.1k
+                    1.4k
                 </div>
                 
 
@@ -469,7 +469,14 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
 <p><strong>find</strong>：在目录结构总搜索文件，并对搜索结果进行指定的操作<br>ind 默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。</p>
 <p>使用实例：</p>
 <p>find . -name “<em>.log” -ls  在当前目录查找以.log结尾的文件，并显示详细信息。<br>find /root/ -perm 600   查找/root/目录下权限为600的文件<br>find . -type f -name “</em>.log”  查找当目录，以.log结尾的普通文件<br>find . -type d | sort   查找当前所有目录并排序<br>find . -size +100M  查找当前目录大于100M的文件</p>
-<p>tar 解压<br>-c 创建一个新归档</p>
+<p>find和grep都是在Linux系统中用于查找文件或字符串的命令，但它们的用途和功能是不同的。</p>
+<p>find命令用于在指定的目录中查找文件，可以根据文件名、文件类型、文件大小、权限等属性进行过滤搜索。例如，可以使用以下命令在当前目录及其子目录中查找所有名为filename的文件：</p>
+<pre class=" language-linux"><code class="language-linux">find . -name filename
+</code></pre>
+<p>grep命令用于在指定的文件中查找包含指定字符串的行，可以根据字符串、正则表达式等进行过滤搜索。例如，可以使用以下命令在文件filename中查找包含字符串”searchtext”的行：</p>
+<pre class=" language-linux"><code class="language-linux">grep "searchtext" filename
+</code></pre>
+<h3 id="压缩和解压文件"><a href="#压缩和解压文件" class="headerlink" title="压缩和解压文件"></a>压缩和解压文件</h3><p>tar 解压<br>-c 创建一个新归档</p>
 <p>-f 当与-c选项一起使用时，创建的tar文件使用该选项指定的文件名；当与-x选项一起使用时，则解除该选项指定的归档</p>
 <p>-t 显示包括在tar文件中的文件列表</p>
 <p>-v 显示文件的归档进度</p>
@@ -488,6 +495,20 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
 <h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p>查看网络状态</p>
 <p>查看系统上的网络状态。<br>选项：<br>-a 显示所有正在或不在侦听的套接字<br>-n 显示数字形式地址而不是去解析主机、端口或用户名<br>-p 显示套接字所属进程的PID和名称</p>
 <p>示例：<br>netstat -anp<br>netstat -anp | grep “进程名”<br>netstat -anp | grep “端口号” </p>
+<h3 id="挂载后台"><a href="#挂载后台" class="headerlink" title="挂载后台"></a>挂载后台</h3><pre class=" language-linux"><code class="language-linux">nohup command &
+</code></pre>
+<h3 id="查找进程"><a href="#查找进程" class="headerlink" title="查找进程"></a>查找进程</h3><pre class=" language-linux"><code class="language-linux">ps -ef
+</code></pre>
+<p>可以显示用户所有进程</p>
+<pre class=" language-linux"><code class="language-linux">ps-ef | grep firefox
+</code></pre>
+<p>查找所有有火狐的进程</p>
+<pre class=" language-linux"><code class="language-linux">pkill firefox 
+</code></pre>
+<p>or</p>
+<pre class=" language-linux"><code class="language-linux">kill 12345
+</code></pre>
+<p>都可以杀死进程</p>
 
                 
             </div>
@@ -891,7 +912,7 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">73.4k</span>
+                        class="white-color">75.6k</span>
             
             
             

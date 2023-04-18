@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    6.6k
+                    6.9k
                 </div>
                 
 
@@ -486,7 +486,8 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <p>扩容规则：<br>    先原始容量 * 2 + 2（加2是因为拼接字符串通常末尾都会有个多余的字符）<br>    如果扩容了之后，容量够用，新的容量就为扩容之后的容量。<br>    如果扩容了之后，容量不够用，新的容量就是所需要的容量，即原始字符串长度加上新添加的字符串长度。<br>    扩容完成之后，将原始数组复制到新的容量中，然后将新的字符串添加进去</p>
 </blockquote>
 <h4 id="StringBuilder"><a href="#StringBuilder" class="headerlink" title="StringBuilder"></a>StringBuilder</h4><p><strong>StringBuilder</strong>: 也代表可变字符串对象，这点和StringBuffer很相似，但StringBuilder不是线程安全的</p>
-<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><ol>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>哈希表是一种以键值key存储数据value的结构，以key作为标识值存储value值；只要输入待查找的key，即可获取其对应的value值。<strong>当按照键值查询元素时，使用相同的hash函数将key转换为数组下标，从数组中按照下标对应的位置获取数据</strong>。它实际上是数组的一种扩展，数组+链表+红黑树。</p>
+<ol>
 <li>JDK8以后hashmap的底层数据结构由数据+链表+红黑树实现<br>2、jdk8以后插入数据采用尾插法。因为引入了树形结构，总是要遍历</li>
 </ol>
 <p><strong>红黑树是一种自平衡的二叉查找树，是一种高效的查找树。</strong></p>
@@ -500,6 +501,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 </ol>
 <p><strong>为什么用红黑树不用平衡二叉树：</strong>平衡二叉追求完全平衡，在实际应用中的空间开销较大，读取方面表现优异，但维护代价大。而红黑树不追求完全平衡，性能更优。</p>
 <p><strong>为什么不选择B树和B+树</strong>：B+树比B树更加矮胖，且由于B+树的非叶子节点上不存储数据，在HashMap中数据率较少的情况下，数据会挤在一个节点中，退化成为链表。且B树和B+树主要用于数据存储在磁盘上的场景，而红黑树用于内存排序。</p>
+<p><strong>哈希冲突</strong>：由于映射的范围限制，key取值的可能性大于映射范围，出现两个不同的key映射到同一个位置。解决哈希冲突的常见方法有开放地址法和链表法。<br><strong>开放地址法</strong>：在根据关键字查找哈希之后，如果发现这个地址已经有值了，就不能放在这个地址，否则会覆盖掉之前的映射。可以对计算出来的地址进行一个探测再哈希，比如往后移动一个地址，如果该地址空着就可以使用；如果超过容器最大长度，则可以对总长度取余。这里移动的地址是产生冲突时的增列序量。<br><strong>链表法</strong>：对关键字重复的哈希地址，来做一个链表。在很多高级语言的实现当中，都是使用这种方式处理冲突。</p>
 <h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>参数化类型–把一种明确的工作推迟到<strong>实际创建对象</strong>时才确定名曲的数据类型<br>如：ArrayList<object> arr = new Arraylist&lt;&gt;()<br>各种泛型类：List，Set，Map<p></p>
 <h2 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h2><p>JVM就是java虚拟机，JVM运行时数据区有<strong>方法区</strong>，<strong>Java堆</strong>、<strong>程序计数器</strong>，<strong>本地方法栈</strong>，<strong>虚拟机栈</strong><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43122090/article/details/105093777?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168142794216782425193986%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=168142794216782425193986&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-105093777-null-null.142%5Ev83%5Einsert_down1,239%5Ev2%5Einsert_chatgpt&amp;utm_term=jvm&amp;spm=1018.2226.3001.4187">参考博客</a></p>
 <h3 id="运行时数据区"><a href="#运行时数据区" class="headerlink" title="运行时数据区"></a>运行时数据区</h3><h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>方法区是所有线程共享的内存区域，它用于存储已被Java虚拟机加载的<strong>类信息、常量、静态变量时编译器编译后的代码</strong>等数据。<br>它有个别命叫Non-Heap（非堆）。当方法区无法满足内存分配需求时，抛出OutOfMemoryErro常。</p>
@@ -1094,7 +1096,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">73.4k</span>
+                        class="white-color">75.6k</span>
             
             
             

@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="JDBC与mysql锁机制, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="数据库的三大范式第一范式：表中的所有字段都是不可分解的原子值第二范式：表中的每一列都与主键相关第三范式：表中不包含在其他表中的非主键字段
-事务的ACID事务：事务是一个由有限操作集合组成的逻辑单元，事务操作的目的是数据一致和操作隔离。数据一">
+    <meta name="description" content="数据库的三大范式第一范式：属性不可再分。即一个属性不能再拆分为更小的子属性，确保每个属性的原子性。第二范式：唯一性约束。即每个非主属性都必须依赖于完整的主键，而不能依赖于主键的一部分。第三范式：消除传递依赖。即非主属性不能依赖于其他非主属性">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -404,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    4.1k
+                    4.3k
                 </div>
                 
 
@@ -426,7 +425,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="数据库的三大范式"><a href="#数据库的三大范式" class="headerlink" title="数据库的三大范式"></a>数据库的三大范式</h3><p>第一范式：表中的所有字段都是不可分解的原子值<br>第二范式：表中的每一列都与主键相关<br>第三范式：表中不包含在其他表中的非主键字段</p>
+                <h3 id="数据库的三大范式"><a href="#数据库的三大范式" class="headerlink" title="数据库的三大范式"></a>数据库的三大范式</h3><p>第一范式：属性不可再分。即一个属性不能再拆分为更小的子属性，确保每个属性的原子性。<br>第二范式：唯一性约束。即每个非主属性都必须依赖于完整的主键，而不能依赖于主键的一部分。<br>第三范式：消除传递依赖。即非主属性不能依赖于其他非主属性，而只能依赖于主键。</p>
 <h3 id="事务的ACID"><a href="#事务的ACID" class="headerlink" title="事务的ACID"></a>事务的ACID</h3><p><strong>事务</strong>：事务是一个由有限操作集合组成的逻辑单元，事务操作的目的是<strong>数据一致</strong>和<strong>操作隔离</strong>。<br><strong>数据一致</strong>是事务提交时保证十五欸的所有操作全部成功完成，并且更改永久生效；事务回滚时，保证可以恢复到事务执行之前的状态。<strong>操作隔离</strong>是指多个同时执行的事物之间应该相互独立，互不影响。</p>
 <p>ACID，即原子性、一致性、隔离性和持久性。</p>
 <ul>
@@ -560,7 +559,8 @@ ResultSet rs <span class="token operator">=</span> pstmt<span class="token punct
 conn<span class="token punctuation">.</span><span class="token function">commit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>通过索引的唯一性，可以保证数据库每一行数据的唯一性。索引的主要结构为B+树和哈希表，对于的索引分别为B+树索引和哈希索引，默认索引为B+树索引</p>
-<h4 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h4><h4 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h4><p><strong>主键索引</strong>:名为primary的唯一非空索引，不允许有空值。<br><strong>唯一索引</strong>：索引列中的值必须唯一，但可以为null<br><strong>组合索引</strong>：</p>
+<h4 id="B-树"><a href="#B-树" class="headerlink" title="B+树"></a>B+树</h4><p>数据都存在叶子节点中，叶子节点均为索引，要找到具体数据只需要扫描叶子节点。<br>B+树的优点在于它的查询和插入操作复杂度都为O(log n)，其中n为B+树中存储的数据个数。<br>B树要找到具体的数据需要进行中序遍历</p>
+<h4 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h4><p><strong>主键索引</strong>:名为primary的唯一非空索引，不允许有空值。<br><strong>唯一索引</strong>：索引列中的值必须唯一，但可以为null<br><strong>组合索引</strong>：在表中多个字段上组合创建的索引，只有在查询条件中使用这些字段的坐标字段时，需要遵循最左前缀原则<br><strong>全文索引</strong>：</p>
 
                 
             </div>
@@ -956,7 +956,7 @@ conn<span class="token punctuation">.</span><span class="token function">commit<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">73.4k</span>
+                        class="white-color">75.6k</span>
             
             
             
