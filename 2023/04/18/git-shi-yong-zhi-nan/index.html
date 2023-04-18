@@ -4,13 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="滑动窗口协议, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="滑动窗口协议
-是TCP协议的一种，用于数据传输时的流量控制，避免拥塞的发送。  
-
-滑动窗口协议允许发送方在在收到确认之前发送多个数据分组，因此发送方不必没收到一个分组就停下来等待确认，因此该协议可以加速数据的传输，提高网络吞吐量。
-
-如果">
+    <meta name="keywords" content="git使用指南, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="git命令大全
+配置与初始化初次使用git需要设置你的用户名以及邮箱，这将作为当前机器git的标识，如果你用它来下载远程仓库一些需要登录权限的仓库会要求登录，git默认使用配置邮箱以及用户名登入，但会要求你手动输入密码用户名设置
+git c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>滑动窗口协议 | DULULU</title>
+    <title>git使用指南 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -341,12 +338,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">滑动窗口协议</h1>
+                    <h1 class="description center-align post-title">git使用指南</h1>
                 </div>
             </div>
         </div>
@@ -370,12 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">
-                                <span class="chip bg-color">数据传输</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/">
-                                <span class="chip bg-color">流量控制</span>
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
                             </a>
                         
                     </div>
@@ -386,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="post-category">
-                                计算机网络
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                面试
                             </a>
                         
                     </div>
@@ -399,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-11-11
+                    2023-04-18
                 </div>
                 
 
@@ -408,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    248
+                    1.6k
                 </div>
                 
 
@@ -430,26 +423,123 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="滑动窗口协议"><a href="#滑动窗口协议" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h2><ul>
-<li><p>是<strong>TCP协议</strong>的一种，用于数据传输时的流量控制，避免拥塞的发送。  </p>
-</li>
-<li><p>滑动窗口协议允许发送方在在收到确认之前发送多个数据分组，因此<strong>发送方不必没收到一个分组就停下来等待确认</strong>，因此该协议可以加速数据的传输，提高网络吞吐量。</p>
-</li>
-<li><p>如果多个客户端向服务器发送到大量数据包，但服务器没有足够的接收这么多数据包的能力，那么会导致拥塞的发生。因此我们需要控制发送方的发送速度，控制它不要发送过快。</p>
-</li>
-</ul>
-<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><ul>
-<li><p>窗口：允许使用的序列号范围</p>
-<ul>
-<li>窗口尺寸： 若窗口尺寸为n，意味着最多有n个等待确认的消息</li>
-</ul>
-</li>
-<li><p>滑动窗口： 随着协议的运行，窗口在序列号范围内向前移动  </p>
-</li>
-<li><p>滑动窗口协议： GBN，SR</p>
-</li>
-</ul>
-
+                <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bjbz_cxy/article/details/116703787?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168178388816800182174092%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=168178388816800182174092&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-116703787-null-null.142%5Ev84%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&amp;utm_term=git%E5%91%BD%E4%BB%A4&amp;spm=1018.2226.3001.4187">git命令大全</a></p>
+<h3 id="配置与初始化"><a href="#配置与初始化" class="headerlink" title="配置与初始化"></a>配置与初始化</h3><p>初次使用git需要设置你的用户名以及邮箱，这将作为当前机器git的标识，如果你用它来下载远程仓库一些需要登录权限的仓库会要求登录，git默认使用配置邮箱以及用户名登入，但会要求你手动输入密码<br>用户名设置</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"你的用户名"</span>
+</code></pre>
+<p>邮箱设置</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.email <span class="token string">"你的邮箱"</span>
+</code></pre>
+<p>使用git init初始化当前仓库，可以用ls-ah查看.git的隐藏目录</p>
+<h3 id="新建文件"><a href="#新建文件" class="headerlink" title="新建文件"></a>新建文件</h3><blockquote>
+<p>add: 将文件添加到缓存区<br> commit: 提交到本地仓库</p>
+</blockquote>
+<p>git中有工作区与缓存区的概念：<br><strong>工作区</strong>：工作区就是你当前的工作目录<br><strong>缓存区</strong>：这里存放了你使用git add命令提交的文件描述信息，它位于.git目录下的index文件中<br>这些文件中存储了我们一些提交的缓存数据，git会解析它们，HEAD文件就是指向当前的仓库。最后使用git commit提交时git会提交到当前仓库中，当前的工作区也就成为了最新一次提交的仓库版本。</p>
+<p>例如： 在当前目录下创建一个新的文件 test.txt</p>
+<pre class=" language-linux"><code class="language-linux">touch test.txt
+git add test.txt
+</code></pre>
+<p>这个时候还不算添加到了本地仓库，我们还需要使用git commit命令为其添加修改的描述信息</p>
+<p>注意在使用git commit时我们只需要简单描述一下我们做了什么，不要像写注释那样写一大堆，不然将来在回滚代码或者查看历史版本时，很难审阅。</p>
+<p>我们需要使用-m命令来简写描述我们的信息，如果不使用-m，会调用终端的注释编辑器让你输入描述信息，但是不建议使用</p>
+<pre class=" language-linux"><code class="language-linux">git commit -m "add new file \"test.c\""
+</code></pre>
+<p>可以用git -amend改写上一次提交的信息，会进入vim</p>
+<pre class=" language-linux"><code class="language-linux">git commit --amend
+</code></pre>
+<p>如果要将所有的改动文件添加到缓存区:git add –all</p>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><p>rm:删除</p>
+<pre class=" language-linux"><code class="language-linux">git rm test.txt
+</code></pre>
+<p>删除后恢复（仅限 git rm删除后恢复，因为git rm可以将文件先放入缓存区）</p>
+<ol>
+<li>重置缓存区操作</li>
+</ol>
+<pre class=" language-linux"><code class="language-linux">git reset
+</code></pre>
+<ol start="2">
+<li>取消操作</li>
+</ol>
+<pre class=" language-linux"><code class="language-linux">git checkout test.txt
+</code></pre>
+<h3 id="查看历史提交日志、回滚代码仓库"><a href="#查看历史提交日志、回滚代码仓库" class="headerlink" title="查看历史提交日志、回滚代码仓库"></a>查看历史提交日志、回滚代码仓库</h3><p>查看日志：<br>git log</p>
+<p>可以查看到历史版本</p>
+<p>使用以下命令进行回滚</p>
+<pre class=" language-linux"><code class="language-linux">git reset --hard 要回滚的id
+</code></pre>
+<p>如果只要回滚当前仓库指向的版本，可以直接</p>
+<pre class=" language-linux"><code class="language-linux">git reset --hard HEAD^
+</code></pre>
+<p>^代表上一个版本的意思，HEAD代表当前仓库的指向，当前HEAD指向master，就代表回滚到master上一次提交的版本</p>
+<pre class=" language-linux"><code class="language-linux">git reset --hard HEAD~3
+</code></pre>
+<p>后面的<del>3，代表以当前版本为基数，回滚多少次。HEAD</del>3代表回滚master前三个版本’</p>
+<p>查看单个文件的可回滚版本：</p>
+<pre class=" language-linux"><code class="language-linux">git log test.txt
+</code></pre>
+<p>通用可以使用git reset 回滚</p>
+<h3 id="查看提交后的文件是否有改动"><a href="#查看提交后的文件是否有改动" class="headerlink" title="查看提交后的文件是否有改动"></a>查看提交后的文件是否有改动</h3><pre class=" language-linux"><code class="language-linux">git status
+</code></pre>
+<h3 id="撤销修改并回到上一次修改的状态"><a href="#撤销修改并回到上一次修改的状态" class="headerlink" title="撤销修改并回到上一次修改的状态"></a>撤销修改并回到上一次修改的状态</h3><blockquote>
+<p>checkout:通常用于切换分支仓库</p>
+</blockquote>
+<p>当我们在工作中修改了一个文件，猛然间发现内容好像改的不对，想重新修改，这个时又不知道自己改了什么代码，想撤销修改，有一个最简单的方法，就是git checkout – file，注意中间要有“–”，checkout这个命令是切换分支的功能，关于它我们后面在细说，你现在只需要知道这个命令加上“–”可以用来将文件切换到最近一次的状态</p>
+<p>注意这个恢复只能恢复到上一次提交的状态，如你刚提交了这个文件到仓库，随后你修改了它，那么使用这个命令只会回到刚刚提交后的那个状态里，不能回到你还没有提交，但修改的状态中。</p>
+<p>这个功能不能一直迭代恢复，如果恢复到了修改前的版本，你想再次回滚回滚到修改前在之前的版本是不行的。</p>
+<pre class=" language-linux"><code class="language-linux">git checkout --test.txt
+</code></pre>
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><p>git checkoout -b 可以创建分支</p>
+<pre class=" language-linux"><code class="language-linux">git checkout -b newbranch
+</code></pre>
+<p>创建了新分支newbranch<br>可以用git branch查看当前属于什么分支，也就是head的指向</p>
+<pre class=" language-linux"><code class="language-linux">git branch
+</code></pre>
+<p>git checkout -b等价于</p>
+<pre class=" language-linux"><code class="language-linux">git branch newbranch
+git checkout newbranch
+</code></pre>
+<p><strong>git branch 如果后面跟着名字则会创建分支，但不会切换</strong><br><strong>git checkout 后面如果是分支名称则切换过去</strong></p>
+<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><pre class=" language-linux"><code class="language-linux">git checkout master
+</code></pre>
+<p>切换回master分支</p>
+<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><p>git merge</p>
+<p>例如要合并master和newbranch，可以切换回master，在master下执行合并</p>
+<ol>
+<li>切换</li>
+</ol>
+<pre class=" language-linux"><code class="language-linux">git checkout master
+</code></pre>
+<ol start="2">
+<li>合并</li>
+</ol>
+<pre class=" language-linux"><code class="language-linux">git merge newbranch
+</code></pre>
+<p>这里需要说一点，如果你在任何分支下创建文件，没有提交到仓库，那么它在所有仓库都是可见的，比如你在分支dev中创建了一个文件，没有使用git add和git commit提交，此时你切换到master，这个文件依旧存在的，因为你创建的文件在工作目录中，你切换仓库时git只会更新跟仓库有关的文件，无关的文件依然存放在工作区</p>
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><p>git删除本地分支：git branch -D</p>
+<p>git branch -D 分支名<br>git删除远程分支：git push origin –delete</p>
+<p>注意这里的远程分支名不需要加origin，输入分支名就可以了</p>
+<p>git push origin –delete 远程分支名</p>
+<h3 id="本地仓库关联远程仓库"><a href="#本地仓库关联远程仓库" class="headerlink" title="本地仓库关联远程仓库"></a>本地仓库关联远程仓库</h3><ol>
+<li>git remote add origin<br>例如</li>
+</ol>
+<pre class=" language-linux"><code class="language-linux">git remote add origin git@github.com:beiszhihao/test.git
+</code></pre>
+<ol start="2">
+<li>git push推送到远程</li>
+</ol>
+<pre class=" language-linux"><code class="language-linux">git push -u origin master
+</code></pre>
+<p>push：将本地仓库与远程仓库合并</p>
+<p>-u：将本地仓库分支与远程仓库分支一起合并，就是说将master的分支也提交上去，这样你就可以在远程仓库上看到你在本地仓库的master中创建了多少分支，不加这个参数只将当前的master与远程的合并，没有分支的历史记录，也不能切换分支</p>
+<p>origin：远程仓库的意思，如果这个仓库是远程的那么必须使用这个选项</p>
+<p>master：提交本地matser分支仓库</p>
+<h3 id="git拉取远程仓库到本地，拉取分支，切换远程分支"><a href="#git拉取远程仓库到本地，拉取分支，切换远程分支" class="headerlink" title="git拉取远程仓库到本地，拉取分支，切换远程分支"></a>git拉取远程仓库到本地，拉取分支，切换远程分支</h3><p>git clone拉到本地</p>
+<pre class=" language-linux"><code class="language-linux">git clone git@github.com:xxx.git
+</code></pre>
+<p>git clone -b 分支名： 拉取知道哪个分支</p>
+<pre class=" language-linux"><code class="language-linux">git clone master git@github.com:xxx.git
+</code></pre>
+<h3 id="git提交本地的到远程git-add-git-commit-git-push"><a href="#git提交本地的到远程git-add-git-commit-git-push" class="headerlink" title="git提交本地的到远程git add, git commit, git push"></a>git提交本地的到远程git add, git commit, git push</h3>
                 
             </div>
             <hr/>
@@ -475,7 +565,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2021/11/11/hua-dong-chuang-kou-xie-yi/">https://claireyuj.github.io/2021/11/11/hua-dong-chuang-kou-xie-yi/</a>
+                    <a href="https://claireyuj.github.io/2023/04/18/git-shi-yong-zhi-nan/">https://claireyuj.github.io/2023/04/18/git-shi-yong-zhi-nan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -513,12 +603,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/">
-                                    <span class="chip bg-color">数据传输</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6/">
-                                    <span class="chip bg-color">流量控制</span>
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
                                 </a>
                             
                         </div>
@@ -566,17 +652,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/11/17/java-shu-ru-shu-chu/">
+                <a href="/2023/04/18/git-shi-yong-zhi-nan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVA输入输出">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="git使用指南">
                         
-                        <span class="card-title">JAVA输入输出</span>
+                        <span class="card-title">git使用指南</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -586,26 +673,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    基础知识
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                    面试
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JAVA/">
-                        <span class="chip bg-color">JAVA</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
@@ -619,13 +707,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/10/17/leetcode-shu-xiang-guan/">
+                <a href="/2023/04/17/mian-shi-ba-gu-ce-shi-zhi-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Leetcode--树相关">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="面试八股--测试知识">
                         
-                        <span class="card-title">Leetcode--树相关</span>
+                        <span class="card-title">面试八股--测试知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -636,14 +724,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-04-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
-                                    数据结构
+                            <a href="/categories/%E9%9D%A2%E8%AF%95/" class="post-category">
+                                    面试
                                 </a>
                             
                             
@@ -653,8 +741,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/leetcode/">
-                        <span class="chip bg-color">leetcode</span>
+                    <a href="/tags/%E6%B5%8B%E5%BC%80/">
+                        <span class="chip bg-color">测开</span>
                     </a>
                     
                 </div>

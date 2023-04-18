@@ -5,8 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="项目问答--分布式订票系统项目, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="功能测试
-用户注册和登录功能测试用例检查用户注册时输入的用户名、密码等信息是否合法；检查用户登录时输入的用户名、密码是否正确；检查用户登录后是否可以正常进入系统；检查用户登录后是否可以退出系统；检查用户登录后是否可以修改个人信息；检查用户登">
+    <meta name="description" content="界面测试检查每个界面的UI、字号、对齐等
+功能测试
+用户注册和登录功能测试用例检查用户注册时输入的用户名、密码等信息是否合法；检查用户登录时输入的用户名、密码是否正确；检查用户登录后是否可以正常进入系统；检查用户登录后是否可以退出系统；检查">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -57,9 +58,9 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 <body>
@@ -404,7 +405,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    444
+                    483
                 </div>
                 
 
@@ -426,19 +427,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h2><ol>
+                <h2 id="界面测试"><a href="#界面测试" class="headerlink" title="界面测试"></a>界面测试</h2><p>检查每个界面的UI、字号、对齐等</p>
+<h2 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h2><ol>
 <li><p>用户注册和登录功能测试用例<br>检查用户注册时输入的用户名、密码等信息是否合法；<br>检查用户登录时输入的用户名、密码是否正确；<br>检查用户登录后是否可以正常进入系统；<br>检查用户登录后是否可以退出系统；<br>检查用户登录后是否可以修改个人信息；<br>检查用户登录后是否可以查看订单历史记录。</p>
 </li>
 <li><p>票务查询和购买功能测试用例<br>检查用户可以根据起点站和终点站查询车票；<br>检查用户可以选择购买某个车次的车票；<br>检查用户可以选择座位类型和数量；<br>检查用户购买车票后系统能够正确扣除相应的余额；<br>检查用户购买车票后系统能够正确更新余票数量。</p>
 </li>
 <li><p>订单管理功能测试用例<br>检查用户可以查看当前的订单列表；<br>检查用户可以查看某个订单的详细信息；<br>检查用户可以取消某个未出行的订单；<br>检查用户可以退票并获得相应的退票金额；<br>检查用户可以重新预定某个已取消的订单。</p>
 </li>
-<li><p>数据库备份和同步功能测试用例<br>检查数据库备份是否正常；；<br>检查数据库备份和同步的时间间隔是否合理；<br>检查数据库备份和同步的数据完整性和一致性。</p>
-</li>
-<li><p>网络服务和数据库分布式部署功能测试用例<br>检查网络服务的故障转移是否正常；<br>检查数据库分布式部署的数据同步是否正常；</p>
-</li>
 </ol>
-
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><ol>
+<li>网络服务和数据库分布式部署功能测试用例<br>检查网络服务的故障转移是否正常；<br>检查数据库分布式部署的数据同步是否正常；</li>
+</ol>
+<h2 id="安全测试"><a href="#安全测试" class="headerlink" title="安全测试"></a>安全测试</h2><ol>
+<li>用户隐私检测<br>用户密码是否加密</li>
+<li>数据库备份和同步功能测试用例<br>检查数据库备份是否正常；<br>检查数据库备份和同步的时间间隔是否合理；<br>检查数据库备份和同步的数据完整性和一致性。</li>
+</ol>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
                 
             </div>
             <hr/>
@@ -841,7 +846,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">69.6k</span>
+                        class="white-color">73.3k</span>
             
             
             

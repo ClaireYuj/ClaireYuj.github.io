@@ -57,9 +57,9 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 <body>
@@ -404,7 +404,7 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    503
+                    1.1k
                 </div>
                 
 
@@ -440,7 +440,7 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
 <p>pwd 查询当前位置</p>
 <p>cd 切换目录</p>
 <p>mv 移动文件</p>
-<p>cp 复制文件，若要同时移动该文件下的子文件要用cp -r</p>
+<p>cp 复制文件，若要同时移动该文件下的子文件要用cp -r<br>cp t.txt Document/t<br>该命令将把文件t.txt复制到Document目录下，并命名为t。</p>
 <h3 id="查看文件中内容"><a href="#查看文件中内容" class="headerlink" title="查看文件中内容"></a>查看文件中内容</h3><p>cat 查看文件内容</p>
 <pre class=" language-Linux"><code class="language-Linux">Cat 1.txt
 </code></pre>
@@ -453,7 +453,7 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
 <pre class=" language-Linux"><code class="language-Linux">tail 1.txt
 </code></pre>
 <p>在第二各窗口输入</p>
-<pre class=" language-Linux"><code class="language-Linux">date >> 1.txt
+<pre class=" language-Linux"><code class="language-Linux">date &gt;&gt; 1.txt
 </code></pre>
 <p>查看1文件中新追加的内容(当下时间)</p>
 <p>echo 追加新的内容<br>echo a &gt; 1.txt  直接覆盖于<br>Echo a &gt;&gt; 1.txt 将a插入1.txt 文件的末端<br>echo a会直接将结果打印到控制台上</p>
@@ -462,7 +462,32 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
 <h3 id="管道命令"><a href="#管道命令" class="headerlink" title="管道命令"></a>管道命令</h3><p>将一个命令的执行的结果作为内容提交给下一个命令处理， 类似嵌套</p>
 <pre class=" language-Linux"><code class="language-Linux">    ps -ef | grep 1001
 </code></pre>
-<h3 id="文件与进程交互命令"><a href="#文件与进程交互命令" class="headerlink" title="文件与进程交互命令"></a>文件与进程交互命令</h3><p>grep 搜索<br>tar 解压</p>
+<h3 id="文件与进程交互命令"><a href="#文件与进程交互命令" class="headerlink" title="文件与进程交互命令"></a>文件与进程交互命令</h3><p><strong>grep 搜索</strong></p>
+<p>grep命令是一种强大的文本搜索工具</p>
+<p>使用实例：</p>
+<p>ps -ef | grep sshd  查找指定ssh服务进程<br>ps -ef | grep sshd | grep -v grep 查找指定服务进程，排除gerp身<br>ps -ef | grep sshd -c 查找指定进程个数 </p>
+<p><strong>find</strong>：在目录结构总搜索文件，并对搜索结果进行指定的操作<br>ind 默认搜索当前目录及其子目录，并且不过滤任何结果（也就是返回所有文件），将它们全都显示在屏幕上。</p>
+<p>使用实例：</p>
+<p>find . -name “<em>.log” -ls  在当前目录查找以.log结尾的文件，并显示详细信息。<br>find /root/ -perm 600   查找/root/目录下权限为600的文件<br>find . -type f -name “</em>.log”  查找当目录，以.log结尾的普通文件<br>find . -type d | sort   查找当前所有目录并排序<br>find . -size +100M  查找当前目录大于100M的文件</p>
+<p>tar 解压<br>-c 创建一个新归档</p>
+<p>-f 当与-c选项一起使用时，创建的tar文件使用该选项指定的文件名；当与-x选项一起使用时，则解除该选项指定的归档</p>
+<p>-t 显示包括在tar文件中的文件列表</p>
+<p>-v 显示文件的归档进度</p>
+<p>-x 从归档中抽取文件</p>
+<p>-z 使用gzip压缩tar文件</p>
+<p>-j 使用bzip2压缩tar文件</p>
+<p><strong>要创建一个tar文件，输入命令</strong>：tar –cvf filename.tar directory/file/home/mine ： 将directory/file、/home/mine放入归档文件中。</p>
+<p>要列出tar文件的内容，输入命令：</p>
+<p>tar –tvf filename.tar</p>
+<p>要抽取tar文件的命令，输入命令：</p>
+<p>tar –xvf filename.tar</p>
+<p>这个命令不会删除tar文件，但会把解除归档的内容复制到当前工作目录下，并保留归档文件所使用的任何目录结构。</p>
+<p><strong>压缩文件</strong>：tar默认不压缩文件。<strong>要创建一个使用tar和bzip2来归档压缩的文件，使用-j选项</strong>：</p>
+<p>tar –cvfj filename.tbz file</p>
+<p><strong>解压tbz格式</strong>: tar -xvfj file.tar.tbz example.cpp //解压形成example.cpp的格式<br><strong>解压gz格式</strong>：tar -zxvf  file.tar.gz  //解压到当前的文件夹</p>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p>查看网络状态</p>
+<p>查看系统上的网络状态。<br>选项：<br>-a 显示所有正在或不在侦听的套接字<br>-n 显示数字形式地址而不是去解析主机、端口或用户名<br>-p 显示套接字所属进程的PID和名称</p>
+<p>示例：<br>netstat -anp<br>netstat -anp | grep “进程名”<br>netstat -anp | grep “端口号” </p>
 
                 
             </div>
@@ -866,7 +891,7 @@ Linux 目录~ home目录/ root目录/lib 系统使用的函数库的">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">69.6k</span>
+                        class="white-color">73.3k</span>
             
             
             
