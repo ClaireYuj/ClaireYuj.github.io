@@ -405,7 +405,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    483
+                    758
                 </div>
                 
 
@@ -443,7 +443,15 @@
 <li>用户隐私检测<br>用户密码是否加密</li>
 <li>数据库备份和同步功能测试用例<br>检查数据库备份是否正常；<br>检查数据库备份和同步的时间间隔是否合理；<br>检查数据库备份和同步的数据完整性和一致性。</li>
 </ol>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+<h2 id="ajax"><a href="#ajax" class="headerlink" title="ajax"></a>ajax</h2><p>使用ajax+json进行数据通信，使得网页无需在刷新页面的情况下进更新<br>内容</p>
+<h2 id="在项目中找出的bug"><a href="#在项目中找出的bug" class="headerlink" title="在项目中找出的bug"></a>在项目中找出的bug</h2><ol>
+<li><p>功能方面：<br><strong>注册</strong>：用户注册时时发现充值数目出错，通过测试排查，定位到是在多用户情况下注册时jdbc往数据库中插入数据时会将将user表和topup（也就是充值表）中写入数据，由于设置的是用户id是自增，会出现在两个表中用户id数据不一致的情况。</p>
+</li>
+<li><p>数据库内容备份时：</p>
+</li>
+</ol>
+<p>由于我们这个项目是一个分布式系统，它的服务和数据库分布部署在不同的机器上，这三个数据库会进行数据同步用于备份。在检测时我们发现，如果有一台服务器宕机了，网页就接收不到数据了。通过对代码的逐步检查、debug，定位到了是jdbc连接的问题，由于在开发过程中的疏忽，三个连接并不是连接连接到三台数据库。</p>
+
                 
             </div>
             <hr/>
@@ -846,7 +854,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">75.6k</span>
+                        class="white-color">76.4k</span>
             
             
             

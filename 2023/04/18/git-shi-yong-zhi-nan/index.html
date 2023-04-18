@@ -539,12 +539,15 @@ git checkout newbranch
 <p>git clone -b 分支名： 拉取知道哪个分支</p>
 <pre class=" language-linux"><code class="language-linux">git clone master git@github.com:xxx.git
 </code></pre>
+<pre class=" language-linux"><code class="language-linux">git pull origin master
+</code></pre>
+<p>将远程分支拉到本地并合并</p>
 <h3 id="git提交本地的到远程git-add-git-commit-git-push"><a href="#git提交本地的到远程git-add-git-commit-git-push" class="headerlink" title="git提交本地的到远程git add, git commit, git push"></a>git提交本地的到远程git add, git commit, git push</h3><pre class=" language-linux"><code class="language-linux">git status
 git add --all
 git commit -m "add xxx"
 git push origin master
 </code></pre>
-<h3 id="git-fetch拉取全部分支"><a href="#git-fetch拉取全部分支" class="headerlink" title="git fetch拉取全部分支"></a>git fetch拉取全部分支</h3><p>也可以git fetch xxx拉取指定分支</p>
+<h3 id="git-fetch拉取全部分支"><a href="#git-fetch拉取全部分支" class="headerlink" title="git fetch拉取全部分支"></a>git fetch拉取全部分支</h3><p>也可以git fetch xxx拉取指定分支（但fetch不会合并，pull会合并）</p>
 
                 
             </div>
@@ -940,7 +943,7 @@ git push origin master
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">75.6k</span>
+                        class="white-color">76.4k</span>
             
             
             

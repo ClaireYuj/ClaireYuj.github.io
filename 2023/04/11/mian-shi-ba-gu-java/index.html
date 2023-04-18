@@ -602,7 +602,8 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
 <h2 id="重载和重写"><a href="#重载和重写" class="headerlink" title="重载和重写"></a>重载和重写</h2><p><strong>重写</strong>：子类重写父类的方法<br><strong>重载</strong>：同名方法，不同的参数类型、参数数量、参数顺序</p>
 <h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="final"><a href="#final" class="headerlink" title="final"></a>final</h3><p>final修饰的类不可以被继承，但可以继承其他类<br>final修改的方法不可以被覆盖，但可以被继承<br>final修饰的基本数据类型是常量</p>
 <h3 id="static"><a href="#static" class="headerlink" title="static"></a>static</h3><p>static方法：静态方法不能访问类的非静态成员变量和非静态成员方法<br>static变量：静态变量被所有的对象所共享，在内存中只有一个父辈，在创建对象时被初始化</p>
-<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/didi1663478999/article/details/98523122">示例</a><br>在多线程中，volatile和synchronized都起到非常重要的作用，synchronized是通过加锁来实现线程的安全性。而volatile的主要作用是在多处理器开发中保证共享变量对于多线程的可见性。<br>可见性的意思是，<strong>当一个线程修改一个共享变量时，另外一个线程能读取到修改以后的值</strong><br>volatile时乐观锁（认为自己使用数据时不会有别的线程修改数据，因此不会添加锁），适合读取操作频繁的场景</p>
+<h3 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h3><p><strong>被volatile修饰的变量能够保证每个线程能够获取该变量的最新值，从而避免出现数据脏读的现象。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/didi1663478999/article/details/98523122">示例</a><br>在多线程中，volatile和synchronized都起到非常重要的作用，synchronized是通过加锁来实现线程的安全性。而volatile的主要作用是在多处理器开发中保证共享变量对于多线程的可见性。<br>可见性的意思是，<strong>当一个线程修改一个共享变量时，另外一个线程能读取到修改以后的值</strong><br>volatile时乐观锁（认为自己使用数据时不会有别的线程修改数据，因此不会添加锁），适合读取操作频繁的场景</p>
 <h3 id="synchronized"><a href="#synchronized" class="headerlink" title="synchronized"></a>synchronized</h3><p>synchronied主要用于解决多线程的资源同步性，对于普通同步方法–锁是当前实例对象，对于静态同步方法，锁是当前类的class对象。对于同步方法块，所是synchronized括号里配置的对象。<br>synchronized是所著当前变量，只有当前线程可以访问该变量，其他线程会block<br>voliate仅仅能在变量级别使用，而synchronzed可以在变量、方法和类级别使用<br>volatile进能实现变量的修改可见性，不能保证原子性，而synchronized可以保证变量的修改可见性和原子性<br>synchronized和lock都是悲观锁，认为在自己写入数据时会有别的线程修改数据，适合写入操作频繁的场景</p>
 <p>synchronized 在字节码层被映射成两个指令：monitorenter 和 monitorexit，当一个线程遇到 monitorenter 指令时，会尝试去获取锁，如果获取成功，锁的数量 +1，（因为synchronized是一个可重入锁，需要使用锁计数来判断锁的情况），如果没有获取到锁，就会阻塞；当线程遇到 monitorexit 指令时，锁计数 -1，当计数器为 0 时，线程释放锁；如果线程遇到异常，也会释放锁。</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">APP</span> <span class="token punctuation">{</span>
@@ -1096,7 +1097,7 @@ System<span class="token punctuation">.</span>out<span class="token punctuation"
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">75.6k</span>
+                        class="white-color">76.4k</span>
             
             
             
