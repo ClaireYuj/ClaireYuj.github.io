@@ -403,7 +403,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
@@ -469,7 +469,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>但这段代码在多线程下会存在问题，会发现结果都不一样，因此，并发情况下，这段代码是有问题的。我们需要进行两端检测，进行“加锁”：synchronized (Singleton.class)。</p>
+<p>但这段代码在多线程下会存在问题，会发现结果都不一样，因此，并发情况下，这段代码是有问题的。我们需要进行两端检测，进行“加锁”：synchronized (Singleton.class)。<br>同时，我们使用双重检查锁定模式，即在第一次检查实例是否存在后，使用 synchronized 关键字进行同步，确保只有一个线程能够创建 Singleton 实例。</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LazyMan</span> <span class="token punctuation">{</span>
     <span class="token keyword">private</span> <span class="token function">LazyMan</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -974,7 +974,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">76.4k</span>
+                        class="white-color">78.2k</span>
             
             
             
