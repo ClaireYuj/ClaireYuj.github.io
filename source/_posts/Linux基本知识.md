@@ -120,7 +120,18 @@ find . -type f -name "*.log"  查找当目录，以.log结尾的普通文件
 find . -type d | sort   查找当前所有目录并排序 
 find . -size +100M  查找当前目录大于100M的文件
 
+find和grep都是在Linux系统中用于查找文件或字符串的命令，但它们的用途和功能是不同的。
 
+find命令用于在指定的目录中查找文件，可以根据文件名、文件类型、文件大小、权限等属性进行过滤搜索。例如，可以使用以下命令在当前目录及其子目录中查找所有名为filename的文件：
+```linux
+find . -name filename
+```
+grep命令用于在指定的文件中查找包含指定字符串的行，可以根据字符串、正则表达式等进行过滤搜索。例如，可以使用以下命令在文件filename中查找包含字符串"searchtext"的行：
+```linux
+grep "searchtext" filename
+```
+
+### 压缩和解压文件
 tar 解压
 -c 创建一个新归档
 
@@ -173,6 +184,33 @@ netstat -anp | grep "端口号"
 
 
 
+### 挂载后台
+
+```linux
+nohup command &
+
+```
+
+### 查找进程
+
+```linux
+ps -ef
+```
+
+可以显示用户所有进程
+
+```linux
+ps-ef | grep firefox
+```
+查找所有有火狐的进程
 
 
 
+```linux
+pkill firefox 
+```
+or
+```linux
+kill 12345
+```
+都可以杀死进程
