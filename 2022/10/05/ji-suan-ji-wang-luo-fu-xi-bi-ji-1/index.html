@@ -402,7 +402,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    7.2k
+                    7.5k
                 </div>
                 
 
@@ -516,11 +516,12 @@
 <p>3.<strong>服务器推送</strong>：可以主动将资源推送给客户端缓存中</p>
 <p>4.<strong>二进制格式</strong>：采用二进制而非文本格式，将所有传输的信息分割为更小的消息和帧（二进制帧）</p>
 <h2 id="DNS解析过程"><a href="#DNS解析过程" class="headerlink" title="DNS解析过程"></a>DNS解析过程</h2><p>域名解析：浏览器根据URL中的域名，向本地DNS服务器发送域名解析的请求<br>本地DNs解析：本地DNS服务器收到请求后，1.在DNS缓存中查找是否有对应的IP，若有，直接返回。 2. 若没有本地DNs服务器向互联网上的root 服务器发送请求<br>根DNS解析：根服务器收到请求后，转发给顶级域名服务器<br>顶级域名服务器解析：转发给对应的刺激域名服务器<br>次级域名服务器：收到请求后，在自己的DNS缓存中查找对应的IP，若有，返回；否则向下一级域名发送请求直到找到。</p>
-<h2 id="输入URL到显示网页发生了什么"><a href="#输入URL到显示网页发生了什么" class="headerlink" title="输入URL到显示网页发生了什么"></a>输入URL到显示网页发生了什么</h2><p><strong>浏览器解析URL对应的IP地址</strong><br>​ DNS解析过程，浏览器缓存—&gt;操作系统缓存—&gt;本地DNS—&gt;根据转发模式选择迭代还是递归查询</p>
+<h2 id="输入URL到显示网页发生了什么"><a href="#输入URL到显示网页发生了什么" class="headerlink" title="输入URL到显示网页发生了什么"></a>输入URL到显示网页发生了什么</h2><p><strong>浏览器解析URL对应的IP地址</strong><br>​ 1. 首先，浏览器会将URL分解为三个部分：协议（例如http或https），主机名（例如<a target="_blank" rel="noopener" href="http://www.example.com)和资源路径(例如/index.html%EF%BC%89%E3%80%82">www.example.com）和资源路径（例如/index.html）。</a><br> 2. 浏览器会检查本地缓存，看是否存在与该URL相对应的缓存文件。如果存在，浏览器会从缓存中加载网页，并跳转到第9步。如果不存在，则会进行下一步。<br> 3. 浏览器会使用DNS（域名系统）将主机名解析为IP地址。</p>
+<p><strong>浏览器会建立一个与服务器的TCP（传输控制协议）连接。</strong><br>这是通过在浏览器和服务器之间发送和接收数据包来实现的。</p>
 <p><strong>浏览器向服务器发送一个HTTP请求报文</strong><br>​ 传输层上建立TCP连接，网络层用到了IP协议(负责在网络层传输数据），还会用到RIP或者OSPF进行路由选择，然后用ARP协议解析IP地址对应的MAC地址，使得数据能够在数据链路层上进行传输（不应该是最后到物理层传输吗）。</p>
 <p>​ HTTP请求方法有哪些（post/get/head/put/delete）</p>
-<p><strong>服务器请求处理并返回一个HTTP响应报文</strong><br>​ HTTP响应报文的结构，状态码</p>
-<p><strong>服务器返回一个HTML响应，浏览器收到HTML响应并渲染界面</strong></p>
+<p><strong>服务器请求处理并返回一个HTTP响应报文</strong><br>​ HTTP响应报文的结构，状态码<br>浏览器收到响应并解析响应头，然后检查状态码。如果状态码是200 OK，表示请求成功。如果状态码是301或302，表示需要重定向到另一个URL。如果状态码是404，表示请求的资源不存在。如状态码是500，表示服务器出现错误。</p>
+<p><strong>服务器返回一个HTML响应，浏览器收到HTML响应并渲染界面</strong><br>浏览器根据响应头和响应体渲染网页并显示在屏幕上。<br>如果网页中有其他资源（例如图片、CSS文件或JavaScript文件），则浏览器会执行类似的步骤来获取这些资源并在网页中显示。</p>
 <h2 id="get和post的区别"><a href="#get和post的区别" class="headerlink" title="get和post的区别"></a>get和post的区别</h2><p>注意存放在请求行和请求体的不是方法 而是请求/提交的数据啊喂 post和get方法都是在请求行中啦</p>
 <p>1.get数据明文存放在http请求行的url之后，post则是将提交的数据放在http请求报文的请求体中</p>
 <p>2.受浏览器对url长度的限制，get传送数据量应不超过2KB。post传送数据量则一般无此限制</p>
@@ -954,7 +955,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">78.2k</span>
+                        class="white-color">78.6k</span>
             
             
             
