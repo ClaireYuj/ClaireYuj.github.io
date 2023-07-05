@@ -6,8 +6,11 @@
     <meta charset="utf-8">
     <meta name="keywords" content="git使用指南, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
     <meta name="description" content="git命令大全
-配置与初始化初次使用git需要设置你的用户名以及邮箱，这将作为当前机器git的标识，如果你用它来下载远程仓库一些需要登录权限的仓库会要求登录，git默认使用配置邮箱以及用户名登入，但会要求你手动输入密码用户名设置
-git c">
+流程多人合作写一个东西，先进行clonegit clone 仓库地址 
+修改或者添加后用下面操作进行上传，这样会减少上传时出现错误。
+1.把需要上传的文件夹变成git可管理的文件；
+git init
+2.将本地文件添加到暂存">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -401,7 +404,7 @@ git c">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.7k
+                    1.9k
                 </div>
                 
 
@@ -424,6 +427,19 @@ git c">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/bjbz_cxy/article/details/116703787?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168178388816800182174092%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=168178388816800182174092&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-116703787-null-null.142%5Ev84%5Econtrol_2,239%5Ev2%5Einsert_chatgpt&amp;utm_term=git%E5%91%BD%E4%BB%A4&amp;spm=1018.2226.3001.4187">git命令大全</a></p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>多人合作写一个东西，先进行clone<br>git clone 仓库地址 </p>
+<p>修改或者添加后用下面操作进行上传，这样会减少上传时出现错误。</p>
+<p>1.把需要上传的文件夹变成git可管理的文件；</p>
+<p>git init</p>
+<p>2.将本地文件添加到暂存区；</p>
+<p>git add .</p>
+<p>3.将暂存区文件提交到主分支（master）上；</p>
+<p>git commit -m’对修改过的代码的描述’</p>
+<p>4.添加你要上传到的远程仓库；</p>
+<p>git remote add origin 仓库地址</p>
+<p>5.进行初始化推送；</p>
+<p>git push -u origin master或git push origin master</p>
+<p>6.如果在第五步后报错那就先git pull –rebase origin master同步远程仓库再进行第五步推送。</p>
 <h3 id="配置与初始化"><a href="#配置与初始化" class="headerlink" title="配置与初始化"></a>配置与初始化</h3><p>初次使用git需要设置你的用户名以及邮箱，这将作为当前机器git的标识，如果你用它来下载远程仓库一些需要登录权限的仓库会要求登录，git默认使用配置邮箱以及用户名登入，但会要求你手动输入密码<br>用户名设置</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"你的用户名"</span>
 </code></pre>
@@ -943,7 +959,7 @@ git push origin master
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">78.6k</span>
+                        class="white-color">78.8k</span>
             
             
             
