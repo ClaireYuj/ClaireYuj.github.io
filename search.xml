@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>UE+AirSim仿真UAV</title>
+      <link href="/2023/10/09/ue-airsim-fang-zhen-uav/"/>
+      <url>/2023/10/09/ue-airsim-fang-zhen-uav/</url>
+      
+        <content type="html"><![CDATA[<p>参考视频<a href="https://www.bilibili.com/video/BV1wz4y1i7sW/?spm_id_from=333.999.0.0">开源无人机模拟和GIS监视器UE+AirSim</a></p><p><a href="https://www.bilibili.com/video/BV15u411C7pM/?spm_id_from=333.788.recommend_more_video.4&amp;vd_source=f618be285e44e05f2b481fa28b9fe6ad">使用深度强化学习的无人机语义线索主动路径感知</a></p><h2 id="基础环境配置"><a href="#基础环境配置" class="headerlink" title="基础环境配置"></a>基础环境配置</h2><ol><li>下载UE，直接<a href="https://www.unrealengine.com/zh-CN/">官网</a>下载即可</li><li>安装VS Studio2022注意需要是2022，之前尝试了2017，在配置AirSim时报错</li><li>VS Studio2022需要配置C++和Windows10 SDK 10.0.19041的桌面开发</li><li>AirSim 配置:在自定义AirSim目录下</li></ol><pre class=" language-cmd"><code class="language-cmd">git clone git@github.com:microsoft/AirSim.git</code></pre><ol start="5"><li>build<br>从Vs Studio的工具-&gt;命令行 进入AirSim目录</li></ol><pre class=" language-cmd"><code class="language-cmd">cd AirSim\Unreal\Environments\Blocksbuild.cmd</code></pre><p>如果不成功就多试几次<br>6. 设置block为启动项<br><img src="/img/posts/UAV/block_startup.jpg" alt="设置block为启动项"><br>7.打开UE启动</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> UAV轨迹规划 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UE4 </tag>
+            
+            <tag> UAV轨迹规划 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>cocos开发记录</title>
+      <link href="/2023/08/08/cocos-kai-fa-ji-lu/"/>
+      <url>/2023/08/08/cocos-kai-fa-ji-lu/</url>
+      
+        <content type="html"><![CDATA[<h2 id="碰撞分组"><a href="#碰撞分组" class="headerlink" title="碰撞分组"></a>碰撞分组</h2><p><a href="https://docs.cocos.com/creator/manual/zh/physics/physics-group-mask.html?h=%E6%8E%A9%E7%A0%81">碰撞与分组</a><br>分组和掩码是物体之间能否进行物理碰撞检测的必要条件。分组可以简单的理解为一个碰撞对象所处的分组，掩码可以简单的理解为该碰撞对象需要与哪些分组对象进行碰撞<br>可以通过直接在项目设置 面板进行设置，位置为 菜单栏 =&gt; 项目 =&gt; 项目设置 进行设置</p><p><img src="/img/posts/GameDeve/CocosPhysicsGroupSetting.jpg" alt="project setting"></p><p>在rigidbody处进行设置group<br><img src="/img/posts/GameDeve/CocosgGoupSetting.jpg" alt="group setting"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Cocos </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>经纬恒润实习面经</title>
       <link href="/2023/04/19/jing-wei-heng-run-shi-xi-mian-jing/"/>
       <url>/2023/04/19/jing-wei-heng-run-shi-xi-mian-jing/</url>
