@@ -436,8 +436,8 @@
 <h2 id="四旋翼的能量和系统设计"><a href="#四旋翼的能量和系统设计" class="headerlink" title="四旋翼的能量和系统设计"></a>四旋翼的能量和系统设计</h2><p>推力与电机RPMs（转速）或角速度的曲线是一个近似的二次方程。<br>每次电机旋转，同样存在阻力需要电机去克服，阻力的瞬时关系也是二次方程<br><img src="/img/posts/UAV/course06.jpg"><br>给定某运行速度ω0，相应地， 该运行速度会产生一个阻力矩， 且每个转子都要克服相应的阻力矩。而这里就是引入电机的时候了， 通过调整电机的尺寸， 从而，电机可产生扭矩来克服前述的阻力矩。因此，当四旋翼处于悬停状态时， 转子通过转速补偿自身的重力。即，使用重量可以确定每个转子的运行速度。 这反过来给出需要应用在每一个电机上的扭矩大小。</p>
 <p><img src="/img/posts/UAV/course07.jpg"></p>
 <p>四旋翼旋转产生力矩，当产生的力矩与重力抵消时，悬停。<br><strong>如何控制UAV的高度</strong></p>
-<p><img src="/img/posts/UAV/course08.jpg"><br>State:x<br>Input:u<br>输入函数 u(t)<br>轨迹函数 $x^{des}(t)$</p>
-<p>误差：e(t) = x^{des}(t)$ - x(t)也就是预测轨迹与实际轨迹的误差。我们要尽可能消差为0<br><img src="/img/posts/UAV/course09.jpg"></p>
+<p><img src="/img/posts/UAV/course08.jpg"><br>State:x<br>Input:$u_0$<br>输入函数 u(t)<br>轨迹函数 $x^{des}(t)$ </p>
+<p>误差：e(t) = $x^{des}(t)$ - x(t)也就是预测轨迹与实际轨迹的误差。我们要尽可能消差为0<br><img src="/img/posts/UAV/course09.jpg"></p>
 
                 
             </div>
