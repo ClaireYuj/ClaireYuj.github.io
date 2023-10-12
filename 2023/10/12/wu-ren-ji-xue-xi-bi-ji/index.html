@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Leetcode101-搜索算法, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
-    <meta name="description" content="DFS:深度优先搜索 (DFS)：DFS是通过递归搜索来实现的，它沿着树的深度搜索，直到找到目标节点或到达末端。步骤，从初始节点-&amp;gt;判断是否满足进入下一个节点的条件-&amp;gt;进入下一个节点-&amp;gt;进行遍历操作-&amp;gt;在该节点继续d">
+    <meta name="keywords" content="无人机学习笔记, 嘟噜嘟噜嘟噜噜 嘟噜嘟噜嘟噜噜 oooOO">
+    <meta name="description" content="参考课程Robotics: Aerial Robotics
+简介四旋翼以对于四旋翼而言,当观察马达1与3，以及马达2与4时，他们分别转向不同的方向。
+所以事实上，如果你观察表示旋转方向的箭头时， Omega 1与Omega 3是逆时针方向，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Leetcode101-搜索算法 | DULULU</title>
+    <title>无人机学习笔记 | DULULU</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,12 +338,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Leetcode101-搜索算法</h1>
+                    <h1 class="description center-align post-title">无人机学习笔记</h1>
                 </div>
             </div>
         </div>
@@ -365,8 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/leetcode/">
-                                <span class="chip bg-color">leetcode</span>
+                            <a href="/tags/UAV/">
+                                <span class="chip bg-color">UAV</span>
                             </a>
                         
                     </div>
@@ -377,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Leetcode101/" class="post-category">
-                                Leetcode101
+                            <a href="/categories/UAV%E8%BD%A8%E8%BF%B9%E8%A7%84%E5%88%92/" class="post-category">
+                                UAV轨迹规划
                             </a>
                         
                     </div>
@@ -390,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2023-03-26
+                    2023-10-12
                 </div>
                 
 
@@ -399,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    946
+                    829
                 </div>
                 
 
@@ -421,121 +423,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>DFS:深度优先搜索 (DFS)：DFS是通过<strong>递归</strong>搜索来实现的，它沿着树的深度搜索，直到找到目标节点或到达末端。<br>步骤，从初始节点-&gt;判断是否满足进入下一个节点的条件-&gt;进入下一个节点-&gt;进行遍历操作-&gt;在该节点继续dfs</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">DFS</span><span class="token punctuation">(</span>Node node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>node <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token function">visit</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    node<span class="token punctuation">.</span>visited <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span>Node n <span class="token operator">:</span> node<span class="token punctuation">.</span>adjacent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>n<span class="token punctuation">.</span>visited <span class="token operator">==</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token function">DFS</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>而广度有限BFS:是一种图形搜索算法，它在图中沿着宽度遍历，先找到所有与起点节点相邻的节点，然后再找到与它们相邻的节点，以此类推。广度优先中常使用<strong>队列</strong>存储</p>
-<pre class=" language-java"><code class="language-java"><span class="token keyword">void</span> <span class="token function">BFS</span><span class="token punctuation">(</span>Node node<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    Queue<span class="token operator">&lt;</span>Node<span class="token operator">></span> queue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span>Node<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    node<span class="token punctuation">.</span>visited <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-    queue<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>queue<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Node element <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">visit</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>Node n <span class="token operator">:</span> element<span class="token punctuation">.</span>adjacent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>n<span class="token punctuation">.</span>visited <span class="token operator">==</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                n<span class="token punctuation">.</span>visited <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-                queue<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="695-岛屿问题"><a href="#695-岛屿问题" class="headerlink" title="695.岛屿问题"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/max-area-of-island/">695.岛屿问题</a></h2><p>给你一个大小为 m x n 的二进制矩阵 grid 。</p>
-<p>岛屿&nbsp;是由一些相邻的&nbsp;1&nbsp;(代表土地) 构成的组合，这里的「相邻」要求两个 1 必须在 水平或者竖直的四个方向上 相邻。你可以假设&nbsp;grid 的四个边缘都被 0（代表水）包围着。</p>
-<p>岛屿的面积是岛上值为 1 的单元格的数目。</p>
-<p>计算并返回 grid 中最大的岛屿面积。如果没有岛屿，则返回面积为 0</p>
-<p><img src="/img/posts/Leetcode/leetcode695.jpg" alt="示例"></p>
-<p>用dfs</p>
-<pre class=" language-java"><code class="language-java">
-<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//可以看图理解，在加上记住这个模板。</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxAreaOfIsland</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//定义一个表示岛屿的面积</span>
-        <span class="token keyword">int</span> max <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//这两个for循环是来遍历整张二维格上的所有陆地的。</span>
-        <span class="token comment" spellcheck="true">//i 表示行，j表示列</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>grid<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span>grid<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                <span class="token comment" spellcheck="true">//陆地的格</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>grid<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    <span class="token comment" spellcheck="true">//取出最大的面积</span>
-                    max <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span><span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span>i<span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>  
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//返回最大的陆地面积</span>
-        <span class="token keyword">return</span> max<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">int</span>  <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> grid<span class="token punctuation">,</span><span class="token keyword">int</span> i<span class="token punctuation">,</span><span class="token keyword">int</span> j<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//当超出岛屿边界（上下左右）的时候，就直接退出，特别要加上当遍历到海洋的时候也要退出，</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">||</span>j<span class="token operator">&lt;</span><span class="token number">0</span> <span class="token operator">||</span> i<span class="token operator">>=</span>grid<span class="token punctuation">.</span>length <span class="token operator">||</span> j<span class="token operator">>=</span> grid<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token operator">||</span> grid<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-       <span class="token comment" spellcheck="true">//定义一个变量表示岛屿的面积，就是包含几个陆地</span>
-        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//将陆地改为海洋，防止重复陆地重复遍历。</span>
-        grid<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//遍历上方元素，每遍历一次陆地就加一</span>
-        sum <span class="token operator">+=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//遍历下方元素</span>
-        sum <span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//遍历右边元素</span>
-        sum <span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span>i<span class="token punctuation">,</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//遍历左边元素</span>
-        sum <span class="token operator">+=</span> <span class="token function">dfs</span><span class="token punctuation">(</span>grid<span class="token punctuation">,</span>i<span class="token punctuation">,</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="547-省份数量"><a href="#547-省份数量" class="headerlink" title="547.省份数量"></a><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/number-of-provinces/">547.省份数量</a></h2><p>有 n 个城市，其中一些彼此相连，另一些没有相连。如果城市 a 与城市 b 直接相连，且城市 b 与城市 c 直接相连，那么城市 a 与城市 c 间接相连。</p>
-<p>省份 是一组直接或间接相连的城市，组内不含其他没有相连的城市。</p>
-<p>给你一个 n x n 的矩阵 isConnected ，其中 isConnected[i][j] = 1 表示第 i 个城市和第 j 个城市直接相连，而 isConnected[i][j] = 0 表示二者不直接相连。</p>
-<p><img src="/img/posts/Leetcode/leetcode547.jpg" alt="示例"></p>
-<pre class=" language-java"><code class="language-java">
-<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">findCircleNum</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> isConnected<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> province<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>isConnected<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//利用province来记录</span>
-        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">// province[0] = 1;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>isConnected<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>province<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 只有当province为0的时候才会进入新的一个省份，需要重新进行dfs</span>
-                province<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> count<span class="token punctuation">;</span>
-                count<span class="token operator">++</span><span class="token punctuation">;</span>
-            
-                <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span>isConnected<span class="token punctuation">.</span>length<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    <span class="token keyword">if</span><span class="token punctuation">(</span>isConnected<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> province<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                        province<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> province<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                        <span class="token function">dfs</span><span class="token punctuation">(</span>isConnected<span class="token punctuation">,</span> j<span class="token punctuation">,</span> province<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>   
-        <span class="token keyword">return</span> count<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span>a<span class="token punctuation">,</span> <span class="token keyword">int</span> j<span class="token punctuation">,</span> <span class="token keyword">int</span> province<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>j<span class="token operator">&lt;</span>a<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>k<span class="token operator">&lt;</span>a<span class="token punctuation">.</span>length<span class="token punctuation">;</span>k<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">1</span> <span class="token operator">&amp;&amp;</span> province<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-                    province<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> province<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 每次dfs将province[k]设成现在省份的index</span>
-                    <span class="token function">dfs</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> k <span class="token punctuation">,</span>province<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
+                <p>参考课程<a target="_blank" rel="noopener" href="https://www.coursera.org/learn/robotics-flight">Robotics: Aerial Robotics</a></p>
+<h2 id="简介四旋翼"><a href="#简介四旋翼" class="headerlink" title="简介四旋翼"></a>简介四旋翼</h2><p>以对于四旋翼而言,当观察马达1与3，以及马达2与4时，他们分别转向不同的方向。</p>
+<p>所以事实上，如果你观察表示旋转方向的箭头时， Omega 1与Omega 3是逆时针方向，当从顶部观察时。 而Omega 2与Omega 4是逆时针方向， 当从底部观察时。<br><img src="/img/posts/UAV/course00.jpg"></p>
+<p>当两边的旋翼转速不一样时，例如左边比右边转速更快，会使得无人机转向右边<br><img src="/img/posts/UAV/course01.jpg"><br><img src="/img/posts/UAV/course02.jpg"></p>
+<p><strong>如何实现无人机的移动？</strong><br>如果是向前移动，只需要让无人机向前倾斜。<br>你真正需要做的是使飞行器向前方倾斜， 这使得飞行器向前加速。 但是当你接近目标时，你希望使飞行器<strong>停下来</strong>。 为此，你需要<strong>向反方向倾斜</strong>。 产生一个相反推力使其在接近目标时减速。 然后你使它反向倾斜以恢复到平衡状态。</p>
+<h3 id="UAV的关键组成"><a href="#UAV的关键组成" class="headerlink" title="UAV的关键组成"></a>UAV的关键组成</h3><p><strong>State Estimate</strong><br>指车辆估计其位置 、方向和速度的能力。 换句话说，位置和方向的变化率。<br>当在一些无GPS、无运动扑捉相机 的条件下，如何实现导航？<br><img src="/img/posts/UAV/course03.jpg" alt="假设有三个柱子，假定机器人有传感器可以测量障碍，机器人到主子的距离分别为d1,d2,d3"></p>
+<p>SLAM建图，尝试描述delta x和x1,y1,x2,y2,x3,y3。假定现在的距离估计d1‘，d2‘与d3‘ 不同于原始的深度估计d1，d2与d3。 所以我们需要自问的问题是，对于机器人是否可能 同时估计柱子的位置与位移delta x。<br><img src="/img/posts/UAV/course05.jpg" alt="实验室所使用无人机"></p>
+<p><strong>Control</strong><br>根据对当前状态的估计，车辆必须能够计算出需要发送到电机或转子的命令，并让它们以适当的速度旋转以实现所需的动作。</p>
+<p><strong>Mapping</strong><br>车辆必须具备一定的基本能力来绘制其环境地图。 如果它不知道周围的环境是什么样子， 那么它就无法推理这种环境并规划在这种环境中的安全轨迹。</p>
+<p><strong>Planning</strong><br>最后，车辆必须能够计算出如何绕过一组障碍物并到达目的地的轨迹。</p>
+<h2 id="四旋翼的能量和系统设计"><a href="#四旋翼的能量和系统设计" class="headerlink" title="四旋翼的能量和系统设计"></a>四旋翼的能量和系统设计</h2><p>推力与电机RPMs（转速）或角速度的曲线是一个近似的二次方程。<br>每次电机旋转，同样存在阻力需要电机去克服，阻力的瞬时关系也是二次方程<br><img src="/img/posts/UAV/course06.jpg"><br>给定某运行速度ω0，相应地， 该运行速度会产生一个阻力矩， 且每个转子都要克服相应的阻力矩。而这里就是引入电机的时候了， 通过调整电机的尺寸， 从而，电机可产生扭矩来克服前述的阻力矩。因此，当四旋翼处于悬停状态时， 转子通过转速补偿自身的重力。即，使用重量可以确定每个转子的运行速度。 这反过来给出需要应用在每一个电机上的扭矩大小。</p>
+<p><img src="/img/posts/UAV/course07.jpg"></p>
+<p>四旋翼旋转产生力矩，当产生的力矩与重力抵消时，悬停。<br><strong>如何控制UAV的高度</strong></p>
+<p><img src="/img/posts/UAV/course08.jpg"><br>State:x<br>Input:u<br>输入函数 u(t)<br>轨迹函数 $x^{des}(t)$</p>
+<p>误差：e(t) = x^{des}(t)$ - x(t)也就是预测轨迹与实际轨迹的误差。我们要尽可能消差为0<br><img src="/img/posts/UAV/course09.jpg"></p>
 
                 
             </div>
@@ -562,7 +464,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://claireyuj.github.io/2023/03/26/leetcode101-sou-suo-suan-fa/">https://claireyuj.github.io/2023/03/26/leetcode101-sou-suo-suan-fa/</a>
+                    <a href="https://claireyuj.github.io/2023/10/12/wu-ren-ji-xue-xi-bi-ji/">https://claireyuj.github.io/2023/10/12/wu-ren-ji-xue-xi-bi-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -600,8 +502,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/leetcode/">
-                                    <span class="chip bg-color">leetcode</span>
+                                <a href="/tags/UAV/">
+                                    <span class="chip bg-color">UAV</span>
                                 </a>
                             
                         </div>
@@ -649,17 +551,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2023/04/01/jdbc-yu-mysql-suo-ji-zhi/">
+                <a href="/2023/10/12/wu-ren-ji-xue-xi-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="JDBC与mysql锁机制">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="无人机学习笔记">
                         
-                        <span class="card-title">JDBC与mysql锁机制</span>
+                        <span class="card-title">无人机学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -669,30 +572,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-04-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
-                                </a>
-                            
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/%E9%9D%A2%E8%AF%95/" class="post-category">
-                                    面试
+                            <a href="/categories/UAV%E8%BD%A8%E8%BF%B9%E8%A7%84%E5%88%92/" class="post-category">
+                                    UAV轨迹规划
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/MySQL/">
-                        <span class="chip bg-color">MySQL</span>
+                    <a href="/tags/UAV/">
+                        <span class="chip bg-color">UAV</span>
                     </a>
                     
                 </div>
@@ -706,31 +606,31 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/03/21/ji-qi-xue-xi-4-tu-shen-jing-wang-luo/">
+                <a href="/2023/10/09/ue-airsim-fang-zhen-uav/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="机器学习4-图神经网络">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="UE+AirSim仿真UAV">
                         
-                        <span class="card-title">机器学习4-图神经网络</span>
+                        <span class="card-title">UE+AirSim仿真UAV</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            使用UE和AirSim+VSStudio2022仿真UAV
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    机器学习
+                            <a href="/categories/UAV%E8%BD%A8%E8%BF%B9%E8%A7%84%E5%88%92/" class="post-category">
+                                    UAV轨迹规划
                                 </a>
                             
                             
@@ -740,16 +640,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
+                    <a href="/tags/UE4/">
+                        <span class="chip bg-color">UE4</span>
                     </a>
                     
-                    <a href="/tags/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">图神经网络</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">神经网络</span>
+                    <a href="/tags/UAV%E8%BD%A8%E8%BF%B9%E8%A7%84%E5%88%92/">
+                        <span class="chip bg-color">UAV轨迹规划</span>
                     </a>
                     
                 </div>
@@ -870,6 +766,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 
