@@ -581,7 +581,28 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                优化器SGD(随机梯度下降)$$ \theta_{t+1} = \theta_t - lr * grad(\theta)$$梯度也就是损失函数loss($\theta$)对$\theta$的偏导，也据说loss function上升或者下降
+                                逻辑回归优化器优化器通过调节模型参数，最小化损失函数。
+三种梯度下降法对比
+
+
+类型
+优点
+缺点
+
+
+
+批量梯度下降
+稳定收敛，方向准确
+内存要求高，计算慢
+
+
+随机梯度下降
+内存小，适合在线学习
+震荡大，收敛不稳定
+
+
+小批量梯度下降
+平
                             
                         </div>
                         <div class="publish-info">
@@ -1189,7 +1210,7 @@ cuda:11.3.0（官网安装）https://developer.nvidia.com/cuda-11.3.0-download-a
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">80.7k</span>
+                        class="white-color">81.4k</span>
             
             
             
