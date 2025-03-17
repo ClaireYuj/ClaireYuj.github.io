@@ -58,6 +58,35 @@
     
     
     <entry>
+      <title>Attention机制学习</title>
+      <link href="/2023/11/06/attention-ji-zhi-xue-xi/"/>
+      <url>/2023/11/06/attention-ji-zhi-xue-xi/</url>
+      
+        <content type="html"><![CDATA[<ol><li>Encoder-Decoder机制</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 机器学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 深度学习 </tag>
+            
+            <tag> Attention </tag>
+            
+            <tag> Transformer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>无人机学习笔记</title>
       <link href="/2023/10/12/wu-ren-ji-xue-xi-bi-ji/"/>
       <url>/2023/10/12/wu-ren-ji-xue-xi-bi-ji/</url>
