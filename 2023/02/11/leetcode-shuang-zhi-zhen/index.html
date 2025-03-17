@@ -399,7 +399,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.9k
+                    2k
                 </div>
                 
 
@@ -528,6 +528,29 @@
 <blockquote>
 <p>示例：<br> 输入：nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3<br> 输出：[1,2,2,3,5,6]<br> 解释：需要合并 [1,2,3] 和 [2,5,6] 。<br> 合并结果是 [1,2,2,3,5,6] ，其中斜体加粗标注的为 nums1 中的元素。</p>
 </blockquote>
+<h3 id="双指针法（推荐）-1"><a href="#双指针法（推荐）-1" class="headerlink" title="双指针法（推荐）"></a>双指针法（推荐）</h3><p>需注意for的结束条件是j&gt;=0， 对于i的判断放入了for中的第一个if判断<br>当i &gt; 0且 nums1[i] &gt; nums2[j]时，才满足第一个条件</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums1<span class="token punctuation">,</span> <span class="token keyword">int</span> m<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums2<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> m<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> j <span class="token operator">=</span> n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> k <span class="token operator">=</span> m<span class="token operator">+</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span>j <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span>k<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i <span class="token operator">>=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span>nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> nums2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                nums1<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> nums1<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                i<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span><span class="token punctuation">{</span>
+                nums1<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> nums2<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                j<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+
+
+
+<span class="token punctuation">}</span>
+</code></pre>
 <h3 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h3><p>虽然有点笨，但有用</p>
 <pre class=" language-java"><code class="language-java">
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
@@ -1018,7 +1041,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022-2023</span>
+                <span id="year">2022-2025</span>
             
             <a href="/about" target="_blank">DULULU oO</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1026,7 +1049,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">79.9k</span>
+                        class="white-color">80.7k</span>
             
             
             
@@ -1074,7 +1097,7 @@
 
 
 
-    <a href="https://claireyuj.github.io/medias/myconfig/personal_cv.pdf" class="tooltipped" target="_blank" data-tooltip="个人简历 " data-position="top" data-delay="50">
+    <a href="https://claireyuj.github.io/medias/myconfig/2026_csu_yjs.pdf" class="tooltipped" target="_blank" data-tooltip="个人简历 " data-position="top" data-delay="50">
         <i class="far fa-address-card"></i>
     </a>
 
