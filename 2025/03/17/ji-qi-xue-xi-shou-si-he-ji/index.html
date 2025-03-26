@@ -81,9 +81,9 @@ $|w|_2^2$
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -432,7 +432,7 @@ $|w|_2^2$
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.5k
+                    2.9k
                 </div>
                 
 
@@ -843,7 +843,19 @@ $|w|_2^2$
 <li><strong>采样率</strong>（<code>subsample</code>, <code>colsample_bytree</code>）：0.6~1.0</li>
 </ol>
 <p><strong>示例参数组合</strong>：  </p>
-<p>```python<br>params = {<br>    ‘objective’: ‘reg:squarederror’,<br>    ‘learning_rate’: 0.1,<br>    ‘max_depth’: 6,<br>    ‘subsample’: 0.8,<br>    ‘colsample_bytree’: 0.8,<br>    ‘reg_lambda’: 1.0<br>}</p>
+<pre class=" language-python"><code class="language-python">params <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token string">'objective'</span><span class="token punctuation">:</span> <span class="token string">'reg:squarederror'</span><span class="token punctuation">,</span>
+    <span class="token string">'learning_rate'</span><span class="token punctuation">:</span> <span class="token number">0.1</span><span class="token punctuation">,</span>
+    <span class="token string">'max_depth'</span><span class="token punctuation">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+    <span class="token string">'subsample'</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>
+    <span class="token string">'colsample_bytree'</span><span class="token punctuation">:</span> <span class="token number">0.8</span><span class="token punctuation">,</span>
+    <span class="token string">'reg_lambda'</span><span class="token punctuation">:</span> <span class="token number">1.0</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="Boosting-Bagging-Stacking"><a href="#Boosting-Bagging-Stacking" class="headerlink" title="Boosting, Bagging, Stacking"></a>Boosting, Bagging, Stacking</h4><p>以上三种都是集成学习，其核心是分层模型融合：</p>
+<p><strong>基模型（Base Models</strong>：多个不同算法（如SVM、决策树、神经网络）独立训练。<br><strong>元模型（Meta-Model</strong>：以基模型的预测结果为输入，训练一个最终模型（如逻辑回归）。<br><strong>Boosting</strong><br>通过顺序训练基学习器，每个基学习器专注于纠正前一个模型的错误。<br>代表算法：AdaBoost、GBDT、XGBoost、LightGBM、CatBoost。<br><strong>Bagging</strong></p>
+<p>通过并行训练多个基学习器，每个基学习器在随机采样子集上训练，最终通过投票或平均得到结果。<br>代表算法：随机森林（Random Forest）、ExtraTrees。<br><strong>Stacking</strong><br>通过分层模型融合：第一层训练多个异构基学习器，第二层用元模型（Meta-Model）组合它们的输出。<br>常见用法：基模型为 SVM、决策树、KNN，元模型为线性回归或逻辑回归。</p>
+<h4 id="XGBoost相比GDBT提升在哪里"><a href="#XGBoost相比GDBT提升在哪里" class="headerlink" title="XGBoost相比GDBT提升在哪里"></a>XGBoost相比GDBT提升在哪里</h4><h4 id="双塔模型"><a href="#双塔模型" class="headerlink" title="双塔模型"></a>双塔模型</h4><p>分为用户塔和物品塔， 用户塔对用户id和特征做embedding获得用户向量（每次召回时，在线算用户a的向量），物品塔对物品id和特征做embedding获得物品向量（物品向量会提前算好，存在数据库中，每次召回时，都可以在数据库中查找）。通过对用户向量和物品向量做内积/求余弦相似度，获得的结果即模型输出。<br>每次召回时，将用户a的向量和物品向量数据库中的所有向量进行相似度计算，获得k-top向量，作为召回结果。</p>
 
                 
             </div>
@@ -1264,7 +1276,7 @@ $|w|_2^2$
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;Total Words:&nbsp;<span
-                        class="white-color">82.8k</span>
+                        class="white-color">83.2k</span>
             
             
             
